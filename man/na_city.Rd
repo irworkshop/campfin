@@ -5,16 +5,10 @@
 \alias{na_city}
 \title{Invalid City Values}
 \format{A vector of length 54:}
-\source{
-Daniel Coven's federalgovernmentzipcodes.us web site and the CivicSpace US ZIP Code Database written by Schuyler Erle \href{mailto:schuyler@geocoder.us}{schuyler@geocoder.us}, 5 August 2004. Original CSV files available from \url{http://federalgovernmentzipcodes.us/free-zipcode-database-Primary.csv}, \url{http://www.boutell.com/zipcodes/}, and \url{http://mappinghacks.com/data/}.
-}
 \usage{
 na_city
 }
 \description{
-A vector containing common invalid city names
-}
-\details{
-The original author claims this dataset contains over 98% of all US ZIP codes and covers 99.9% of the population. It may contains up to 0.5% false positives.
+A vector containing common invalid city names.
 }
 \keyword{datasets}
