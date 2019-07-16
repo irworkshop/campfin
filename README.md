@@ -85,33 +85,33 @@ library(zipcode)
 
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip       city state latitude longitude
-#> 1  10915  Bullville    NY 41.55563 -74.32881
-#> 2  07823  Belvidere    NJ 40.82383 -75.04585
-#> 3  22134   Quantico    VA 38.50314 -77.33372
-#> 4  45030   Harrison    OH 39.25794 -84.77001
-#> 5  19373   Thornton    PA 39.89932 -75.53140
-#> 6  60536  Millbrook    IL 41.59863 -88.55317
-#> 7  71722 Bluff City    AR 33.70407 -93.13364
-#> 8  68339     Denton    NE 40.73951 -96.84873
-#> 9  25103   Hansford    WV 38.20267 -81.39427
-#> 10 44178  Cleveland    OH 41.68574 -81.67280
+#>      zip        city state latitude longitude
+#> 1  12828 Fort Edward    NY 43.25312 -73.58549
+#> 2  60074    Palatine    IL 42.14382 -88.02546
+#> 3  33908  Fort Myers    FL 26.50268 -81.93052
+#> 4  77549 Friendswood    TX 29.33050 -94.80024
+#> 5  45250  Cincinnati    OH 39.16676 -84.53822
+#> 6  31786    Shellman    GA 31.72952 -84.60173
+#> 7  77090     Houston    TX 30.01271 -95.45132
+#> 8  47165       Pekin    IN 38.49903 -86.01293
+#> 9  41065 Muses Mills    KY 38.34810 -83.71863
+#> 10 26269   Hambleton    WV 39.09754 -79.63848
 
 # normal cities in a better order
 sample_n(geo, 10)
 #> # A tibble: 10 x 3
-#>    city             state zip  
-#>    <chr>            <chr> <chr>
-#>  1 MARISSA          IL    62257
-#>  2 THOREAU          NM    87323
-#>  3 BUENA PARK       CA    90621
-#>  4 BELLE CENTER     OH    43310
-#>  5 CADE             LA    70519
-#>  6 PLYMOUTH MEETING PA    19462
-#>  7 PORTLAND         CT    06480
-#>  8 ORIENTAL         NC    28571
-#>  9 GAMALIEL         KY    42140
-#> 10 FORT WAYNE       IN    46804
+#>    city         state zip  
+#>    <chr>        <chr> <chr>
+#>  1 APO          AE    09393
+#>  2 KITTERY      ME    03904
+#>  3 VILLA PARK   CA    92861
+#>  4 SALINE       LA    71070
+#>  5 AKRON        OH    44322
+#>  6 JACKSONVILLE FL    32258
+#>  7 AVALON       MS    38912
+#>  8 PORT LEYDEN  NY    13433
+#>  9 HOFFMAN      NC    28347
+#> 10 CARMEL       NY    10512
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
@@ -122,9 +122,9 @@ The package also contains a useful list of common invalid values.
 
 ``` r
 sample(campfin::na_city, 10)
-#>  [1] "NA"            "VIRTUAL"       "NOT AVAILABLE" "IR"           
-#>  [5] "NO CITY"       "P O BOX"       "XXX"           "NONE GIVEN"   
-#>  [9] "INTERNET"      "PENDING"
+#>  [1] "UNK"           "NOT SURE"      "NONE"          "VIRTUAL"      
+#>  [5] "NONE GIVEN"    "INFO PENDING"  "INTERNET"      "EVERYWHERE"   
+#>  [9] "NOT PROVIDED"  "NOTAPPLICABLE"
 ```
 
 ## Example
