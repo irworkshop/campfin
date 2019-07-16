@@ -16,7 +16,11 @@ Project curates, cleans and indexes public data to give journalists,
 researchers and others a simple way to search across otherwise siloed
 records.
 
-![tap](https://investigativereportingworkshop.org/wp-content/uploads/2019/07/ap-logo-400x132.png)
+<p align="center">
+
+<img src="https://investigativereportingworkshop.org/wp-content/uploads/2019/07/ap-logo-400x132.png">
+
+</p>
 
 The data focuses on people, organizations and locations. This package
 was created to facilitate the wrangling of state-level **camp**aign
@@ -30,9 +34,6 @@ The package is not on CRAN and must be installed from GitHub.
 # install.packages("devtools")
 devtools::install_github("kiernann/campfin")
 ```
-
-    #> Installing package into '/home/ubuntu/R/x86_64-pc-linux-gnu-library/3.6'
-    #> (as 'lib' is unspecified)
 
 ## Functions
 
@@ -62,7 +63,8 @@ finance data:
     recently downloaded
   - `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to
     every column in a data frame
-  - `prop_in()` (and `prop_out()`) wrap around `mean(x %in% y)`
+  - `prop_in(x, y)` (and `prop_out()`) wrap around `mean(x %in% y)`
+  - `count_na(x)` wraps around `sum(is.na(x))`
 
 I intend to add more functions over time to automate even more of the
 wrangling workflow.
@@ -83,17 +85,17 @@ library(zipcode)
 data("zipcode")
 
 sample_n(zipcode, 10)
-#>      zip       city state latitude  longitude
-#> 1  69210  Ainsworth    NE 42.53038  -99.88206
-#> 2  80292     Denver    CO 39.74739 -104.99284
-#> 3  77294    Houston    TX 29.86000  -95.24000
-#> 4  18962 Silverdale    PA 40.34602  -75.26953
-#> 5  59452     Hobson    MT 46.88305 -110.09673
-#> 6  89445 Winnemucca    NV 41.02951 -117.94402
-#> 7  70053     Gretna    LA 29.91536  -90.05335
-#> 8  77260    Houston    TX 29.67000  -95.24000
-#> 9  67452     Hunter    KS 39.22920  -98.38455
-#> 10 79948    El Paso    TX 31.69484 -106.29999
+#>      zip         city state latitude  longitude
+#> 1  70654       Mittie    LA 30.71056  -92.89081
+#> 2  03077      Raymond    NH 43.03149  -71.19598
+#> 3  54110     Brillion    WI 44.17950  -88.07449
+#> 4  54490     Westboro    WI 45.32103  -90.40218
+#> 5  96148  Tahoe Vista    CA 39.24388 -120.05437
+#> 6  76401 Stephenville    TX 32.24282  -98.21058
+#> 7  33609        Tampa    FL 27.94355  -82.50656
+#> 8  55454  Minneapolis    MN 44.96946  -93.24327
+#> 9  37927    Knoxville    TN 35.99014  -83.96218
+#> 10 24981      Talcott    WV 37.65427  -80.72899
 
 geo <- zipcode %>%
   as_tibble() %>% 
@@ -103,18 +105,18 @@ geo <- zipcode %>%
 # normal cities in a better order
 sample_n(geo, 10)
 #> # A tibble: 10 x 3
-#>    city          state zip  
-#>    <chr>         <chr> <chr>
-#>  1 SUGAR GROVE   OH    43155
-#>  2 HANOVER PARK  IL    60133
-#>  3 OKLAHOMA CITY OK    73151
-#>  4 WESTPHALIA    MO    65085
-#>  5 LUCIEN        OK    73757
-#>  6 CAMPBELLTOWN  PA    17010
-#>  7 VICTORIA      MS    38679
-#>  8 BIRDS         IL    62415
-#>  9 ELLSWORTH     NE    69340
-#> 10 HALLETTSVILLE TX    77964
+#>    city             state zip  
+#>    <chr>            <chr> <chr>
+#>  1 ALMA             NE    68920
+#>  2 FORESTVILLE      PA    16035
+#>  3 WILMOT           WI    53192
+#>  4 GURDON           AR    71743
+#>  5 WILMINGTON       NC    28405
+#>  6 DENBO            PA    15429
+#>  7 CORPUS CHRISTI   TX    78417
+#>  8 NORTH CARROLLTON MS    38947
+#>  9 MOUNT VICTORIA   MD    20661
+#> 10 ELLICOTTVILLE    NY    14731
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)

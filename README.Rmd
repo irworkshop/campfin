@@ -25,7 +25,9 @@ The `campfin` package was created to facilitate the work being done by
 The Accountability Project curates, cleans and indexes public data to give journalists, researchers
 and others a simple way to search across otherwise siloed records. 
 
-![tap](https://investigativereportingworkshop.org/wp-content/uploads/2019/07/ap-logo-400x132.png)
+<p align="center">
+  <img src="https://investigativereportingworkshop.org/wp-content/uploads/2019/07/ap-logo-400x132.png">
+</p>
 
 The data focuses on people, organizations and locations. This package was created to facilitate the
 wrangling of state-level **camp**aign **fin**ance data.
@@ -42,7 +44,7 @@ The package is not on CRAN and must be installed from GitHub.
 devtools::install_github("kiernann/campfin")
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 install.packages("~/R/campfin_0.0.1.tar.gz", repos = NULL, type = "source")
 ```
 
@@ -66,7 +68,8 @@ There are other functions which help load, explore, and process campaign finance
 
 * `all_files_new()` checks if all files in a directory have been recently downloaded
 * `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to every column in a data frame
-* `prop_in()` (and `prop_out()`) wrap around `mean(x %in% y)`
+* `prop_in(x, y)` (and `prop_out()`) wrap around `mean(x %in% y)`
+* `count_na(x)` wraps around `sum(is.na(x))`
 
 I intend to add more functions over time to automate even more of the wrangling workflow.
 
