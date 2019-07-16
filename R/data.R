@@ -39,3 +39,17 @@
 #' @source The USPS C1 Street Suffix Abbreviations
 #'     \url{https://pe.usps.com/text/pub28/28apc_002.htm}
 "usps"
+
+#' USPS C1 City Abbreviations
+#'
+#' A currated and edited dataset containing the USPS abbreviations for only city names.
+#'
+#' @format A tibble with 44,360 rows of 3 variables:
+#' \describe{
+#'   \item{abb}{Commonly Used Street Suffix or Abbreviation}
+#'   \item{full}{Primary Street Suffix}
+#'   ...
+#' }
+#' @source The USPS C1 Street Suffix Abbreviations
+#'     \url{https://pe.usps.com/text/pub28/28apc_002.htm}
+"usps_city"
