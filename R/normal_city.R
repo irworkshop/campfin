@@ -7,13 +7,13 @@
 #' @param na_rep If `TRUE`, make all single digit repeating strings `NA`.
 #' @return A vector of normalized city names.
 #' @examples
-#'normal_city(
-#'  city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-#'  geo_abbs = tibble::tibble(abb = "ST", rep = "SAINT"),
-#'  st_abbs = c("VT"),
-#'  na = c("", "NA", "UNKNOWN"),
-#'  na_rep = TRUE
-#')
+#' normal_city(
+#'   city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
+#'   geo_abbs = tibble::tibble(abb = "ST", rep = "SAINT"),
+#'   st_abbs = c("VT"),
+#'   na = c("", "NA", "UNKNOWN"),
+#'   na_rep = TRUE
+#' )
 #' @import stringr
 #' @importFrom dplyr na_if
 #' @importFrom tibble tibble
