@@ -7,7 +7,8 @@ editor_options:
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo = FALSE}
-knitr::opts_chunk$set(
+library(knitr)
+opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-"
@@ -21,16 +22,15 @@ knitr::opts_chunk$set(
 ## Overview
 
 The `campfin` package was created to facilitate the work being done by 
-[The Accountability Project][01], a journalism too created by The Investigative Reporting Workshop.
-The Accountability Project curates, cleans and indexes public data to give journalists, researchers
-and others a simple way to search across otherwise siloed records. 
+[The Accountability Project][01], a tool created by [The Investigative Reporting Workshop][02]. The
+Accountability Project curates, cleans and indexes public data to give journalists, researchers and
+others a simple way to search across otherwise siloed records. The data focuses on people,
+organizations and locations. This package was created specifically to helo with state-level
+**camp**aign **fin**ance data.
 
 <p align="center">
   <img src="https://investigativereportingworkshop.org/wp-content/uploads/2019/07/ap-logo-400x132.png">
 </p>
-
-The data focuses on people, organizations and locations. This package was created to facilitate the
-wrangling of state-level **camp**aign **fin**ance data.
 
 [01]: https://www.publicaccountability.org/ "tap"
 [02]: https://investigativereportingworkshop.org/ "irw"
@@ -52,7 +52,7 @@ data and return [normalized text][03] that is more searchable.
 * `normal_zip()` takes [ZIP Codes][04] and returns a 5 digit character string
 * `normal_state()` takes US states and returns a [2 digit abbreviation][05]
 * `normal_address()` takes a _street_ address and reduces inconsistencies
-* `normal_city()` takes city names and reduces inconsistencies, cross checks against normal ZIP codes, and performs [key collision cluster and n-gram merging][06] from the [`refinr`][07] package
+* `normal_city()` takes cities and reduces inconsistencies (to help with [cluster and merging][06])
 
 [03]: https://en.wikipedia.org/wiki/Text_normalization "text_normal"
 [04]: https://en.wikipedia.org/wiki/ZIP_Code "zip_code"
@@ -64,7 +64,7 @@ There are other functions which help load, explore, and process campaign finance
 
 * `all_files_new()` checks if all files in a directory have been recently downloaded
 * `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to every column in a data frame
-* `prop_in(x, y)` (and `prop_out()`) wrap around `mean(x %in% y)`
+* `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
 * `count_na(x)` wraps around `sum(is.na(x))`
 
 I intend to add more functions over time to automate even more of the wrangling workflow.
@@ -88,7 +88,7 @@ data("zipcode")
 sample_n(zipcode, 10)
 
 # normal cities in a better order
-sample_n(geo, 10)
+sample_n(campfin::geo, 10)
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
@@ -96,13 +96,13 @@ setdiff(geo$state, datasets::state.abb)
 
 The package also contains a useful list of common invalid values.
 
-```{r}
+```{r na_city}
 sample(campfin::na_city, 10)
 ```
 
 ## Example
 
-```{r tribble}
+```{r tribble, echo=FALSE}
 library(tibble)
 library(knitr)
 
@@ -114,42 +114,41 @@ vt <- tribble(
   "51 depot   square",  "st johnsbury", "vt",      "5819",
   "XXXXXXX",            "UNKNOWN",      "XX",      "00000"
 )
-
-kable(vt)
+kable(vt, )
 ```
 
 ```{r normalize}
-library(campfin)
-
-vt$address <- normal_address(
-  address = vt$address,
-  add_abbs = tibble(abb = "RD", rep = "ROAD"), 
-  na = c("", "NA", "UNKNOWN"),
-  na_rep = TRUE
+vt_na <- c("", "NA", "UNKNOWN")
+vt2 <- vt %>% mutate(
+  address = normal_address(
+    address = address,
+    add_abbs = tibble(abb = "RD", rep = "ROAD"), 
+    na = vt_na,
+    na_rep = TRUE
+  ),
+  city = normal_city(
+    city = city,
+    geo_abbs = tibble(abb = "ST", rep = "SAINT"),
+    st_abbs = c("VT"),
+    na = vt_na,
+    na_rep = TRUE
+  ),
+  state = normal_state(
+    state = state,
+    abbreviate = TRUE,
+    na = ,
+    na_rep = TRUE,
+    valid = state.abb
+  ),
+  zip = normal_zip(
+    zip = zip,
+    na = vt_na,
+    na_rep = TRUE
+  )
 )
+```
 
-vt$city <- normal_city(
-  city = vt$city,
-  geo_abbs = tibble(abb = "ST", rep = "SAINT"),
-  st_abbs = c("VT"),
-  na = c("", "NA", "UNKNOWN"),
-  na_rep = TRUE
-)
-
-vt$state <- normal_state(
-  state = vt$state,
-  abbreviate = TRUE,
-  na = c("", "NA", "UNKNOWN"),
-  na_rep = TRUE,
-  valid = state.abb
-)
-
-vt$zip <- normal_zip(
-  zip = vt$zip,
-  na = c("", "NA", "UNKNOWN"),
-  na_rep = TRUE
-)
-
-kable(vt)
+```{r kable_normal, echo=FALSE}
+kable(vt2)
 ```
 

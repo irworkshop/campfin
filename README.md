@@ -10,21 +10,20 @@ status](https://www.r-pkg.org/badges/version/whatr)](https://cran.r-project.org/
 
 The `campfin` package was created to facilitate the work being done by
 [The Accountability
-Project](https://www.publicaccountability.org/ "tap"), a journalism too
-created by The Investigative Reporting Workshop. The Accountability
-Project curates, cleans and indexes public data to give journalists,
-researchers and others a simple way to search across otherwise siloed
-records.
+Project](https://www.publicaccountability.org/ "tap"), a tool created by
+[The Investigative Reporting
+Workshop](https://investigativereportingworkshop.org/ "irw"). The
+Accountability Project curates, cleans and indexes public data to give
+journalists, researchers and others a simple way to search across
+otherwise siloed records. The data focuses on people, organizations and
+locations. This package was created specifically to helo with
+state-level **camp**aign **fin**ance data.
 
 <p align="center">
 
 <img src="https://investigativereportingworkshop.org/wp-content/uploads/2019/07/ap-logo-400x132.png">
 
 </p>
-
-The data focuses on people, organizations and locations. This package
-was created to facilitate the wrangling of state-level **camp**aign
-**fin**ance data.
 
 ## Installation
 
@@ -49,12 +48,9 @@ that is more searchable.
     abbreviation](https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations "state_abbs")
   - `normal_address()` takes a *street* address and reduces
     inconsistencies
-  - `normal_city()` takes city names and reduces inconsistencies, cross
-    checks against normal ZIP codes, and performs [key collision cluster
-    and n-gram
-    merging](https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth "open_refine")
-    from the [`refinr`](https://github.com/ChrisMuir/refinr "refinr")
-    package
+  - `normal_city()` takes cities and reduces inconsistencies (to help
+    with [cluster and
+    merging](https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth "open_refine"))
 
 There are other functions which help load, explore, and process campaign
 finance data:
@@ -63,7 +59,7 @@ finance data:
     recently downloaded
   - `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to
     every column in a data frame
-  - `prop_in(x, y)` (and `prop_out()`) wrap around `mean(x %in% y)`
+  - `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
   - `count_na(x)` wraps around `sum(is.na(x))`
 
 I intend to add more functions over time to automate even more of the
@@ -85,33 +81,33 @@ library(zipcode)
 
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip        city state latitude longitude
-#> 1  12828 Fort Edward    NY 43.25312 -73.58549
-#> 2  60074    Palatine    IL 42.14382 -88.02546
-#> 3  33908  Fort Myers    FL 26.50268 -81.93052
-#> 4  77549 Friendswood    TX 29.33050 -94.80024
-#> 5  45250  Cincinnati    OH 39.16676 -84.53822
-#> 6  31786    Shellman    GA 31.72952 -84.60173
-#> 7  77090     Houston    TX 30.01271 -95.45132
-#> 8  47165       Pekin    IN 38.49903 -86.01293
-#> 9  41065 Muses Mills    KY 38.34810 -83.71863
-#> 10 26269   Hambleton    WV 39.09754 -79.63848
+#>      zip          city state latitude  longitude
+#> 1  79187      Amarillo    TX 35.40147 -101.89509
+#> 2  95502        Eureka    CA 40.81459 -124.08052
+#> 3  51523       Blencoe    IA 41.91340  -96.08500
+#> 4  02143    Somerville    MA 42.38193  -71.09908
+#> 5  64661        Mercer    MO 40.52240  -93.54965
+#> 6  65727          Polk    MO 37.78991  -93.27802
+#> 7  25687         Nolan    WV 37.74306  -82.10801
+#> 8  38043 Hickory Withe    TN 35.19926  -89.41411
+#> 9  53066    Oconomowoc    WI 43.10824  -88.48935
+#> 10 92123     San Diego    CA 32.80380 -117.13595
 
 # normal cities in a better order
-sample_n(geo, 10)
+sample_n(campfin::geo, 10)
 #> # A tibble: 10 x 3
-#>    city         state zip  
-#>    <chr>        <chr> <chr>
-#>  1 APO          AE    09393
-#>  2 KITTERY      ME    03904
-#>  3 VILLA PARK   CA    92861
-#>  4 SALINE       LA    71070
-#>  5 AKRON        OH    44322
-#>  6 JACKSONVILLE FL    32258
-#>  7 AVALON       MS    38912
-#>  8 PORT LEYDEN  NY    13433
-#>  9 HOFFMAN      NC    28347
-#> 10 CARMEL       NY    10512
+#>    city             state zip  
+#>    <chr>            <chr> <chr>
+#>  1 MCINTOSH         NM    87032
+#>  2 MELBOURNE        FL    32901
+#>  3 CANASTOTA        NY    13032
+#>  4 MONTGOMERY       IN    47558
+#>  5 CHESTERVILLE     OH    43317
+#>  6 FORT HALL        ID    83203
+#>  7 INTERLACHEN      FL    32148
+#>  8 NORTH BONNEVILLE WA    98639
+#>  9 FLYNN            TX    77855
+#> 10 PHOENIX          AZ    85042
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
@@ -122,28 +118,13 @@ The package also contains a useful list of common invalid values.
 
 ``` r
 sample(campfin::na_city, 10)
-#>  [1] "UNK"           "NOT SURE"      "NONE"          "VIRTUAL"      
-#>  [5] "NONE GIVEN"    "INFO PENDING"  "INTERNET"      "EVERYWHERE"   
-#>  [9] "NOT PROVIDED"  "NOTAPPLICABLE"
+#>  [1] "NO ADDRESS"           "N A"                  "TO FIND OUT"         
+#>  [4] "NO INFORMATION GIVEN" "UNKNOWN"              "NULL"                
+#>  [7] "UNKOWN"               "XXX"                  "NOTAPPLICABLE"       
+#> [10] "NOT REQUIRED"
 ```
 
 ## Example
-
-``` r
-library(tibble)
-library(knitr)
-
-vt <- tribble(
-  ~address,             ~city,          ~state,    ~zip,
-  "744 Cape Cod Rd.",    "Stowe, VT",    "VT",      "05672",
-  "N/A",                "N/A",          "N/A",     "N/A",
-  "149_Church_Street",  "Burlington",   "Vermont", "05401", 
-  "51 depot   square",  "st johnsbury", "vt",      "5819",
-  "XXXXXXX",            "UNKNOWN",      "XX",      "00000"
-)
-
-kable(vt)
-```
 
 | address             | city         | state   | zip   |
 | :------------------ | :----------- | :------ | :---- |
@@ -154,38 +135,34 @@ kable(vt)
 | XXXXXXX             | UNKNOWN      | XX      | 00000 |
 
 ``` r
-library(campfin)
-
-vt$address <- normal_address(
-  address = vt$address,
-  add_abbs = tibble(abb = "RD", rep = "ROAD"), 
-  na = c("", "NA", "UNKNOWN"),
-  na_rep = TRUE
+vt_na <- c("", "NA", "UNKNOWN")
+vt2 <- vt %>% mutate(
+  address = normal_address(
+    address = address,
+    add_abbs = tibble(abb = "RD", rep = "ROAD"), 
+    na = vt_na,
+    na_rep = TRUE
+  ),
+  city = normal_city(
+    city = city,
+    geo_abbs = tibble(abb = "ST", rep = "SAINT"),
+    st_abbs = c("VT"),
+    na = vt_na,
+    na_rep = TRUE
+  ),
+  state = normal_state(
+    state = state,
+    abbreviate = TRUE,
+    na = ,
+    na_rep = TRUE,
+    valid = state.abb
+  ),
+  zip = normal_zip(
+    zip = zip,
+    na = vt_na,
+    na_rep = TRUE
+  )
 )
-
-vt$city <- normal_city(
-  city = vt$city,
-  geo_abbs = tibble(abb = "ST", rep = "SAINT"),
-  st_abbs = c("VT"),
-  na = c("", "NA", "UNKNOWN"),
-  na_rep = TRUE
-)
-
-vt$state <- normal_state(
-  state = vt$state,
-  abbreviate = TRUE,
-  na = c("", "NA", "UNKNOWN"),
-  na_rep = TRUE,
-  valid = state.abb
-)
-
-vt$zip <- normal_zip(
-  zip = vt$zip,
-  na = c("", "NA", "UNKNOWN"),
-  na_rep = TRUE
-)
-
-kable(vt)
 ```
 
 | address           | city            | state | zip   |
