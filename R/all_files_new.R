@@ -3,7 +3,6 @@
 #' @param path The path to a directory to check.
 #' @param glob A pattern to search for files (e.g., "csv").
 #' @return A logical value indicating whether or not all files in the directory have a modification date equal to today.
-#' @examples
 #' @importFrom fs dir_ls file_info
 #' @importFrom lubridate today floor_date
 #' @importFrom purrr is_empty
