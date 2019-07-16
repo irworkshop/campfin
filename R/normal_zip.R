@@ -5,7 +5,7 @@
 #' @param na_rep If `TRUE`, make all single digit repeating strings (e.g., "00000") `NA`. This removes the valid but uncommon "22222", "44444", and "55555".
 #' @return A vector of normalized 5-digit ZIP codes.
 #' @import stringr
-
+#' @export
 normal_zip <- function(zip, na = c(""), na_rep = FALSE) {
 
   zip2 <- zip %>%

@@ -6,7 +6,7 @@
 #' @param na_rep If `TRUE`, make all single digit repeating strings `NA`.
 #' @return A vector of normalized street addresses.
 #' @import stringr
-
+#' @export
 normal_address <- function(address, add_abbs = NULL, na = c(""), na_rep = FALSE) {
 
   address2 <- address %>%

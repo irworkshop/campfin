@@ -8,7 +8,7 @@
 #' @return A vector of normalized 2-digit state abbreviations.
 #' @import stringr
 #' @importFrom tibble tibble
-
+#' @export
 normal_state <- function(state, abbreviate = TRUE, na = c(""), na_rep = FALSE, valid = NULL) {
 
   state2 <- state
