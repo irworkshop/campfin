@@ -11,7 +11,8 @@ normal_address <- function(address, add_abbs = NULL, na = c(""), na_rep = FALSE)
 
   address2 <- address %>%
     str_to_upper() %>%
-    str_replace("-", " ") %>%
+    str_replace_all("-", " ") %>%
+    str_replace_all("_", " ") %>%
     str_remove_all("[[:punct:]]") %>%
     str_trim() %>%
     str_squish() %>%
