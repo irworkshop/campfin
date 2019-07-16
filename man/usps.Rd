@@ -3,7 +3,7 @@
 \docType{data}
 \name{usps}
 \alias{usps}
-\title{US City, State, and ZIPs}
+\title{USPS C1 Address Abbreviations}
 \format{A tibble with 44,360 rows of 3 variables:
 \describe{
 \item{abb}{Commonly Used Street Suffix or Abbreviation}

@@ -26,7 +26,7 @@
 #' @format A vector of length 54:
 "na_city"
 
-#' US City, State, and ZIPs
+#' USPS C1 Address Abbreviations
 #'
 #' A dataset containing common street suffixes or suffix abbreviations and their full equivalent.
 #'
