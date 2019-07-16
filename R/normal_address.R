@@ -17,13 +17,13 @@ normal_address <- function(address, add_abbs = NULL, na = c(""), na_rep = FALSE)
     str_squish() %>%
     str_replace("P\\sO", "PO")
 
-  if (!is.null(abbs)) {
-    abbs <- as.data.frame(abbs)
-    for (i in seq_along(abbs[, 1])) {
+  if (!is.null(add_abbs)) {
+    add_abbs <- as.data.frame(add_abbs)
+    for (i in seq_along(add_abbs[, 1])) {
       address2 <- str_replace(
         string = address2,
-        pattern = str_c("\\b", abbs[i, 1], "\\b"),
-        replacement = abbs[i, 2]
+        pattern = str_c("\\b", add_abbs[i, 1], "\\b"),
+        replacement = add_abbs[i, 2]
       )
     }
   }
