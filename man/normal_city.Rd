@@ -26,10 +26,10 @@ Normalize City Names
 }
 \examples{
 normal_city(
- city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
- geo_abbs = tibble::tibble(abb = "ST", rep = "SAINT"),
- st_abbs = c("VT"),
- na = c("", "NA", "UNKNOWN"),
- na_rep = TRUE
+  city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
+  geo_abbs = tibble::tibble(abb = "ST", rep = "SAINT"),
+  st_abbs = c("VT"),
+  na = c("", "NA", "UNKNOWN"),
+  na_rep = TRUE
 )
 }

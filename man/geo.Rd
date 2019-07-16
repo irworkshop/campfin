@@ -6,9 +6,9 @@
 \title{US City, State, and ZIPs}
 \format{A tibble with 44,360 rows of 3 variables:
 \describe{
-\item{city}{}
-\item{state}{}
-\item{zip}{}
+\item{city}{City name}
+\item{state}{state abbreviation}
+\item{zip}{US ZIP code}
 ...
 }}
 \source{

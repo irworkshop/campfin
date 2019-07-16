@@ -6,12 +6,23 @@
 #' @param na_rep If `TRUE`, make all single digit repeating strings `NA` (removes valid "AA" code for "American Armed Forces").
 #' @param valid A vector of valid abbreviations to compare to and remove invalid.
 #' @return A vector of normalized 2-digit state abbreviations.
+#' @example
+#' normal_state(
+#'   state = c("VT", "N/A", "Vermont", "XX", "ZA"),
+#'   abbreviate = TRUE,
+#'   na = c("", "NA"),
+#'   na_rep = TRUE,
+#'   valid = NULL
+#' )
 #' @import stringr
 #' @importFrom tibble tibble
 #' @export
 normal_state <- function(state, abbreviate = TRUE, na = c(""), na_rep = FALSE, valid = NULL) {
 
-  state2 <- state
+  state2 <- state %>%
+    str_to_upper() %>%
+    str_remove("[^A-z]") %>%
+    str_trim()
 
   if (abbreviate) {
     states_df <- tibble(
@@ -26,12 +37,6 @@ normal_state <- function(state, abbreviate = TRUE, na = c(""), na_rep = FALSE, v
       )
     }
   }
-
-  state2 <- state2 %>%
-    str_to_upper() %>%
-    str_remove("[^A-z]") %>%
-    str_trim()
-
 
   if (!is.null(valid)) {
     state2[!(state2 %in% valid)] <- NA
