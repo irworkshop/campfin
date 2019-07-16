@@ -1,10 +1,10 @@
 #' Normalize US Street Addresses
 #'
-#' @param address A vector of street addresses
-#' @param add_abbs An optional data frame of abbreviations and replacements
-#' @param na A vector of values to make `NA`
-#' @param na_rep If TRUE, make all single digit repeating strings `NA`
-#' @return A vector of normalized street addresses
+#' @param address A vector of street addresses (ideally without city, state, and ZIP).
+#' @param add_abbs A two-column data frame with address abbreviations ("ST") in the first column and replacement strings ("STREET") in the second.
+#' @param na A vector of values to make `NA`.
+#' @param na_rep If `TRUE`, make all single digit repeating strings `NA`.
+#' @return A vector of normalized street addresses.
 #' @import stringr
 
 normal_address <- function(address, add_abbs = NULL, na = c(""), na_rep = FALSE) {

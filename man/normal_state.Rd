@@ -8,18 +8,18 @@ normal_state(state, abbreviate = TRUE, na = c(""), na_rep = FALSE,
   valid = NULL)
 }
 \arguments{
-\item{state}{A vector of US state names or abbreviations}
+\item{state}{A vector of US state names or abbreviations.}
 
-\item{abbreviate}{If TRUE (default), replace state names with the 2-digit abbreviation}
+\item{abbreviate}{If TRUE (default), replace state names with the 2-digit abbreviation using the built-in \code{state.abb} and \code{state.name} vectors.}
 
-\item{na}{A vector of values to make \code{NA}}
+\item{na}{A vector of values to make \code{NA}.}
 
-\item{na_rep}{If TRUE, make all single digit repeating strings \code{NA} (removes valid "AA")}
+\item{na_rep}{If \code{TRUE}, make all single digit repeating strings \code{NA} (removes valid "AA" code for "American Armed Forces").}
 
-\item{valid}{A vector of valid abbreviations to compare to and remove invalid}
+\item{valid}{A vector of valid abbreviations to compare to and remove invalid.}
 }
 \value{
-A vector of normalized 2-digit state abbreviations
+A vector of normalized 2-digit state abbreviations.
 }
 \description{
 Normalize US State Abbreviations

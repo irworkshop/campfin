@@ -1,11 +1,11 @@
-#' Normalize US City Names
+#' Normalize City Names
 #'
-#' @param city A vector of US city names
-#' @param geo_abbs A data frame of geographic abbreviations ("MT") and replacements ("MOUNT")
-#' @param state_abbs A vector of state abbreviations ("VT") to remove from the _end_ of city names ("STOWE VT")
-#' @param na A vector of values to make `NA` (useful with na_city vector)
-#' @param na_rep If TRUE, make all single digit repeating strings `NA`
-#' @return A vector of normalized city names
+#' @param city A vector of US city names.
+#' @param geo_abbs A two-column data frame with geographic abbreviations ("MT") in the first column and replacement strings ("MOUNT") in the second.
+#' @param st_abbs A vector of state abbreviations ("VT") to remove from the _end_ of city names ("STOWE VT").
+#' @param na A vector of values to make `NA` (useful with the `campfin::na_city` vector).
+#' @param na_rep If `TRUE`, make all single digit repeating strings `NA`.
+#' @return A vector of normalized city names.
 #' @import stringr
 #' @importFrom dplyr na_if
 #' @importFrom tibble tibble

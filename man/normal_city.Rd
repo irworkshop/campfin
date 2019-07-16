@@ -2,25 +2,25 @@
 % Please edit documentation in R/normal_city.R
 \name{normal_city}
 \alias{normal_city}
-\title{Normalize US City Names}
+\title{Normalize City Names}
 \usage{
 normal_city(city, geo_abbs = NULL, st_abbs = NULL, na = c(""),
   na_rep = FALSE)
 }
 \arguments{
-\item{city}{A vector of US city names}
+\item{city}{A vector of US city names.}
 
-\item{geo_abbs}{A data frame of geographic abbreviations ("MT") and replacements ("MOUNT")}
+\item{geo_abbs}{A two-column data frame with geographic abbreviations ("MT") in the first column and replacement strings ("MOUNT") in the second.}
 
-\item{na}{A vector of values to make \code{NA} (useful with na_city vector)}
+\item{st_abbs}{A vector of state abbreviations ("VT") to remove from the \emph{end} of city names ("STOWE VT").}
 
-\item{na_rep}{If TRUE, make all single digit repeating strings \code{NA}}
+\item{na}{A vector of values to make \code{NA} (useful with the \code{campfin::na_city} vector).}
 
-\item{state_abbs}{A vector of state abbreviations ("VT") to remove from the \emph{end} of city names ("STOWE VT")}
+\item{na_rep}{If \code{TRUE}, make all single digit repeating strings \code{NA}.}
 }
 \value{
-A vector of normalized city names
+A vector of normalized city names.
 }
 \description{
-Normalize US City Names
+Normalize City Names
 }
