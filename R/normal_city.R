@@ -6,10 +6,18 @@
 #' @param na A vector of values to make `NA` (useful with the `campfin::na_city` vector).
 #' @param na_rep If `TRUE`, make all single digit repeating strings `NA`.
 #' @return A vector of normalized city names.
+#' @examples
+#'normal_city(
+#'  city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
+#'  geo_abbs = tibble::tibble(abb = "ST", rep = "SAINT"),
+#'  st_abbs = c("VT"),
+#'  na = c("", "NA", "UNKNOWN"),
+#'  na_rep = TRUE
+#')
 #' @import stringr
 #' @importFrom dplyr na_if
 #' @importFrom tibble tibble
-
+#' @export
 normal_city <- function(city, geo_abbs = NULL, st_abbs = NULL, na = c(""), na_rep = FALSE) {
 
   city_clean <- city %>%
@@ -26,8 +34,8 @@ normal_city <- function(city, geo_abbs = NULL, st_abbs = NULL, na = c(""), na_re
     for (i in seq_along(geo_abbs[, 1])) {
       city_clean <- str_replace(
         string = city_clean,
-        pattern = str_c("\\b", geo_abbs[i, 1], "\\b"),
-        replacement = geo_abbs[i, 2]
+        pattern = str_c("\\b", geo_abbs[[i, 1]], "\\b"),
+        replacement = geo_abbs[[i, 2]]
       )
     }
   }
