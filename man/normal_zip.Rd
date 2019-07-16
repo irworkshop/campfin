@@ -9,9 +9,9 @@ normal_zip(zip, na = c(""), na_rep = FALSE)
 \arguments{
 \item{zip}{A vector ostensibly of US ZIP codes}
 
-\item{na}{A vector of values to make `NA`}
+\item{na}{A vector of values to make \code{NA}}
 
-\item{na_rep}{If TRUE, make all single digit repeating strings `NA`}
+\item{na_rep}{If TRUE, make all single digit repeating strings \code{NA}}
 }
 \value{
 A vector of normalized 5-digit ZIP codes

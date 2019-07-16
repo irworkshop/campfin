@@ -11,9 +11,9 @@ normal_address(address, add_abbs = NULL, na = c(""), na_rep = FALSE)
 
 \item{add_abbs}{An optional data frame of abbreviations and replacements}
 
-\item{na}{A vector of values to make `NA`}
+\item{na}{A vector of values to make \code{NA}}
 
-\item{na_rep}{If TRUE, make all single digit repeating strings `NA`}
+\item{na_rep}{If TRUE, make all single digit repeating strings \code{NA}}
 }
 \value{
 A vector of normalized street addresses

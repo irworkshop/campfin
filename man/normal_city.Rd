@@ -12,11 +12,11 @@ normal_city(city, geo_abbs = NULL, st_abbs = NULL, na = c(""),
 
 \item{geo_abbs}{A data frame of geographic abbreviations ("MT") and replacements ("MOUNT")}
 
-\item{na}{A vector of values to make `NA` (useful with na_city vector)}
+\item{na}{A vector of values to make \code{NA} (useful with na_city vector)}
 
-\item{na_rep}{If TRUE, make all single digit repeating strings `NA`}
+\item{na_rep}{If TRUE, make all single digit repeating strings \code{NA}}
 
-\item{state_abbs}{A vector of state abbreviations ("VT") to remove from the _end_ of city names ("STOWE VT")}
+\item{state_abbs}{A vector of state abbreviations ("VT") to remove from the \emph{end} of city names ("STOWE VT")}
 }
 \value{
 A vector of normalized city names

@@ -12,9 +12,9 @@ normal_state(state, abbreviate = TRUE, na = c(""), na_rep = FALSE,
 
 \item{abbreviate}{If TRUE (default), replace state names with the 2-digit abbreviation}
 
-\item{na}{A vector of values to make `NA`}
+\item{na}{A vector of values to make \code{NA}}
 
-\item{na_rep}{If TRUE, make all single digit repeating strings `NA` (removes valid "AA")}
+\item{na_rep}{If TRUE, make all single digit repeating strings \code{NA} (removes valid "AA")}
 
 \item{valid}{A vector of valid abbreviations to compare to and remove invalid}
 }
