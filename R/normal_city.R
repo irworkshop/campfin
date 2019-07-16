@@ -22,7 +22,7 @@ normal_city <- function(city, geo_abbs = NULL, st_abbs = NULL, na = c(""), na_re
 
   city_clean <- city %>%
     str_to_upper() %>%
-    str_replace("-", " ") %>%
+    str_replace_all("-", " ") %>%
     str_remove_all("[[:punct:]]") %>%
     str_remove_all("\\d+") %>%
     str_trim() %>%
