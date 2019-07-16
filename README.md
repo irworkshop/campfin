@@ -79,44 +79,39 @@ R package, which itself is a version of the [CivicSpace US ZIP Code
 Database](https://boutell.com/zipcodes/ "civic_space").
 
 ``` r
-library(tidyverse)
+library(dplyr)
 library(campfin)
 library(zipcode)
+
 data("zipcode")
-
 sample_n(zipcode, 10)
-#>      zip         city state latitude  longitude
-#> 1  70654       Mittie    LA 30.71056  -92.89081
-#> 2  03077      Raymond    NH 43.03149  -71.19598
-#> 3  54110     Brillion    WI 44.17950  -88.07449
-#> 4  54490     Westboro    WI 45.32103  -90.40218
-#> 5  96148  Tahoe Vista    CA 39.24388 -120.05437
-#> 6  76401 Stephenville    TX 32.24282  -98.21058
-#> 7  33609        Tampa    FL 27.94355  -82.50656
-#> 8  55454  Minneapolis    MN 44.96946  -93.24327
-#> 9  37927    Knoxville    TN 35.99014  -83.96218
-#> 10 24981      Talcott    WV 37.65427  -80.72899
-
-geo <- zipcode %>%
-  as_tibble() %>% 
-  mutate(city= normal_city(city)) %>%
-  select(city, state, zip)
+#>      zip       city state latitude longitude
+#> 1  10915  Bullville    NY 41.55563 -74.32881
+#> 2  07823  Belvidere    NJ 40.82383 -75.04585
+#> 3  22134   Quantico    VA 38.50314 -77.33372
+#> 4  45030   Harrison    OH 39.25794 -84.77001
+#> 5  19373   Thornton    PA 39.89932 -75.53140
+#> 6  60536  Millbrook    IL 41.59863 -88.55317
+#> 7  71722 Bluff City    AR 33.70407 -93.13364
+#> 8  68339     Denton    NE 40.73951 -96.84873
+#> 9  25103   Hansford    WV 38.20267 -81.39427
+#> 10 44178  Cleveland    OH 41.68574 -81.67280
 
 # normal cities in a better order
 sample_n(geo, 10)
 #> # A tibble: 10 x 3
 #>    city             state zip  
 #>    <chr>            <chr> <chr>
-#>  1 ALMA             NE    68920
-#>  2 FORESTVILLE      PA    16035
-#>  3 WILMOT           WI    53192
-#>  4 GURDON           AR    71743
-#>  5 WILMINGTON       NC    28405
-#>  6 DENBO            PA    15429
-#>  7 CORPUS CHRISTI   TX    78417
-#>  8 NORTH CARROLLTON MS    38947
-#>  9 MOUNT VICTORIA   MD    20661
-#> 10 ELLICOTTVILLE    NY    14731
+#>  1 MARISSA          IL    62257
+#>  2 THOREAU          NM    87323
+#>  3 BUENA PARK       CA    90621
+#>  4 BELLE CENTER     OH    43310
+#>  5 CADE             LA    70519
+#>  6 PLYMOUTH MEETING PA    19462
+#>  7 PORTLAND         CT    06480
+#>  8 ORIENTAL         NC    28571
+#>  9 GAMALIEL         KY    42140
+#> 10 FORT WAYNE       IN    46804
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
@@ -124,3 +119,79 @@ setdiff(geo$state, datasets::state.abb)
 ```
 
 The package also contains a useful list of common invalid values.
+
+``` r
+sample(campfin::na_city, 10)
+#>  [1] "NA"            "VIRTUAL"       "NOT AVAILABLE" "IR"           
+#>  [5] "NO CITY"       "P O BOX"       "XXX"           "NONE GIVEN"   
+#>  [9] "INTERNET"      "PENDING"
+```
+
+## Example
+
+``` r
+library(tibble)
+library(knitr)
+
+vt <- tribble(
+  ~address,             ~city,          ~state,    ~zip,
+  "744 Cape Cod Rd.",    "Stowe, VT",    "VT",      "05672",
+  "N/A",                "N/A",          "N/A",     "N/A",
+  "149_Church_Street",  "Burlington",   "Vermont", "05401", 
+  "51 depot   square",  "st johnsbury", "vt",      "5819",
+  "XXXXXXX",            "UNKNOWN",      "XX",      "00000"
+)
+
+kable(vt)
+```
+
+| address             | city         | state   | zip   |
+| :------------------ | :----------- | :------ | :---- |
+| 744 Cape Cod Rd.    | Stowe, VT    | VT      | 05672 |
+| N/A                 | N/A          | N/A     | N/A   |
+| 149\_Church\_Street | Burlington   | Vermont | 05401 |
+| 51 depot square     | st johnsbury | vt      | 5819  |
+| XXXXXXX             | UNKNOWN      | XX      | 00000 |
+
+``` r
+library(campfin)
+
+vt$address <- normal_address(
+  address = vt$address,
+  add_abbs = tibble(abb = "RD", rep = "ROAD"), 
+  na = c("", "NA", "UNKNOWN"),
+  na_rep = TRUE
+)
+
+vt$city <- normal_city(
+  city = vt$city,
+  geo_abbs = tibble(abb = "ST", rep = "SAINT"),
+  st_abbs = c("VT"),
+  na = c("", "NA", "UNKNOWN"),
+  na_rep = TRUE
+)
+
+vt$state <- normal_state(
+  state = vt$state,
+  abbreviate = TRUE,
+  na = c("", "NA", "UNKNOWN"),
+  na_rep = TRUE,
+  valid = state.abb
+)
+
+vt$zip <- normal_zip(
+  zip = vt$zip,
+  na = c("", "NA", "UNKNOWN"),
+  na_rep = TRUE
+)
+
+kable(vt)
+```
+
+| address           | city            | state | zip   |
+| :---------------- | :-------------- | :---- | :---- |
+| 744 CAPE COD ROAD | STOWE           | VT    | 05672 |
+| NA                | NA              | NA    | NA    |
+| 149 CHURCH STREET | BURLINGTON      | VT    | 05401 |
+| 51 DEPOT SQUARE   | SAINT JOHNSBURY | VT    | 05819 |
+| NA                | NA              | NA    | NA    |

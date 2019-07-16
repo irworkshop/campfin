@@ -84,17 +84,12 @@ from the [`zipcodes`][09] R package, which itself is a version of the
 [10]: https://boutell.com/zipcodes/ "civic_space"
 
 ```{r geo_df, collapse=TRUE, warning=FALSE, message=FALSE, error=FALSE}
-library(tidyverse)
+library(dplyr)
 library(campfin)
 library(zipcode)
+
 data("zipcode")
-
 sample_n(zipcode, 10)
-
-geo <- zipcode %>%
-  as_tibble() %>% 
-  mutate(city= normal_city(city)) %>%
-  select(city, state, zip)
 
 # normal cities in a better order
 sample_n(geo, 10)
@@ -106,6 +101,59 @@ setdiff(geo$state, datasets::state.abb)
 The package also contains a useful list of common invalid values.
 
 ```{r}
+sample(campfin::na_city, 10)
+```
 
+## Example
+
+```{r tribble}
+library(tibble)
+library(knitr)
+
+vt <- tribble(
+  ~address,             ~city,          ~state,    ~zip,
+  "744 Cape Cod Rd.",    "Stowe, VT",    "VT",      "05672",
+  "N/A",                "N/A",          "N/A",     "N/A",
+  "149_Church_Street",  "Burlington",   "Vermont", "05401", 
+  "51 depot   square",  "st johnsbury", "vt",      "5819",
+  "XXXXXXX",            "UNKNOWN",      "XX",      "00000"
+)
+
+kable(vt)
+```
+
+```{r normalize}
+library(campfin)
+
+vt$address <- normal_address(
+  address = vt$address,
+  add_abbs = tibble(abb = "RD", rep = "ROAD"), 
+  na = c("", "NA", "UNKNOWN"),
+  na_rep = TRUE
+)
+
+vt$city <- normal_city(
+  city = vt$city,
+  geo_abbs = tibble(abb = "ST", rep = "SAINT"),
+  st_abbs = c("VT"),
+  na = c("", "NA", "UNKNOWN"),
+  na_rep = TRUE
+)
+
+vt$state <- normal_state(
+  state = vt$state,
+  abbreviate = TRUE,
+  na = c("", "NA", "UNKNOWN"),
+  na_rep = TRUE,
+  valid = state.abb
+)
+
+vt$zip <- normal_zip(
+  zip = vt$zip,
+  na = c("", "NA", "UNKNOWN"),
+  na_rep = TRUE
+)
+
+kable(vt)
 ```
 
