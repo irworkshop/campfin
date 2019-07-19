@@ -81,33 +81,33 @@ library(zipcode)
 
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip          city state latitude  longitude
-#> 1  79187      Amarillo    TX 35.40147 -101.89509
-#> 2  95502        Eureka    CA 40.81459 -124.08052
-#> 3  51523       Blencoe    IA 41.91340  -96.08500
-#> 4  02143    Somerville    MA 42.38193  -71.09908
-#> 5  64661        Mercer    MO 40.52240  -93.54965
-#> 6  65727          Polk    MO 37.78991  -93.27802
-#> 7  25687         Nolan    WV 37.74306  -82.10801
-#> 8  38043 Hickory Withe    TN 35.19926  -89.41411
-#> 9  53066    Oconomowoc    WI 43.10824  -88.48935
-#> 10 92123     San Diego    CA 32.80380 -117.13595
+#>      zip             city state latitude  longitude
+#> 1  48303 Bloomfield Hills    MI 42.66009  -83.38630
+#> 2  61038   Garden Prairie    IL 42.25562  -88.74344
+#> 3  54229      New Franken    WI 44.56000  -87.81553
+#> 4  64022            Dover    MO 39.19255  -93.68661
+#> 5  79903          El Paso    TX 31.78622 -106.44583
+#> 6  16950        Westfield    PA 41.89584  -77.52164
+#> 7  78279      San Antonio    TX 29.43753  -98.46158
+#> 8  35072        Goodwater    AL 33.08934  -86.04682
+#> 9  93943         Monterey    CA 36.35433 -121.13293
+#> 10 95297         Stockton    CA 37.88985 -121.25387
 
 # normal cities in a better order
 sample_n(campfin::geo, 10)
 #> # A tibble: 10 x 3
-#>    city             state zip  
-#>    <chr>            <chr> <chr>
-#>  1 MCINTOSH         NM    87032
-#>  2 MELBOURNE        FL    32901
-#>  3 CANASTOTA        NY    13032
-#>  4 MONTGOMERY       IN    47558
-#>  5 CHESTERVILLE     OH    43317
-#>  6 FORT HALL        ID    83203
-#>  7 INTERLACHEN      FL    32148
-#>  8 NORTH BONNEVILLE WA    98639
-#>  9 FLYNN            TX    77855
-#> 10 PHOENIX          AZ    85042
+#>    city        state zip  
+#>    <chr>       <chr> <chr>
+#>  1 BENGE       WA    99105
+#>  2 LOUISVILLE  IL    62858
+#>  3 CALHOUN     GA    30703
+#>  4 BRANCHDALE  PA    17923
+#>  5 EUDORA      MO    65645
+#>  6 ALTO        MI    49302
+#>  7 PITTSBURGH  PA    15298
+#>  8 LONOKE      AR    72086
+#>  9 HONEY CREEK WI    53138
+#> 10 HINKLEY     CA    92347
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
@@ -118,21 +118,20 @@ The package also contains a useful list of common invalid values.
 
 ``` r
 sample(campfin::na_city, 10)
-#>  [1] "NO ADDRESS"           "N A"                  "TO FIND OUT"         
-#>  [4] "NO INFORMATION GIVEN" "UNKNOWN"              "NULL"                
-#>  [7] "UNKOWN"               "XXX"                  "NOTAPPLICABLE"       
-#> [10] "NOT REQUIRED"
+#>  [1] "TEST"           "WEBSITE"        "NOT PROVIDED"   "TO FIND OUT"   
+#>  [5] "IR"             "INFO REQUESTED" "INFO PENDING"   "VARIOUS"       
+#>  [9] "N A"            "XXXX"
 ```
 
 ## Example
 
-| address             | city         | state   | zip   |
-| :------------------ | :----------- | :------ | :---- |
-| 744 Cape Cod Rd.    | Stowe, VT    | VT      | 05672 |
-| N/A                 | N/A          | N/A     | N/A   |
-| 149\_Church\_Street | Burlington   | Vermont | 05401 |
-| 51 depot square     | st johnsbury | vt      | 5819  |
-| XXXXXXX             | UNKNOWN      | XX      | 00000 |
+| address             | city         | state   | zip        |
+| :------------------ | :----------- | :------ | :--------- |
+| 744 Cape Cod Rd.    | Stowe, VT    | VT      | 05672-5563 |
+| N/A                 | N/A          | N/A     | N/A        |
+| 149\_Church\_Street | Burlington   | Vermont | 05401      |
+| 51 depot square     | st johnsbury | vt      | 5819       |
+| XXXXXXX             | UNKNOWN      | XX      | 00000      |
 
 ``` r
 vt_na <- c("", "NA", "UNKNOWN")

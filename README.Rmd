@@ -108,7 +108,7 @@ library(knitr)
 
 vt <- tribble(
   ~address,             ~city,          ~state,    ~zip,
-  "744 Cape Cod Rd.",    "Stowe, VT",    "VT",      "05672",
+  "744 Cape Cod Rd.",    "Stowe, VT",    "VT",      "05672-5563",
   "N/A",                "N/A",          "N/A",     "N/A",
   "149_Church_Street",  "Burlington",   "Vermont", "05401", 
   "51 depot   square",  "st johnsbury", "vt",      "5819",
