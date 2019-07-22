@@ -1,4 +1,4 @@
-#' Proportion In
+#' Inverted Match
 #'
 #' @param x A vector to check.
 #' @param y A vector to compare against.
