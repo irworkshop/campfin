@@ -2,6 +2,7 @@
 % Please edit documentation in R/out.R
 \name{\%out\%}
 \alias{\%out\%}
+<<<<<<< HEAD
 \title{Proportion In}
 \usage{
 ... \%out\% NA
@@ -20,3 +21,13 @@ Proportion In
 \examples{
 c("A", "B", "0") \%out\% LETTERS
 }
+=======
+\title{Out opperator}
+\usage{
+x %out% y
+}
+\description{
+Out opperator
+}
+\keyword{internal}
+>>>>>>> b9f842d7addc2db1b363cd20b39d4705201d0bf0
