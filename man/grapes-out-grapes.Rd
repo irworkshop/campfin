@@ -2,10 +2,9 @@
 % Please edit documentation in R/out.R
 \name{\%out\%}
 \alias{\%out\%}
-<<<<<<< HEAD
-\title{Proportion In}
+\title{Inverted Match}
 \usage{
-... \%out\% NA
+x %out% y
 }
 \arguments{
 \item{x}{A vector to check.}
@@ -16,18 +15,8 @@
 Logical if X is not present in Y
 }
 \description{
-Proportion In
+Inverted Match
 }
 \examples{
 c("A", "B", "0") \%out\% LETTERS
 }
-=======
-\title{Out opperator}
-\usage{
-x %out% y
-}
-\description{
-Out opperator
-}
-\keyword{internal}
->>>>>>> b9f842d7addc2db1b363cd20b39d4705201d0bf0
