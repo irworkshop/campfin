@@ -5,5 +5,6 @@
 #' @return Logical if X is not present in Y
 #' @examples
 #' c("A", "B", "0") %out% LETTERS
+#' @usage x %out% y
 #' @export
 "%out%" <- Negate("%in%")
