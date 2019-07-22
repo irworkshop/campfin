@@ -1,10 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# campfin
+# campfin <img src="man/figures/logo.png" align="right" width="120" />
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/whatr)](https://cran.r-project.org/package=campfin)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
 
 ## Overview
 
@@ -18,12 +17,6 @@ journalists, researchers and others a simple way to search across
 otherwise siloed records. The data focuses on people, organizations and
 locations. This package was created specifically to helo with
 state-level **camp**aign **fin**ance data.
-
-<p align="center">
-
-<img src="https://investigativereportingworkshop.org/wp-content/uploads/2019/07/ap-logo-400x132.png">
-
-</p>
 
 ## Installation
 
@@ -39,7 +32,8 @@ devtools::install_github("kiernann/campfin")
 The most important functions are the in the `normal_*()` family. These
 functions take geographic data and return [normalized
 text](https://en.wikipedia.org/wiki/Text_normalization "text_normal")
-that is more searchable.
+that is more searchable. They are largely wrappers around the [`stringr`
+package](https://github.com/tidyverse/stringr "stringr").
 
   - `normal_zip()` takes [ZIP
     Codes](https://en.wikipedia.org/wiki/ZIP_Code "zip_code") and
@@ -62,7 +56,7 @@ finance data:
   - `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
   - `count_na(x)` wraps around `sum(is.na(x))`
 
-I intend to add more functions over time to automate even more of the
+More functions will be added over time to automate even more of the
 wrangling workflow.
 
 ## Data
@@ -81,33 +75,33 @@ library(zipcode)
 
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip             city state latitude  longitude
-#> 1  48303 Bloomfield Hills    MI 42.66009  -83.38630
-#> 2  61038   Garden Prairie    IL 42.25562  -88.74344
-#> 3  54229      New Franken    WI 44.56000  -87.81553
-#> 4  64022            Dover    MO 39.19255  -93.68661
-#> 5  79903          El Paso    TX 31.78622 -106.44583
-#> 6  16950        Westfield    PA 41.89584  -77.52164
-#> 7  78279      San Antonio    TX 29.43753  -98.46158
-#> 8  35072        Goodwater    AL 33.08934  -86.04682
-#> 9  93943         Monterey    CA 36.35433 -121.13293
-#> 10 95297         Stockton    CA 37.88985 -121.25387
+#>      zip         city state latitude  longitude
+#> 1  01342    Deerfield    MA 42.54232  -72.60910
+#> 2  76855       Lowake    TX 31.33361  -99.85837
+#> 3  90808   Long Beach    CA 33.82332 -118.11329
+#> 4  93527     Inyokern    CA 35.73442 -117.89313
+#> 5  99345     Paterson    WA 45.92202 -119.67687
+#> 6  97375 Scotts Mills    OR 45.00422 -122.59658
+#> 7  41426       Falcon    KY 37.78492  -82.99783
+#> 8  95687    Vacaville    CA 38.34401 -121.95333
+#> 9  70371      Kraemer    LA 29.86520  -90.59616
+#> 10 14855       Jasper    NY 42.13594  -77.50780
 
 # normal cities in a better order
 sample_n(campfin::geo, 10)
 #> # A tibble: 10 x 3
-#>    city        state zip  
-#>    <chr>       <chr> <chr>
-#>  1 BENGE       WA    99105
-#>  2 LOUISVILLE  IL    62858
-#>  3 CALHOUN     GA    30703
-#>  4 BRANCHDALE  PA    17923
-#>  5 EUDORA      MO    65645
-#>  6 ALTO        MI    49302
-#>  7 PITTSBURGH  PA    15298
-#>  8 LONOKE      AR    72086
-#>  9 HONEY CREEK WI    53138
-#> 10 HINKLEY     CA    92347
+#>    city           state zip  
+#>    <chr>          <chr> <chr>
+#>  1 WASHBURN       WI    54891
+#>  2 CUMBERLAND     VA    23040
+#>  3 SANDY HOOK     VA    23153
+#>  4 LINCOLN        NE    68528
+#>  5 SALT LAKE CITY UT    84153
+#>  6 BELOIT         WI    53512
+#>  7 MARK           IL    61340
+#>  8 APO            AE    09751
+#>  9 LILBOURN       MO    63862
+#> 10 HERMANN        MO    65041
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
@@ -118,12 +112,15 @@ The package also contains a useful list of common invalid values.
 
 ``` r
 sample(campfin::na_city, 10)
-#>  [1] "TEST"           "WEBSITE"        "NOT PROVIDED"   "TO FIND OUT"   
-#>  [5] "IR"             "INFO REQUESTED" "INFO PENDING"   "VARIOUS"       
-#>  [9] "N A"            "XXXX"
+#>  [1] "WEB"          "NOT STATED"   "NOT GIVEN"    "TEST"        
+#>  [5] "XXXXX"        "INFO PENDING" "NONE"         "NO ADDRESS"  
+#>  [9] "N/A"          "UNK"
 ```
 
 ## Example
+
+In this example, we can see how the `normal_*()` functions turn messy
+data into a single format.
 
 | address             | city         | state   | zip        |
 | :------------------ | :----------- | :------ | :--------- |

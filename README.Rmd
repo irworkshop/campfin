@@ -7,17 +7,16 @@ editor_options:
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo = FALSE}
-library(knitr)
-opts_chunk$set(
+knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-"
 )
 ```
 
-# campfin
+# campfin <img src="man/figures/logo.png" align="right" width="120" />
 
-[![CRAN status](https://www.r-pkg.org/badges/version/whatr)](https://cran.r-project.org/package=campfin)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
 
 ## Overview
 
@@ -27,10 +26,6 @@ Accountability Project curates, cleans and indexes public data to give journalis
 others a simple way to search across otherwise siloed records. The data focuses on people,
 organizations and locations. This package was created specifically to helo with state-level
 **camp**aign **fin**ance data.
-
-<p align="center">
-  <img src="https://investigativereportingworkshop.org/wp-content/uploads/2019/07/ap-logo-400x132.png">
-</p>
 
 [01]: https://www.publicaccountability.org/ "tap"
 [02]: https://investigativereportingworkshop.org/ "irw"
@@ -47,7 +42,8 @@ devtools::install_github("kiernann/campfin")
 ## Functions
 
 The most important functions are the in the `normal_*()` family. These functions take geographic
-data and return [normalized text][03] that is more searchable.
+data and return [normalized text][03] that is more searchable. They are largely wrappers around
+the [`stringr` package][07].
 
 * `normal_zip()` takes [ZIP Codes][04] and returns a 5 digit character string
 * `normal_state()` takes US states and returns a [2 digit abbreviation][05]
@@ -58,7 +54,7 @@ data and return [normalized text][03] that is more searchable.
 [04]: https://en.wikipedia.org/wiki/ZIP_Code "zip_code"
 [05]: https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations "state_abbs"
 [06]: https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth "open_refine"
-[07]: https://github.com/ChrisMuir/refinr "refinr"
+[07]: https://github.com/tidyverse/stringr "stringr"
 
 There are other functions which help load, explore, and process campaign finance data:
 
@@ -67,7 +63,7 @@ There are other functions which help load, explore, and process campaign finance
 * `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
 * `count_na(x)` wraps around `sum(is.na(x))`
 
-I intend to add more functions over time to automate even more of the wrangling workflow.
+More functions will be added over time to automate even more of the wrangling workflow.
 
 ## Data
 
@@ -101,6 +97,8 @@ sample(campfin::na_city, 10)
 ```
 
 ## Example
+
+In this example, we can see how the `normal_*()` functions turn messy data into a single format.
 
 ```{r tribble, echo=FALSE}
 library(tibble)
