@@ -16,9 +16,8 @@ glimpse_fun <- function(data, fun) {
     enframe(name = "var", value = "n") %>%
     mutate(p = n / nrow(data)) %>%
     mutate(type = format(map(data, pillar::new_pillar_type))) %>%
-    select(var, type, n, p) %>%
-    print(n = length(data))
-  return(summary)
+    select(var, type, n, p)
+  print(summary, n = length(summary))
 }
 
 #' Count NA Values
