@@ -4,7 +4,7 @@
 \alias{prop_out}
 \title{Proportion Out}
 \usage{
-prop_out(x, y, na.rm = FALSE)
+prop_out(x, y, na.rm = TRUE)
 }
 \arguments{
 \item{x}{A vector to check.}

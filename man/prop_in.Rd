@@ -4,7 +4,7 @@
 \alias{prop_in}
 \title{Proportion In}
 \usage{
-prop_in(x, y, na.rm = FALSE)
+prop_in(x, y, na.rm = TRUE)
 }
 \arguments{
 \item{x}{A vector to check.}

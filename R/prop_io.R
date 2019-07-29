@@ -7,7 +7,7 @@
 #' @examples
 #' prop_in(c("VT", "NH", "ZZ", "ME"), state.abb)
 #' @export
-prop_in <- function(x, y, na.rm = FALSE) {
+prop_in <- function(x, y, na.rm = TRUE) {
   if (na.rm) {
     prop <- mean(na.omit(x) %in% y)
   } else {
@@ -25,7 +25,7 @@ prop_in <- function(x, y, na.rm = FALSE) {
 #' @examples
 #' prop_in(c("VT", "NH", "ZZ", "ME"), state.abb)
 #' @export
-prop_out <- function(x, y, na.rm = FALSE) {
+prop_out <- function(x, y, na.rm = TRUE) {
   if (na.rm) {
     prop <- mean(!(na.omit(x) %in% y))
   } else {
