@@ -4,7 +4,8 @@
 \alias{explore_plot}
 \title{Check for All New Files}
 \usage{
-explore_plot(data, var, flip = FALSE, ...)
+explore_plot(data, var, flip = FALSE, head = 8, palette = "Set1",
+  ...)
 }
 \arguments{
 \item{data}{A data frame to glimpse.}
