@@ -4,7 +4,7 @@
 \alias{explore_plot}
 \title{Check for All New Files}
 \usage{
-explore_plot(data, var, flip = FALSE, head = 8, palette = "Set1",
+explore_plot(data, var, flip = FALSE, nbar = 8, palette = "Set1",
   ...)
 }
 \arguments{
