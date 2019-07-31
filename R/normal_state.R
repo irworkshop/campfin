@@ -21,12 +21,12 @@ normal_state <- function(state, abbreviate = TRUE, na = c(""), na_rep = FALSE, v
 
   state2 <- state %>%
     str_to_upper() %>%
-    str_remove_all("[^A-z]") %>%
+    str_remove_all("[^A-z\\s]") %>%
     str_trim()
 
   if (abbreviate) {
     states_df <- tibble(
-      name = str_to_upper(c(datasets::state.name, "District of Columbia")),
+          name = str_to_upper(c(datasets::state.name, "district of columbia")),
       abb = c(datasets::state.abb, "DC")
     )
     for (i in seq_along(states_df$name)) {
@@ -38,15 +38,16 @@ normal_state <- function(state, abbreviate = TRUE, na = c(""), na_rep = FALSE, v
     }
   }
 
-  if (!is.null(valid)) {
-    state2[!(state2 %in% valid)] <- NA
-  }
 
   if (na_rep) {
     state2[str_which(state2, "^(.)\\1+$")] <- NA
   }
 
   state2[which(state2 %in% na)] <- NA
+
+  if (!is.null(valid)) {
+    state2[!(state2 %in% valid)] <- NA
+  }
 
   return(state2)
 }
