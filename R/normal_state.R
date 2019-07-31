@@ -21,7 +21,7 @@ normal_state <- function(state, abbreviate = TRUE, na = c(""), na_rep = FALSE, v
 
   state2 <- state %>%
     str_to_upper() %>%
-    str_remove("[^A-z]") %>%
+    str_remove_all("[^A-z]") %>%
     str_trim()
 
   if (abbreviate) {
