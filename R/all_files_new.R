@@ -8,8 +8,8 @@
 #' @importFrom purrr is_empty
 #' @importFrom magrittr use_series equals
 #' @export
-all_files_new <- function(path, glob = NULL) {
-  files <- fs::dir_ls(path = path, glob = glob)
+all_files_new <- function(path, glob = NULL, ...) {
+  files <- fs::dir_ls(path = path, ...)
   if (!is_empty(files)) {
     files %>%
       fs::file_info() %>%
