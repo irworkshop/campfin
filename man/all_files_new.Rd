@@ -4,7 +4,7 @@
 \alias{all_files_new}
 \title{Check for All New Files}
 \usage{
-all_files_new(path, glob = NULL)
+all_files_new(path, glob = NULL, ...)
 }
 \arguments{
 \item{path}{The path to a directory to check.}
