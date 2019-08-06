@@ -53,3 +53,17 @@
 #' @source The USPS C1 Street Suffix Abbreviations
 #'     \url{https://pe.usps.com/text/pub28/28apc_002.htm}
 "usps_city"
+
+#' ZIP code regex
+#'
+#' The regex string to extract 5 or 9 digit zip from end of address.
+#'
+#' @format A single character string.
+"rx_zip"
+
+#' State regex
+#'
+#' The regex string to extract alpha state string preceding ZIP code
+#'
+#' @format A single character string.
+"rx_state"
