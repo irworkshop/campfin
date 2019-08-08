@@ -4,7 +4,7 @@
 \alias{flag_dupes}
 \title{Flag Duplicate Rows}
 \usage{
-flag_dupes(df)
+flag_dupes(df, ...)
 }
 \arguments{
 \item{df}{A data frame}
