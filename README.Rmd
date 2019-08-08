@@ -35,8 +35,8 @@ organizations and locations. This package was created specifically to helo with 
 The package is not on CRAN and must be installed from GitHub.
 
 ```{r install, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("kiernann/campfin")
+# install.packages("remotes")
+remotes::install_github("kiernann/campfin")
 ```
 
 ## Functions
@@ -60,26 +60,39 @@ There are other functions which help load, explore, and process campaign finance
 
 * `all_files_new()` checks if all files in a directory have been recently downloaded
 * `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to every column in a data frame
+* `count_na(x)` wraps around `sum(is.na(x))` (useful with `glimpse_fun()`)
+* `flag_dupes()` wraps around `duplicated(dplyr::select())` to create a new logical column
+* `flag_na()` wraps around `complete.cases(dplyr::select())`to create a new logical column
 * `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
-* `count_na(x)` wraps around `sum(is.na(x))`
+* `x %out% y` wraps around `!(x %in% y)`
+* `is_even(x)` wraps around `x %% 2 == 0` (useful for selecting election years)
 
 More functions will be added over time to automate even more of the wrangling workflow.
 
 ## Data
 
-The package also contains the `geo` [tibble][08], a normalized version of the `zipcodes` data frame
-from the [`zipcodes`][09] R package, which itself is a version of the 
-[CivicSpace US ZIP Code Database][10].
+```{r library, message=FALSE, warning=FALSE, error=FALSE}
+library(dplyr)
+library(stringr)
+library(campfin)
+library(zipcode)
+```
+
+The campfin package contains a number of built in data frames and strings used to help wrangle
+campaign finance data.
+
+```{r data}
+data(package = "campfin")$results[, "Item"]
+```
+
+The `geo` [tibble][08] is a normalized version of the `zipcodes` data frame from the 
+[`zipcodes`][09] R package, which itself is a version of the [CivicSpace US ZIP Code Database][10].
 
 [08]: https://tibble.tidyverse.org/ "tibble"
 [09]: https://cran.r-project.org/web/packages/zipcode/ "zip_pkg"
 [10]: https://boutell.com/zipcodes/ "civic_space"
 
 ```{r geo_df, collapse=TRUE, warning=FALSE, message=FALSE, error=FALSE}
-library(dplyr)
-library(campfin)
-library(zipcode)
-
 data("zipcode")
 sample_n(zipcode, 10)
 
@@ -90,15 +103,40 @@ sample_n(campfin::geo, 10)
 setdiff(geo$state, datasets::state.abb)
 ```
 
-The package also contains a useful list of common invalid values.
+The `na_city` vector contains common invalid city names, which can be passed to `normal_city()`.
 
 ```{r na_city}
-sample(campfin::na_city, 10)
+sample(na_city, 10)
 ```
+
+The `usps` (and `usps_city`) data frames can be used with `normal_*()` to
+expand the [official USPS C-1 abbreviations](https://pe.usps.com/text/pub28/28apc_002.htm).
+
+```{r usps}
+sample_n(usps, 10)
+```
+
+The `rx_zip` and `rx_state` character strings are useful regular expressions for extracting data
+from a single string address, which can then be passed to `normal_zip()` and `normal_state()`.
+
+```{r print_rx, collapse=TRUE}
+print(rx_zip)
+print(rx_state)
+```
+
+```{r rx_strings, collapse=TRUE}
+white_house <- "1600 Pennsylvania Ave NW, Washington, DC 20500-0003"
+str_extract(string = white_house, pattern = rx_zip)
+str_extract(string = white_house, pattern = rx_state)
+```
+
+Work is being done to incorperate regular expressions for addresses and city names, although
+the immense possibility for variation makes these elements harder to generalize.
 
 ## Example
 
-In this example, we can see how the `normal_*()` functions turn messy data into a single format.
+In this example, we can see how the `normal_*()` function work with the built in data to turn 
+messy data into a single normalized format.
 
 ```{r tribble, echo=FALSE}
 library(tibble)
@@ -116,31 +154,35 @@ kable(vt, )
 ```
 
 ```{r normalize}
-vt_na <- c("", "NA", "UNKNOWN")
 vt2 <- vt %>% mutate(
   address = normal_address(
     address = address,
-    add_abbs = tibble(abb = "RD", rep = "ROAD"), 
-    na = vt_na,
+    # expand street abbs
+    add_abbs = usps,
+    # remove invalid strings
+    na = na_city,
+    # remove single repeating chars
     na_rep = TRUE
   ),
   city = normal_city(
     city = city,
-    geo_abbs = tibble(abb = "ST", rep = "SAINT"),
+    # expand city abbs
+    geo_abbs = usps_city,
+    # remove state abbs
     st_abbs = c("VT"),
-    na = vt_na,
+    # remove invalid cities
+    na = na_city,
     na_rep = TRUE
   ),
   state = normal_state(
     state = state,
     abbreviate = TRUE,
-    na = ,
-    na_rep = TRUE,
-    valid = state.abb
+    # remove all not in geo
+    valid = geo$state
   ),
   zip = normal_zip(
     zip = zip,
-    na = vt_na,
+    na = na_city,
     na_rep = TRUE
   )
 )

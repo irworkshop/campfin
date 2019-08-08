@@ -23,8 +23,8 @@ state-level **camp**aign **fin**ance data.
 The package is not on CRAN and must be installed from GitHub.
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("kiernann/campfin")
+# install.packages("remotes")
+remotes::install_github("kiernann/campfin")
 ```
 
 ## Functions
@@ -53,74 +53,138 @@ finance data:
     recently downloaded
   - `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to
     every column in a data frame
+  - `count_na(x)` wraps around `sum(is.na(x))` (useful with
+    `glimpse_fun()`)
+  - `flag_dupes()` wraps around `duplicated(dplyr::select())` to create
+    a new logical column
+  - `flag_na()` wraps around `complete.cases(dplyr::select())`to create
+    a new logical column
   - `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
-  - `count_na(x)` wraps around `sum(is.na(x))`
+  - `x %out% y` wraps around `!(x %in% y)`
+  - `is_even(x)` wraps around `x %% 2 == 0` (useful for selecting
+    election years)
 
 More functions will be added over time to automate even more of the
 wrangling workflow.
 
 ## Data
 
-The package also contains the `geo`
-[tibble](https://tibble.tidyverse.org/ "tibble"), a normalized version
-of the `zipcodes` data frame from the
+``` r
+library(dplyr)
+library(stringr)
+library(campfin)
+library(zipcode)
+```
+
+The campfin package contains a number of built in data frames and
+strings used to help wrangle campaign finance data.
+
+``` r
+data(package = "campfin")$results[, "Item"]
+#> [1] "geo"       "na_city"   "rx_state"  "rx_zip"    "usps"      "usps_city"
+```
+
+The `geo` [tibble](https://tibble.tidyverse.org/ "tibble") is a
+normalized version of the `zipcodes` data frame from the
 [`zipcodes`](https://cran.r-project.org/web/packages/zipcode/ "zip_pkg")
 R package, which itself is a version of the [CivicSpace US ZIP Code
 Database](https://boutell.com/zipcodes/ "civic_space").
 
 ``` r
-library(dplyr)
-library(campfin)
-library(zipcode)
-
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip         city state latitude  longitude
-#> 1  01342    Deerfield    MA 42.54232  -72.60910
-#> 2  76855       Lowake    TX 31.33361  -99.85837
-#> 3  90808   Long Beach    CA 33.82332 -118.11329
-#> 4  93527     Inyokern    CA 35.73442 -117.89313
-#> 5  99345     Paterson    WA 45.92202 -119.67687
-#> 6  97375 Scotts Mills    OR 45.00422 -122.59658
-#> 7  41426       Falcon    KY 37.78492  -82.99783
-#> 8  95687    Vacaville    CA 38.34401 -121.95333
-#> 9  70371      Kraemer    LA 29.86520  -90.59616
-#> 10 14855       Jasper    NY 42.13594  -77.50780
+#>      zip           city state latitude  longitude
+#> 1  32606    Gainesville    FL 29.68143  -82.41502
+#> 2  96162        Truckee    CA 39.26599 -120.64145
+#> 3  32638        Trenton    FL 29.62257  -82.80864
+#> 4  98651      Underwood    WA 45.73066 -121.57558
+#> 5  89070 Indian Springs    NV 35.92790 -114.97206
+#> 6  92070   Santa Ysabel    CA 33.16677 -116.71061
+#> 7  61601         Peoria    IL 40.69314  -89.58985
+#> 8  94268     Sacramento    CA 38.37741 -121.44443
+#> 9  95741 Rancho Cordova    CA 38.37741 -121.44443
+#> 10 08245   South Dennis    NJ 39.17621  -74.81723
 
 # normal cities in a better order
 sample_n(campfin::geo, 10)
 #> # A tibble: 10 x 3
 #>    city           state zip  
 #>    <chr>          <chr> <chr>
-#>  1 WASHBURN       WI    54891
-#>  2 CUMBERLAND     VA    23040
-#>  3 SANDY HOOK     VA    23153
-#>  4 LINCOLN        NE    68528
-#>  5 SALT LAKE CITY UT    84153
-#>  6 BELOIT         WI    53512
-#>  7 MARK           IL    61340
-#>  8 APO            AE    09751
-#>  9 LILBOURN       MO    63862
-#> 10 HERMANN        MO    65041
+#>  1 CHANDLER       TX    75758
+#>  2 MITCHELLVILLE  TN    37119
+#>  3 FORT BLACKMORE VA    24250
+#>  4 LA MIRADA      CA    90639
+#>  5 HAMILTON       KS    66853
+#>  6 CUBA           NM    87013
+#>  7 CLEVELAND      OH    44104
+#>  8 UNION          MI    49130
+#>  9 LAMBERT        MS    38643
+#> 10 WELLINGTON     KY    40387
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
-#>  [1] "PR" "VI" "AE" "DC" "AA" "AP" "AS" "GU" "PW" "FM" "MP" "MH"
+#>  [1] "PR" "VI" "AE" "DC" "AA" "AP" "AS" "GU" "PW" "FM" "MP" "MH" "AB" "BC"
+#> [15] "MB" "NB" "NL" "NS" "ON" "PE" "QC" "SK"
 ```
 
-The package also contains a useful list of common invalid values.
+The `na_city` vector contains common invalid city names, which can be
+passed to `normal_city()`.
 
 ``` r
-sample(campfin::na_city, 10)
-#>  [1] "WEB"          "NOT STATED"   "NOT GIVEN"    "TEST"        
-#>  [5] "XXXXX"        "INFO PENDING" "NONE"         "NO ADDRESS"  
-#>  [9] "N/A"          "UNK"
+sample(na_city, 10)
+#>  [1] "N A"            "ANYWHERE"       "N/A"            "INFO REQUESTED"
+#>  [5] "XXXXX"          "WEBSITE"        "NULL"           "XXXX"          
+#>  [9] "REQUESTED INFO" "NA"
 ```
+
+The `usps` (and `usps_city`) data frames can be used with `normal_*()`
+to expand the [official USPS C-1
+abbreviations](https://pe.usps.com/text/pub28/28apc_002.htm).
+
+``` r
+sample_n(usps, 10)
+#> # A tibble: 10 x 2
+#>    abb   rep    
+#>    <chr> <chr>  
+#>  1 VLLY  VALLEY 
+#>  2 LGT   LIGHT  
+#>  3 AVEN  AVENUE 
+#>  4 CLF   CLIFF  
+#>  5 BR    BRANCH 
+#>  6 STR   STREET 
+#>  7 TRLRS TRAILER
+#>  8 CRSE  COURSE 
+#>  9 GTWAY GATEWAY
+#> 10 GTWY  GATEWAY
+```
+
+The `rx_zip` and `rx_state` character strings are useful regular
+expressions for extracting data from a single string address, which can
+then be passed to `normal_zip()` and `normal_state()`.
+
+``` r
+print(rx_zip)
+#> [1] "[:digit:]{5}(?:-[:digit:]{4})?$"
+print(rx_state)
+#> [1] "[:alpha:]+(?=[:space:]+[:digit:]{5}(?:-[:digit:]{4})?$)"
+```
+
+``` r
+white_house <- "1600 Pennsylvania Ave NW, Washington, DC 20500-0003"
+str_extract(string = white_house, pattern = rx_zip)
+#> [1] "20500-0003"
+str_extract(string = white_house, pattern = rx_state)
+#> [1] "DC"
+```
+
+Work is being done to incorperate regular expressions for addresses and
+city names, although the immense possibility for variation makes these
+elements harder to generalize.
 
 ## Example
 
-In this example, we can see how the `normal_*()` functions turn messy
-data into a single format.
+In this example, we can see how the `normal_*()` function work with the
+built in data to turn messy data into a single normalized format.
 
 | address             | city         | state   | zip        |
 | :------------------ | :----------- | :------ | :--------- |
@@ -131,31 +195,35 @@ data into a single format.
 | XXXXXXX             | UNKNOWN      | XX      | 00000      |
 
 ``` r
-vt_na <- c("", "NA", "UNKNOWN")
 vt2 <- vt %>% mutate(
   address = normal_address(
     address = address,
-    add_abbs = tibble(abb = "RD", rep = "ROAD"), 
-    na = vt_na,
+    # expand street abbs
+    add_abbs = usps,
+    # remove invalid strings
+    na = na_city,
+    # remove single repeating chars
     na_rep = TRUE
   ),
   city = normal_city(
     city = city,
-    geo_abbs = tibble(abb = "ST", rep = "SAINT"),
+    # expand city abbs
+    geo_abbs = usps_city,
+    # remove state abbs
     st_abbs = c("VT"),
-    na = vt_na,
+    # remove invalid cities
+    na = na_city,
     na_rep = TRUE
   ),
   state = normal_state(
     state = state,
     abbreviate = TRUE,
-    na = ,
-    na_rep = TRUE,
-    valid = state.abb
+    # remove all not in geo
+    valid = geo$state
   ),
   zip = normal_zip(
     zip = zip,
-    na = vt_na,
+    na = na_city,
     na_rep = TRUE
   )
 )
