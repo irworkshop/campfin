@@ -63,6 +63,8 @@ finance data:
   - `x %out% y` wraps around `!(x %in% y)`
   - `is_even(x)` wraps around `x %% 2 == 0` (useful for selecting
     election years)
+  - `abrev_state()` returns the 2 letter state abbreviation for a full
+    name(s)
 
 More functions will be added over time to automate even more of the
 wrangling workflow.
@@ -93,33 +95,33 @@ Database](https://boutell.com/zipcodes/ "civic_space").
 ``` r
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip           city state latitude  longitude
-#> 1  32606    Gainesville    FL 29.68143  -82.41502
-#> 2  96162        Truckee    CA 39.26599 -120.64145
-#> 3  32638        Trenton    FL 29.62257  -82.80864
-#> 4  98651      Underwood    WA 45.73066 -121.57558
-#> 5  89070 Indian Springs    NV 35.92790 -114.97206
-#> 6  92070   Santa Ysabel    CA 33.16677 -116.71061
-#> 7  61601         Peoria    IL 40.69314  -89.58985
-#> 8  94268     Sacramento    CA 38.37741 -121.44443
-#> 9  95741 Rancho Cordova    CA 38.37741 -121.44443
-#> 10 08245   South Dennis    NJ 39.17621  -74.81723
+#>      zip        city state latitude  longitude
+#> 1  57375    Stickney    SD 43.55629  -98.46986
+#> 2  27326      Ruffin    NC 36.47835  -79.55518
+#> 3  57569    Reliance    SD 43.84000  -99.57459
+#> 4  96137    Westwood    CA 40.29001 -121.05272
+#> 5  31648 Statenville    GA 30.70318  -83.02568
+#> 6  52639    Montrose    IA 40.54740  -91.43864
+#> 7  84715    Bicknell    UT 38.33879 -111.54921
+#> 8  48017     Clawson    MI 42.53553  -83.15112
+#> 9  78567  Los Indios    TX 26.04167  -97.69374
+#> 10 71428       Flora    LA 31.61244  -93.09796
 
 # normal cities in a better order
 sample_n(campfin::geo, 10)
 #> # A tibble: 10 x 3
-#>    city           state zip  
-#>    <chr>          <chr> <chr>
-#>  1 CHANDLER       TX    75758
-#>  2 MITCHELLVILLE  TN    37119
-#>  3 FORT BLACKMORE VA    24250
-#>  4 LA MIRADA      CA    90639
-#>  5 HAMILTON       KS    66853
-#>  6 CUBA           NM    87013
-#>  7 CLEVELAND      OH    44104
-#>  8 UNION          MI    49130
-#>  9 LAMBERT        MS    38643
-#> 10 WELLINGTON     KY    40387
+#>    city          state zip  
+#>    <chr>         <chr> <chr>
+#>  1 HOLLY GROVE   AR    72069
+#>  2 ISABELLA      MO    65676
+#>  3 TRENTON       NJ    08604
+#>  4 DEERFIELD     VA    24432
+#>  5 ROCHESTER     WA    98579
+#>  6 BELVIDERE     SD    57521
+#>  7 HALLETTSVILLE TX    77965
+#>  8 TYRONE        OK    73951
+#>  9 LOS ANGELES   CA    90014
+#> 10 COLLINS       NY    14034
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
@@ -132,9 +134,11 @@ passed to `normal_city()`.
 
 ``` r
 sample(na_city, 10)
-#>  [1] "N A"            "ANYWHERE"       "N/A"            "INFO REQUESTED"
-#>  [5] "XXXXX"          "WEBSITE"        "NULL"           "XXXX"          
-#>  [9] "REQUESTED INFO" "NA"
+#>  [1] "WEBSITE"               "REQUESTED INFO"       
+#>  [3] "NOTAPPLICABLE"         "PENDING"              
+#>  [5] "INFORMATION REQUESTED" "INFO REQUESTED"       
+#>  [7] "NON REPORTABLE"        "VARIOUS"              
+#>  [9] "P O BOX"               "ONLINE COMPANY"
 ```
 
 The `usps` (and `usps_city`) data frames can be used with `normal_*()`
@@ -144,18 +148,18 @@ abbreviations](https://pe.usps.com/text/pub28/28apc_002.htm).
 ``` r
 sample_n(usps, 10)
 #> # A tibble: 10 x 2
-#>    abb   rep    
-#>    <chr> <chr>  
-#>  1 VLLY  VALLEY 
-#>  2 LGT   LIGHT  
-#>  3 AVEN  AVENUE 
-#>  4 CLF   CLIFF  
-#>  5 BR    BRANCH 
-#>  6 STR   STREET 
-#>  7 TRLRS TRAILER
-#>  8 CRSE  COURSE 
-#>  9 GTWAY GATEWAY
-#> 10 GTWY  GATEWAY
+#>    abb      rep     
+#>    <chr>    <chr>   
+#>  1 CANYN    CANYON  
+#>  2 VILLIAGE VILLAGE 
+#>  3 EST      ESTATE  
+#>  4 CRK      CREEK   
+#>  5 RAD      RADIAL  
+#>  6 GRDN     GARDEN  
+#>  7 VIADCT   VIADUCT 
+#>  8 RST      REST    
+#>  9 VIST     VISTA   
+#> 10 CRSENT   CRESCENT
 ```
 
 The `rx_zip` and `rx_state` character strings are useful regular

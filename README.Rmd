@@ -66,6 +66,7 @@ There are other functions which help load, explore, and process campaign finance
 * `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
 * `x %out% y` wraps around `!(x %in% y)`
 * `is_even(x)` wraps around `x %% 2 == 0` (useful for selecting election years)
+* `abrev_state()` returns the 2 letter state abbreviation for a full name(s)
 
 More functions will be added over time to automate even more of the wrangling workflow.
 
