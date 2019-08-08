@@ -8,6 +8,8 @@ flag_dupes(df, ...)
 }
 \arguments{
 \item{df}{A data frame}
+
+\item{...}{Arguments to pass to dplyr::select() (e.g., dplyr::everything())}
 }
 \value{
 A data frame with a new \code{dupe_flag} logical variable
