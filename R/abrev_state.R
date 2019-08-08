@@ -2,16 +2,16 @@
 #'
 #' @param state A vector of full state names
 #' @return A vector of 2 letter state abbreviations
-#' @importFrom stringr str_to_upper
+#' @importFrom stringr str_to_upper str_trim str_squish str_replace_all str_remove_all
 #' @example
-#' abrev_state(c("Vermont", "District of Columbia"))
+#' abrev_state(c("Vermont", "District   of Columbia", "new_hampshire"))
 #' @export
 abrev_state <- function(state) {
   state <- stringr::str_to_upper(state)
-  state <- stringr::str_remove_all(state, "[:punct:]")
+  state <- stringr::str_replace_all(state, "[:punct:]", " ")
   state <- stringr::str_remove_all(state, "\\d+")
-  state <- stringr::trim(state)
-  state <- stringr::squish(state)
+  state <- stringr::str_trim(state)
+  state <- stringr::str_squish(state)
   abb   <- stringr::str_to_upper(c(state.abb, "DC"))
   name  <- stringr::str_to_upper(c(state.name, "District of Columbia"))
   abb[match(state, name)]
