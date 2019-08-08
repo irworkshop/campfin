@@ -25,19 +25,8 @@ normal_state <- function(state, abbreviate = TRUE, na = c(""), na_rep = FALSE, v
     str_trim()
 
   if (abbreviate) {
-    states_df <- tibble(
-          name = str_to_upper(c(datasets::state.name, "district of columbia")),
-      abb = c(datasets::state.abb, "DC")
-    )
-    for (i in seq_along(states_df$name)) {
-      state2 <- str_replace(
-        string = state2,
-        pattern = states_df$name[i],
-        replacement = states_df$abb[i]
-      )
-    }
+    state2 <- abrev_state(state2)
   }
-
 
   if (na_rep) {
     state2[str_which(state2, "^(.)\\1+$")] <- NA
