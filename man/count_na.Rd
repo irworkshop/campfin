@@ -13,7 +13,7 @@ count_na(x)
 The number of \code{NA} values in a vector
 }
 \description{
-Count NA Values
+Wrap around \code{sum(is.na())}
 }
 \examples{
 count_na(dplyr::starwars$gender)
