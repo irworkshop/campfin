@@ -6,7 +6,7 @@
 #' @param na_rep If `TRUE`, make all single digit repeating strings `NA` (removes valid "AA" code for "American Armed Forces").
 #' @param valid A vector of valid abbreviations to compare to and remove invalid.
 #' @return A vector of normalized 2-digit state abbreviations.
-#' @example
+#' @examples
 #' normal_state(
 #'   state = c("VT", "N/A", "Vermont", "XX", "ZA"),
 #'   abbreviate = TRUE,

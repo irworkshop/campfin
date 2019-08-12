@@ -15,3 +15,6 @@ A vector of 2 letter state abbreviations
 \description{
 AbbreviateUS State Names
 }
+\examples{
+abrev_state(c("Vermont", "District   of Columbia", "new_hampshire"))
+}

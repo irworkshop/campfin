@@ -3,7 +3,7 @@
 #' @param state A vector of full state names
 #' @return A vector of 2 letter state abbreviations
 #' @importFrom stringr str_to_upper str_trim str_squish str_replace_all str_remove_all
-#' @example
+#' @examples
 #' abrev_state(c("Vermont", "District   of Columbia", "new_hampshire"))
 #' @export
 abrev_state <- function(state) {

@@ -19,3 +19,10 @@ A vector of normalized 5-digit ZIP codes.
 \description{
 Normalize US ZIP Codes
 }
+\examples{
+normal_zip(
+  zip = c("05672-5563", "N/A", "05401", "5819", "00000"),
+  na = c("", "NA"),
+  na_rep = TRUE
+)
+}

@@ -4,7 +4,7 @@
 #' @param  ... Arguments to pass to dplyr::select() (e.g., dplyr::everything())
 #' @return A data frame with a new `dupe_flag` logical variable
 #' @importFrom dplyr mutate
-#' @example
+#' @examples
 #' sum(flag_dupes(iris)$dupe_flag)
 #' @export
 flag_dupes <- function(df, ...) {

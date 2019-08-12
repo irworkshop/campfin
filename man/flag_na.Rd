@@ -15,3 +15,6 @@ A data frame with a new \code{na_flag} logical variable
 \description{
 Flag Missing Values
 }
+\examples{
+flag_na(dplyr::storms, ts_diameter)
+}

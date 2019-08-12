@@ -17,3 +17,6 @@ A data frame with a new \code{dupe_flag} logical variable
 \description{
 Flag Duplicate Rows
 }
+\examples{
+sum(flag_dupes(iris)$dupe_flag)
+}

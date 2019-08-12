@@ -24,3 +24,12 @@ A vector of normalized 2-digit state abbreviations.
 \description{
 Normalize US State Abbreviations
 }
+\examples{
+normal_state(
+  state = c("VT", "N/A", "Vermont", "XX", "ZA"),
+  abbreviate = TRUE,
+  na = c("", "NA"),
+  na_rep = TRUE,
+  valid = NULL
+)
+}
