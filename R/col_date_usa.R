@@ -7,5 +7,5 @@
 #' readr::read_csv(file = "x\n09/18/1996", col_types = cols(x = col_date_usa()))
 #' @export
 col_date_usa <- function() {
-  col_date(format = "%m/%d/%Y")
+  readr::col_date(format = "%m/%d/%Y")
 }
