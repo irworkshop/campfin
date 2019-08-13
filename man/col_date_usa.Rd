@@ -13,5 +13,5 @@ A \code{POSIXct()} vector
 Parse MM/DD/YYY dates
 }
 \examples{
-readr::read_csv(file = "x\\n09/18/1996", col_types = cols(x = col_date_usa()))
+readr::read_csv(file = "x\\n09/18/1996", col_types = readr::cols(x = col_date_usa()))
 }
