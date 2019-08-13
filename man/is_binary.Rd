@@ -4,10 +4,12 @@
 \alias{is_binary}
 \title{Is Binary}
 \usage{
-is_binary(x)
+is_binary(x, na.rm = TRUE)
 }
 \arguments{
 \item{x}{A vector}
+
+\item{na.rm}{Should NA be ignored, \code{TRUE} by default}
 }
 \value{
 TRUE if only 2 unique values
