@@ -5,7 +5,7 @@
 #' @return A data frame with a new `dupe_flag` logical variable
 #' @importFrom dplyr mutate
 #' @examples
-#' sum(flag_dupes(iris)$dupe_flag)
+#' flag_dupes(iris, dplyr::everything())
 #' @export
 flag_dupes <- function(df, ...) {
   flagged_data <- dplyr::mutate(df, dupe_flag = base::duplicated(dplyr::select(df, ...)))

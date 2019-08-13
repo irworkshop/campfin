@@ -18,5 +18,5 @@ A data frame with a new \code{dupe_flag} logical variable
 Flag Duplicate Rows
 }
 \examples{
-sum(flag_dupes(iris)$dupe_flag)
+flag_dupes(iris, dplyr::everything())
 }
