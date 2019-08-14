@@ -7,7 +7,10 @@
 #' @examples
 #' flag_dupes(iris, dplyr::everything())
 #' @export
-flag_dupes <- function(df, ...) {
-  flagged_data <- dplyr::mutate(df, dupe_flag = base::duplicated(dplyr::select(df, ...)))
-  return(flagged_data)
-}
+  flag_dupes <- function(df, ...) {
+    sub_df <- dplyr::select(df, ...)
+    dupe_vec <- duplicated(sub_df)
+    flagged_df <- dplyr::mutate(df, dupe_flag = dupe_vec)
+    rm(sub_df, dupe_vec)
+    flagged_df
+  }
