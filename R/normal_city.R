@@ -18,7 +18,7 @@
 #' @importFrom dplyr na_if
 #' @importFrom tibble tibble
 #' @export
-normal_city <- function(city, geo_abbs = NULL, st_abbs = NULL, na = c(""), na_rep = FALSE) {
+normal_city <- function(city, geo_abbs = NULL, st_abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
 
   city_clean <- city %>%
     str_to_upper() %>%

@@ -12,7 +12,7 @@
 #' )
 #' @import stringr
 #' @export
-normal_zip <- function(zip, na = c(""), na_rep = FALSE) {
+normal_zip <- function(zip, na = c("", "NA"), na_rep = FALSE) {
 
   zip2 <- zip %>%
     as.character() %>%

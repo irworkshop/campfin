@@ -17,7 +17,7 @@
 #' @import stringr
 #' @importFrom tibble tibble
 #' @export
-normal_state <- function(state, abbreviate = TRUE, na = c(""), na_rep = FALSE, valid = NULL) {
+normal_state <- function(state, abbreviate = TRUE, na = c("", "NA"), na_rep = FALSE, valid = NULL) {
 
   state2 <- state %>%
     str_to_upper() %>%

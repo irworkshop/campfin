@@ -7,7 +7,7 @@
 #' @return A vector of normalized street addresses.
 #' @import stringr
 #' @export
-normal_address <- function(address, add_abbs = NULL, na = c(""), na_rep = FALSE) {
+normal_address <- function(address, add_abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
 
   address2 <- address %>%
     str_to_upper() %>%
