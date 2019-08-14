@@ -9,7 +9,7 @@
 #' @importFrom ggplot2 ggplot geom_col scale_fill_brewer scale_y_continuous aes
 #' @importFrom dplyr count mutate desc
 #' @export
-explore_plot <- function(data, var, flip = FALSE, nbar = 8, palette = "Set1", ...) {
+explore_plot <- function(data, var, flip = FALSE, nbar = 8, palette = "Dark2", ...) {
   var_string <- deparse(substitute(var))
   title_var <- snakecase::to_title_case(var_string)
   base_plot <- data %>%
