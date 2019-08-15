@@ -4,7 +4,8 @@
 \alias{normal_address}
 \title{Normalize US Street Addresses}
 \usage{
-normal_address(address, add_abbs = NULL, na = c(""), na_rep = FALSE)
+normal_address(address, add_abbs = NULL, na = c("", "NA"),
+  na_rep = FALSE)
 }
 \arguments{
 \item{address}{A vector of street addresses (ideally without city, state, and ZIP).}

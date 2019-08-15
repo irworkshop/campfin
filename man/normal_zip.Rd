@@ -4,7 +4,7 @@
 \alias{normal_zip}
 \title{Normalize US ZIP Codes}
 \usage{
-normal_zip(zip, na = c(""), na_rep = FALSE)
+normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
 }
 \arguments{
 \item{zip}{A vector of US ZIP codes.}

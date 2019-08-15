@@ -4,7 +4,7 @@
 \alias{normal_city}
 \title{Normalize City Names}
 \usage{
-normal_city(city, geo_abbs = NULL, st_abbs = NULL, na = c(""),
+normal_city(city, geo_abbs = NULL, st_abbs = NULL, na = c("", "NA"),
   na_rep = FALSE)
 }
 \arguments{

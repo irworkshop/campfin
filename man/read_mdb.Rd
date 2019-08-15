@@ -2,13 +2,20 @@
 % Please edit documentation in R/read_mdb.R
 \name{read_mdb}
 \alias{read_mdb}
-\title{Ready Microsoft Access Tables}
+\title{Read Microsoft Access Table}
 \usage{
-read_mdb(data, table, ...)
+read_mdb(file, table, ...)
+}
+\arguments{
+\item{file}{A path to a .mdb file}
+
+\item{table}{A character string to a table name (see \code{mdb_tables()})}
+
+\item{...}{Arguments to be passed to \code{readr::read_csv()}}
 }
 \value{
 A tibble
 }
 \description{
-Wraps around \code{readr::read_csv()} and MDB Tools
+Wraps around \code{readr::read_csv()} and \code{mdb-export}
 }

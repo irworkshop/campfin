@@ -4,8 +4,8 @@
 \alias{normal_state}
 \title{Normalize US State Abbreviations}
 \usage{
-normal_state(state, abbreviate = TRUE, na = c(""), na_rep = FALSE,
-  valid = NULL)
+normal_state(state, abbreviate = TRUE, na = c("", "NA"),
+  na_rep = FALSE, valid = NULL)
 }
 \arguments{
 \item{state}{A vector of US state names or abbreviations.}
