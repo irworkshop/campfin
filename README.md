@@ -49,22 +49,28 @@ package](https://github.com/tidyverse/stringr "stringr").
 There are other functions which help load, explore, and process campaign
 finance data:
 
+  - `abrev_state()` returns the 2 letter state abbreviation for a full
+    state name
   - `all_files_new()` checks if all files in a directory have been
     recently downloaded
-  - `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to
-    every column in a data frame
   - `count_na(x)` wraps around `sum(is.na(x))` (useful with
     `glimpse_fun()`)
+  - `explore_plot()` wraps around `ggplot2::geom_col()` to create
+    exploratory bar plots
   - `flag_dupes()` wraps around `duplicated(dplyr::select())` to create
     a new logical column
   - `flag_na()` wraps around `complete.cases(dplyr::select())`to create
     a new logical column
-  - `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
-  - `x %out% y` wraps around `!(x %in% y)`
+  - `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to
+    every column in a data frame
   - `is_even(x)` wraps around `x %% 2 == 0` (useful for selecting
     election years)
-  - `abrev_state()` returns the 2 letter state abbreviation for a full
-    name(s)
+  - `most_common()` return the `n` most common values of a vector
+  - `na_out(x, y)` returns `x` with `NA` for any value *not* in `y`
+  - `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
+  - `prop_na(x)` wraps around `mean(is.na(x))`
+  - `read_mdb()` pass `mbt-export` to `readr::read_csv()`
+  - `x %out% y` wraps around `!(x %in% y)`
 
 More functions will be added over time to automate even more of the
 wrangling workflow.
@@ -95,33 +101,33 @@ Database](https://boutell.com/zipcodes/ "civic_space").
 ``` r
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip        city state latitude  longitude
-#> 1  57375    Stickney    SD 43.55629  -98.46986
-#> 2  27326      Ruffin    NC 36.47835  -79.55518
-#> 3  57569    Reliance    SD 43.84000  -99.57459
-#> 4  96137    Westwood    CA 40.29001 -121.05272
-#> 5  31648 Statenville    GA 30.70318  -83.02568
-#> 6  52639    Montrose    IA 40.54740  -91.43864
-#> 7  84715    Bicknell    UT 38.33879 -111.54921
-#> 8  48017     Clawson    MI 42.53553  -83.15112
-#> 9  78567  Los Indios    TX 26.04167  -97.69374
-#> 10 71428       Flora    LA 31.61244  -93.09796
+#>      zip             city state latitude  longitude
+#> 1  47041           Sunman    IN 39.24068  -85.08587
+#> 2  81141          Manassa    CO 37.14494 -105.90161
+#> 3  46409             Gary    IN 41.54474  -87.32716
+#> 4  90091      Los Angeles    CA 33.78659 -118.29866
+#> 5  34984 Port Saint Lucie    FL 27.27327  -80.34727
+#> 6  70469          Slidell    LA 30.42551  -89.88126
+#> 7  38849          Guntown    MS 34.44392  -88.67217
+#> 8  54624          De Soto    WI 43.43389  -91.15949
+#> 9  13220         Syracuse    NY 43.12342  -76.12823
+#> 10 67361            Sedan    KS 37.10787  -96.22087
 
 # normal cities in a better order
 sample_n(campfin::geo, 10)
 #> # A tibble: 10 x 3
-#>    city          state zip  
-#>    <chr>         <chr> <chr>
-#>  1 HOLLY GROVE   AR    72069
-#>  2 ISABELLA      MO    65676
-#>  3 TRENTON       NJ    08604
-#>  4 DEERFIELD     VA    24432
-#>  5 ROCHESTER     WA    98579
-#>  6 BELVIDERE     SD    57521
-#>  7 HALLETTSVILLE TX    77965
-#>  8 TYRONE        OK    73951
-#>  9 LOS ANGELES   CA    90014
-#> 10 COLLINS       NY    14034
+#>    city         state zip  
+#>    <chr>        <chr> <chr>
+#>  1 MONTICELLO   MN    55590
+#>  2 SICKLERVILLE NJ    08081
+#>  3 OAKLAND      OR    97462
+#>  4 VANDERPOOL   TX    78885
+#>  5 HOUSTON      TX    77284
+#>  6 SARDINIA     SC    29143
+#>  7 OLD BRIDGE   NJ    08857
+#>  8 MORICHES     NY    11955
+#>  9 POWHATAN     LA    71066
+#> 10 HIGHLANDS    TX    77562
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
@@ -134,11 +140,8 @@ passed to `normal_city()`.
 
 ``` r
 sample(na_city, 10)
-#>  [1] "WEBSITE"               "REQUESTED INFO"       
-#>  [3] "NOTAPPLICABLE"         "PENDING"              
-#>  [5] "INFORMATION REQUESTED" "INFO REQUESTED"       
-#>  [7] "NON REPORTABLE"        "VARIOUS"              
-#>  [9] "P O BOX"               "ONLINE COMPANY"
+#>  [1] "WEB"       "IR"        "XXXXXX"    "VARIOUS"   "NA"       
+#>  [6] "NOT KNOWN" "REQUESTED" "TEST"      "N A"       "XXX"
 ```
 
 The `usps` (and `usps_city`) data frames can be used with `normal_*()`
@@ -148,18 +151,18 @@ abbreviations](https://pe.usps.com/text/pub28/28apc_002.htm).
 ``` r
 sample_n(usps, 10)
 #> # A tibble: 10 x 2
-#>    abb      rep     
-#>    <chr>    <chr>   
-#>  1 CANYN    CANYON  
-#>  2 VILLIAGE VILLAGE 
-#>  3 EST      ESTATE  
-#>  4 CRK      CREEK   
-#>  5 RAD      RADIAL  
-#>  6 GRDN     GARDEN  
-#>  7 VIADCT   VIADUCT 
-#>  8 RST      REST    
-#>  9 VIST     VISTA   
-#> 10 CRSENT   CRESCENT
+#>    abb    rep      
+#>    <chr>  <chr>    
+#>  1 HTS    HEIGHTS  
+#>  2 JCT    JUNCTION 
+#>  3 PR     PRAIRIE  
+#>  4 CORS   CORNERS  
+#>  5 DL     DALE     
+#>  6 MTN    MOUNTAIN 
+#>  7 SPGS   SPRINGS  
+#>  8 SHL    SHOAL    
+#>  9 TRAILS TRAIL    
+#> 10 STRAV  STRAVENUE
 ```
 
 The `rx_zip` and `rx_state` character strings are useful regular

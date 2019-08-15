@@ -58,15 +58,20 @@ the [`stringr` package][07].
 
 There are other functions which help load, explore, and process campaign finance data:
 
+* `abrev_state()` returns the 2 letter state abbreviation for a full state name
 * `all_files_new()` checks if all files in a directory have been recently downloaded
-* `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to every column in a data frame
 * `count_na(x)` wraps around `sum(is.na(x))` (useful with `glimpse_fun()`)
+* `explore_plot()` wraps around `ggplot2::geom_col()` to create exploratory bar plots
 * `flag_dupes()` wraps around `duplicated(dplyr::select())` to create a new logical column
 * `flag_na()` wraps around `complete.cases(dplyr::select())`to create a new logical column
-* `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
-* `x %out% y` wraps around `!(x %in% y)`
+* `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to every column in a data frame
 * `is_even(x)` wraps around `x %% 2 == 0` (useful for selecting election years)
-* `abrev_state()` returns the 2 letter state abbreviation for a full name(s)
+* `most_common()` return the `n` most common values of a vector
+* `na_out(x, y)` returns `x` with `NA` for any value _not_ in `y` 
+* `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
+* `prop_na(x)` wraps around `mean(is.na(x))`
+* `read_mdb()` pass `mbt-export` to `readr::read_csv()`
+* `x %out% y` wraps around `!(x %in% y)`
 
 More functions will be added over time to automate even more of the wrangling workflow.
 
