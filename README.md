@@ -71,6 +71,8 @@ finance data:
   - `prop_na(x)` wraps around `mean(is.na(x))`
   - `read_mdb()` pass `mbt-export` to `readr::read_csv()`
   - `x %out% y` wraps around `!(x %in% y)`
+  - `url_file_size()` calls `httr::HEAD()` to return a formated file
+    size
 
 More functions will be added over time to automate even more of the
 wrangling workflow.
@@ -101,33 +103,33 @@ Database](https://boutell.com/zipcodes/ "civic_space").
 ``` r
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip             city state latitude  longitude
-#> 1  47041           Sunman    IN 39.24068  -85.08587
-#> 2  81141          Manassa    CO 37.14494 -105.90161
-#> 3  46409             Gary    IN 41.54474  -87.32716
-#> 4  90091      Los Angeles    CA 33.78659 -118.29866
-#> 5  34984 Port Saint Lucie    FL 27.27327  -80.34727
-#> 6  70469          Slidell    LA 30.42551  -89.88126
-#> 7  38849          Guntown    MS 34.44392  -88.67217
-#> 8  54624          De Soto    WI 43.43389  -91.15949
-#> 9  13220         Syracuse    NY 43.12342  -76.12823
-#> 10 67361            Sedan    KS 37.10787  -96.22087
+#>      zip         city state latitude  longitude
+#> 1  18921     Ferndale    PA 40.32865  -75.10278
+#> 2  71950        Kirby    AR 34.25111  -93.76005
+#> 3  67057     Hardtner    KS 37.04173  -98.67631
+#> 4  31995 Fort Benning    GA 32.49584  -84.96398
+#> 5  05823  Beebe Plain    VT 45.00578  -72.13835
+#> 6  12148      Rexford    NY 42.84213  -73.86828
+#> 7  90097  Los Angeles    CA 33.78659 -118.29866
+#> 8  47226     Clifford    IN 39.28249  -85.86852
+#> 9  64671         Polo    MO 39.54190  -94.05158
+#> 10 37246    Nashville    TN 36.15861  -86.79000
 
 # normal cities in a better order
 sample_n(campfin::geo, 10)
 #> # A tibble: 10 x 3
 #>    city         state zip  
 #>    <chr>        <chr> <chr>
-#>  1 MONTICELLO   MN    55590
-#>  2 SICKLERVILLE NJ    08081
-#>  3 OAKLAND      OR    97462
-#>  4 VANDERPOOL   TX    78885
-#>  5 HOUSTON      TX    77284
-#>  6 SARDINIA     SC    29143
-#>  7 OLD BRIDGE   NJ    08857
-#>  8 MORICHES     NY    11955
-#>  9 POWHATAN     LA    71066
-#> 10 HIGHLANDS    TX    77562
+#>  1 ACWORTH      GA    30101
+#>  2 ROCKFORD     OH    45882
+#>  3 STETSONVILLE WI    54480
+#>  4 NEW HAVEN    IL    62867
+#>  5 SENECA       NE    69161
+#>  6 SAN ANTONIO  TX    78203
+#>  7 CALHAN       CO    80808
+#>  8 AURORA       CO    80046
+#>  9 SCOTTS MILLS OR    97375
+#> 10 CAPE CORAL   FL    33915
 
 # more US states than the built in state.abb
 setdiff(geo$state, datasets::state.abb)
@@ -140,8 +142,11 @@ passed to `normal_city()`.
 
 ``` r
 sample(na_city, 10)
-#>  [1] "WEB"       "IR"        "XXXXXX"    "VARIOUS"   "NA"       
-#>  [6] "NOT KNOWN" "REQUESTED" "TEST"      "N A"       "XXX"
+#>  [1] "NONE GIVEN"            "NO ADDRESS"           
+#>  [3] "NONE GIVE"             "TEST"                 
+#>  [5] "UK"                    "ONLINE SERVICE"       
+#>  [7] "NOT REQUIRED"          "NON REPORTABLE"       
+#>  [9] "REQUESTED INFORMATION" "INTERNET"
 ```
 
 The `usps` (and `usps_city`) data frames can be used with `normal_*()`
@@ -151,18 +156,18 @@ abbreviations](https://pe.usps.com/text/pub28/28apc_002.htm).
 ``` r
 sample_n(usps, 10)
 #> # A tibble: 10 x 2
-#>    abb    rep      
-#>    <chr>  <chr>    
-#>  1 HTS    HEIGHTS  
-#>  2 JCT    JUNCTION 
-#>  3 PR     PRAIRIE  
-#>  4 CORS   CORNERS  
-#>  5 DL     DALE     
-#>  6 MTN    MOUNTAIN 
-#>  7 SPGS   SPRINGS  
-#>  8 SHL    SHOAL    
-#>  9 TRAILS TRAIL    
-#> 10 STRAV  STRAVENUE
+#>    abb   rep    
+#>    <chr> <chr>  
+#>  1 ARC   ARCADE 
+#>  2 HT    HEIGHTS
+#>  3 IS    ISLAND 
+#>  4 VIA   VIADUCT
+#>  5 FORG  FORGE  
+#>  6 MDW   MEADOWS
+#>  7 KYS   KEYS   
+#>  8 PKWY  PARKWAY
+#>  9 BYPA  BYPASS 
+#> 10 CT    COURT
 ```
 
 The `rx_zip` and `rx_state` character strings are useful regular

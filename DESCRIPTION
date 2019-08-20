@@ -16,12 +16,14 @@ Imports:
     fs,
     magrittr,
     ggplot2,
+    httr,
     lubridate,
     stringr,
     purrr,
     tibble,
     readr,
     rlang,
+    scales,
     snakecase,
 URL: http://kiernann.dev/campfin
 BugReports: https://github.com/kiernann/campfin/issues
