@@ -2,7 +2,7 @@
 % Please edit documentation in R/all_files_new.R
 \name{all_files_new}
 \alias{all_files_new}
-\title{Check for All New Files}
+\title{Check if All Files Are New}
 \usage{
 all_files_new(path, glob = NULL, ...)
 }
@@ -15,5 +15,5 @@ all_files_new(path, glob = NULL, ...)
 A logical value indicating whether or not all files in the directory have a modification date equal to today.
 }
 \description{
-Check for All New Files
+Check if All Files Are New
 }
