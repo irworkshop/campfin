@@ -91,7 +91,8 @@ strings used to help wrangle campaign finance data.
 
 ``` r
 data(package = "campfin")$results[, "Item"]
-#> [1] "geo"       "na_city"   "rx_state"  "rx_zip"    "usps"      "usps_city"
+#> [1] "geo"         "na_city"     "rx_state"    "rx_zip"      "usps"       
+#> [6] "usps_city"   "valid_city"  "valid_state" "valid_zip"
 ```
 
 The `geo` [tibble](https://tibble.tidyverse.org/ "tibble") is a
@@ -100,41 +101,44 @@ normalized version of the `zipcodes` data frame from the
 R package, which itself is a version of the [CivicSpace US ZIP Code
 Database](https://boutell.com/zipcodes/ "civic_space").
 
+The `valid_city`, `valid_state`, and `valid_zip` are the unique, sorted
+columns of thr `geo` data frame.
+
 ``` r
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip         city state latitude  longitude
-#> 1  18921     Ferndale    PA 40.32865  -75.10278
-#> 2  71950        Kirby    AR 34.25111  -93.76005
-#> 3  67057     Hardtner    KS 37.04173  -98.67631
-#> 4  31995 Fort Benning    GA 32.49584  -84.96398
-#> 5  05823  Beebe Plain    VT 45.00578  -72.13835
-#> 6  12148      Rexford    NY 42.84213  -73.86828
-#> 7  90097  Los Angeles    CA 33.78659 -118.29866
-#> 8  47226     Clifford    IN 39.28249  -85.86852
-#> 9  64671         Polo    MO 39.54190  -94.05158
-#> 10 37246    Nashville    TN 36.15861  -86.79000
+#>      zip           city state latitude  longitude
+#> 1  02861      Pawtucket    RI 41.88163  -71.35583
+#> 2  59084         Teigen    MT 47.17364 -108.28117
+#> 3  13808         Morris    NY 42.53297  -75.25536
+#> 4  92403 San Bernardino    CA 34.83996 -115.96705
+#> 5  15765       Penn Run    PA 40.59285  -78.98412
+#> 6  29520         Cheraw    SC 34.68862  -79.92315
+#> 7  23154         Schley    VA 37.41824  -76.50840
+#> 8  70761        Norwood    LA 30.97229  -91.07895
+#> 9  28520   Cedar Island    NC 34.98461  -76.19880
+#> 10 75209         Dallas    TX 32.84598  -96.82552
 
 # normal cities in a better order
-sample_n(campfin::geo, 10)
+sample_n(geo, 10)
 #> # A tibble: 10 x 3
 #>    city         state zip  
 #>    <chr>        <chr> <chr>
-#>  1 ACWORTH      GA    30101
-#>  2 ROCKFORD     OH    45882
-#>  3 STETSONVILLE WI    54480
-#>  4 NEW HAVEN    IL    62867
-#>  5 SENECA       NE    69161
-#>  6 SAN ANTONIO  TX    78203
-#>  7 CALHAN       CO    80808
-#>  8 AURORA       CO    80046
-#>  9 SCOTTS MILLS OR    97375
-#> 10 CAPE CORAL   FL    33915
+#>  1 EMLENTON     PA    16373
+#>  2 PRAIRIE HOME MO    65068
+#>  3 OLATON       KY    42361
+#>  4 MAGEE        MS    39111
+#>  5 LEXINGTON    KY    40536
+#>  6 ELKO         GA    31025
+#>  7 SLOATSBURG   NY    10974
+#>  8 MUNCIE       IN    47302
+#>  9 LINDSEY      OH    43442
+#> 10 GARDINER     ME    04345
 
 # more US states than the built in state.abb
-setdiff(geo$state, datasets::state.abb)
-#>  [1] "PR" "VI" "AE" "DC" "AA" "AP" "AS" "GU" "PW" "FM" "MP" "MH" "AB" "BC"
-#> [15] "MB" "NB" "NL" "NS" "ON" "PE" "QC" "SK"
+setdiff(valid_state, state.abb)
+#>  [1] "AA" "AB" "AE" "AP" "AS" "BC" "DC" "FM" "GU" "MB" "MH" "MP" "NB" "NL"
+#> [15] "NS" "ON" "PE" "PR" "PW" "QC" "SK" "VI"
 ```
 
 The `na_city` vector contains common invalid city names, which can be
@@ -142,11 +146,11 @@ passed to `normal_city()`.
 
 ``` r
 sample(na_city, 10)
-#>  [1] "NONE GIVEN"            "NO ADDRESS"           
-#>  [3] "NONE GIVE"             "TEST"                 
-#>  [5] "UK"                    "ONLINE SERVICE"       
-#>  [7] "NOT REQUIRED"          "NON REPORTABLE"       
-#>  [9] "REQUESTED INFORMATION" "INTERNET"
+#>  [1] "UNKOWN"                "VIRTUAL"              
+#>  [3] "PO BOX"                "REQUESTED"            
+#>  [5] "INFO REQUESTED"        "NOT PROVIDED"         
+#>  [7] "XXXX"                  "INFORMATION REQUESTED"
+#>  [9] "UNKNOWN CITY"          "PENDING"
 ```
 
 The `usps` (and `usps_city`) data frames can be used with `normal_*()`
@@ -156,18 +160,18 @@ abbreviations](https://pe.usps.com/text/pub28/28apc_002.htm).
 ``` r
 sample_n(usps, 10)
 #> # A tibble: 10 x 2
-#>    abb   rep    
-#>    <chr> <chr>  
-#>  1 ARC   ARCADE 
-#>  2 HT    HEIGHTS
-#>  3 IS    ISLAND 
-#>  4 VIA   VIADUCT
-#>  5 FORG  FORGE  
-#>  6 MDW   MEADOWS
-#>  7 KYS   KEYS   
-#>  8 PKWY  PARKWAY
-#>  9 BYPA  BYPASS 
-#> 10 CT    COURT
+#>    abb     rep      
+#>    <chr>   <chr>    
+#>  1 GROV    GROVE    
+#>  2 ANNX    ANEX     
+#>  3 HIGHWY  HIGHWAY  
+#>  4 EXTN    EXTENSION
+#>  5 AV      AVENUE   
+#>  6 LDG     LODGE    
+#>  7 LNDNG   LANDING  
+#>  8 FRT     FORT     
+#>  9 STRAVEN STRAVENUE
+#> 10 ALY     ALLEY
 ```
 
 The `rx_zip` and `rx_state` character strings are useful regular

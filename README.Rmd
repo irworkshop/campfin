@@ -95,6 +95,9 @@ data(package = "campfin")$results[, "Item"]
 The `geo` [tibble][08] is a normalized version of the `zipcodes` data frame from the 
 [`zipcodes`][09] R package, which itself is a version of the [CivicSpace US ZIP Code Database][10].
 
+The `valid_city`, `valid_state`, and `valid_zip` are the unique, sorted columns of thr `geo` data
+frame.
+
 [08]: https://tibble.tidyverse.org/ "tibble"
 [09]: https://cran.r-project.org/web/packages/zipcode/ "zip_pkg"
 [10]: https://boutell.com/zipcodes/ "civic_space"
@@ -104,10 +107,10 @@ data("zipcode")
 sample_n(zipcode, 10)
 
 # normal cities in a better order
-sample_n(campfin::geo, 10)
+sample_n(geo, 10)
 
 # more US states than the built in state.abb
-setdiff(geo$state, datasets::state.abb)
+setdiff(valid_state, state.abb)
 ```
 
 The `na_city` vector contains common invalid city names, which can be passed to `normal_city()`.
