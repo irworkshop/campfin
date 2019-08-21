@@ -67,3 +67,24 @@
 #'
 #' @format A single character string.
 "rx_state"
+
+#' Many of the cities in America
+#'
+#' The `city` column of the `geo` tibble
+#'
+#' @format A vectory of city names
+"valid_city"
+
+#' All 2-letter State Abbreviations
+#'
+#' The `state` column of the `geo` tibble
+#'
+#' @format A vectory of 2-digit abbreviations
+"valid_state"
+
+#' Almost all of the valid USA ZIP Codes
+#'
+#' The `zip` column of the `geo` tibble
+#'
+#' @format A vectory of 5-digit ZIP codes
+"valid_zip"
