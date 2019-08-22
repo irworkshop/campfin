@@ -4,7 +4,7 @@
 \alias{abrev_state}
 \title{AbbreviateUS State Names}
 \usage{
-abrev_state(state)
+abrev_state(state, rm_nums = FALSE)
 }
 \arguments{
 \item{state}{A vector of full state names}
@@ -16,5 +16,5 @@ A vector of 2 letter state abbreviations
 AbbreviateUS State Names
 }
 \examples{
-abrev_state(c("Vermont", "District of Columbia", "new_hampshire", "VT"))
+abrev_state(c("Vermont", "District of Columbia", "France", "Maine 2nd"), rm_nums = TRUE)
 }

@@ -4,16 +4,21 @@
 #' @return A vector of 2 letter state abbreviations
 #' @importFrom stringr str_to_upper str_trim str_squish str_replace_all str_remove_all
 #' @examples
-#' abrev_state(c("Vermont", "District of Columbia", "new_hampshire", "VT"))
+#' abrev_state(c("Vermont", "District of Columbia", "France", "Maine 2nd"), rm_nums = TRUE)
 #' @export
-abrev_state <- function(state) {
+abrev_state <- function(state, rm_nums = FALSE) {
   state <- stringr::str_to_upper(state)
-  state <- stringr::str_replace_all(state, "[:punct:]", " ")
-  state <- stringr::str_remove_all(state, "\\d+")
+  if (rm_nums) {
+    for (pattern in c("1ST", "2ND", "3RD", stringr::str_c(1:19, "TH"))) {
+      state <- stringr::str_remove(state, pattern)
+    }
+    state <- stringr::str_remove_all(state, "\\d+")
+  }
   state <- stringr::str_trim(state)
   state <- stringr::str_squish(state)
   abb   <- stringr::str_to_upper(c(state.abb, "DC"))
   name  <- stringr::str_to_upper(c(state.name, "District of Columbia"))
-  state[which(state %out% abb)] <- abb[match(state[which(state %out% abb)], name)]
+  state[which(state %in% name)] <- abb[match(state[which(state %in% name)], name)]
   return(state)
 }
+
