@@ -6,8 +6,8 @@
 #' @importFrom stringr str_split
 #' @importFrom dplyr lead
 #' @examples
+#' is_abbrev(abb = "VT", full = "Vermont")
 #' is_abbrev(abb = "BRX", full = "BRONX")
-#' is_abbrev(abb = "BRX", full = "BROOKLYN")
 #' @export
 is_abbrev <- function(abb, full) {
   all(.all_inside(abb, full), .all_ordered(abb, full))

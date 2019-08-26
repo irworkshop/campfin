@@ -18,6 +18,6 @@ A logical if \code{abb} is potential abbreviation of \code{full}
 Check if Abbreviation
 }
 \examples{
+is_abbrev(abb = "VT", full = "Vermont")
 is_abbrev(abb = "BRX", full = "BRONX")
-is_abbrev(abb = "BRX", full = "BROOKLYN")
 }
