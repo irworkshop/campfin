@@ -16,14 +16,18 @@ is_abbrev <- function(abb, full) {
 .all_inside <- Vectorize(
   function(x, y) {
     xs <- stringr::str_split(x, pattern = "", simplify = TRUE)
+    xs <- stringr::str_to_lower(xs)
     ys <- stringr::str_split(y, pattern = "", simplify = TRUE)
+    ys <- stringr::str_to_lower(ys)
     all(xs %in% ys)
   }
 )
 .all_ordered <- Vectorize(
   function(x, y) {
     xs <- stringr::str_split(x, pattern = "", simplify = TRUE)
+    xs <- stringr::str_to_lower(xs)
     ys <- stringr::str_split(y, pattern = "", simplify = TRUE)
+    ys <- stringr::str_to_lower(ys)
     match_order <- match(xs, ys)
     all(match_order < dplyr::lead(match_order), na.rm = TRUE)
   }
