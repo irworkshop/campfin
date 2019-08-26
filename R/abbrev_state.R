@@ -6,7 +6,7 @@
 #' @examples
 #' abrev_state(c("Vermont", "District of Columbia", "new_hampshire", "VT"))
 #' @export
-abrev_state <- function(state) {
+abbrev_state <- function(state) {
   state <- stringr::str_to_upper(state)
   state <- stringr::str_replace_all(state, "[:punct:]", " ")
   state <- stringr::str_remove_all(state, "\\d+")
