@@ -18,9 +18,9 @@ explore_plot <- function(data, var, flip = FALSE, nbar = 8, palette = "Dark2", .
   title_var <- snakecase::to_title_case(var_string)
   base_plot <- data %>%
     dplyr::count({{ var }}, sort = TRUE) %>%
-    dplyr::mutate(p = n/sum(n)) %>%
+    dplyr::mutate(p = .data$n/sum(.data$n)) %>%
     utils::head(nbar) %>%
-    ggplot2::ggplot(ggplot2::aes(stats::reorder({{ var }}, dplyr::desc(p)), p)) +
+    ggplot2::ggplot(ggplot2::aes(stats::reorder({{ var }}, dplyr::desc(.data$p)), .data$p)) +
     ggplot2::geom_col(ggplot2::aes(fill = {{ var }})) +
     ggplot2::scale_fill_brewer(palette = palette, guide = FALSE) +
     ggplot2::scale_y_continuous(labels = scales::percent) +
