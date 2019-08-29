@@ -2,7 +2,7 @@
 % Please edit documentation in R/all_files_new.R
 \name{this_file_new}
 \alias{this_file_new}
-\title{Check if a File is New}
+\title{Check if This File is New}
 \usage{
 this_file_new(path)
 }
@@ -10,8 +10,20 @@ this_file_new(path)
 \item{path}{The path to a file to check.}
 }
 \value{
-A logical value indicating whether or a file has modification date equal to today.
+logical; whether the files has a modification date equal to today.
 }
 \description{
-Check if a File is New
+This function tests whether a single file has a modification date equal to the
+system date. Useful when repeatedly running code with a lengthy download stage. Many state
+databases are updated daily, so new data can be helpful but not always neccesary. Set this
+function in an \code{if} statement.
+}
+\examples{
+temp <- tempfile()
+if (!this_file_new(temp)) {
+  download.file(
+    url = "http://212.183.159.230/5MB.zip",
+    destfile = temp
+  )
+}
 }
