@@ -15,7 +15,10 @@ x \%out\% table
 Logical if X is not present in Y
 }
 \description{
-Inverted Match
+\code{\%out\%} is an inverted version of the infix opperator \code{\%in\%}.
+}
+\details{
+\code{\%out\%} is currently defined as \code{"\%out\%" <- function(x, table) match(x, table, nomatch = 0) == 0}
 }
 \examples{
 c("A", "B", "3") \%out\% LETTERS
