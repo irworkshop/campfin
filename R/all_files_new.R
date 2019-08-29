@@ -8,20 +8,17 @@
 #' @importFrom lubridate today floor_date
 #' @importFrom purrr is_empty
 #' @importFrom magrittr use_series equals
+#' @importFrom rlang .data
 #' @export
 all_files_new <- function(path, glob = NULL, ...) {
   files <- fs::dir_ls(path = path, ...)
   if (!is_empty(files)) {
-    files %>%
-      fs::file_info() %>%
-      magrittr::use_series(modification_time) %>%
-      lubridate::floor_date(unit = "day") %>%
-      magrittr::equals(lubridate::today()) %>%
-      base::all() %>%
-      base::return()
+    file_mtime <- fs::file_info(files)$modification_time
+    all <- all(lubridate::floor_date(file_mtime, unit = "day") == lubridate::today())
+    return(all)
   } else {
-    base::warning("Empty")
-    base::return(FALSE)
+    warning("Empty")
+    return(FALSE)
   }
 }
 
