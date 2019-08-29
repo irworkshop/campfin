@@ -25,7 +25,7 @@ normal_state <- function(state, abbreviate = TRUE, na = c("", "NA"), na_rep = FA
     str_trim()
 
   if (abbreviate) {
-    state2 <- abrev_state(state2)
+    state2 <- abbrev_state(state2)
   }
 
   if (na_rep) {
