@@ -2,20 +2,21 @@
 % Please edit documentation in R/flag_dupes.R
 \name{flag_dupes}
 \alias{flag_dupes}
-\title{Flag Duplicate Rows}
+\title{Flag Duplicate Rows With New Column}
 \usage{
-flag_dupes(df, ...)
+flag_dupes(data, ...)
 }
 \arguments{
-\item{df}{A data frame}
+\item{data}{A data frame to flag.}
 
-\item{...}{Arguments to pass to dplyr::select() (e.g., dplyr::everything())}
+\item{...}{Arguments passed to \code{\link[dplyr:select]{dplyr::select()}} (needs to be at least \code{\link[dplyr:everything]{dplyr::everything()}}).}
 }
 \value{
-A data frame with a new \code{dupe_flag} logical variable
+A data frame with a new \code{dupe_flag} logical variable.
 }
 \description{
-Flag Duplicate Rows
+This function uses \code{\link[dplyr:mutate]{dplyr::mutate()}} to create a new \code{dupe_flag} logical variable
+with \code{TRUE} values for any record duplicated more than once.
 }
 \examples{
 flag_dupes(iris, dplyr::everything())
