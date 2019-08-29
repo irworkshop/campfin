@@ -2,21 +2,22 @@
 % Please edit documentation in R/flag_na.R
 \name{flag_na}
 \alias{flag_na}
-\title{Flag Missing Values}
+\title{Flag Missing Values With New Column}
 \usage{
 flag_na(data, ...)
 }
 \arguments{
-\item{data}{A data frame}
+\item{data}{A data frame to flag.}
 
-\item{...}{Column names passed to \code{dplyr::select()} and checked for \code{NA}}
+\item{...}{Arguments passed to \code{\link[dplyr:select]{dplyr::select()}} (needs to be at least \code{\link[dplyr:everything]{dplyr::everything()}}).}
 }
 \value{
-A data frame with a new \code{na_flag} logical variable
+A data frame with a new \code{na_flag} logical variable.
 }
 \description{
-Flag Missing Values
+This function uses \code{\link[dplyr:mutate]{dplyr::mutate()}} to create a new \code{dupe_flag} logical variable
+with \code{TRUE} values for any record duplicated more than once.
 }
 \examples{
-flag_na(dplyr::storms, ts_diameter)
+flag_na(dplyr::starwars, gender)
 }
