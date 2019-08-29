@@ -8,6 +8,8 @@ prop_na(x, format = FALSE)
 }
 \arguments{
 \item{x}{A vector to count \code{NA}}
+
+\item{format}{Should the output use \code{scales::percent()}?}
 }
 \value{
 The proportion of \code{NA} values in a vector

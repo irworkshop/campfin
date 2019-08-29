@@ -37,6 +37,7 @@ count_na <- function(x) {
 #'
 #' @description Wrap around `mean(is.na())`
 #' @param x A vector to count `NA`
+#' @param format Should the output use `scales::percent()`?
 #' @return The proportion of `NA` values in a vector
 #' @examples
 #' prop_na(dplyr::starwars$gender)
