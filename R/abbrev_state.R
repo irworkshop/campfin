@@ -1,12 +1,12 @@
-#' AbbreviateUS State Names
+#' Abbreviate US State Names
 #'
 #' @param state A vector of full state names
 #' @return A vector of 2 letter state abbreviations
 #' @importFrom stringr str_to_upper str_trim str_squish str_replace_all str_remove_all
 #' @examples
-#' abrev_state(c("Vermont", "District of Columbia", "France", "Maine 2nd"), rm_nums = TRUE)
+#' abbrev_state(c("Vermont", "District of Columbia", "France", "Maine 2nd"), rm_nums = TRUE)
 #' @export
-abrev_state <- function(state, rm_nums = FALSE) {
+abbrev_state <- function(state, rm_nums = FALSE) {
   state <- stringr::str_to_upper(state)
   if (rm_nums) {
     for (pattern in c("1ST", "2ND", "3RD", stringr::str_c(1:19, "TH"))) {
