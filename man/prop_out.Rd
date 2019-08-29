@@ -11,7 +11,7 @@ prop_out(x, y, na.rm = TRUE)
 
 \item{y}{A vector to compare against.}
 
-\item{na.rm}{Should NA values be ignored.}
+\item{na.rm}{Should \code{NA} be ignored?}
 }
 \value{
 The proprtion of X \emph{not} present in Y.
