@@ -8,6 +8,8 @@ abbrev_state(state, rm_nums = FALSE)
 }
 \arguments{
 \item{state}{A vector of full state names}
+
+\item{rm_nums}{Whether to remove numbers from abbrev (e.g., 1st).}
 }
 \value{
 A vector of 2 letter state abbreviations

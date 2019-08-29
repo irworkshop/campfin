@@ -1,6 +1,7 @@
 #' Abbreviate US State Names
 #'
 #' @param state A vector of full state names
+#' @param rm_nums Whether to remove numbers from abbrev (e.g., 1st).
 #' @return A vector of 2 letter state abbreviations
 #' @importFrom stringr str_to_upper str_trim str_squish str_replace_all str_remove_all
 #' @examples
