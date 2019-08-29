@@ -8,6 +8,7 @@
 #' @importFrom purrr map
 #' @importFrom dplyr mutate select
 #' @importFrom tibble enframe
+#' @importFrom pillar new_pillar_type
 #' @export
 glimpse_fun <- function(data, fun) {
   summary <- data %>%

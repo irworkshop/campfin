@@ -19,6 +19,7 @@ Imports:
     httr,
     lubridate,
     stringr,
+    pillar,
     purrr,
     tibble,
     readr,
