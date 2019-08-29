@@ -12,12 +12,12 @@
 #' @export
 glimpse_fun <- function(data, fun) {
   summary <- data %>%
-    map(fun) %>%
-    unlist() %>%
-    enframe(name = "var", value = "n") %>%
-    mutate(p = n / nrow(data)) %>%
-    mutate(type = format(map(data, pillar::new_pillar_type))) %>%
-    select(var, type, n, p)
+    purrr::map({{ fun }}) %>%
+    base::unlist() %>%
+    tibble::enframe(name = "var", value = "n") %>%
+    dplyr::mutate(p = .data$n / nrow(data)) %>%
+    dplyr::mutate(type = format(purrr::map(data, pillar::new_pillar_type))) %>%
+    dplyr::select(.data$var, .data$type, .data$n, .data$p)
   print(summary, n = length(data))
 }
 
