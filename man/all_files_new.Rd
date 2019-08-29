@@ -10,6 +10,8 @@ all_files_new(path, glob = NULL, ...)
 \item{path}{The path to a directory to check.}
 
 \item{glob}{A pattern to search for files (e.g., "csv").}
+
+\item{...}{Arguments to be passed to \code{fs::dir_ls()}}
 }
 \value{
 A logical value indicating whether or not all files in the directory have a modification date equal to today.

@@ -2,6 +2,7 @@
 #'
 #' @param path The path to a directory to check.
 #' @param glob A pattern to search for files (e.g., "csv").
+#' @param ... Arguments to be passed to \code{fs::dir_ls()}
 #' @return A logical value indicating whether or not all files in the directory have a modification date equal to today.
 #' @importFrom fs dir_ls file_info
 #' @importFrom lubridate today floor_date
