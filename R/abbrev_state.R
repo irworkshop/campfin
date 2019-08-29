@@ -17,8 +17,8 @@ abbrev_state <- function(state, rm_nums = FALSE) {
   }
   state <- stringr::str_trim(state)
   state <- stringr::str_squish(state)
-  abb   <- stringr::str_to_upper(c(state.abb, "DC"))
-  name  <- stringr::str_to_upper(c(state.name, "District of Columbia"))
+  abb   <- stringr::str_to_upper(c(datasets::state.abb, "DC"))
+  name  <- stringr::str_to_upper(c(datasets::state.name, "District of Columbia"))
   state[which(state %in% name)] <- abb[match(state[which(state %in% name)], name)]
   return(state)
 }
