@@ -4,12 +4,7 @@
 \alias{\%out\%}
 \title{Inverted Match}
 \usage{
-x %out% y
-}
-\arguments{
-\item{x}{A vector to check.}
-
-\item{y}{A vector to compare against.}
+... \%out\% NA
 }
 \value{
 Logical if X is not present in Y
@@ -18,5 +13,5 @@ Logical if X is not present in Y
 Inverted Match
 }
 \examples{
-c("A", "B", "0") \%out\% LETTERS
+c("A", "B", "3") \%out\% LETTERS
 }
