@@ -4,7 +4,12 @@
 \alias{\%out\%}
 \title{Inverted Match}
 \usage{
-... \%out\% NA
+x \%out\% table
+}
+\arguments{
+\item{x}{vector or NULL: the values to be matched. Long vectors are supported.}
+
+\item{table}{vector or NULL: the values to be matched against.}
 }
 \value{
 Logical if X is not present in Y
