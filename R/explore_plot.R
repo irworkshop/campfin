@@ -1,7 +1,11 @@
 #' Check for All New Files
 #'
-#' @param data A data frame to glimpse.
-#' @param fun A function to map to each column.
+#' @param data The data frame to explore.
+#' @param var A variable to plot.
+#' @param flip Whether chart should be flipped horizontally.
+#' @param nbar The number of bars to plot. Always shows most common values.
+#' @param palette The color palette passed to \code{ggplot2::scale_fill_brewer()}.
+#' @param ... Optional arguments passed to \code{ggplot2::labs()} (e.g., title, caption).
 #' @return A tibble with a row for every column and new columns with count and proportion.
 #' @examples
 #' glimpse_fun(dplyr::storms, dplyr::n_distinct)

@@ -8,9 +8,17 @@ explore_plot(data, var, flip = FALSE, nbar = 8, palette = "Dark2",
   ...)
 }
 \arguments{
-\item{data}{A data frame to glimpse.}
+\item{data}{The data frame to explore.}
 
-\item{fun}{A function to map to each column.}
+\item{var}{A variable to plot.}
+
+\item{flip}{Whether chart should be flipped horizontally.}
+
+\item{nbar}{The number of bars to plot. Always shows most common values.}
+
+\item{palette}{The color palette passed to \code{ggplot2::scale_fill_brewer()}.}
+
+\item{...}{Optional arguments passed to \code{ggplot2::labs()} (e.g., title, caption).}
 }
 \value{
 A tibble with a row for every column and new columns with count and proportion.
