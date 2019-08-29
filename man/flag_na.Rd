@@ -7,7 +7,9 @@
 flag_na(data, ...)
 }
 \arguments{
-\item{df}{A data frame}
+\item{data}{A data frame}
+
+\item{...}{Column names passed to \code{dplyr::select()} and checked for \code{NA}}
 }
 \value{
 A data frame with a new \code{na_flag} logical variable

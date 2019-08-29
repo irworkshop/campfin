@@ -1,6 +1,7 @@
 #' Flag Missing Values
 #'
-#' @param df A data frame
+#' @param data A data frame
+#' @param ... Column names passed to \code{dplyr::select()} and checked for \code{NA}
 #' @return A data frame with a new `na_flag` logical variable
 #' @importFrom dplyr mutate select
 #' @examples
