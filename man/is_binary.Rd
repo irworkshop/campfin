@@ -7,16 +7,17 @@
 is_binary(x, na.rm = TRUE)
 }
 \arguments{
-\item{x}{A vector}
+\item{x}{A vector.}
 
-\item{na.rm}{Should NA be ignored, \code{TRUE} by default}
+\item{na.rm}{Should NA be ignored, \code{TRUE} by default.}
 }
 \value{
-TRUE if only 2 unique values
+TRUE if only 2 unique values.
 }
 \description{
-Is Binary
+uses \code{\link[dplyr:n_distinct]{dplyr::n_distinct()}} to check if there are only two unique values. This
+function is useful when combined with both \code{\link[purrr:map_if]{purrr::map_if()}} \emph{and} \code{\link[batman:to_logical]{batman::to_logical()}}.
 }
 \examples{
-is_binary(x = c("Yes", "No"))
+if (is_binary(x <- c("Yes", "No"))) x == "Yes"
 }

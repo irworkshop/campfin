@@ -7,7 +7,7 @@
 #' @return TRUE if only 2 unique values.
 #' @importFrom dplyr n_distinct
 #' @examples
-#' if (is_binary(x <- c("Yes", "No"))) batman::to_logical(x)
+#' if (is_binary(x <- c("Yes", "No"))) x == "Yes"
 #' @export
 is_binary <- function(x, na.rm = TRUE) {
   if (na.rm) x <- na.omit(x)
