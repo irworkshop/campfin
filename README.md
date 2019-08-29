@@ -53,8 +53,11 @@ finance data:
     state name
   - `all_files_new()` checks if all files in a directory have been
     recently downloaded
+  - `col_date_usa()` wraps around `readr::col_date(format = %m/%d/%Y)`
   - `count_na(x)` wraps around `sum(is.na(x))` (useful with
     `glimpse_fun()`)
+  - `expand_state()` returns the full state name for a state
+    abbreviation
   - `explore_plot()` wraps around `ggplot2::geom_col()` to create
     exploratory bar plots
   - `flag_dupes()` wraps around `duplicated(dplyr::select())` to create
@@ -63,6 +66,9 @@ finance data:
     a new logical column
   - `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to
     every column in a data frame
+  - `is_abbrev(x, y)` checks whether `x` might be an abbreviation of `y`
+  - `is_binary()` is a useful predicate function for `purrr::map_if()`
+    and `batman::to_logical()`
   - `is_even(x)` wraps around `x %% 2 == 0` (useful for selecting
     election years)
   - `most_common()` return the `n` most common values of a vector
@@ -70,7 +76,9 @@ finance data:
   - `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
   - `prop_na(x)` wraps around `mean(is.na(x))`
   - `read_mdb()` pass `mbt-export` to `readr::read_csv()`
-  - `x %out% y` wraps around `!(x %in% y)`
+  - `this_file_new()` check if a specific file has been recently
+    downloaded
+  - `%out%` is the inverse of `%in%` (an infix version of `match()`)
   - `url_file_size()` calls `httr::HEAD()` to return a formated file
     size
 
@@ -90,9 +98,16 @@ The campfin package contains a number of built in data frames and
 strings used to help wrangle campaign finance data.
 
 ``` r
-data(package = "campfin")$results[, "Item"]
-#> [1] "geo"         "na_city"     "rx_state"    "rx_zip"      "usps"       
-#> [6] "usps_city"   "valid_city"  "valid_state" "valid_zip"
+data(package = "campfin")$results[, "Item"] %>% cat(sep = "\n")
+#> geo
+#> na_city
+#> rx_state
+#> rx_zip
+#> usps
+#> usps_city
+#> valid_city
+#> valid_state
+#> valid_zip
 ```
 
 The `geo` [tibble](https://tibble.tidyverse.org/ "tibble") is a
@@ -107,33 +122,33 @@ columns of thr `geo` data frame.
 ``` r
 data("zipcode")
 sample_n(zipcode, 10)
-#>      zip           city state latitude  longitude
-#> 1  02861      Pawtucket    RI 41.88163  -71.35583
-#> 2  59084         Teigen    MT 47.17364 -108.28117
-#> 3  13808         Morris    NY 42.53297  -75.25536
-#> 4  92403 San Bernardino    CA 34.83996 -115.96705
-#> 5  15765       Penn Run    PA 40.59285  -78.98412
-#> 6  29520         Cheraw    SC 34.68862  -79.92315
-#> 7  23154         Schley    VA 37.41824  -76.50840
-#> 8  70761        Norwood    LA 30.97229  -91.07895
-#> 9  28520   Cedar Island    NC 34.98461  -76.19880
-#> 10 75209         Dallas    TX 32.84598  -96.82552
+#>      zip         city state latitude  longitude
+#> 1  26354      Grafton    WV 39.34342  -80.02665
+#> 2  36121   Montgomery    AL 32.23338  -86.20853
+#> 3  70562   New Iberia    LA 29.73993  -91.63310
+#> 4  54854        Maple    WI 46.62652  -91.69520
+#> 5  20553   Washington    DC 38.88733  -77.02312
+#> 6  31659    Nashville    GA 31.20539  -83.24608
+#> 7  97530 Jacksonville    OR 42.22491 -123.04526
+#> 8  47568   Plainville    IN 38.79194  -87.13975
+#> 9  14133     Sandusky    NY 42.48913  -78.36699
+#> 10 48393        Wixom    MI 42.53225  -83.53378
 
 # normal cities in a better order
 sample_n(geo, 10)
 #> # A tibble: 10 x 3
-#>    city         state zip  
-#>    <chr>        <chr> <chr>
-#>  1 EMLENTON     PA    16373
-#>  2 PRAIRIE HOME MO    65068
-#>  3 OLATON       KY    42361
-#>  4 MAGEE        MS    39111
-#>  5 LEXINGTON    KY    40536
-#>  6 ELKO         GA    31025
-#>  7 SLOATSBURG   NY    10974
-#>  8 MUNCIE       IN    47302
-#>  9 LINDSEY      OH    43442
-#> 10 GARDINER     ME    04345
+#>    city        state zip  
+#>    <chr>       <chr> <chr>
+#>  1 BAKERSFIELD CA    93387
+#>  2 WASHINGTON  DC    20425
+#>  3 MUSELLA     GA    31066
+#>  4 WHITE EARTH ND    58794
+#>  5 BOSTON      MA    02112
+#>  6 SOLSVILLE   NY    13465
+#>  7 NEWARK      DE    19702
+#>  8 CAIRO       GA    39827
+#>  9 ENGLEWOOD   CO    80154
+#> 10 EL PASO     TX    88588
 
 # more US states than the built in state.abb
 setdiff(valid_state, state.abb)
@@ -146,11 +161,9 @@ passed to `normal_city()`.
 
 ``` r
 sample(na_city, 10)
-#>  [1] "UNKOWN"                "VIRTUAL"              
-#>  [3] "PO BOX"                "REQUESTED"            
-#>  [5] "INFO REQUESTED"        "NOT PROVIDED"         
-#>  [7] "XXXX"                  "INFORMATION REQUESTED"
-#>  [9] "UNKNOWN CITY"          "PENDING"
+#>  [1] "PENDING"        "NO ADDRESS"     "NOT PROVIDED"   "WWW"           
+#>  [5] "NON REPORTABLE" "ANYWHERE"       "VARIOUS"        "XXX"           
+#>  [9] "INFO PENDING"   "NOT SURE"
 ```
 
 The `usps` (and `usps_city`) data frames can be used with `normal_*()`
@@ -160,18 +173,18 @@ abbreviations](https://pe.usps.com/text/pub28/28apc_002.htm).
 ``` r
 sample_n(usps, 10)
 #> # A tibble: 10 x 2
-#>    abb     rep      
-#>    <chr>   <chr>    
-#>  1 GROV    GROVE    
-#>  2 ANNX    ANEX     
-#>  3 HIGHWY  HIGHWAY  
-#>  4 EXTN    EXTENSION
-#>  5 AV      AVENUE   
-#>  6 LDG     LODGE    
-#>  7 LNDNG   LANDING  
-#>  8 FRT     FORT     
-#>  9 STRAVEN STRAVENUE
-#> 10 ALY     ALLEY
+#>    abb    full    
+#>    <chr>  <chr>   
+#>  1 PTS    POINTS  
+#>  2 GATWAY GATEWAY 
+#>  3 KNOL   KNOLL   
+#>  4 BND    BEND    
+#>  5 ANX    ANEX    
+#>  6 RAD    RADIAL  
+#>  7 CRSENT CRESCENT
+#>  8 LN     LANE    
+#>  9 ALY    ALLEY   
+#> 10 ISLND  ISLAND
 ```
 
 The `rx_zip` and `rx_state` character strings are useful regular

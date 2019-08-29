@@ -60,18 +60,23 @@ There are other functions which help load, explore, and process campaign finance
 
 * `abrev_state()` returns the 2 letter state abbreviation for a full state name
 * `all_files_new()` checks if all files in a directory have been recently downloaded
+* `col_date_usa()` wraps around `readr::col_date(format = %m/%d/%Y)`
 * `count_na(x)` wraps around `sum(is.na(x))` (useful with `glimpse_fun()`)
+* `expand_state()` returns the full state name for a state abbreviation
 * `explore_plot()` wraps around `ggplot2::geom_col()` to create exploratory bar plots
 * `flag_dupes()` wraps around `duplicated(dplyr::select())` to create a new logical column
 * `flag_na()` wraps around `complete.cases(dplyr::select())`to create a new logical column
 * `glimpse_fun()` applies a function (like `dplyr::n_distinct()`) to every column in a data frame
+* `is_abbrev(x, y)` checks whether `x` might be an abbreviation of `y`
+* `is_binary()` is a useful predicate function for `purrr::map_if()` and `batman::to_logical()`
 * `is_even(x)` wraps around `x %% 2 == 0` (useful for selecting election years)
 * `most_common()` return the `n` most common values of a vector
 * `na_out(x, y)` returns `x` with `NA` for any value _not_ in `y` 
 * `prop_in(x, y)` (and `prop_out()`) wraps around `mean(x %in% y)`
 * `prop_na(x)` wraps around `mean(is.na(x))`
 * `read_mdb()` pass `mbt-export` to `readr::read_csv()`
-* `x %out% y` wraps around `!(x %in% y)`
+* `this_file_new()` check if a specific file has been recently downloaded
+* `%out%` is the inverse of `%in%` (an infix version of `match()`)
 * `url_file_size()` calls `httr::HEAD()` to return a formated file size
 
 More functions will be added over time to automate even more of the wrangling workflow.
@@ -89,7 +94,7 @@ The campfin package contains a number of built in data frames and strings used t
 campaign finance data.
 
 ```{r data}
-data(package = "campfin")$results[, "Item"]
+data(package = "campfin")$results[, "Item"] %>% cat(sep = "\n")
 ```
 
 The `geo` [tibble][08] is a normalized version of the `zipcodes` data frame from the 
