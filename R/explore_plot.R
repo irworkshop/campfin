@@ -20,7 +20,7 @@ explore_plot <- function(data, var, flip = FALSE, nbar = 8, palette = "Dark2", .
     dplyr::count({{ var }}, sort = TRUE) %>%
     dplyr::mutate(p = n/sum(n)) %>%
     utils::head(nbar) %>%
-    ggplot2::ggplot(ggplot2::aes(reorder({{ var }}, dplyr::desc(p)), p)) +
+    ggplot2::ggplot(ggplot2::aes(stats::reorder({{ var }}, dplyr::desc(p)), p)) +
     ggplot2::geom_col(ggplot2::aes(fill = {{ var }})) +
     ggplot2::scale_fill_brewer(palette = palette, guide = FALSE) +
     ggplot2::scale_y_continuous(labels = scales::percent) +
