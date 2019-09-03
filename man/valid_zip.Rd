@@ -4,11 +4,11 @@
 \name{valid_zip}
 \alias{valid_zip}
 \title{Almost all of the valid USA ZIP Codes}
-\format{A vectory of 5-digit ZIP codes}
+\format{A sorted vector of 5-digit ZIP codes (length 44334).}
 \usage{
 valid_zip
 }
 \description{
-The \code{zip} column of the \code{geo} tibble
+The \code{zip} column of the \code{geo} tibble.
 }
 \keyword{datasets}

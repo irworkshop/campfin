@@ -4,11 +4,11 @@
 \name{rx_zip}
 \alias{rx_zip}
 \title{ZIP code regex}
-\format{A single character string.}
+\format{A character string (length 1).}
 \usage{
 rx_zip
 }
 \description{
-The regex string to extract 5 or 9 digit zip from end of address.
+The regex string to extract ZIP code from the end of address.
 }
 \keyword{datasets}

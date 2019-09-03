@@ -3,12 +3,12 @@
 \docType{data}
 \name{valid_city}
 \alias{valid_city}
-\title{Many of the cities in America}
-\format{A vectory of city names}
+\title{US City Names}
+\format{A sorted vector of unique city names (length 19,083).}
 \usage{
 valid_city
 }
 \description{
-The \code{city} column of the \code{geo} tibble
+The \code{city} column of the \code{zipcodes} tibble.
 }
 \keyword{datasets}

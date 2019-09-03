@@ -4,11 +4,11 @@
 \name{rx_state}
 \alias{rx_state}
 \title{State regex}
-\format{A single character string.}
+\format{A character string (length 1).}
 \usage{
 rx_state
 }
 \description{
-The regex string to extract alpha state string preceding ZIP code
+The regex string to extract state string preceding ZIP code.
 }
 \keyword{datasets}

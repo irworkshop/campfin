@@ -3,12 +3,12 @@
 \docType{data}
 \name{valid_state}
 \alias{valid_state}
-\title{All 2-letter State Abbreviations}
-\format{A vectory of 2-digit abbreviations}
+\title{US State Abbreviations}
+\format{A vector of 2-digit abbreviations (length 62).}
 \usage{
 valid_state
 }
 \description{
-The \code{state} column of the \code{geo} tibble
+The \code{abb} column of the \code{usps_state} tibble.
 }
 \keyword{datasets}

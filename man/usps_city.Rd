@@ -3,21 +3,23 @@
 \docType{data}
 \name{usps_city}
 \alias{usps_city}
-\title{USPS C1 City Abbreviations}
-\format{A tibble with 44,360 rows of 3 variables:
+\title{USPS City Abbreviations}
+\format{A tibble with 154 rows of 2 variables:
 \describe{
-\item{abb}{Commonly Used Street Suffix or Abbreviation}
 \item{full}{Primary Street Suffix}
+\item{abb}{Commonly Used Street Suffix or Abbreviation}
 ...
 }}
 \source{
-The USPS C1 Street Suffix Abbreviations
-\url{https://pe.usps.com/text/pub28/28apc_002.htm}
+USPS Appendix C1,
+\href{https://pe.usps.com/text/pub28/28apc_002.htm}{Street Abbreviations}
 }
 \usage{
 usps_city
 }
 \description{
-A currated and edited dataset containing the USPS abbreviations for only city names.
+A currated and edited subset of \link{usps_street} containing the
+USPS abbreviations found in city names. Useful as the \code{geo_abbs} argument
+of \code{\link[=normal_city]{normal_city()}}.
 }
 \keyword{datasets}
