@@ -10,25 +10,24 @@ abbrev_state(full, na_bad = FALSE, rm_nums = FALSE)
 \arguments{
 \item{full}{A full US state name character vector (e.g., "Vermont").}
 
-\item{na_bad}{logical; Whether to return \code{NA} for invalid \code{full} names (default \code{FALSE}).}
+\item{na_bad}{logical; Whether to return \code{NA} for invalid \code{full} names
+(default \code{FALSE}).}
 
-\item{rm_nums}{Whether to remove numbers from \code{full} (e.g., 1st) before abbreviating.
-Particularly useful with US Congressional districts. Only numbers 1 through 20 are supported at
-this time (default \code{FALSE}).}
+\item{rm_nums}{logical; Whether to remove numbers from \code{full} (e.g., 1st)
+before abbreviating. Particularly useful with US Congressional districts.
+Only numbers 1 through 20 are supported at this time (default \code{FALSE}).}
 }
 \value{
 A vector of 2 letter state abbreviations.
 }
 \description{
-This function is used to first normalize a \code{full} state name and then return any
-matching abbreviation. It relies on \link[datasets:state.name]{datasets::state.name} and \link[datasets:state.abb]{datasets::state.abb}
-(supplement with "District of Columbia" and "DC" respectively). Other US territories besides
-these 51 are not yet included, although their abbreviations are in the \link{geo} and \link{valid_state}
-objects.
+This function is used to first normalize a \code{full} state name and
+then return any matching abbreviation. This package works for all state
+names in \code{state.name} plus 12 additional territories (e.g., "Puerto Rico").
 }
 \examples{
 abbrev_state(full = state.name)
-abbrev_state(full = c("Vermont", "District of Columbia", "France"), na_bad = TRUE)
+abbrev_state(full = c("new_mexico", "france"), na_bad = TRUE)
 }
 \seealso{
 abbrev_state is_abbrev normal_state normal_zip normal_city

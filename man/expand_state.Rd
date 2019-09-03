@@ -2,34 +2,32 @@
 % Please edit documentation in R/expand_state.R
 \name{expand_state}
 \alias{expand_state}
-\alias{expand_abb}
-\alias{expand_abbreviation}
-\title{Expand US State Abbreviations}
+\title{Abbreviate US State Names}
 \usage{
 expand_state(abb, na_bad = FALSE, rm_nums = FALSE)
 }
 \arguments{
-\item{abb}{A 2 digit US state abbreviation character vector (e.g., "VT").}
+\item{abb}{A full US state name character vector (e.g., "Vermont").}
 
-\item{na_bad}{logical; Whether to return \code{NA} for invalid \code{abb} (default \code{FALSE}).}
+\item{na_bad}{logical; Whether to return \code{NA} for invalid \code{abb} names
+(default \code{FALSE}).}
 
-\item{rm_nums}{Whether to remove numbers from \code{abb} (e.g., 1st) before abbreviating.
-Particularly useful with US Congressional districts. Only numbers 1 through 20 are supported at
-this time (default \code{FALSE}).}
+\item{rm_nums}{logical; Whether to remove numbers from \code{abb} (e.g., 1st)
+before abbreviating. Particularly useful with US Congressional districts.
+Only numbers 1 through 20 are supported at this time (default \code{FALSE}).}
 }
 \value{
-A vector of full state names.
+A vector of 2 letter state abbreviations.
 }
 \description{
-This function is used to first normalize a \code{abb} state abbreviation and then return
-any matching name It relies on \link[datasets:state.abb]{datasets::state.abb} and \link[datasets:state.name]{datasets::state.name}
-(supplement with "DC" and "District of Columbia" respectively). Other US territories besides
-these 51 are not yet included, although their abbreviations are in the \link{geo} and \link{valid_state}
-objects.
+This function is used to first normalize a \code{abb} state name and
+then return any matching abbreviation. This package works for all state
+names in \code{state.name} plus 12 additional territories (e.g., "Puerto Rico").
 }
 \examples{
 expand_state(abb = state.abb)
-expand_state(abb = c("VT", "DC", "FR"), na_bad = TRUE)
+expand_state(abb = c("NM", "FR"), na_bad = TRUE)
+expand_state(abb = "NE03", rm_nums = TRUE)
 }
 \seealso{
 abbrev_state is_abbrev normal_state normal_zip normal_city
