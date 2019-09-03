@@ -38,3 +38,5 @@ abbrev_state <- function(full, na_bad = FALSE, rm_nums = FALSE) {
   full[which(full %in% valid_name)] <- valid_state[abb_match]
   return(full)
 }
+
+utils::globalVariables(c("valid_state", "valid_name"))
