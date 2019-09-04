@@ -58,7 +58,7 @@ zipcodes <-
   )
 
 # save USA zipcodes tibble
-usethis::use_data(zipcodes)
+usethis::use_data(zipcodes, overwrite = TRUE)
 
 # save USA cities vector
 valid_city <- sort(unique(zipcodes$city))
