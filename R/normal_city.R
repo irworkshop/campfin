@@ -1,9 +1,11 @@
-#' Normalize City Names
-#'
+#' @title Normalize City Names
 #' @param city A vector of US city names.
-#' @param geo_abbs A two-column data frame with geographic abbreviations ("MT") in the first column and replacement strings ("MOUNT") in the second.
-#' @param st_abbs A vector of state abbreviations ("VT") to remove from the _end_ of city names ("STOWE VT").
-#' @param na A vector of values to make `NA` (useful with the `campfin::na_city` vector).
+#' @param geo_abbs A two-column data frame with replacement strings ("MOUNT") in
+#'   the first column and geographic abbreviations ("MT") in the second.
+#' @param st_abbs A vector of state abbreviations ("VT") to remove from the
+#'   _end_ of city names ("STOWE VT").
+#' @param na A vector of values to make `NA` (useful with the `campfin::na_city`
+#'   vector).
 #' @param na_rep If `TRUE`, make all single digit repeating strings `NA`.
 #' @return A vector of normalized city names.
 #' @examples
@@ -18,7 +20,13 @@
 #' @importFrom dplyr na_if
 #' @importFrom tibble tibble
 #' @export
-normal_city <- function(city, geo_abbs = NULL, st_abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
+normal_city <- function(
+  city,
+  geo_abbs = NULL,
+  st_abbs = NULL,
+  na = c("", "NA"),
+  na_rep = FALSE
+) {
 
   city_clean <- city %>%
     str_to_upper() %>%
@@ -32,11 +40,11 @@ normal_city <- function(city, geo_abbs = NULL, st_abbs = NULL, na = c("", "NA"),
 
   if (!is.null(geo_abbs)) {
     geo_abbs <- as.data.frame(geo_abbs)
-    for (i in seq_along(geo_abbs[, 1])) {
+    for (i in seq_along(geo_abbs[, 2])) {
       city_clean <- str_replace(
         string = city_clean,
-        pattern = str_c("\\b", geo_abbs[[i, 1]], "\\b"),
-        replacement = geo_abbs[[i, 2]]
+        pattern = str_c("\\b", geo_abbs[[i, 2]], "\\b"),
+        replacement = geo_abbs[[i, 1]]
       )
     }
   }

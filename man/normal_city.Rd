@@ -10,11 +10,14 @@ normal_city(city, geo_abbs = NULL, st_abbs = NULL, na = c("", "NA"),
 \arguments{
 \item{city}{A vector of US city names.}
 
-\item{geo_abbs}{A two-column data frame with geographic abbreviations ("MT") in the first column and replacement strings ("MOUNT") in the second.}
+\item{geo_abbs}{A two-column data frame with replacement strings ("MOUNT") in
+the first column and geographic abbreviations ("MT") in the second.}
 
-\item{st_abbs}{A vector of state abbreviations ("VT") to remove from the \emph{end} of city names ("STOWE VT").}
+\item{st_abbs}{A vector of state abbreviations ("VT") to remove from the
+\emph{end} of city names ("STOWE VT").}
 
-\item{na}{A vector of values to make \code{NA} (useful with the \code{campfin::na_city} vector).}
+\item{na}{A vector of values to make \code{NA} (useful with the \code{campfin::na_city}
+vector).}
 
 \item{na_rep}{If \code{TRUE}, make all single digit repeating strings \code{NA}.}
 }
