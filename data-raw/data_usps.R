@@ -15,6 +15,7 @@ usps_state <-
   html_node(css = "#ep18684") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   set_names(nm = c("full", "abb")) %>%
+  select(abb, full) %>%
   mutate(full = str_to_upper(full))
 
 # scrape armed forces table
@@ -23,6 +24,7 @@ usps_armed <-
   html_node(css = "#ep19241") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   set_names(nm = c("full", "abb")) %>%
+  select(abb, full) %>%
   mutate(full = str_to_upper(str_remove(full, "([:punct:].*)$")))
 
 # combined tables
@@ -55,6 +57,7 @@ usps_street <-
   html_table(fill = TRUE, header = TRUE) %>%
   select(1, 2) %>%
   set_names(nm = c("full", "abb")) %>%
+  select(abb, full) %>%
   filter(full != abb) %>%
   as_tibble()
 
@@ -69,10 +72,10 @@ usps_unit <-
   html_table(fill = TRUE, header = TRUE) %>%
   as_tibble(.name_repair = "unique") %>%
   slice(-26) %>%
-  select(1, 3) %>%
+  select(3, 1) %>%
   na_if("") %>%
   drop_na() %>%
-  set_names(nm = c("full", "abb")) %>%
+  set_names(nm = c("abb", "full")) %>%
   mutate(
     full = str_to_upper(full) %>% str_remove_all("[^\\w]"),
     abb = str_remove_all(abb, "[^\\w]")
@@ -85,6 +88,7 @@ usps_dirs <-
   html_node(css = "#ep19168") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   set_names(nm = c("full", "abb")) %>%
+  select(abb, full) %>%
   mutate(full = str_to_upper(full))
 
 # combine tables
