@@ -33,3 +33,7 @@ abbreviations ("AVE") can be replaced with their long form ("AVENUE").
 Invalid addresses from a vector can be removed (possibly using
 \link{invalid_city}) as well as single (repeating) character strings ("XXXXXX").
 }
+\examples{
+normal_address("1600 Pennsylvania Ave NW", add_abbs = usps_street)
+normal_address("12 e st main ave ste 209", add_abbs = usps_street)
+}

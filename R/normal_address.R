@@ -16,6 +16,9 @@
 #' @param na_rep logical; If `TRUE`, replace all single digit (repeating)
 #'   strings with `NA`.
 #' @return A vector of normalized street addresses.
+#' @examples
+#' normal_address("1600 Pennsylvania Ave NW", add_abbs = usps_street)
+#' normal_address("12 e st main ave ste 209", add_abbs = usps_street)
 #' @importFrom stringr str_to_upper str_replace_all str_trim str_squish str_replace
 #' @export
 normal_address <- function(
@@ -35,14 +38,7 @@ normal_address <- function(
     stringr::str_replace_all("P\\sO", "PO")
 
   if (!is.null(add_abbs)) {
-    add_abbs <- as.data.frame(add_abbs)
-    for (i in seq_along(add_abbs[, 1])) {
-      address2 <- stringr::str_replace(
-        string = address2,
-        pattern = str_c("\\b", add_abbs[i, 1], "\\b"),
-        replacement = add_abbs[i, 2]
-      )
-    }
+    address2 <- expand_abbrev(x = address2, abb = add_abbs)
   }
 
   if (na_rep) {

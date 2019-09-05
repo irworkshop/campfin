@@ -10,9 +10,9 @@ normal_city(city, geo_abbs = NULL, st_abbs = NULL, na = c("", "NA"),
 \arguments{
 \item{city}{A vector of city names.}
 
-\item{geo_abbs}{A two-column data frame like \link{usps_city}, with a full
-geographic feature ("LAKE") in the first column and abbreviations ("LK")
-in the second. Replace all abbreviations with their full version.}
+\item{geo_abbs}{A named vector or data frame of abbreviations passed to
+\link{expand_abbrev}; see \link{expand_abbrev} for format of \code{abb} argument or use
+the \link{usps_city} tibble.}
 
 \item{st_abbs}{A vector of state abbreviations ("VT") to remove from the
 \emph{end} (and only end) of city names ("STOWE VT").}
@@ -39,7 +39,7 @@ using \link{invalid_city}) as well as single (repeating) character strings
 \examples{
 normal_city(
   city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-  geo_abbs = tibble::tibble(rep = "SAINT", abb = "ST", ),
+  geo_abbs = c("ST" = "SAINT"),
   st_abbs = c("VT"),
   na = c("", "NA", "UNKNOWN"),
   na_rep = TRUE

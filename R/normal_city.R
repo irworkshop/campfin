@@ -8,9 +8,9 @@
 #'   using [invalid_city]) as well as single (repeating) character strings
 #'   ("XXXXXX").
 #' @param city A vector of city names.
-#' @param geo_abbs A two-column data frame like [usps_city], with a full
-#'   geographic feature ("LAKE") in the first column and abbreviations ("LK")
-#'   in the second. Replace all abbreviations with their full version.
+#' @param geo_abbs A named vector or data frame of abbreviations passed to
+#'   [expand_abbrev]; see [expand_abbrev] for format of `abb` argument or use
+#'   the [usps_city] tibble.
 #' @param st_abbs A vector of state abbreviations ("VT") to remove from the
 #'   _end_ (and only end) of city names ("STOWE VT").
 #' @param na A vector of values to make `NA` (useful with the [invalid_city]
@@ -21,7 +21,7 @@
 #' @examples
 #' normal_city(
 #'   city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-#'   geo_abbs = tibble::tibble(rep = "SAINT", abb = "ST", ),
+#'   geo_abbs = c("ST" = "SAINT"),
 #'   st_abbs = c("VT"),
 #'   na = c("", "NA", "UNKNOWN"),
 #'   na_rep = TRUE
@@ -49,14 +49,7 @@ normal_city <- function(
     stringr::str_squish()
 
   if (!is.null(geo_abbs)) {
-    geo_abbs <- as.data.frame(geo_abbs)
-    for (i in seq_along(geo_abbs[, 2])) {
-      city_clean <- stringr::str_replace(
-        string = city_clean,
-        pattern = stringr::str_c("\\b", geo_abbs[[i, 2]], "\\b"),
-        replacement = geo_abbs[[i, 1]]
-      )
-    }
+    city_clean <- expand_abbrev(x = city_clean, abb = geo_abbs)
   }
 
   if (!is.null(st_abbs)) {
