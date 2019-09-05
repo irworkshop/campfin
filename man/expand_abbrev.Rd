@@ -24,7 +24,7 @@ The vector \code{x} with abbreviation replaced with their full version.
 }
 \description{
 Create or use a named vector (\code{c("abb" = "rep")}) and pass it to
-\code{\link[stringr:str_replace_all]{stringr::str_replace_all()}}. The \code{abb} argument is surrounded with \code{\b}
+\code{\link[stringr:str_replace_all]{stringr::str_replace_all()}}. The \code{abb} argument is surrounded with \code{\\b}
 to capture only isolated abbreviations. To be used inside
 \code{\link[=normal_address]{normal_address()}} and \code{\link[=normal_city]{normal_city()}} with \link{usps_street} and \link{usps_city},
 respectively.

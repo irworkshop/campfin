@@ -1,6 +1,6 @@
 #' @title Expand Abbreviations
 #' @description Create or use a named vector (`c("abb" = "rep")`) and pass it to
-#'   [stringr::str_replace_all()]. The `abb` argument is surrounded with `\b`
+#'   [stringr::str_replace_all()]. The `abb` argument is surrounded with `\\b`
 #'   to capture only isolated abbreviations. To be used inside
 #'   [normal_address()] and [normal_city()] with [usps_street] and [usps_city],
 #'   respectively.
