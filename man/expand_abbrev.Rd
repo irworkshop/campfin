@@ -7,28 +7,30 @@
 expand_abbrev(x, abb = NULL, rep = NULL)
 }
 \arguments{
-\item{city}{A vector of city names.}
+\item{x}{A vector containing abbreviations.}
 
-\item{geo_abbs}{A two-column data frame like \link{usps_city}, with a full
-geographic feature ("LAKE") in the first column and abbreviations ("LK")
-in the second. Replace all abbreviations with their full version.}
+\item{abb}{One of three objects: (1) A dataframe with abbreviations in the
+\emph{first} column and corresponding replacement strings in the \emph{second}
+column; (2) a \emph{named} vector, with abbreviations as names for their
+respective replacements (e.g., \code{c("abb" = "rep")}); or (3) an unnamed
+vector of abbreviations with an unnamed vector of replacements in the \code{rep}
+argument.}
 
-\item{st_abbs}{A vector of state abbreviations ("VT") to remove from the
-\emph{end} (and only end) of city names ("STOWE VT").}
-
-\item{na}{A vector of values to make \code{NA} (useful with the \link{invalid_city}
-vector).}
-
-\item{na_rep}{logical; If \code{TRUE}, replace all single digit (repeating)
-strings with \code{NA}.}
+\item{rep}{If \code{abb} is an unnamed vector, a vector of replacement strings for
+each abbreviation in \code{abb}.}
 }
 \value{
-A vector of normalized city names.
+The vector \code{x} with abbreviation replaced with their full version.
 }
 \description{
-Create or use a named vector (\code{c(abb = rep)}) and pass it to
-\code{\link[stringr:str_replace_all]{stringr::str_replace_all()}}
+Create or use a named vector (\code{c("abb" = "rep")}) and pass it to
+\code{\link[stringr:str_replace_all]{stringr::str_replace_all()}}. The \code{abb} argument is surrounded with \code{\b}
+to capture only isolated abbreviations. To be used inside
+\code{\link[=normal_address]{normal_address()}} and \code{\link[=normal_city]{normal_city()}} with \link{usps_street} and \link{usps_city},
+respectively.
 }
 \examples{
 expand_abbrev(x = "MT VERNON", abb = c("MT" = "MOUNT"))
+expand_abbrev(x = "VT", abb = state.abb, rep = state.name)
+expand_abbrev(x = "Low FE Level", abb = tibble::tibble(x = "FE", y = "Iron"))
 }

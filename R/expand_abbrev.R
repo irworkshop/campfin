@@ -1,23 +1,25 @@
 #' @title Expand Abbreviations
-#' @description Create or use a named vector (`c(abb = rep)`) and pass it to
-#' [stringr::str_replace_all()]
-#' @param city A vector of city names.
-#' @param geo_abbs A two-column data frame like [usps_city], with a full
-#'   geographic feature ("LAKE") in the first column and abbreviations ("LK")
-#'   in the second. Replace all abbreviations with their full version.
-#' @param st_abbs A vector of state abbreviations ("VT") to remove from the
-#'   _end_ (and only end) of city names ("STOWE VT").
-#' @param na A vector of values to make `NA` (useful with the [invalid_city]
-#'   vector).
-#' @param na_rep logical; If `TRUE`, replace all single digit (repeating)
-#'   strings with `NA`.
-#' @return A vector of normalized city names.
+#' @description Create or use a named vector (`c("abb" = "rep")`) and pass it to
+#'   [stringr::str_replace_all()]. The `abb` argument is surrounded with `\b`
+#'   to capture only isolated abbreviations. To be used inside
+#'   [normal_address()] and [normal_city()] with [usps_street] and [usps_city],
+#'   respectively.
+#' @param x A vector containing abbreviations.
+#' @param abb One of three objects: (1) A dataframe with abbreviations in the
+#'   _first_ column and corresponding replacement strings in the _second_
+#'   column; (2) a _named_ vector, with abbreviations as names for their
+#'   respective replacements (e.g., `c("abb" = "rep")`); or (3) an unnamed
+#'   vector of abbreviations with an unnamed vector of replacements in the `rep`
+#'   argument.
+#' @param rep If `abb` is an unnamed vector, a vector of replacement strings for
+#'   each abbreviation in `abb`.
+#' @return The vector `x` with abbreviation replaced with their full version.
 #' @examples
 #' expand_abbrev(x = "MT VERNON", abb = c("MT" = "MOUNT"))
-#' @importFrom stringr str_to_upper str_replace_all str_remove_all str_trim
-#'   str_squish str_c str_replace str_remove str_which
-#' @importFrom dplyr na_if
-#' @importFrom tibble tibble
+#' expand_abbrev(x = "VT", abb = state.abb, rep = state.name)
+#' expand_abbrev(x = "Low FE Level", abb = tibble::tibble(x = "FE", y = "Iron"))
+#' @importFrom stringr str_replace_all
+#' @importFrom tibble deframe
 #' @export
 expand_abbrev <- function(x, abb = NULL, rep = NULL) {
   if (is.data.frame(abb)) {
@@ -27,10 +29,17 @@ expand_abbrev <- function(x, abb = NULL, rep = NULL) {
       if (is.null(rep)) {
         stop("if abbs are not named, need rep")
       } else {
-        names(abb) <- rep
+        if (length(abb) == length(rep)) {
+          names(rep) <- abb
+          abb <- rep
+        } else {
+          stop("abb and rep must be of the same length")
+        }
       }
     }
   }
   names(abb) <- sprintf("\\b%s\\b", names(abb))
-  str_replace_all(x, abb)
+  stringr::str_replace_all(string = x, pattern = abb)
 }
+
+
