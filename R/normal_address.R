@@ -7,7 +7,7 @@
 #'   Invalid addresses from a vector can be removed (possibly using
 #'   [invalid_city]) as well as single (repeating) character strings ("XXXXXX").
 #' @param address A vector of street addresses (ideally without city, state, and
-#'   ZIP code; you can use the [rx_state] and [rx_city] regular expression
+#'   ZIP code; you can use the [rx_state] and [rx_zip] regular expression
 #'   patterns to remove the later two).
 #' @param add_abbs A two-column data frame like [usps_street], with a full
 #'   suffix ("STREET") in the first column and abbreviations ("ST") in the

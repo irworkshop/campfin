@@ -9,7 +9,7 @@ normal_address(address, add_abbs = NULL, na = c("", "NA"),
 }
 \arguments{
 \item{address}{A vector of street addresses (ideally without city, state, and
-ZIP code; you can use the \link{rx_state} and \link{rx_city} regular expression
+ZIP code; you can use the \link{rx_state} and \link{rx_zip} regular expression
 patterns to remove the later two).}
 
 \item{add_abbs}{A two-column data frame like \link{usps_street}, with a full
