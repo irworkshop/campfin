@@ -1,8 +1,11 @@
-#' Check for All New Files
-#'
+#' @title Glimpse Column Count Functions
+#' @description Apply a counting summary function like [dplyr::n_distinct()] or
+#'   [count_na()] to every column of a dataframe and return the results along
+#'   with a _percentage_ of that value.
 #' @param data A data frame to glimpse.
 #' @param fun A function to map to each column.
-#' @return A tibble with a row for every column and new columns with count and proportion.
+#' @return A tibble with a row for every column and new columns with count and
+#'   proportion.
 #' @examples
 #' glimpse_fun(dplyr::storms, dplyr::n_distinct)
 #' @importFrom purrr map
@@ -10,15 +13,16 @@
 #' @importFrom tibble enframe
 #' @importFrom pillar new_pillar_type
 #' @export
-glimpse_fun <- function(data, fun) {
+glimpse_fun <- function(data, fun, print = TRUE) {
   summary <- data %>%
-    purrr::map({{ fun }}) %>%
-    base::unlist() %>%
-    tibble::enframe(name = "var", value = "n") %>%
+    purrr::map_dbl({{ fun }}) %>%
+    tibble::enframe(name = "col", value = "n") %>%
     dplyr::mutate(p = .data$n / nrow(data)) %>%
     dplyr::mutate(type = format(purrr::map(data, pillar::new_pillar_type))) %>%
     dplyr::select(.data$var, .data$type, .data$n, .data$p)
-  print(summary, n = length(data))
+  if (print) {
+    print(summary, n = length(data))
+  }
 }
 
 #' Count NA Values
@@ -43,8 +47,9 @@ count_na <- function(x) {
 #' prop_na(dplyr::starwars$gender)
 #' @export
 prop_na <- function(x, format = FALSE) {
+  prop <- mean(is.na(x))
   if (format) {
-    scales::percent(mean(is.na(x)))
-  } else
-    mean(is.na(x))
+    scales::percent(mean)
+  }
+  return(prop)
 }

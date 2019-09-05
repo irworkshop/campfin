@@ -2,21 +2,22 @@
 % Please edit documentation in R/na_out.R
 \name{na_out}
 \alias{na_out}
-\title{NA if Out}
+\title{Return \code{NA} if For Unmatched Values}
 \usage{
 na_out(x, y)
 }
 \arguments{
-\item{x}{A vector to check}
+\item{x}{A vector to check.}
 
-\item{y}{A vector to compare}
+\item{y}{A vector to compare.}
 }
 \value{
-A vector \code{x} with NA for those not \code{\%in\%} \code{y}
+A vector \code{x} with NA for those not \code{\%in\%} \code{y}.
 }
 \description{
-NA if Out
+Take a vector \code{x} and return \code{NA} for all values not in \code{y}.
 }
 \examples{
 na_out(x = c("VT", "QC", "CA"), y = state.abb)
+na_out(x = 1:10, seq(1, 10, 2))
 }

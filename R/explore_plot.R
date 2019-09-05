@@ -1,12 +1,13 @@
-#' Check for All New Files
-#'
+#' @title Create Basic Barplots
+#' @description This function simply wraps around [ggplot2::geom_col()] to take
+#'   a dataframe and categorical variable to return a simple barplot count.
 #' @param data The data frame to explore.
 #' @param var A variable to plot.
-#' @param flip Whether chart should be flipped horizontally.
+#' @param flip logical; Whether plot should be flipped horizontally.
 #' @param nbar The number of bars to plot. Always shows most common values.
-#' @param palette The color palette passed to \code{ggplot2::scale_fill_brewer()}.
-#' @param ... Optional arguments passed to \code{ggplot2::labs()} (e.g., title, caption).
-#' @return A tibble with a row for every column and new columns with count and proportion.
+#' @param palette The color palette passed to [ggplot2::scale_fill_brewer().
+#' @param ... Optional arguments passed to [ggplot2::labs()].
+#' @return A bar plot.
 #' @examples
 #' glimpse_fun(dplyr::storms, dplyr::n_distinct)
 #' @importFrom snakecase to_title_case

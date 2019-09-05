@@ -2,21 +2,21 @@
 % Please edit documentation in R/most_common.R
 \name{most_common}
 \alias{most_common}
-\title{Most Common Values}
+\title{Find Most Common Values}
 \usage{
 most_common(x, n = 6)
 }
 \arguments{
-\item{x}{A vector}
+\item{x}{A vector.}
 
-\item{n}{number of values to return}
+\item{n}{Number of values to return.}
 }
 \value{
-Sorted vector of \code{n} most common values
+Sorted vector of \code{n} most common values.
 }
 \description{
-Most Common Values
+From a character vector, which values are most common?
 }
 \examples{
-most_common(dplyr::storms$month, 3)
+most_common(iris$Species, n = 1)
 }

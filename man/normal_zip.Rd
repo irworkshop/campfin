@@ -11,7 +11,9 @@ normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
 
 \item{na}{A vector of values to make \code{NA}.}
 
-\item{na_rep}{If \code{TRUE}, make all single digit repeating strings (e.g., "00000") \code{NA}. This removes the valid but uncommon "22222", "44444", and "55555".}
+\item{na_rep}{If \code{TRUE}, make all single digit repeating strings (e.g.,
+"00000") \code{NA}. This removes the valid but uncommon "22222", "44444", and
+"55555".}
 }
 \value{
 A vector of normalized 5-digit ZIP codes.

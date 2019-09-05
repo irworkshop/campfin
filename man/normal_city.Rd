@@ -8,29 +8,38 @@ normal_city(city, geo_abbs = NULL, st_abbs = NULL, na = c("", "NA"),
   na_rep = FALSE)
 }
 \arguments{
-\item{city}{A vector of US city names.}
+\item{city}{A vector of city names.}
 
-\item{geo_abbs}{A two-column data frame with replacement strings ("MOUNT") in
-the first column and geographic abbreviations ("MT") in the second.}
+\item{geo_abbs}{A two-column data frame like \link{usps_city}, with a full
+geographic feature ("LAKE") in the first column and abbreviations ("LK")
+in the second. Replace all abbreviations with their full version.}
 
 \item{st_abbs}{A vector of state abbreviations ("VT") to remove from the
-\emph{end} of city names ("STOWE VT").}
+\emph{end} (and only end) of city names ("STOWE VT").}
 
-\item{na}{A vector of values to make \code{NA} (useful with the \code{campfin::na_city}
+\item{na}{A vector of values to make \code{NA} (useful with the \link{invalid_city}
 vector).}
 
-\item{na_rep}{If \code{TRUE}, make all single digit repeating strings \code{NA}.}
+\item{na_rep}{logical; If \code{TRUE}, replace all single digit (repeating)
+strings with \code{NA}.}
 }
 \value{
 A vector of normalized city names.
 }
 \description{
-Normalize City Names
+Return consistent version of a city names using
+\code{stringr::str_*()} functions. Letters are capitalized, hyphens and
+underscores are replaced with whitespace, other punctuation is removed,
+numbers are removed, and excess whitespace is trimed and squished.
+Optionally, geographic abbreviations ("MT") can be replaced with their long
+form ("MOUNT"). Invalid addresses from a vector can be removed (possibly
+using \link{invalid_city}) as well as single (repeating) character strings
+("XXXXXX").
 }
 \examples{
 normal_city(
   city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-  geo_abbs = tibble::tibble(abb = "ST", rep = "SAINT"),
+  geo_abbs = tibble::tibble(rep = "SAINT", abb = "ST", ),
   st_abbs = c("VT"),
   na = c("", "NA", "UNKNOWN"),
   na_rep = TRUE

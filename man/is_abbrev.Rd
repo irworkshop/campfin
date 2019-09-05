@@ -15,11 +15,13 @@ is_abbrev(abb, full)
 logical; whether \code{abb} is potential abbreviation of \code{full}
 }
 \description{
-To return a value of \code{TRUE}, (1) the first letter of \code{abb} must match the first
-letter of \code{full}, (2) \emph{all} letters of \code{abb} must exist in \code{full}, and (3) those letters of
-\code{abb} must be in the same order as they appear in \code{full}.
+To return a value of \code{TRUE}, (1) the first letter of \code{abb} must
+match the first letter of \code{full}, (2) \emph{all} letters of \code{abb} must exist in
+\code{full}, and (3) those letters of \code{abb} must be in the same order as they
+appear in \code{full}.
 }
 \examples{
 is_abbrev(abb = "BRX", full = "BRONX")
-is_abbrev(ab = state.abb, full = state.name)
+is_abbrev(abb = state.abb, full = state.name)
+is_abbrev(abb = "NOLA", full = "New Orleans")
 }

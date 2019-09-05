@@ -2,7 +2,7 @@
 % Please edit documentation in R/explore_plot.R
 \name{explore_plot}
 \alias{explore_plot}
-\title{Check for All New Files}
+\title{Create Basic Barplots}
 \usage{
 explore_plot(data, var, flip = FALSE, nbar = 8, palette = "Dark2",
   ...)
@@ -12,19 +12,20 @@ explore_plot(data, var, flip = FALSE, nbar = 8, palette = "Dark2",
 
 \item{var}{A variable to plot.}
 
-\item{flip}{Whether chart should be flipped horizontally.}
+\item{flip}{logical; Whether plot should be flipped horizontally.}
 
 \item{nbar}{The number of bars to plot. Always shows most common values.}
 
-\item{palette}{The color palette passed to \code{ggplot2::scale_fill_brewer()}.}
+\item{palette}{The color palette passed to [ggplot2::scale_fill_brewer().}
 
-\item{...}{Optional arguments passed to \code{ggplot2::labs()} (e.g., title, caption).}
+\item{...}{Optional arguments passed to \code{\link[ggplot2:labs]{ggplot2::labs()}}.}
 }
 \value{
-A tibble with a row for every column and new columns with count and proportion.
+A bar plot.
 }
 \description{
-Check for All New Files
+This function simply wraps around \code{\link[ggplot2:geom_col]{ggplot2::geom_col()}} to take
+a dataframe and categorical variable to return a simple barplot count.
 }
 \examples{
 glimpse_fun(dplyr::storms, dplyr::n_distinct)

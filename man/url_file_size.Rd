@@ -7,15 +7,16 @@
 url_file_size(url, format = FALSE)
 }
 \arguments{
-\item{url}{The url of the page to retrieve}
+\item{url}{The URL of the file to query.}
 
-\item{format}{Whether to format as byte measurment and symbol (e.g., Mb)}
+\item{format}{logical; Whether to format as byte measurment and symbol.}
 }
 \value{
-The size of a file to be downloaded
+The size of a file to be downloaded.
 }
 \description{
-Check URL File Size
+Call \code{\link[httr:HEAD]{httr::HEAD()}} and return the number of bytes in the file
+to be downloaded.
 }
 \examples{
 url_file_size("https://campaignfinance.cdn.sos.ca.gov/dbwebexport.zip", format = TRUE)

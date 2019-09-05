@@ -2,9 +2,9 @@
 % Please edit documentation in R/glimpse_fun.R
 \name{glimpse_fun}
 \alias{glimpse_fun}
-\title{Check for All New Files}
+\title{Glimpse Column Count Functions}
 \usage{
-glimpse_fun(data, fun)
+glimpse_fun(data, fun, print = TRUE)
 }
 \arguments{
 \item{data}{A data frame to glimpse.}
@@ -12,10 +12,13 @@ glimpse_fun(data, fun)
 \item{fun}{A function to map to each column.}
 }
 \value{
-A tibble with a row for every column and new columns with count and proportion.
+A tibble with a row for every column and new columns with count and
+proportion.
 }
 \description{
-Check for All New Files
+Apply a counting summary function like \code{\link[dplyr:n_distinct]{dplyr::n_distinct()}} or
+\code{\link[=count_na]{count_na()}} to every column of a dataframe and return the results along
+with a \emph{percentage} of that value.
 }
 \examples{
 glimpse_fun(dplyr::storms, dplyr::n_distinct)

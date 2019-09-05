@@ -14,13 +14,15 @@ all_files_new(path, glob = NULL, ...)
 \item{...}{Arguments to be passed to \code{fs::dir_ls()}}
 }
 \value{
-logical; whether \emph{all} files in the directory have a modification date equal to today.
+logical; whether \emph{all} files in the directory have a modification
+date equal to today.
 }
 \description{
-This function tests whether all the files in a directory have a modification date
-equal to the system date. Useful when repeatedly running code with a lengthy download stage.
-Many state databases are updated daily, so new data can be helpful but not always neccesary.
-Set this function in an \code{if} statement.
+This function tests whether all the files in a directory have a
+modification date equal to the system date. Useful when repeatedly running
+code with a lengthy download stage. Many state databases are updated daily,
+so new data can be helpful but not always neccesary. Set this function in
+an \code{if} statement.
 }
 \examples{
 if (!all_files_new(tempdir())) {

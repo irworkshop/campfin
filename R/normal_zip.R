@@ -1,8 +1,9 @@
-#' Normalize US ZIP Codes
-#'
+#' @title Normalize US ZIP Codes
 #' @param zip A vector of US ZIP codes.
 #' @param na A vector of values to make `NA`.
-#' @param na_rep If `TRUE`, make all single digit repeating strings (e.g., "00000") `NA`. This removes the valid but uncommon "22222", "44444", and "55555".
+#' @param na_rep If `TRUE`, make all single digit repeating strings (e.g.,
+#'   "00000") `NA`. This removes the valid but uncommon "22222", "44444", and
+#'   "55555".
 #' @return A vector of normalized 5-digit ZIP codes.
 #' @examples
 #' normal_zip(
@@ -10,7 +11,7 @@
 #'   na = c("", "NA"),
 #'   na_rep = TRUE
 #' )
-#' @import stringr
+#' @importFrom stringr str_remove_all str_pad str_sub str_which
 #' @export
 normal_zip <- function(zip, na = c("", "NA"), na_rep = FALSE) {
 

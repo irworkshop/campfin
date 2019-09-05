@@ -2,18 +2,18 @@
 % Please edit documentation in R/is_even.R
 \name{is_even}
 \alias{is_even}
-\title{Is even}
+\title{Check if Even}
 \usage{
 is_even(x)
 }
 \arguments{
-\item{x}{An integer}
+\item{x}{An integer.}
 }
 \value{
-Whether x is even or odd
+logical; Whether the integer is even or odd.
 }
 \description{
-Is even
+Is a number even? Pretty simple...
 }
 \examples{
 is_even(5)
