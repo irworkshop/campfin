@@ -22,4 +22,5 @@ with a \emph{percentage} of that value.
 }
 \examples{
 glimpse_fun(dplyr::storms, dplyr::n_distinct)
+glimpse_fun(dplyr::storms, campfin::count_na)
 }

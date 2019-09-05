@@ -8,6 +8,7 @@
 #'   proportion.
 #' @examples
 #' glimpse_fun(dplyr::storms, dplyr::n_distinct)
+#' glimpse_fun(dplyr::storms, campfin::count_na)
 #' @importFrom purrr map
 #' @importFrom dplyr mutate select
 #' @importFrom tibble enframe
@@ -19,7 +20,7 @@ glimpse_fun <- function(data, fun, print = TRUE) {
     tibble::enframe(name = "col", value = "n") %>%
     dplyr::mutate(p = .data$n / nrow(data)) %>%
     dplyr::mutate(type = format(purrr::map(data, pillar::new_pillar_type))) %>%
-    dplyr::select(.data$var, .data$type, .data$n, .data$p)
+    dplyr::select(.data$col, .data$type, .data$n, .data$p)
   if (print) {
     print(summary, n = length(data))
   }
