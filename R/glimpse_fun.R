@@ -4,6 +4,7 @@
 #'   with a _percentage_ of that value.
 #' @param data A data frame to glimpse.
 #' @param fun A function to map to each column.
+#' @param print logical; Should all columns be printed as rows?
 #' @return A tibble with a row for every column and new columns with count and
 #'   proportion.
 #' @examples

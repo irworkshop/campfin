@@ -10,6 +10,8 @@ glimpse_fun(data, fun, print = TRUE)
 \item{data}{A data frame to glimpse.}
 
 \item{fun}{A function to map to each column.}
+
+\item{print}{logical; Should all columns be printed as rows?}
 }
 \value{
 A tibble with a row for every column and new columns with count and
