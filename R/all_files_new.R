@@ -27,8 +27,7 @@ all_files_new <- function(path, glob = NULL, ...) {
   if (!is_empty(files)) {
     file_times <- fs::file_info(files)$modification_time
     file_days <- lubridate::floor_date(file_times, unit = "day")
-    all_today <- all(file_days == lubridate::today())
-    return()
+    all(file_days == lubridate::today())
   } else {
     warning("Directory is empty, proceeding.")
     return(FALSE)
