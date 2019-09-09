@@ -14,18 +14,18 @@
 #' is_abbrev(abb = "NOLA", full = "New Orleans")
 #' @export
 is_abbrev <- function(abb, full) {
-  abb  <- stringr::str_split(stringr::str_to_lower(abb),  "")[[1]]
-  full <- stringr::str_split(stringr::str_to_lower(full), "")[[1]]
-  if (length(abb) >= length(full)) {
-    return(FALSE)
-  } else {
-    if (abb[[1]] != full[[1]]) {
-      return(FALSE)
-    } else {
-      inside <- all(abb %in% full)
-      order <- match(abb, full)
-      ordered <- all(order < dplyr::lead(order), na.rm = TRUE)
-      return(all(inside, ordered))
+  abb <- stringr::str_split(stringr::str_to_lower(abb), "")
+  full <- stringr::str_split(stringr::str_to_lower(full), "")
+  short  <- purrr::map2_lgl(abb, full, function(abb, full) length(abb) <= length(full))
+  first  <- purrr::map2_lgl(abb, full, function(abb, full) abb[[1]] == full[[1]])
+  ordered_match <- function(abb, full) {
+    j <- rep(NA, length(abb))
+    for (i in seq_along(abb)) {
+      j[i] <- match(abb[i], full, nomatch = 0)
+      full[1:j[i]] <- ""
     }
+    all(diff(j) >= 0)
   }
+  order  <- purrr::map2_lgl(abb, full, ordered_match)
+  short & first & order
 }
