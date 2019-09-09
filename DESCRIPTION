@@ -31,3 +31,5 @@ Imports:
     snakecase (>= 0.11.0)
 URL: http://kiernann.dev/campfin
 BugReports: https://github.com/kiernann/campfin/issues
+Suggests: 
+    testthat
