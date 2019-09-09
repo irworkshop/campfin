@@ -33,16 +33,17 @@
 #' @export
 normal_zip <- function(zip, na = c("", "NA"), na_rep = FALSE) {
 
-  zip2 <- zip %>%
+  if (na_rep) {
+    zip[zip %>% str_which("^(.)\\1+[^22222|44444|55555]$")] <- NA
+  }
+
+  zip[which(zip %in% stringr::str_to_upper(na))] <- NA
+
+  zip <- zip %>%
     str_remove_all("\\D") %>%
+    na_if("") %>%
     str_pad(width = 5, side = "left", pad = "0") %>%
     str_sub(start = 1, end = 5)
 
-  if (na_rep) {
-    zip2[zip2 %>% str_which("^(.)\\1+[^22222|44444|55555]$")] <- NA
-  }
-
-  zip2[which(zip2 %in% stringr::str_to_upper(na))] <- NA
-
-  return(zip2)
+  return(zip)
 }
