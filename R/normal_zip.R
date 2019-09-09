@@ -42,7 +42,7 @@ normal_zip <- function(zip, na = c("", "NA"), na_rep = FALSE) {
     zip2[zip2 %>% str_which("^(.)\\1+[^22222|44444|55555]$")] <- NA
   }
 
-  zip2[which(zip2 %in% na)] <- NA
+  zip2[which(zip2 %in% stringr::str_to_upper(na))] <- NA
 
   return(zip2)
 }

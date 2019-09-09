@@ -47,7 +47,7 @@ normal_address <- function(
     address2[stringr::str_which(address2, "^(.)\\1+$")] <- NA
   }
 
-  address2[which(address2 %in% na)] <- NA
+  address2[which(address2 %in% stringr::str_to_upper(na))] <- NA
 
   return(address2)
 }

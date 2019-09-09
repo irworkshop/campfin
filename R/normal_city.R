@@ -63,7 +63,7 @@ normal_city <- function(
     city_clean[city_clean %>% stringr::str_which("^(.)\\1+$")] <- NA
   }
 
-  city_clean[which(city_clean %in% na)] <- NA
+  city_clean[which(city_clean %in% stringr::str_to_upper(na))] <- NA
 
   return(city_clean)
 }

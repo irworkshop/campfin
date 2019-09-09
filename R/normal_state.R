@@ -38,7 +38,7 @@ normal_state <- function(state, abbreviate = TRUE, na = c("", "NA"), na_rep = FA
     state2[str_which(state2, "^(.)\\1+$")] <- NA
   }
 
-  state2[which(state2 %in% na)] <- NA
+  state2[which(state2 %in% stringr::str_to_upper(na))] <- NA
 
   if (!is.null(valid)) {
     state2[!(state2 %in% valid)] <- NA
