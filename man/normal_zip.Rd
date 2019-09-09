@@ -9,17 +9,36 @@ normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
 \arguments{
 \item{zip}{A vector of US ZIP codes.}
 
-\item{na}{A vector of values to make \code{NA}.}
+\item{na}{A vector of values to replace with \code{NA}.}
 
-\item{na_rep}{If \code{TRUE}, make all single digit repeating strings (e.g.,
-"00000") \code{NA}. This removes the valid but uncommon "22222", "44444", and
-"55555".}
+\item{na_rep}{logical; If \code{TRUE}, make all single digit repeating strings
+(e.g., "00000", "99999") \code{NA}. The valid ZIP codes "22222", "44444", and
+"55555" are not removed.}
 }
 \value{
 A vector of normalized 5-digit ZIP codes.
 }
 \description{
-Normalize US ZIP Codes
+Return consistent version US ZIP codes using \code{stringr::str_*()}
+functions. Non-number characters are removed, strings are padded with
+zeroes on the left (leading zeroes for New England ZIP codes are often
+removed by Microsoft Excel and other progrmas), and ZIP+4 suffixes are
+removed. Invalid ZIP codes from a vector can be removed as well as single
+(repeating) character strings.
+}
+\details{
+From \href{https://en.wikipedia.org/wiki/ZIP_Code#ZIP+4}{Wikipedia}:
+
+In 1983, the U.S. Postal Service introduced an expanded ZIP Code system
+that it called ZIP+4, often called "plus-four codes", "add-on codes", or
+"add-ons". A ZIP+4 Code uses the basic five-digit code plus four additional
+digits to identify a geographic segment within the five-digit delivery
+area, such as a city block, a group of apartments, an individual
+high-volume receiver of mail, a post office box, or any other unit that
+could use an extra identifier to aid in efficient mail sorting and
+delivery. However, initial attempts to promote universal use of the new
+format met with public resistance and today the plus-four code is not
+required.
 }
 \examples{
 normal_zip(
@@ -28,3 +47,10 @@ normal_zip(
   na_rep = TRUE
 )
 }
+\seealso{
+Other geographic normalization functions: \code{\link{abbrev_state}},
+  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
+  \code{\link{normal_address}}, \code{\link{normal_city}},
+  \code{\link{normal_state}}
+}
+\concept{geographic normalization functions}

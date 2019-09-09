@@ -1,14 +1,15 @@
 #' @title Normalize US State Abbreviations
-#' @description Return consistent version of a city state _abbreviations_ using
+#' @description Return consistent version of a state _abbreviations_ using
 #'   `stringr::str_*()` functions. Letters are capitalized, all non-letters are
 #'   removed, nand excess whitespace is trimed and squished.
 #' @param state A vector of US state names or abbreviations.
 #' @param abbreviate If TRUE (default), replace state names with the 2-digit
 #'   abbreviation using the built-in `state.abb` and `state.name` vectors.
 #' @param na A vector of values to make `NA`.
-#' @param na_rep If `TRUE`, make all single digit repeating strings `NA`
-#'   (removes valid "AA" code for "American Armed Forces").
-#' @param valid A vector of valid abbreviations to compare to and remove invalid.
+#' @param na_rep logical; If `TRUE`, make all single digit repeating strings
+#'   `NA` (removes valid "AA" code for "American Armed Forces").
+#' @param valid A vector of valid abbreviations to compare to and remove those
+#'   not shared.
 #' @return A vector of normalized 2-digit state abbreviations.
 #' @examples
 #' normal_state(
@@ -20,6 +21,7 @@
 #' )
 #' @importFrom stringr str_to_upper str_remove_all str_trim str_which
 #' @importFrom tibble tibble
+#' @family geographic normalization functions
 #' @export
 normal_state <- function(state, abbreviate = TRUE, na = c("", "NA"), na_rep = FALSE, valid = NULL) {
 

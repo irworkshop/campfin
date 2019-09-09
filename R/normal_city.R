@@ -30,6 +30,7 @@
 #'   str_squish str_c str_replace str_remove str_which
 #' @importFrom dplyr na_if
 #' @importFrom tibble tibble
+#' @family geographic normalization functions
 #' @export
 normal_city <- function(
   city,

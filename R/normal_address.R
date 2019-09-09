@@ -19,7 +19,9 @@
 #' @examples
 #' normal_address("1600 Pennsylvania Ave NW", add_abbs = usps_street)
 #' normal_address("12 e st main ave ste 209", add_abbs = usps_street)
-#' @importFrom stringr str_to_upper str_replace_all str_trim str_squish str_replace
+#' @importFrom stringr str_to_upper str_replace_all str_trim str_squish
+#'   str_replace
+#' @family geographic normalization functions
 #' @export
 normal_address <- function(
   address,

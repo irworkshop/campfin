@@ -20,6 +20,7 @@
 #' expand_abbrev(x = "Low FE Level", abb = tibble::tibble(x = "FE", y = "Iron"))
 #' @importFrom stringr str_replace_all
 #' @importFrom tibble deframe
+#' @family geographic normalization functions
 #' @export
 expand_abbrev <- function(x, abb = NULL, rep = NULL) {
   if (is.data.frame(abb)) {

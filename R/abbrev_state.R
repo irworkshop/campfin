@@ -15,7 +15,6 @@
 #' abbrev_state(full = state.name)
 #' abbrev_state(full = c("new_mexico", "france"), na_bad = TRUE)
 #' @family geographic normalization functions
-#' @seealso abbrev_state is_abbrev normal_state normal_zip normal_city
 #' @export
 abbrev_state <- function(full, na_bad = FALSE, rm_nums = FALSE) {
   if (!is.character(full)) {

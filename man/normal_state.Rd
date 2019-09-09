@@ -15,16 +15,17 @@ abbreviation using the built-in \code{state.abb} and \code{state.name} vectors.}
 
 \item{na}{A vector of values to make \code{NA}.}
 
-\item{na_rep}{If \code{TRUE}, make all single digit repeating strings \code{NA}
-(removes valid "AA" code for "American Armed Forces").}
+\item{na_rep}{logical; If \code{TRUE}, make all single digit repeating strings
+\code{NA} (removes valid "AA" code for "American Armed Forces").}
 
-\item{valid}{A vector of valid abbreviations to compare to and remove invalid.}
+\item{valid}{A vector of valid abbreviations to compare to and remove those
+not shared.}
 }
 \value{
 A vector of normalized 2-digit state abbreviations.
 }
 \description{
-Return consistent version of a city state \emph{abbreviations} using
+Return consistent version of a state \emph{abbreviations} using
 \code{stringr::str_*()} functions. Letters are capitalized, all non-letters are
 removed, nand excess whitespace is trimed and squished.
 }
@@ -37,3 +38,10 @@ normal_state(
   valid = NULL
 )
 }
+\seealso{
+Other geographic normalization functions: \code{\link{abbrev_state}},
+  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
+  \code{\link{normal_address}}, \code{\link{normal_city}},
+  \code{\link{normal_zip}}
+}
+\concept{geographic normalization functions}

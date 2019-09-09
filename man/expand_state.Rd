@@ -32,6 +32,9 @@ expand_state(abb = "NE03", rm_nums = TRUE)
 \seealso{
 abbrev_state is_abbrev normal_state normal_zip normal_city
 
-Other geographic normalization functions: \code{\link{abbrev_state}}
+Other geographic normalization functions: \code{\link{abbrev_state}},
+  \code{\link{expand_abbrev}},
+  \code{\link{normal_address}}, \code{\link{normal_city}},
+  \code{\link{normal_state}}, \code{\link{normal_zip}}
 }
 \concept{geographic normalization functions}
