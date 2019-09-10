@@ -97,3 +97,27 @@
 #' @description The regex string to extract state string preceding ZIP code.
 #' @format A character string (length 1).
 "rx_state"
+
+#' @title Example Vermont Contributions
+#' @description This randomly generated data frame shows some of the many
+#'   formatting problems politicans, journalists, and political scientists will
+#'   likely face when processing state level campaign finance data. Missing or
+#'   invalid values, duplicate rows, negative amounts, questionable dates, and
+#'   incredibly inconsistent string formatting. The functions in this package
+#'   have been created to help import, explore, and clean this kind of data to
+#'   increase public accountability.
+#' @format A tibble with 10 rows of 10 variables:
+#' \describe{
+#'   \item{id}{A unique contribution ID.}
+#'   \item{cand}{The reporting candidate.}
+#'   \item{date}{The contribution date.}
+#'   \item{amount}{The contribution amount.}
+#'   \item{first}{The contributor's first name}
+#'   \item{last}{The contribution's last name}
+#'   \item{address}{The contributor's address}
+#'   \item{city}{The contributor's city}
+#'   \item{state}{The contributor's state}
+#'   \item{zip}{The contributor's zip}
+#'   ...
+#' }
+"vt_contribs"
