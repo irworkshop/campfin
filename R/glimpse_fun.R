@@ -26,32 +26,3 @@ glimpse_fun <- function(data, fun, print = TRUE) {
     print(summary, n = length(data))
   }
 }
-
-#' Count NA Values
-#'
-#' @description Wrap around `sum(is.na())`
-#' @param x A vector to count `NA`
-#' @return The number of `NA` values in a vector
-#' @examples
-#' count_na(dplyr::starwars$gender)
-#' @export
-count_na <- function(x) {
-  sum(is.na(x))
-}
-
-#' Count NA Proportion
-#'
-#' @description Wrap around `mean(is.na())`
-#' @param x A vector to count `NA`
-#' @param format Should the output use `scales::percent()`?
-#' @return The proportion of `NA` values in a vector
-#' @examples
-#' prop_na(dplyr::starwars$gender)
-#' @export
-prop_na <- function(x, format = FALSE) {
-  prop <- mean(is.na(x))
-  if (format) {
-    scales::percent(mean)
-  }
-  return(prop)
-}
