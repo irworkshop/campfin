@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-"
 )
+options(width = 99)
 ```
 
 # campfin <img src="man/figures/logo.png" align="right" width="120" />
@@ -21,11 +22,12 @@ knitr::opts_chunk$set(
 ## Overview
 
 The `campfin` package was created to facilitate the work being done by 
-[The Accountability Project][01], a tool created by [The Investigative Reporting Workshop][02]. The
-Accountability Project curates, cleans and indexes public data to give journalists, researchers and
-others a simple way to search across otherwise siloed records. The data focuses on people,
-organizations and locations. This package was created specifically to helo with state-level
-**camp**aign **fin**ance data.
+[The Accountability Project][01], a tool created by 
+[The Investigative Reporting Workshop][02]. The Accountability Project curates,
+cleans and indexes public data to give journalists, researchers and others a
+simple way to search across otherwise siloed records. The data focuses on
+people, organizations and locations. This package was created specifically to
+helo with state-level **camp**aign **fin**ance data.
 
 [01]: https://www.publicaccountability.org/ "tap"
 [02]: https://investigativereportingworkshop.org/ "irw"
@@ -37,19 +39,19 @@ The package is not on CRAN and must be installed from GitHub.
 ```{r install, eval=TRUE}
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load_current_gh("kiernann/campfin")
-pacman::p_load(tidyverse, knitr, zipcode)
+pacman::p_load(tidyverse, knitr, stringdist, zipcode)
 ```
 
 ## Normalize
 
-The most important functions are the in the `normal_*()` family. These functions take geographic
-data and return [normalized text][03] that is more searchable. They are largely wrappers around
-the [`stringr` package][07].
+The most important functions are the in the `normal_*()` family. These functions
+take geographic data and return [normalized text][03] that is more searchable.
+They are largely wrappers around the [`stringr` package][07].
 
 * `normal_zip()` takes [ZIP Codes][04] and returns a 5 digit character string
 * `normal_state()` takes US states and returns a [2 digit abbreviation][05]
 * `normal_address()` takes a _street_ address and reduces inconsistencies
-* `normal_city()` takes cities and reduces inconsistencies (to help with [cluster and merging][06])
+* `normal_city()` takes cities and reduces inconsistencies
 
 [03]: https://en.wikipedia.org/wiki/Text_normalization "text_normal"
 [04]: https://en.wikipedia.org/wiki/ZIP_Code "zip_code"
@@ -57,62 +59,156 @@ the [`stringr` package][07].
 [06]: https://github.com/OpenRefine/OpenRefine/wiki/Clustering-In-Depth "open_refine"
 [07]: https://github.com/tidyverse/stringr "stringr"
 
-In this example, we can see how the `normal_*()` function work with the built in data to turn 
-messy data into a single normalized format.
+The `vt_contribs` built-in example data set contains many of the problems these
+functions are designed to help with.
 
-```{r tribble, echo=FALSE}
-vt <- tribble(
-  ~address,             ~city,          ~state,    ~zip,
-  "744 Cape Cod Rd.",      "Stowe, VT",    "VT",        "05672-5563",
-  "EVERYWHERE",            "Morrisville",  "REQUESTED", "N/A",
-  "149-church-st p-o-14",  "Burlington",   "Vermont",   "05401", 
-  "51 depot      square",  "st johnsbury", "vt",        "5819",
-  "XXXXXXX",               "UNKNOWN",      "DC",        "00000"
-)
-kable(vt, "markdown")
+```{r view_messy}
+vt_contribs
 ```
 
-```{r normalize}
-vt <- vt %>% mutate(
-  address = normal_address(
-    address = address,
-    # expand street abbs
-    add_abbs = usps_street,
-    # remove invalid strings
-    na = invalid_city,
-    # remove single repeating chars
-    na_rep = TRUE
-  ),
-  city = normal_city(
-    city = city,
-    # expand city abbs
-    geo_abbs = usps_city,
-    # remove state abbs
-    st_abbs = c("VT"),
-    # remove invalid cities
-    na = invalid_city,
-    na_rep = TRUE
-  ),
-  state = normal_state(
-    state = state,
-    abbreviate = TRUE,
-    # remove all not in geo
-    valid = valid_state
-  ),
-  zip = normal_zip(
-    zip = zip,
-    na = invalid_city,
-    na_rep = TRUE
+What are some of the problems we can see in this data?
+
+* The `date` column is not parsed as an R date.
+* There is one negative `amount` value and another that's zero.
+* One record is missing both the contributor's `first` and `last` name.
+* In `address` we see:
+    * Inconsisten capitalization,
+    * A mix of full and abbreviatied suffixes,
+    * Invalid text in the place of `NA`,
+    * Uneccesary and inconsistent punctuation,
+    * Excess trailing white space,
+    * Excess internal white space,
+    * Hyphens instead of spaces,
+    * Repeating character strings used as `NA`.
+* In `city` we see many of the same problems, plus:
+    * Geographic abbreviations,
+    * Repeated `state` information,
+    * Misspellings,
+    * Colloquial city abbreviations.
+* In `state` we see a mix of full and abbreviated state names.
+* In `zip`,
+    * Repeated digits used for `NA`
+    * Uneccesary and inconsistent [ZIP+4][zip4] usage
+    * Leading zeroes [dropped by Excel][excel] or some other program
+
+[zip4]: https://en.wikipedia.org/wiki/ZIP_Code#ZIP+4 "zip4"
+[excel]: https://support.office.com/en-us/article/display-numbers-as-postal-codes-61b55c9f-6fe3-4e54-96ca-9e85c38a5a1d "excel"
+
+We can use the `normal_*()` family functions to clean this data into a much more
+consitent format. First, we'll read the file with `readr::read_csv()`. Most
+American campaign finance data uses the mm/dd/yyyy format. We can parse this as
+a proper R date with the `col_date_usa` function, which is a shortcut for
+`readr::col_date(format = "%m/%d/%Y")`.
+
+```{r read_messy}
+vt <- read_csv(
+  file = "data-raw/vt_contribs.csv",
+  trim_ws = FALSE,
+  col_types = cols(
+    amount = col_number(),
+    date = col_date_usa()
   )
 )
 ```
 
-```{r kable_normal, echo=FALSE}
-vt %>% 
-  map_df(str_replace_na) %>% 
-  map_df(str_remove, "NA") %>% 
-  kable("markdown")
+Next, we should try to normalize our data as much as possible. We can use
+some simple counting functions and built in vectors to check our progress.
+
+```{r normal_address}
+vt <- vt %>% 
+  mutate(
+    address = normal_address(
+      address = address,
+      add_abbs = usps_street,
+      na = invalid_city,
+      na_rep = TRUE
+    ),
+    city = normal_city(
+      city = city,
+      geo_abbs = usps_city,
+      st_abbs = "VT",
+      na = invalid_city,
+      na_rep = TRUE
+    ),
+    state = normal_state(
+      state = state,
+      abbreviate = TRUE,
+      na_rep = TRUE,
+      valid = valid_state
+    ),
+    zip = normal_zip(
+      zip = zip,
+      na_rep = TRUE
+    )
+  )
 ```
+
+We can see how these functions and our built in data was used to normalize the
+geographic contributor data and remove anything that didn't present real
+information. This format is much more explorable and searchable.
+
+```{r show_normal, echo=FALSE}
+print(vt)
+```
+
+However, we can see now every problem has been solved. Most troublesome are the
+city names. 
+
+```{r bad_city, echo=FALSE}
+vt %>%
+  select(1, 8:10) %>% 
+  drop_na(city) %>% 
+  mutate(valid = city %in% valid_city) %>%
+  filter(!valid)
+```
+
+There is some built in data and a regular process we use to fix as
+much of these problems as possible. Checking against the _expected_ city for
+a given ZIP code is a fast, easy, and confident way to fix incorrect `city`
+values. The `is_abbrev()` and `stringdist::stringdist()` functions are great for
+this.
+
+```{r swap_city}
+vt <- vt %>%
+  rename(city_raw = city) %>% 
+  left_join(zipcodes) %>% 
+  rename(city_match = city) %>% 
+  mutate(
+    match_dist = stringdist(city_raw, city_match),
+    match_abb = is_abbrev(city_raw, city_match),
+    city = if_else(match_abb | match_dist == 1, city_match, city_raw)
+  ) %>% 
+  select(-city_raw, -city_match, -match_dist, -match_abb)
+```
+
+```{r show_swap, echo=FALSE}
+vt %>%
+  select(1, 8:10) %>% 
+  drop_na(city) %>% 
+  mutate(
+    valid = city %in% valid_city & state %in% valid_state & zip %in% valid_zip
+    )
+```
+
+Once our data is as normal as we can confidently make it, we can begind to
+explore. First, we'll explore the data for missing values with `flag_na`, which
+takes a [tidyselct][tidyselect] number of key columns to check (or something
+like `dplyr::everything()`).
+
+```{r flag_na}
+flag_na(vt, last)
+```
+
+Next, we'll want to check for duplicate rows using `flag_dupes`, which takes
+the same kind of arguments. Here, we can ignore the supposedly unique `id`
+variable. It's possible for a person to make the same contribution on the same
+date, but we should flag them nonetheless.
+
+```{r flag_dupes}
+flag_dupes(vt, -id)
+```
+
+[tidyselect]: https://github.com/r-lib/tidyselect "tidyselect"
 
 ## Data
 
@@ -178,31 +274,3 @@ str_extract(white_house, pattern = rx_state)
 
 Work is being done to incorperate regular expressions for addresses and city names, although
 the immense possibility for variation makes these elements harder to generalize.
-
-## Other
-
-There are other functions designed to either facilitate normalization or help with data loading,
-exploration, or cleaning. Many are just simple wrapper functions to speed up data wrangling.
-
-```{r example_functions, collapse=TRUE}
-abbrev_state(full = "VERMONT")
-all_files_new("data/", glob = "*.rda")
-read_csv(file = "x\n11/09/2016", col_types = readr::cols(x = col_date_usa()))
-count_na(x = storms$ts_diameter)
-expand_abbrev(x = "LK SHORE", abb = c("LK" = "LAKE"))
-expand_state(abb = "VT")
-flag_dupes(band_members, everything())
-flag_na(band_members, everything())
-glimpse_fun(data = band_members, fun = n_distinct)
-is_abbrev(abb = "VT", full = "Vermont")
-is_binary(x = c("Y", "N"))
-is_even(x = 2012)
-most_common(x = iris$Species, n = 1)
-na_out(x = c("VT", "CA", "DC"), y = state.abb)
-prop_in(x = c("VT", "CA", "DC"), y = state.abb)
-prop_na(x = storms$hu_diameter)
-prop_out(x = c("VT", "CA", "DC"), y = state.abb)
-url_file_size("https://projects.fivethirtyeight.com/polls-page/senate_polls.csv", format = TRUE)
-"DC" %out% state.abb
-```
-
