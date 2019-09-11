@@ -93,7 +93,7 @@ campaign finance data.
 
 ```{r read_messy}
 vt <- read_csv(
-  file = "data-raw/vt_contribs.csv",
+  file = format_csv(vt_contribs),
   trim_ws = FALSE,
   col_types = cols(
     amount = col_number(),
