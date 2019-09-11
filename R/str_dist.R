@@ -1,7 +1,7 @@
 #' @title String Distance
 #' @description `str_dist` calls wraps around the
 #' @param a `R` object (target); will be converted by [base::as.character()]
-#' @param a `R` object (source); will be converted by [base::as.character()]
+#' @param b `R` object (source); will be converted by [base::as.character()]
 #' @param method Method for distance calculation. The default is "osa."
 #' @param ... Other rguments passed to [stringdist::stringdist()].
 #' @return The distance between string `a` and string `b`.

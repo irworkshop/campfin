@@ -9,11 +9,11 @@ str_dist(a, b, method = "osa", ...)
 \arguments{
 \item{a}{\code{R} object (target); will be converted by \code{\link[base:as.character]{base::as.character()}}}
 
+\item{b}{\code{R} object (source); will be converted by \code{\link[base:as.character]{base::as.character()}}}
+
 \item{method}{Method for distance calculation. The default is "osa."}
 
 \item{...}{Other rguments passed to \code{\link[stringdist:stringdist]{stringdist::stringdist()}}.}
-
-\item{a}{\code{R} object (source); will be converted by \code{\link[base:as.character]{base::as.character()}}}
 }
 \value{
 The distance between string \code{a} and string \code{b}.
