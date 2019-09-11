@@ -10,5 +10,5 @@ test_that("is_abbrev works for simple initialism", {
 })
 
 test_that("is_abbrev works for complex abbreviation", {
-  expect_true(is_abbrev("BRNX", "Bronx"))
+  expect_true(is_abbrev("BRX", "Bronx"))
 })
