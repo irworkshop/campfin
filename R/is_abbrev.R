@@ -16,7 +16,7 @@
 is_abbrev <- function(abb, full) {
   abb <- stringr::str_split(stringr::str_to_lower(abb), "")
   full <- stringr::str_split(stringr::str_to_lower(full), "")
-  short  <- purrr::map2_lgl(abb, full, function(abb, full) length(abb) <= length(full))
+  short  <- purrr::map2_lgl(abb, full, function(abb, full) length(full) - length(abb) > 2)
   first  <- purrr::map2_lgl(abb, full, function(abb, full) abb[[1]] == full[[1]])
   ordered_match <- function(abb, full) {
     j <- rep(NA, length(abb))
