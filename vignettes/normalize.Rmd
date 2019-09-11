@@ -17,8 +17,12 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, warning=FALSE, message=FALSE, error=FALSE}
-pacman::p_load_current_gh("kiernann/campfin")
-pacman::p_load(tidyverse, scales, stringdist)
+library(campfin)
+library(dplyr)
+library(stringr)
+library(readr)
+library(scales)
+library(stringdist)
 ```
 
 ## Background
@@ -183,7 +187,7 @@ additional attention.
 ```{r bad_city, echo=FALSE}
 (bad <- vt %>%
   select(1, 8:10) %>% 
-  drop_na(city) %>% 
+  filter(!is.na(city)) %>% 
   mutate(valid = city %in% valid_city) %>%
   filter(!valid))
 ```
@@ -254,7 +258,7 @@ values.
 ```{r show_swap, echo=FALSE}
 vt %>%
   select(1, 8:10) %>% 
-  drop_na(city) %>% 
+  filter(!is.na(city)) %>% 
   mutate(
     all_valid = city %in% valid_city & state %in% valid_state & zip %in% valid_zip
     )
