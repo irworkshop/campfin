@@ -1,0 +1,282 @@
+---
+title: "normalize"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{normalize}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, warning=FALSE, message=FALSE, error=FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load_current_gh("kiernann/campfin")
+pacman::p_load(tidyverse, scales, stringdist)
+```
+
+## Background
+
+This vignette contains an example of the workflow used by the wranglers on
+[The Accountability Project][tap], a tool created by 
+[The Investigative Reporting Workshop][irw] in Washington, DC. The
+Accountability Project curates, cleans, and indexes public data to give
+journalists, researchers and others a simple way to search across otherwise
+siloed records. The data focuses on people, organizations and locations.
+
+Since state-level campaign finance
+data, which is typically reported _by_ the campaigns, which is often provided to
+them by the contributions themselves, there is often great disparity in data
+quality. The `campfin` package can be used to reduce this disparity in a
+consistent, confident, and programmatic manner.
+
+[tap]: https://www.publicaccountability.org/
+[irw]: https://investigativereportingworkshop.org/
+
+## Messy Data
+
+In this vignette, we will clean some extremely messy fake contribution data from
+a fictitious campaign in Vermont. This data is found in the `vt_contribs` data
+frame.
+
+```{r view_messy}
+print(vt_contribs)
+```
+
+What are some of the problems we can see in this data?
+
+* The `date` column is not parsed as an R date.
+* There is one negative `amount` value and another that's zero.
+* One record is missing both the contributor's `first` and `last` name.
+* One record is duplicated.
+* In `address` we see:
+    * Inconsistent capitalization,
+    * A mix of full and abbreviated suffixes,
+    * Invalid text in the place of `NA`,
+    * Unnecessary and inconsistent punctuation,
+    * Excess trailing white space,
+    * Excess internal white space,
+    * Hyphens instead of spaces,
+    * Repeating character strings used as `NA`.
+* In `city` we see many of the same problems, plus:
+    * Geographic abbreviations,
+    * Repeated `state` information,
+    * Misspellings,
+    * Colloquial city abbreviations.
+* In `state` we see a mix of full and abbreviated state names.
+* In `zip`,
+    * Repeated digits used for `NA`
+    * Unnecessary and inconsistent [ZIP+4][zip4] usage
+    * Leading zeroes [dropped by Excel][excel] or some other program
+
+[zip4]: https://en.wikipedia.org/wiki/ZIP_Code#ZIP+4 "zip4"
+[excel]: https://support.office.com/en-us/article/display-numbers-as-postal-codes-61b55c9f-6fe3-4e54-96ca-9e85c38a5a1d "excel"
+
+While this data is obviously much smaller and more full of errors than real 
+campaign finance data, these errors are not uncommon and need to be addressed.
+The `campfin` package contains many of the tools we need to fix these problems.
+
+## Read
+
+In most cases, the first step is to download and read the file from a state
+agency. When reading the data with the popular `readr::read_delim` function, the 
+`col_date_usa` function can be used as a quick shortcut for 
+`readr::col_date(format = "%m/%d/%Y")`, the format most commonly found in U.S.
+campaign finance data.
+
+```{r read_messy}
+vt <- read_csv(
+  file = "data-raw/vt_contribs.csv",
+  trim_ws = FALSE,
+  col_types = cols(
+    amount = col_number(),
+    date = col_date_usa()
+  )
+)
+```
+
+Next, we should try to normalize our data as much as possible. We can use
+some simple counting functions and built in vectors to check our progress.
+
+```{r prop_valid_before}
+percent(prop_in(vt$city, str_to_lower(valid_city)))
+percent(prop_in(vt$state, valid_state))
+percent(prop_in(vt$zip, valid_zip))
+```
+
+```{r glimpse_fun}
+glimpse_fun(vt, n_distinct)
+glimpse_fun(vt, count_na)
+```
+
+A typical benchmark is to reach greater than 95% "valid." That is, we want to
+normalize our data enough that less than 5% of our data can not be easily
+confirmed as valid using a fairly comprehensive list of cities, states, and
+ZIP codes.
+
+```{r normal_address}
+vt <- vt %>% 
+  mutate(
+    address = normal_address(
+      address = address,
+      add_abbs = usps_street,
+      na = invalid_city,
+      na_rep = TRUE
+    ),
+    city = normal_city(
+      city = city,
+      geo_abbs = usps_city,
+      st_abbs = "VT",
+      na = invalid_city,
+      na_rep = TRUE
+    ),
+    state = normal_state(
+      state = state,
+      abbreviate = TRUE,
+      na_rep = TRUE,
+      valid = valid_state
+    ),
+    zip = normal_zip(
+      zip = zip,
+      na_rep = TRUE
+    )
+  )
+```
+
+We can see how these functions and our built in data was used to normalize the
+geographic contributor data and remove anything that didn't present real
+information. This format is much more explorable and searchable.
+
+```{r show_normal, echo=FALSE}
+select(vt, 7:10)
+```
+
+```{r prop_valid_after}
+percent(prop_in(vt$city, valid_city))
+percent(prop_in(vt$state, valid_state))
+percent(prop_in(vt$zip, valid_zip))
+```
+
+## Cities
+
+However, not problem has been solved. Most troublesome are the city names.
+There are so many city names and such great variety (compared to states and 
+ZIP codes) that it can be difficult to normalize and difficult to assess.
+
+Our `valid_city` vector contains many city names, but far less than exist in the
+country, especially when you account for neighborhoods that aren't _really_ 
+cities, but shouldn't be changed.
+
+```{r length_city}
+length(valid_city)
+```
+
+Still, checking against this list is a good way to check for values that need
+additional attention.
+
+```{r bad_city, echo=FALSE}
+(bad <- vt %>%
+  select(1, 8:10) %>% 
+  drop_na(city) %>% 
+  mutate(valid = city %in% valid_city) %>%
+  filter(!valid))
+```
+
+It might not be clear what's actually wrong with these values. A common way to
+check is by comparing them against _expected_ city for
+a given ZIP code.
+
+```{r match_city, echo=FALSE}
+(bad <- bad %>% 
+  left_join(zipcodes, by = c("zip", "state"), suffix = c("_raw", "_match")))
+```
+
+Now the problems become clear. Two city names are mispelled and the third is
+an obvious abbreviation. When dealing with millions of city names, we need a
+way to check each raw value against it's excpected ZIP code match.
+
+The `str_dist()` and `is_abbrev()` functions can
+be used to compared the value we have with the value we expect. By only checking
+against the corrisponding city to that record's ZIP code, we are making
+extremelly _confident_ changes (compared to the incredibly useful clustering 
+algorithms like thise provided by the `refinr` package).
+
+First, we can use `str_dist()`, which calls the `stringdist::stringdist()`
+function to check the _distance_ between the two strings; that is, the number of
+changes we'd need to make to our normalized value to get our expected matched
+value. If that distance is small (usually 1 or 2), we can confidently use the
+matched value!
+
+But the string distance does not catch colloquial city abbreviations. NYC, BOS,
+LA, CHI, ABQ, BRNX, DFW, OKC. Many residents of a city get so used to writing
+their city's name they use abbreviations and assume them to be universally 
+understood. The `is_abbrev()` function can be used to check to one string might
+be an abbreviation for another using 3 common abbreviation characteristics: (1)
+is the abbreviation at least 2 characters shorter than the full name, (2) is the
+first letter of both strings the same, and (3) do the letters of the abbreviation
+appear in the same order as the full name. Every abbreviation generated by the
+`base::abbreviate()` function would satisfy these characteristics.
+
+```{r}
+(bad <- bad %>% 
+  mutate(
+    match_dist = str_dist(city_raw, city_match),
+    match_abb = is_abbrev(city_raw, city_match)
+  ))
+```
+
+Here's what this process would look like when employed on an entire data frame.
+It's important to ensure that the number of rows in our campaign finance data
+is kept consistent throughout the wrangling process.
+
+```{r swap_city}
+vt <- vt %>%
+  rename(city_raw = city) %>% 
+  left_join(zipcodes) %>% 
+  rename(city_match = city) %>% 
+  mutate(
+    match_dist = stringdist(city_raw, city_match),
+    match_abb = is_abbrev(city_raw, city_match),
+    city = if_else(match_abb | match_dist == 1, city_match, city_raw)
+  ) %>% 
+  select(-city_raw, -city_match, -match_dist, -match_abb)
+```
+
+Now every `city`, `state`, and `zip` value is contained in our list of valid
+values.
+
+```{r show_swap, echo=FALSE}
+vt %>%
+  select(1, 8:10) %>% 
+  drop_na(city) %>% 
+  mutate(
+    all_valid = city %in% valid_city & state %in% valid_state & zip %in% valid_zip
+    )
+```
+
+Once our data is as normal as we can confidently make it, we can begin to
+explore. First, we'll explore the data for missing values with `flag_na`, which
+takes a [tidyselct][tidyselect] number of key columns to check (or something
+like `dplyr::everything()`).
+
+```{r flag_na}
+(vt <- flag_na(vt, last))
+```
+
+Next, we'll want to check for duplicate rows using `flag_dupes`, which takes
+the same kind of arguments. Here, we can ignore the supposedly unique `id`
+variable. It's possible for a person to make the same contribution on the same
+date, but we should flag them nonetheless.
+
+```{r flag_dupes}
+(vt <- flag_dupes(vt, -id))
+```
+
+[tidyselect]: https://github.com/r-lib/tidyselect "tidyselect"
