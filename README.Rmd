@@ -26,21 +26,12 @@ The `campfin` package was created to facilitate the work being done on the
 [The Investigative Reporting Workshop][irw] in Washington, DC. The
 Accountability Project curates, cleans, and indexes public data to give
 journalists, researchers and others a simple way to search across otherwise
-siloed records. The data focuses on people, organizations and locations. This
+siloed records. 
+
+The data focuses on people, organizations and locations. This
 package was created specifically to help with state-level **camp**aign
 **fin**ance data, although the tools included are useful in general database
 exploration and normalization.
-
-Campaign finance is comprised of two types of financial transactions:
-**contributions** made _to_ the campaign and **expenditures** made _by_ the
-campaign (money paid to lobbyists is sometimes considered separate from regular
-expenditures). 
-
-American politics requires campaign finance on the federal, state, and municipal
-elections. As of now, this package contains tools used to process state-level
-data, which is typically reported _by_ the campaigns, which can often result in
-a disparity in data quality. The `campfin` package can be used to reduce this
-disparity in a consistent, confident, and programmatic manner.
 
 [tap]: https://www.publicaccountability.org/
 [irw]: https://investigativereportingworkshop.org/

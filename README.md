@@ -13,22 +13,12 @@ a tool created by [The Investigative Reporting
 Workshop](https://investigativereportingworkshop.org/) in Washington,
 DC. The Accountability Project curates, cleans, and indexes public data
 to give journalists, researchers and others a simple way to search
-across otherwise siloed records. The data focuses on people,
-organizations and locations. This package was created specifically to
-help with state-level **camp**aign **fin**ance data, although the tools
-included are useful in general database exploration and normalization.
+across otherwise siloed records.
 
-Campaign finance is comprised of two types of financial transactions:
-**contributions** made *to* the campaign and **expenditures** made *by*
-the campaign (money paid to lobbyists is sometimes considered separate
-from regular expenditures).
-
-American politics requires campaign finance on the federal, state, and
-municipal elections. As of now, this package contains tools used to
-process state-level data, which is typically reported *by* the
-campaigns, which can often result in a disparity in data quality. The
-`campfin` package can be used to reduce this disparity in a consistent,
-confident, and programmatic manner.
+The data focuses on people, organizations and locations. This package
+was created specifically to help with state-level **camp**aign
+**fin**ance data, although the tools included are useful in general
+database exploration and normalization.
 
 ## Installation
 
@@ -107,25 +97,25 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 5)
-#>     zip          city state latitude  longitude
-#> 1 49913       Calumet    MI 47.23908  -88.46121
-#> 2 37029         Burns    TN 36.04774  -87.28938
-#> 3 93150 Santa Barbara    CA 34.26283 -119.84856
-#> 4 47018     Dillsboro    IN 38.99247  -85.06601
-#> 5 68950      Holstein    NE 40.46582  -98.65405
+#>     zip     city state latitude longitude
+#> 1 07001   Avenel    NJ 40.57900 -74.27987
+#> 2 58332   Esmond    ND 48.05838 -99.77766
+#> 3 24013  Roanoke    VA 37.26714 -79.92645
+#> 4 10112 New York    NY 40.75929 -73.97979
+#> 5 38040    Halls    TN 35.87950 -89.41989
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 5)
 #> # A tibble: 5 x 3
-#>   city           state zip  
-#>   <chr>          <chr> <chr>
-#> 1 BARIUM SPRINGS NC    28010
-#> 2 ENFIELD        IL    62835
-#> 3 WASHINGTON     DC    20380
-#> 4 LONGDALE       OK    73755
-#> 5 STERLING       VA    20163
+#>   city            state zip  
+#>   <chr>           <chr> <chr>
+#> 1 NEW YORK        NY    10270
+#> 2 SEVEN MILE FORD VA    24373
+#> 3 BONFIELD        IL    60913
+#> 4 WEST COLUMBIA   SC    29170
+#> 5 WICHITA FALLS   TX    76301
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -148,31 +138,31 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 5)
 #> # A tibble: 5 x 2
-#>   abb   full     
-#>   <chr> <chr>    
-#> 1 AVEN  AVENUE   
-#> 2 HVN   HAVEN    
-#> 3 LDGE  LODGE    
-#> 4 STRA  STRAVENUE
-#> 5 CRCLE CIRCLE
+#>   abb   full    
+#>   <chr> <chr>   
+#> 1 BSMT  BASEMENT
+#> 2 ARC   ARCADE  
+#> 3 STRT  STREET  
+#> 4 LNDNG LANDING 
+#> 5 SHL   SHOAL
 sample_n(usps_city, 5)
 #> # A tibble: 5 x 2
-#>   abb    full   
-#>   <chr>  <chr>  
-#> 1 UN     UNION  
-#> 2 SPGS   SPRINGS
-#> 3 GATEWY GATEWAY
-#> 4 FRD    FORD   
-#> 5 ISLES  ISLE
+#>   abb   full  
+#>   <chr> <chr> 
+#> 1 PT    POINT 
+#> 2 FT    FORT  
+#> 3 STRT  STREET
+#> 4 GROV  GROVE 
+#> 5 INLT  INLET
 sample_n(usps_state, 5)
 #> # A tibble: 5 x 2
-#>   abb   full               
-#>   <chr> <chr>              
-#> 1 OK    OKLAHOMA           
-#> 2 WV    WEST VIRGINIA      
-#> 3 VA    VIRGINIA           
-#> 4 AE    ARMED FORCES EUROPE
-#> 5 LA    LOUISIANA
+#>   abb   full          
+#>   <chr> <chr>         
+#> 1 AS    AMERICAN SAMOA
+#> 2 WV    WEST VIRGINIA 
+#> 3 TX    TEXAS         
+#> 4 MO    MISSOURI      
+#> 5 CA    CALIFORNIA
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 setdiff(valid_name, str_to_upper(state.name))
@@ -191,7 +181,7 @@ names, which can be passed to `normal_city()`.
 
 ``` r
 sample(invalid_city, 5)
-#> [1] "INFO REQUESTED" "UNKOWN"         "N/A"            "NOT REQUIRED"   "MISSING"
+#> [1] "UNKNOWN CITY"   "P O BOX"        "REQUESTED INFO" "MISSING"        "NONE"
 ```
 
 The `rx_zip` and `rx_state` character strings are useful regular
