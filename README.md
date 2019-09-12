@@ -23,13 +23,11 @@ database exploration and normalization.
 ## Installation
 
 The package is not yet on [CRAN](https://cran.r-project.org/) and must
-be installed from GitHub. As of now, the package lives on the GitHub
-page of it’s original developer.
+be installed from GitHub.
 
 ``` r
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load_current_gh("kiernann/campfin")
-pacman::p_load(tidyverse, zipcode)
+# install.packages("remotes")
+remotes::install_github("irworkshop/campfin")
 ```
 
 ## Normalize
@@ -56,6 +54,21 @@ functions are used to fix a wide variety of string inconsistencies and
 make campaign finance data more consistent.
 
 ## Data
+
+``` r
+library(campfin)
+library(stringr)
+library(zipcode)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+```
 
 The campfin package contains a number of built in data frames and
 strings used to help wrangle campaign finance data.
@@ -97,25 +110,25 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 5)
-#>     zip     city state latitude longitude
-#> 1 07001   Avenel    NJ 40.57900 -74.27987
-#> 2 58332   Esmond    ND 48.05838 -99.77766
-#> 3 24013  Roanoke    VA 37.26714 -79.92645
-#> 4 10112 New York    NY 40.75929 -73.97979
-#> 5 38040    Halls    TN 35.87950 -89.41989
+#>     zip          city state latitude  longitude
+#> 1 08346   Newtonville    NJ 39.56272  -74.85853
+#> 2 43402 Bowling Green    OH 41.38852  -83.65795
+#> 3 05037   Brownsville    VT 43.46147  -72.48743
+#> 4 83438        Parker    ID 44.31920 -111.60171
+#> 5 85654       Rillito    AZ 32.41722 -111.17135
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 5)
 #> # A tibble: 5 x 3
-#>   city            state zip  
-#>   <chr>           <chr> <chr>
-#> 1 NEW YORK        NY    10270
-#> 2 SEVEN MILE FORD VA    24373
-#> 3 BONFIELD        IL    60913
-#> 4 WEST COLUMBIA   SC    29170
-#> 5 WICHITA FALLS   TX    76301
+#>   city        state zip  
+#>   <chr>       <chr> <chr>
+#> 1 TUALATIN    OR    97062
+#> 2 NESPELEM    WA    99155
+#> 3 COMPTON     MD    20627
+#> 4 PETERBORO   NY    13134
+#> 5 CLARKSVILLE TN    37041
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -138,40 +151,40 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 5)
 #> # A tibble: 5 x 2
-#>   abb   full    
-#>   <chr> <chr>   
-#> 1 BSMT  BASEMENT
-#> 2 ARC   ARCADE  
-#> 3 STRT  STREET  
-#> 4 LNDNG LANDING 
-#> 5 SHL   SHOAL
+#>   abb    full      
+#>   <chr>  <chr>     
+#> 1 VLLY   VALLEY    
+#> 2 TRACKS TRACK     
+#> 3 TURNPK TURNPIKE  
+#> 4 CLFS   CLIFFS    
+#> 5 EXTS   EXTENSIONS
 sample_n(usps_city, 5)
 #> # A tibble: 5 x 2
-#>   abb   full  
-#>   <chr> <chr> 
-#> 1 PT    POINT 
-#> 2 FT    FORT  
-#> 3 STRT  STREET
-#> 4 GROV  GROVE 
-#> 5 INLT  INLET
+#>   abb   full   
+#>   <chr> <chr>  
+#> 1 UN    UNION  
+#> 2 DL    DALE   
+#> 3 VIST  VISTA  
+#> 4 LK    LAKE   
+#> 5 VLG   VILLAGE
 sample_n(usps_state, 5)
 #> # A tibble: 5 x 2
-#>   abb   full          
-#>   <chr> <chr>         
-#> 1 AS    AMERICAN SAMOA
-#> 2 WV    WEST VIRGINIA 
-#> 3 TX    TEXAS         
-#> 4 MO    MISSOURI      
-#> 5 CA    CALIFORNIA
+#>   abb   full                
+#>   <chr> <chr>               
+#> 1 WI    WISCONSIN           
+#> 2 OR    OREGON              
+#> 3 ND    NORTH DAKOTA        
+#> 4 WV    WEST VIRGINIA       
+#> 5 DC    DISTRICT OF COLUMBIA
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
-setdiff(valid_name, str_to_upper(state.name))
-#>  [1] "AMERICAN SAMOA"                 "ARMED FORCES AMERICAS"         
-#>  [3] "ARMED FORCES EUROPE"            "ARMED FORCES PACIFIC"          
-#>  [5] "DISTRICT OF COLUMBIA"           "FEDERATED STATES OF MICRONESIA"
-#>  [7] "GUAM"                           "MARSHALL ISLANDS"              
-#>  [9] "NORTHERN MARIANA ISLANDS"       "PALAU"                         
-#> [11] "PUERTO RICO"                    "VIRGIN ISLANDS"
+setdiff(str_to_title(valid_name), state.name)
+#>  [1] "American Samoa"                 "Armed Forces Americas"         
+#>  [3] "Armed Forces Europe"            "Armed Forces Pacific"          
+#>  [5] "District Of Columbia"           "Federated States Of Micronesia"
+#>  [7] "Guam"                           "Marshall Islands"              
+#>  [9] "Northern Mariana Islands"       "Palau"                         
+#> [11] "Puerto Rico"                    "Virgin Islands"
 ```
 
 ### Other
@@ -181,7 +194,7 @@ names, which can be passed to `normal_city()`.
 
 ``` r
 sample(invalid_city, 5)
-#> [1] "UNKNOWN CITY"   "P O BOX"        "REQUESTED INFO" "MISSING"        "NONE"
+#> [1] "ANYWHERE"       "NO ADDRESS"     "TO FIND OUT"    "REQUESTED INFO" "WWW"
 ```
 
 The `rx_zip` and `rx_state` character strings are useful regular

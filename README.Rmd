@@ -39,13 +39,11 @@ exploration and normalization.
 
 ## Installation
 
-The package is not yet on [CRAN][cran] and must be installed from GitHub. As of
-now, the package lives on the GitHub page of it's original developer.
+The package is not yet on [CRAN][cran] and must be installed from GitHub.
 
-```{r install, eval=TRUE, warning=FALSE, message=FALSE}
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load_current_gh("kiernann/campfin")
-pacman::p_load(tidyverse, zipcode)
+```{r install, eval=FALSE, warning=FALSE, message=FALSE}
+# install.packages("remotes")
+remotes::install_github("irworkshop/campfin")
 ```
 
 [cran]: https://cran.r-project.org/
@@ -75,6 +73,13 @@ are used to fix a wide variety of string inconsistencies and make campaign
 finance data more consistent.
 
 ## Data
+
+```{r library}
+library(campfin)
+library(stringr)
+library(zipcode)
+library(dplyr)
+```
 
 The campfin package contains a number of built in data frames and strings used
 to help wrangle campaign finance data.
@@ -139,7 +144,7 @@ sample_n(usps_street, 5)
 sample_n(usps_city, 5)
 sample_n(usps_state, 5)
 setdiff(valid_state, state.abb)
-setdiff(valid_name, str_to_upper(state.name))
+setdiff(str_to_title(valid_name), state.name)
 ```
 
 ### Other
