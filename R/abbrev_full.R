@@ -9,7 +9,7 @@
 #' @param abb One of three objects: (1) A dataframe with full strings in the
 #'   _first_ column and corresponding abbreviations in the _second_
 #'   column; (2) a _named_ vector, with full strings as names for their
-#'   respective abbreviations (e.g., `c(full" = "abb")`); or (3) an unnamed
+#'   respective abbreviations (e.g., `c("full" = "abb")`); or (3) an unnamed
 #'   vector of full words with an unnamed vector of abbreviations in the `rep`
 #'   argument.
 #' @param rep If `full` is an unnamed vector, a vector of abbreviations strings
