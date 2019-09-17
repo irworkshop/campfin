@@ -30,9 +30,9 @@ abbrev_state(full = state.name)
 abbrev_state(full = c("new_mexico", "france"), na_bad = TRUE)
 }
 \seealso{
-Other geographic normalization functions: \code{\link{expand_abbrev}},
-  \code{\link{expand_state}}, \code{\link{normal_address}},
-  \code{\link{normal_city}}, \code{\link{normal_state}},
-  \code{\link{normal_zip}}
+Other geographic normalization functions: \code{\link{abbrev_full}},
+  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
+  \code{\link{normal_address}}, \code{\link{normal_city}},
+  \code{\link{normal_state}}, \code{\link{normal_zip}}
 }
 \concept{geographic normalization functions}

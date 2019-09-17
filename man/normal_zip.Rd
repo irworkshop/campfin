@@ -48,9 +48,9 @@ normal_zip(
 )
 }
 \seealso{
-Other geographic normalization functions: \code{\link{abbrev_state}},
-  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
-  \code{\link{normal_address}}, \code{\link{normal_city}},
-  \code{\link{normal_state}}
+Other geographic normalization functions: \code{\link{abbrev_full}},
+  \code{\link{abbrev_state}}, \code{\link{expand_abbrev}},
+  \code{\link{expand_state}}, \code{\link{normal_address}},
+  \code{\link{normal_city}}, \code{\link{normal_state}}
 }
 \concept{geographic normalization functions}

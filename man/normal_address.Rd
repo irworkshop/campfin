@@ -38,9 +38,9 @@ normal_address("1600 Pennsylvania Ave NW", add_abbs = usps_street)
 normal_address("12 e st main ave ste 209", add_abbs = usps_street)
 }
 \seealso{
-Other geographic normalization functions: \code{\link{abbrev_state}},
-  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
-  \code{\link{normal_city}}, \code{\link{normal_state}},
-  \code{\link{normal_zip}}
+Other geographic normalization functions: \code{\link{abbrev_full}},
+  \code{\link{abbrev_state}}, \code{\link{expand_abbrev}},
+  \code{\link{expand_state}}, \code{\link{normal_city}},
+  \code{\link{normal_state}}, \code{\link{normal_zip}}
 }
 \concept{geographic normalization functions}
