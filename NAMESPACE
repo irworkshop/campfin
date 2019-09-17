@@ -2,6 +2,7 @@
 
 export("%>%")
 export("%out%")
+export(abbrev_full)
 export(abbrev_state)
 export(all_files_new)
 export(col_date_usa)
