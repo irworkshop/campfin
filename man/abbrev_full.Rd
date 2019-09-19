@@ -9,15 +9,15 @@ abbrev_full(x, full = NULL, rep = NULL)
 \arguments{
 \item{x}{A vector containing full words.}
 
-\item{rep}{If \code{full} is an unnamed vector, a vector of abbreviations strings
-for each full word in \code{abb}.}
-
-\item{abb}{One of three objects: (1) A dataframe with full strings in the
+\item{full}{One of three objects: (1) A dataframe with full strings in the
 \emph{first} column and corresponding abbreviations in the \emph{second}
 column; (2) a \emph{named} vector, with full strings as names for their
 respective abbreviations (e.g., \code{c("full" = "abb")}); or (3) an unnamed
 vector of full words with an unnamed vector of abbreviations in the \code{rep}
 argument.}
+
+\item{rep}{If \code{full} is an unnamed vector, a vector of abbreviations strings
+for each full word in \code{abb}.}
 }
 \value{
 The vector \code{x} with full words replaced with their abbreviations.
