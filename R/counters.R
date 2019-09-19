@@ -135,3 +135,19 @@ na_out <- function(x, y) {
   x[which(x %out% y)] <- NA
   return(x)
 }
+
+#' @title Count Values of a Vector
+#' @description A version of [dplyr::count()] which uses [tibble::enframe()] to
+#'   count the number of values in a single vector.
+#' @param x A vector to check.
+#' @param sort logical; if TRUE will sort output in descending order of `n`
+#' @return A tibble, with counts of each `value` in `n`.
+#' @family Simple Counting Wrappers
+#' count_vec(x = rivers)
+#' count_vec(x = sample(x = state.name, size = 1000, replace = TRUE))
+#' @importFrom dplyr count
+#' @importFrom tibble enframe
+#' @export
+count_vec <- function(x, sort = TRUE) {
+  dplyr::count(x = tibble::enframe(x = x), .data$value, sort = sort)
+}
