@@ -28,6 +28,7 @@ prop_out(c("VT", "NH", "ZZ", "ME"), state.abb)
 \seealso{
 Other Simple Counting Wrappers: \code{\link{count_in}},
   \code{\link{count_na}}, \code{\link{count_out}},
-  \code{\link{prop_in}}, \code{\link{prop_na}}
+  \code{\link{progress_table}}, \code{\link{prop_in}},
+  \code{\link{prop_na}}
 }
 \concept{Simple Counting Wrappers}
