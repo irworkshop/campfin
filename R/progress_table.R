@@ -11,6 +11,8 @@
 #' @importFrom tibble tibble add_row
 #' @importFrom dplyr n_distinct
 #' @family Simple Counting Wrappers
+#' @examples
+#' progress_table(state.name, toupper(state.name), compare = valid_name)
 #' @export
 progress_table <- function(..., compare) {
   table <- tibble::tibble(

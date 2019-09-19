@@ -21,6 +21,9 @@ Create a tibble with rows for each stage of normalization
 and columsn for the various statistics most useful in assessing
 the progress of each stage.
 }
+\examples{
+progress_table(state.name, toupper(state.name), compare = valid_name)
+}
 \seealso{
 Other Simple Counting Wrappers: \code{\link{count_in}},
   \code{\link{count_na}}, \code{\link{count_out}},
