@@ -1,7 +1,7 @@
 Package: campfin
 Type: Package
 Title: Help Wrangle Campaign Finance Data
-Version: 0.0.0.9011
+Version: 0.0.0.9012
 Authors@R: as.person(c("Kiernan Nicholls <kiernann@protonmail.com> [aut, cre]"))
 Description: This package was created for use by the Accountability Project team 
     at the Investigative Reporting Workshop. The Accountability Project 
