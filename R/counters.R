@@ -80,6 +80,21 @@ count_out <- function(x, y, na.rm = TRUE) {
   sum(x %out% y)
 }
 
+#' @title Count Set Difference
+#' @description Find length of the set of differences between `x` and `y`.
+#' @details `sum(x %out% y)`
+#' @param x A vector to check.
+#' @param y A vector to compare against.
+#' @return The number of _unique_ values of `x` not in `y`.
+#' @family Simple Counting Wrappers
+#' @examples
+#' # Only unique values are checked
+#' count_diff(c("VT", "NH", "ZZ", "ZZ", "ME"), state.abb)
+#' @export
+count_diff <- function(x, y) {
+  length(setdiff(x, y))
+}
+
 #' @title Count `NA`
 #' @description Count the values of a vector that are missing.
 #' @details `sum(is.na(x))`
