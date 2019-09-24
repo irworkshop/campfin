@@ -26,9 +26,9 @@ Count total values of one vector in another vector.
 count_in(c("VT", "NH", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple Counting Wrappers: \code{\link{count_na}},
-  \code{\link{count_out}}, \code{\link{progress_table}},
-  \code{\link{prop_in}}, \code{\link{prop_na}},
-  \code{\link{prop_out}}
+Other Simple Counting Wrappers: \code{\link{count_diff}},
+  \code{\link{count_na}}, \code{\link{count_out}},
+  \code{\link{progress_table}}, \code{\link{prop_in}},
+  \code{\link{prop_na}}, \code{\link{prop_out}}
 }
 \concept{Simple Counting Wrappers}
