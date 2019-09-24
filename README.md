@@ -51,7 +51,18 @@ other sub-functions to streamline normalization.
 
 Please see the vignette on normalization for an example of how these
 functions are used to fix a wide variety of string inconsistencies and
-make campaign finance data more consistent.
+make campaign finance data more consistent. In general, these functions
+fix the following inconsistencies:
+
+  - Capitalize with `str_to_upper()`
+  - Replace hyphens and underscores with `str_replace()`
+  - Remove remaining punctuation with `str_remove()`
+  - Remove either numbers or letters (depending on data) with
+    `str_remove()`
+  - Remove excess white space with `str_trim()` and `str_squish()`
+  - Replace abbreviations with `expand_abbrev()` (and
+    `str_replace_all()`)
+  - Remove invalid values with `na_out()` (and `str_which()`)
 
 ## Data
 
@@ -110,12 +121,12 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 5)
-#>     zip          city state latitude  longitude
-#> 1 08346   Newtonville    NJ 39.56272  -74.85853
-#> 2 43402 Bowling Green    OH 41.38852  -83.65795
-#> 3 05037   Brownsville    VT 43.46147  -72.48743
-#> 4 83438        Parker    ID 44.31920 -111.60171
-#> 5 85654       Rillito    AZ 32.41722 -111.17135
+#>     zip        city state latitude longitude
+#> 1 73538       Elgin    OK 34.74738 -98.27805
+#> 2 43947   Shadyside    OH 39.96455 -80.76013
+#> 3 06117  W Hartford    CT 41.79140 -72.74853
+#> 4 74466 Tullahassee    OK 35.96357 -95.51386
+#> 5 41410       Cisco    KY 37.69064 -83.07459
 class(zipcode)
 #> [1] "data.frame"
 
@@ -124,11 +135,11 @@ sample_n(zipcodes, 5)
 #> # A tibble: 5 x 3
 #>   city        state zip  
 #>   <chr>       <chr> <chr>
-#> 1 TUALATIN    OR    97062
-#> 2 NESPELEM    WA    99155
-#> 3 COMPTON     MD    20627
-#> 4 PETERBORO   NY    13134
-#> 5 CLARKSVILLE TN    37041
+#> 1 SEVIERVILLE TN    37864
+#> 2 EL PASO     TX    88579
+#> 3 EUSTIS      ME    04936
+#> 4 OKTAHA      OK    74450
+#> 5 NEW HOLLAND OH    43145
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -151,31 +162,31 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 5)
 #> # A tibble: 5 x 2
-#>   abb    full      
-#>   <chr>  <chr>     
-#> 1 VLLY   VALLEY    
-#> 2 TRACKS TRACK     
-#> 3 TURNPK TURNPIKE  
-#> 4 CLFS   CLIFFS    
-#> 5 EXTS   EXTENSIONS
-sample_n(usps_city, 5)
-#> # A tibble: 5 x 2
 #>   abb   full   
 #>   <chr> <chr>  
-#> 1 UN    UNION  
-#> 2 DL    DALE   
-#> 3 VIST  VISTA  
-#> 4 LK    LAKE   
-#> 5 VLG   VILLAGE
+#> 1 VLG   VILLAGE
+#> 2 RDGE  RIDGE  
+#> 3 VL    VILLE  
+#> 4 HT    HEIGHTS
+#> 5 RM    ROOM
+sample_n(usps_city, 5)
+#> # A tibble: 5 x 2
+#>   abb    full    
+#>   <chr>  <chr>   
+#> 1 JCTION JUNCTION
+#> 2 ISLES  ISLE    
+#> 3 GTWAY  GATEWAY 
+#> 4 GATWAY GATEWAY 
+#> 5 FT     FORT
 sample_n(usps_state, 5)
 #> # A tibble: 5 x 2
 #>   abb   full                
 #>   <chr> <chr>               
-#> 1 WI    WISCONSIN           
-#> 2 OR    OREGON              
-#> 3 ND    NORTH DAKOTA        
-#> 4 WV    WEST VIRGINIA       
-#> 5 DC    DISTRICT OF COLUMBIA
+#> 1 VA    VIRGINIA            
+#> 2 DC    DISTRICT OF COLUMBIA
+#> 3 TN    TENNESSEE           
+#> 4 LA    LOUISIANA           
+#> 5 MS    MISSISSIPPI
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 setdiff(str_to_title(valid_name), state.name)
@@ -194,7 +205,7 @@ names, which can be passed to `normal_city()`.
 
 ``` r
 sample(invalid_city, 5)
-#> [1] "ANYWHERE"       "NO ADDRESS"     "TO FIND OUT"    "REQUESTED INFO" "WWW"
+#> [1] "ON LINE"   "XXX"       "NONE GIVE" "ONLINE"    "WEB"
 ```
 
 The `rx_zip` and `rx_state` character strings are useful regular

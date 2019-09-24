@@ -70,7 +70,16 @@ normalization.
 
 Please see the vignette on normalization for an example of how these functions
 are used to fix a wide variety of string inconsistencies and make campaign 
-finance data more consistent.
+finance data more consistent. In general, these functions fix the following
+inconsistencies:
+
+* Capitalize with `str_to_upper()`
+* Replace hyphens and underscores with `str_replace()`
+* Remove remaining punctuation with `str_remove()`
+* Remove either numbers or letters (depending on data) with `str_remove()`
+* Remove excess white space with `str_trim()` and `str_squish()`
+* Replace abbreviations with `expand_abbrev()` (and `str_replace_all()`)
+* Remove invalid values with `na_out()` (and `str_which()`)
 
 ## Data
 
