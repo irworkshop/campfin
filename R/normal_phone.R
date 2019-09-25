@@ -1,9 +1,19 @@
-#' @title Normalize a Phone Number
-#' @description
+#' @title Normalize a US Phone Number
+#' @description Take US phone numbers in any number of formats and try to
+#'   convert them to a standard format.
 #' @param number A vector of phone number in any format.
+#' @param format The desired output format, with `%a` representing the 3-digit
+#'   area code, `%e` representing the 3-digit exchange, and `%l` representing
+#'   the 4-digit line number.
+#' @param na_bad logical; Should invalid numbers be replaced with `NA`.
+#' @param na_rep logical; Should single digit (repeating) strings be replaced
+#'   with `NA`.
+#' @param convert logical; Should LETTERS be converted to their keypad number
+#'   equivalent.
+#' @param rm_ext logical; Should extensions be removed from the end of a number.
 #' @return A normalized telephone number.
-#' @importFrom stringr str_replace_all str_replace str_remove_all
-#' @family Simple Counting Wrappers
+#' @importFrom stringr str_detect str_sub str_replace_all str_replace
+#'   str_remove_all str_which str_to_lower str_length str_extract
 #' @examples
 #' normal_phone(number = c("916-225-5887"))
 #' @export
@@ -14,11 +24,21 @@ normal_phone <- function(number,
                          convert = FALSE,
                          rm_ext = FALSE) {
 
-  vletterToNumber <- Vectorize(phonenumber::letterToNumber, USE.NAMES = FALSE)
-  if (convert) {
-    number <- vletterToNumber(number)
-  }
+  number <- as.character(number)
 
+  # replace letters for strings that start with non-letter
+  has_letters <- stringr::str_detect(number, "[A-z&&[^x]]")
+  first_digit <- stringr::str_sub(number, end = 1L)
+  ends_letters <- stringr::str_detect(first_digit, "[:alpha:]", negate = TRUE)
+  which_letters <- which(has_letters & ends_letters)
+  number[which_letters] <- stringr::str_replace_all(number[which_letters], keypad)
+  number[which_letters] <- stringr::str_replace(
+    string = stringr::str_remove_all(number[which_letters], "[\\D&&[^x]]"),
+    pattern = "(^\\d{3})(\\d{3})(\\d{4})",
+    replacement = "\\1-\\2-\\3"
+  )
+
+  # isolate those numbers which match rx_phone
   which_good <- stringr::str_which(number, rx_phone)
   which_bad <- stringr::str_which(number, rx_phone, negate = TRUE)
   good_nums <- number[which_good]
@@ -29,7 +49,7 @@ normal_phone <- function(number,
     stringr::str_replace("x", " x")
 
   if (na_rep) {
-    good_nums[good_nums::str_which(good_nums, "^(.)\\1+$")] <- NA
+    good_nums[stringr::str_which(good_nums, "^(.)\\1+$")] <- NA
   }
 
   start_country <- which(stringr::str_length(good_nums) > 10 & stringr::str_sub(good_nums, end = 1L) == "1")
