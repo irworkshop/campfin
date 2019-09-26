@@ -98,6 +98,12 @@
 #' @format A character string (length 1).
 "rx_state"
 
+#' @title Phone number regex
+#' @description The regex string to match US phone numbers in a variety of
+#'   common formats.
+#' @format A character string (length 1).
+"rx_phone"
+
 #' @title Example Vermont Contributions
 #' @description This randomly generated data frame shows some of the many
 #'   formatting problems politicans, journalists, and political scientists will
