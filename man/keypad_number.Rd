@@ -15,6 +15,3 @@ A character vector of numbers.
 \description{
 Return the Keypad Number for a Letter
 }
-\examples{
-keypad_number(letter = "Example")
-}

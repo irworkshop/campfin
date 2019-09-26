@@ -15,6 +15,3 @@ The numbers which would return \code{number} in \code{\link[=keypad_number]{keyp
 \description{
 Return the Keypad Letters for a Number
 }
-\examples{
-keypad_letters(number = 8)
-}
