@@ -14,6 +14,7 @@
 #' @return A normalized telephone number.
 #' @importFrom stringr str_detect str_sub str_replace_all str_replace
 #'   str_remove_all str_which str_to_lower str_length str_extract
+#' @importFrom rlang is_vector
 #' @examples
 #' normal_phone(number = c("916-225-5887"))
 #' @export
@@ -24,7 +25,7 @@ normal_phone <- function(number,
                          rm_ext = FALSE) {
 
   # stop if not a vector
-  if (!is_vector(number)) {
+  if (!rlang::is_vector(number)) {
     stop("Phone number is not a vector.")
   }
 
@@ -40,9 +41,9 @@ normal_phone <- function(number,
   # find those with letters but not at start
   lets <- which(has_letters & ends_letters)
   # convert numbers in those strings
-  number[lets] <- keypad_convert(number[which_letters], ext = FALSE)
+  number[lets] <- keypad_convert(number[lets], ext = FALSE)
   # remove non digit characters to form valid rx_phone
-  number[lets] <- stringr::str_remove_all(number[which_letters], "[\\D&&[^x]]")
+  number[lets] <- stringr::str_remove_all(number[lets], "[\\D&&[^x]]")
 
   # isolate those numbers which match rx_phone
   # only these numbers will be changed any further
@@ -62,7 +63,7 @@ normal_phone <- function(number,
   start_one <- stringr::str_sub(good_nums, end = 1L) == "1"
   start_code <- which(long_10 & start_one)
   # remove the country code
-  good_nums[start_code] <- stringr::str_sub(good_nums[start_country], start = 2)
+  good_nums[start_code] <- stringr::str_sub(good_nums[start_code], start = 2)
 
   # turn the format code into regex
   # for those with area code, exchange, and line

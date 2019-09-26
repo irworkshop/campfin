@@ -35,7 +35,7 @@ keypad_convert <- function(x, ext = FALSE) {
     } else {
       x <- stringr::str_replace_all(
         string = stringr::str_to_upper(x),
-        pattern = campfin::keypad
+        pattern = keypad
       )
     }
     return(x)
