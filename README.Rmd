@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: yes
 editor_options: 
   chunk_output_type: console
 ---
@@ -42,8 +43,14 @@ exploration and normalization.
 The package is not yet on [CRAN][cran] and must be installed from GitHub.
 
 ```{r install, eval=FALSE, warning=FALSE, message=FALSE}
-# install.packages("remotes")
+if(!requireNamespace("remotes")) install.packages("remotes")
 remotes::install_github("irworkshop/campfin")
+```
+
+Or you can install the development branch to get the latest features.
+
+```{r install_dev, eval=FALSE, warning=FALSE, message=FALSE}
+remotes::install_github("irworkshop/campfin", ref = "develop")
 ```
 
 [cran]: https://cran.r-project.org/
@@ -62,6 +69,7 @@ normalization.
 * `normal_zip()` takes [ZIP Codes][zip] and aims to return a valid 5-digit code.
 * `normal_state()` takes US states and returns a [2 digit abbreviation][abbs].
 * `normal_city()` takes cities and reduces inconsistencies.
+* `normal_phone()` consistently fornats US telephone numbers.
 
 [txt]: https://en.wikipedia.org/wiki/Text_normalization
 [stringr]: https://github.com/tidyverse/stringr
@@ -83,11 +91,10 @@ inconsistencies:
 
 ## Data
 
-```{r library}
+```{r library, message=FALSE, warning=FALSE}
 library(campfin)
-library(stringr)
 library(zipcode)
-library(dplyr)
+library(tidyverse)
 ```
 
 The campfin package contains a number of built in data frames and strings used
@@ -174,11 +181,34 @@ print(rx_zip)
 print(rx_state)
 ```
 
-```{r rx_strings, collapse=TRUE}
+```{r rx_address, collapse=TRUE}
 white_house <- "1600 Pennsylvania Ave NW, Washington, DC 20500-0003"
 str_extract(white_house, pattern = rx_zip)
 str_extract(white_house, pattern = rx_state)
 ```
 
+The `rx_phone` character string is another useful regular expression to match
+US telephone numbers in a wide variety of common formats.
+
+```{r rx_telephone}
+c(
+  "867-5309",
+  "2027621401",
+  "(202) 456-1111",
+  "1-800-273-8255",
+  "800.288.8372",
+  "(802) 555-1234 x567",
+  "1-916-CALL-TUR",
+  "Telephone"
+) %>% 
+  enframe(NULL) %>% 
+  mutate(match = str_detect(value, rx_phone))
+```
+
 The `vt_contribs` data frame contains example campaign contribution data from
 a fictional election in Vermont. The data is used in the normalization vignette.
+
+```{r print_vt}
+print(vt_contribs)
+```
+
