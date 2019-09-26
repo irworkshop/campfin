@@ -16,5 +16,5 @@ A character vector of numbers.
 Return the Keypad Number for a Letter
 }
 \examples{
-keypad_number("Example")
+keypad_number(letter = "Example")
 }

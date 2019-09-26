@@ -7,12 +7,11 @@ length(numbers) == 27
 # assign letter names to each number
 names(numbers) <- c(" ", LETTERS)
 
-keypad_alpha <- setNames(as.character(numbers), c(" ", LETTERS))
-keypad_nums <- invert_named(keypad_alpha)
+keypad <- setNames(as.character(numbers), c(" ", LETTERS))
 
 # test stringr replace
-str_replace_all("TEST", keypad_alpha)
-str_replace_all("8378", keypad_nums)
+str_replace_all("TEST", keypad)
+str_replace_all("8378", invert_named(keypad))
 
 # save keypad data internally
 use_data(keypad, internal = TRUE)
