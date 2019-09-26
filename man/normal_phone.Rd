@@ -5,22 +5,21 @@
 \title{Normalize a US Phone Number}
 \usage{
 normal_phone(number, format = "(\%a) \%e-\%l", na_bad = FALSE,
-  na_rep = FALSE, convert = FALSE, rm_ext = FALSE)
+  convert = FALSE, rm_ext = FALSE)
 }
 \arguments{
 \item{number}{A vector of phone number in any format.}
 
 \item{format}{The desired output format, with \code{\%a} representing the 3-digit
-area code, \code{\%e} representing the 3-digit exchange, and \code{\%l} representing
-the 4-digit line number.}
+\strong{area} code, \code{\%e} representing the 3-digit \strong{exchange}, and \code{\%l}
+representing the 4-digit \strong{line} number. The puctuation between each part
+of the format is used in the normalized number (e.g., \code{"(\%a) \%e-\%l"} or
+\code{"\%a-\%e-\%l"}).}
 
 \item{na_bad}{logical; Should invalid numbers be replaced with \code{NA}.}
 
-\item{na_rep}{logical; Should single digit (repeating) strings be replaced
-with \code{NA}.}
-
-\item{convert}{logical; Should LETTERS be converted to their keypad number
-equivalent.}
+\item{convert}{logical; Should \code{\link[=keypad_convert]{keypad_convert()}} be invoked to replace
+numbers with their keypad equivalent.}
 
 \item{rm_ext}{logical; Should extensions be removed from the end of a number.}
 }
