@@ -39,8 +39,8 @@ normal_phone <- function(number,
   )
 
   # isolate those numbers which match rx_phone
-  which_good <- stringr::str_which(number, rx_phone)
-  which_bad <- stringr::str_which(number, rx_phone, negate = TRUE)
+  which_good <- stringr::str_which(number, campfin::rx_phone)
+  which_bad <- stringr::str_which(number, campfin::rx_phone, negate = TRUE)
   good_nums <- number[which_good]
 
   good_nums <- good_nums %>%
