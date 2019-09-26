@@ -22,8 +22,9 @@ Find the proportion of values of a vector that are missing.
 prop_na(c("VT", "NH", NA, "ME"))
 }
 \seealso{
-Other Simple Counting Wrappers: \code{\link{count_in}},
-  \code{\link{count_na}}, \code{\link{count_out}},
+Other Simple Counting Wrappers: \code{\link{count_diff}},
+  \code{\link{count_in}}, \code{\link{count_na}},
+  \code{\link{count_out}}, \code{\link{progress_table}},
   \code{\link{prop_in}}, \code{\link{prop_out}}
 }
 \concept{Simple Counting Wrappers}

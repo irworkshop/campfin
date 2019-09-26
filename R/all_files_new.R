@@ -11,9 +11,8 @@
 #'   date equal to today.
 #' @importFrom fs dir_ls file_info
 #' @importFrom lubridate today floor_date
-#' @importFrom purrr is_empty
 #' @importFrom magrittr use_series equals
-#' @importFrom rlang .data
+#' @importFrom rlang .data is_empty
 #' @examples
 #' if (!all_files_new(tempdir())) {
 #'   download.file(
@@ -24,7 +23,7 @@
 #' @export
 all_files_new <- function(path, glob = NULL, ...) {
   files <- fs::dir_ls(path = path, ...)
-  if (!is_empty(files)) {
+  if (!rlang::is_empty(files)) {
     file_times <- fs::file_info(files)$modification_time
     file_days <- lubridate::floor_date(file_times, unit = "day")
     all(file_days == lubridate::today())

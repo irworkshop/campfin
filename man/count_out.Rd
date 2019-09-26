@@ -26,8 +26,9 @@ Find proportion of values of one vector not in another vector.
 count_out(c("VT", "NH", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple Counting Wrappers: \code{\link{count_in}},
-  \code{\link{count_na}}, \code{\link{prop_in}},
+Other Simple Counting Wrappers: \code{\link{count_diff}},
+  \code{\link{count_in}}, \code{\link{count_na}},
+  \code{\link{progress_table}}, \code{\link{prop_in}},
   \code{\link{prop_na}}, \code{\link{prop_out}}
 }
 \concept{Simple Counting Wrappers}
