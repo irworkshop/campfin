@@ -8,22 +8,37 @@
 #' @details When replacing letters, this function relies on the feature of
 #'   [stringr::str_replace_all()] to work with named vectors (`c("A" = "2")`).
 #' @param x A vector of characters or letters.
+#' @param ext logical; Should exension text be converted to numbers. Defaults to
+#'   `FALSE` and matches x, ext, and extension followed by a space or number.
 #' @return If a character vector is supplied, a vector of each elements numeric
 #'   counterpart is returned. If a numeric vector (or a completely coercible
 #'   character vector) is supplied, then a **list** is returned, each element of
 #'   which contacts a vector of letetrs for each number.
 #' @examples
-#' keypad_convert("1-800-CASH-NOW")
+#' keypad_convert("1-800-CASH-NOW ext123")
 #' keypad_convert(c("abc", "123"))
 #' keypad_convert(letters)
 #' @importFrom stringr str_replace_all str_to_upper
 #' @export
-keypad_convert <- function(x) {
+keypad_convert <- function(x, ext = FALSE) {
   is_letter <- is.character(x)
-  is_number <- is.numeric(x) | all(!is.na(suppressWarnings(as.numeric(x))))
+  is_number <- all(!is.na(suppressWarnings(as.numeric(x))))
   if (is_number) { x <- as.numeric(x) }
+  rx_ext <- "ext(\\s+\\d+|\\d+)|x(\\s+\\d+|\\d+)|extension(\\s+\\d+|\\d+)"
+  which_ext <- stringr::str_which(stringr::str_to_lower(x), rx_ext)
   if (is_letter) {
-    stringr::str_replace_all(stringr::str_to_upper(x), keypad)
+    if (!ext & !rlang::is_empty(x[which_ext])) {
+      e <- str_extract(x[which_ext], rx_ext)
+      x[which_ext] <- str_remove(x[which_ext], rx_ext)
+      x <- str_replace_all(x, keypad)
+      x[which_ext] <- paste0(x[which_ext], e)
+    } else {
+      x <- stringr::str_replace_all(
+        string = stringr::str_to_upper(x),
+        pattern = campfin::keypad
+      )
+    }
+    return(x)
   } else {
     if (is_number) {
       combos <- rep_len(list(NA), length.out = length(x))

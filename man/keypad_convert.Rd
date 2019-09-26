@@ -4,10 +4,13 @@
 \alias{keypad_convert}
 \title{Convert Letter(s) or a Number to their Keypad Counterpart}
 \usage{
-keypad_convert(x)
+keypad_convert(x, ext = FALSE)
 }
 \arguments{
 \item{x}{A vector of characters or letters.}
+
+\item{ext}{logical; Should exension text be converted to numbers. Defaults to
+\code{FALSE} and matches x, ext, and extension followed by a space or number.}
 }
 \value{
 If a character vector is supplied, a vector of each elements numeric
@@ -28,7 +31,7 @@ When replacing letters, this function relies on the feature of
 \code{\link[stringr:str_replace_all]{stringr::str_replace_all()}} to work with named vectors (\code{c("A" = "2")}).
 }
 \examples{
-keypad_convert("1-800-CASH-NOW")
+keypad_convert("1-800-CASH-NOW ext123")
 keypad_convert(c("abc", "123"))
 keypad_convert(letters)
 }
