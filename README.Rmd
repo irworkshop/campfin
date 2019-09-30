@@ -100,8 +100,9 @@ library(tidyverse)
 The campfin package contains a number of built in data frames and strings used
 to help wrangle campaign finance data.
 
-```{r data}
-data(package = "campfin")$results[, "Item"]
+```{r data, results='asis'}
+objects <- data(package = "campfin")$results[, "Item"]
+cat(str_c("* ", "`", objects, "`"), sep = "\n")
 ```
 
 The `/data-raw` directory contains the code used to create the objects.
@@ -133,11 +134,11 @@ include more common neighborhoods and census-designated places)
 ```{r geo_df, collapse=TRUE, warning=FALSE, message=FALSE, error=FALSE}
 # zipcode version
 data("zipcode")
-sample_n(zipcode, 5)
+sample_n(zipcode, 3)
 class(zipcode)
 
 # campfin version
-sample_n(zipcodes, 5)
+sample_n(zipcodes, 3)
 class(zipcodes)
 ```
 
@@ -156,21 +157,15 @@ least once in the `valid_city` vector from `zipcodes`. The `valid_state` and
 territories not found in R's build in `state.abb` and `state.name` vectors.
 
 ```{r usps}
-sample_n(usps_street, 5)
-sample_n(usps_city, 5)
-sample_n(usps_state, 5)
+sample_n(usps_street, 3)
+sample_n(usps_state, 3)
 setdiff(valid_state, state.abb)
-setdiff(str_to_title(valid_name), state.name)
 ```
 
 ### Other
 
 The `invalid_city` vector contains, appropriately, common invalid city names,
 which can be passed to `normal_city()`.
-
-```{r na_city}
-sample(invalid_city, 5)
-```
 
 The `rx_zip` and `rx_state` character strings are useful regular expressions for
 extracting geographic data from a single string address, data which can then be
@@ -191,24 +186,6 @@ The `rx_phone` character string is another useful regular expression to match
 US telephone numbers in a wide variety of common formats.
 
 ```{r rx_telephone}
-c(
-  "867-5309",
-  "2027621401",
-  "(202) 456-1111",
-  "1-800-273-8255",
-  "800.288.8372",
-  "(802) 555-1234 x567",
-  "1-916-CALL-TUR",
-  "Telephone"
-) %>% 
-  enframe(NULL) %>% 
-  mutate(match = str_detect(value, rx_phone))
+str_trunc(rx_phone, width = 80, side = "center")
+str_detect(c("1-800-555-1234", "(800) 555-1234", "8005551234 x567"), rx_phone)
 ```
-
-The `vt_contribs` data frame contains example campaign contribution data from
-a fictional election in Vermont. The data is used in the normalization vignette.
-
-```{r print_vt}
-print(vt_contribs)
-```
-
