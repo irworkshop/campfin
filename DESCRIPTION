@@ -8,7 +8,7 @@ Description: This package was created for use by the Accountability Project team
     standardizes and disambiguates campaign finance data to make it more 
     searchable. The functions included facilitate the exploration and wrangling
     of data, with an emphasis on string normalization.
-License: CCBY-4.0
+License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

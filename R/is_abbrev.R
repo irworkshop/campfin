@@ -7,13 +7,15 @@
 #' @param full A long form string to test against
 #' @return logical; whether `abb` is potential abbreviation of `full`
 #' @importFrom stringr str_split str_to_lower
-#' @importFrom dplyr lead
+#' @importFrom dplyr lead na_if
 #' @examples
 #' is_abbrev(abb = "BRX", full = "BRONX")
 #' is_abbrev(abb = state.abb, full = state.name)
 #' is_abbrev(abb = "NOLA", full = "New Orleans")
 #' @export
 is_abbrev <- function(abb, full) {
+  abb <- dplyr::na_if(abb, "")
+  full <- dplyr::na_if(full, "")
   abb <- stringr::str_split(stringr::str_to_lower(abb), "")
   full <- stringr::str_split(stringr::str_to_lower(full), "")
 
