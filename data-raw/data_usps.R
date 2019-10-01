@@ -1,6 +1,7 @@
 ## code to prepare `usps_*` dataframes, `valid_state` and `valid_abbs` vectors
 
 library(tidyverse)
+library(campfin)
 library(rvest)
 
 # state names and abbs ----------------------------------------------------
@@ -112,8 +113,8 @@ usps_city <- usps_street %>%
   ) %>%
   # add those not included
   add_row(
-    full = c("MOUNT", "PORT", "MOUNTAIN", "SAINT", "FORT", "TOWNSHIP"),
-    abb = c("MT", "PRT", "MTN", "ST", "FT", "TWP")
+    full = c("FORT", "HEIGHTS", "MOUNT", "MOUNTAIN", "PORT", "SAINT", "TOWNSHIP"),
+    abb  = c("FT",   "HTS",     "MT",    "MTN",      "PRT",  "ST",    "TWP")
   ) %>%
   # add directional abbs
   bind_rows(usps_dirs) %>%
