@@ -104,6 +104,11 @@
 #' @format A character string (length 1).
 "rx_phone"
 
+#' @title URL regex
+#' @description The regex string to match valid URLs.
+#' @format A character string (length 1).
+"rx_url"
+
 #' @title Example Vermont Contributions
 #' @description This randomly generated data frame shows some of the many
 #'   formatting problems politicans, journalists, and political scientists will
