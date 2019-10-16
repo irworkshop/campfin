@@ -3,7 +3,14 @@
 
 # campfin <img src="man/figures/logo.png" align="right" width="120" />
 
+<!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
+[![Travis build
+status](https://travis-ci.org/irworkshop/campfin.svg?branch=master)](https://travis-ci.org/irworkshop/campfin)
+<!-- badges: end -->
 
 ## Overview
 
@@ -132,21 +139,21 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-#>     zip     city state latitude  longitude
-#> 1 92317 Blue Jay    CA 34.24561 -117.23000
-#> 2 03444   Dublin    NH 42.89987  -72.06334
-#> 3 95319   Empire    CA 37.63753 -120.90659
+#>     zip            city state latitude longitude
+#> 1 62688         Tallula    IL 39.94426 -89.93366
+#> 2 53928      Doylestown    WI 43.42694 -89.14912
+#> 3 33321 Fort Lauderdale    FL 26.21112 -80.26310
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 3)
 #> # A tibble: 3 x 3
-#>   city     state zip  
-#>   <chr>    <chr> <chr>
-#> 1 ALMO     ID    83312
-#> 2 LEAD     SD    57754
-#> 3 LOUGHMAN FL    33896
+#>   city    state zip  
+#>   <chr>   <chr> <chr>
+#> 1 ERATH   LA    70533
+#> 2 ACWORTH GA    30102
+#> 3 GILLHAM AR    71841
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -169,18 +176,18 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
-#>   abb   full   
-#>   <chr> <chr>  
-#> 1 CRCLE CIRCLE 
-#> 2 N     NORTH  
-#> 3 HT    HEIGHTS
+#>   abb     full    
+#>   <chr>   <chr>   
+#> 1 CV      COVE    
+#> 2 MOUNTIN MOUNTAIN
+#> 3 TRLS    TRAIL
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   abb   full     
-#>   <chr> <chr>    
-#> 1 WI    WISCONSIN
-#> 2 IL    ILLINOIS 
-#> 3 TX    TEXAS
+#>   abb   full          
+#>   <chr> <chr>         
+#> 1 NH    NEW HAMPSHIRE 
+#> 2 NC    NORTH CAROLINA
+#> 3 IN    INDIANA
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```
