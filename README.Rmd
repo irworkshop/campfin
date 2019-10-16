@@ -18,7 +18,11 @@ options(width = 99)
 
 # campfin <img src="man/figures/logo.png" align="right" width="120" />
 
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
+[![Travis build status](https://travis-ci.org/irworkshop/campfin.svg?branch=master)](https://travis-ci.org/irworkshop/campfin)
+<!-- badges: end -->
 
 ## Overview
 
