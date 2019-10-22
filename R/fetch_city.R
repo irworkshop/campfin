@@ -18,29 +18,35 @@
 #' @seealso \url{http://code.google.com/apis/maps/documentation/geocoding/}
 #' @importFrom httr GET stop_for_status
 #' @importFrom httr content
-#' @importFrom stringr str_c
+#' @importFrom purrr map_lgl
+#' @importFrom stringr str_c str_detect
 #' @importFrom dplyr if_else
 #' @family geographic normalization functions
 #' @export
 fetch_city <- function(address = NULL, city = NULL, state = NULL, key = NULL) {
+  if(str_c(address,city,state) %>% trimws() == ""|is.na(str_c(address,city,state))){
+    warning("geographical arguments required")
+    return(NA)
+  }
   api_url_root <- "https://maps.googleapis.com/maps/api/geocode/json?"
   response <- httr::GET(api_url_root, query = list(address = str_c(address, city, state, sep = "+"), key = key))
   stop_for_status(response)
   r_content <- content(response)
   if (identical(r_content$status,   "REQUEST_DENIED")) {
-    warning("You must use an API key", call. = FALSE)
+    stop("You must use an API key", call. = FALSE)
     return(NA)
   }
   else if (identical(r_content$status,   "ZERO_RESULTS")){
-    warning("No results were found", call. = FALSE)
+    stop("No results were found", call. = FALSE)
     return(NA)
   }
   else if(r_content$status != 'OK'){
-    warning(glue("Error from API: {r_content$status}, see Google Maps Documentation for details"), call. = FALSE)
+    stop(glue("Error from API: {r_content$status}, see Google Maps Documentation for details"), call. = FALSE)
+    return(NA)
   }
   else{
     address_list <- r_content$results[[1]]$address_components
-    locality_position <- lapply(address_list, unlist,recursive = T) %>% map(str_detect, "locality") %>% map(any) %>% unlist()
+    locality_position <- lapply(address_list, unlist,recursive = T) %>% map(str_detect, "locality") %>% map_lgl(any)
     returned_city <- address_list[locality_position][[1]]$long_name
     return(returned_city)
   }

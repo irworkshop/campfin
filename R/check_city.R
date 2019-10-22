@@ -52,7 +52,7 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL) {
   }
   else{
     returned_adress <- r_content$results[[1]]$formatted_address %>% str_to_upper()
-    returned_city <- str_match(returned_adress,"(^\\D[^,]+),\\s.+")[,2]
+    returned_city <- str_match(returned_adress,"(^.[^,]+),\\s.+")[,2]
     city_validity <- if_else(condition = str_to_upper(city) == returned_city,
                              true = TRUE,
                              false = FALSE)
