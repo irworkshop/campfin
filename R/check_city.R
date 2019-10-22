@@ -22,11 +22,15 @@
 #' @seealso \url{http://code.google.com/apis/maps/documentation/geocoding/}
 #' @importFrom httr GET stop_for_status
 #' @importFrom httr content
-#' @importFrom stringr str_c
+#' @importFrom stringr str_c str_match
 #' @importFrom dplyr if_else
+#' @importFrom glue glue
 #' @family geographic normalization functions
 #' @export
 check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL) {
+  if(city == ""|is.na(city)){
+    return(FALSE)
+  }
   api_url_root <- "https://maps.googleapis.com/maps/api/geocode/json?"
   response <- httr::GET(api_url_root,
                         query = list(address = str_c(city, state, zip, sep = "+"),
@@ -34,28 +38,21 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL) {
   stop_for_status(response)
   r_content <- content(response)
   if (identical(r_content$status,   "REQUEST_DENIED")) {
-    warning("You must use an API key", call. = FALSE)
+    stop("You must use an API key", call. = FALSE)
     return(NA)
   }
   else if (identical(r_content$status,   "ZERO_RESULTS")){
-    warning("No results were found", call. = FALSE)
+    stop("No results were found", call. = FALSE)
     return(NA)
   }
   else if(r_content$status != 'OK'){
-    warning(glue("Error from API: {r_content$status}, see Google Maps Documentation for details"),
+    stop(glue("Error from API: {r_content$status}, see Google Maps Documentation for details"),
             call. = FALSE)
+    return(NA)
   }
   else{
-    #returned_adress <- r_content$results[[1]]$formatted_address %>% str_to_upper()
-    #returned_city <- str_match(returned_adress,"(^\\D[^,]+),\\s.+")[,2]
-    #returned_city <- r_content$results[[1]]$address_components[[1]]$long_name %>% str_to_upper()
-    address_list <- r_content$results[[1]]$address_components
-    locality_position <- lapply(address_list, unlist,recursive = T) %>%
-      map(str_detect, "locality") %>%
-      map(any) %>%
-      unlist()
-    returned_city <- address_list[locality_position][[1]]$long_name %>%
-      str_to_upper()
+    returned_adress <- r_content$results[[1]]$formatted_address %>% str_to_upper()
+    returned_city <- str_match(returned_adress,"(^\\D[^,]+),\\s.+")[,2]
     city_validity <- if_else(condition = str_to_upper(city) == returned_city,
                              true = TRUE,
                              false = FALSE)

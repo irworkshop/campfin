@@ -36,7 +36,7 @@ fetch_city <- function(address = NULL, city = NULL, state = NULL, key = NULL) {
     return(NA)
   }
   else if(r_content$status != 'OK'){
-    warning(glue::glue("Error from API: {r_content$status}, see Google Maps Documentation for details"), call. = FALSE)
+    warning(glue("Error from API: {r_content$status}, see Google Maps Documentation for details"), call. = FALSE)
   }
   else{
     address_list <- r_content$results[[1]]$address_components

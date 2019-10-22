@@ -1,7 +1,7 @@
 Package: campfin
 Type: Package
 Title: Help Wrangle Campaign Finance Data
-Version: 0.0.0.9020
+Version: 0.0.0.9024
 Authors@R: as.person(c("Kiernan Nicholls <kiernann@protonmail.com> [aut, cre]"))
 Description: This package was created for use by the Accountability Project team 
     at the Investigative Reporting Workshop. The Accountability Project 
@@ -29,7 +29,8 @@ Imports:
     snakecase (>= 0.11.0),
     stringdist (>= 0.9.5.2),
     stringr (>= 1.4.0),
-    tibble (>= 2.1.3)
+    tibble (>= 2.1.3),
+    glue (>= 1.3.1)
 URL: https://github.com/irworkshop/campfin
 BugReports: https://github.com/irworkshop/campfin/issues
 Suggests: 
