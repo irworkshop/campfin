@@ -1,6 +1,6 @@
-#' @title Check whether city input is a valid place with Google Maps API
+#' @title Check whether an input is a valid place with Google Maps API
 #' @description Check whether a place is a valid place or misspelling by matching against
-#' the Google Geocode seaerch result. Use the [httr::GET()] to
+#' the Google Geocoding seaerch result. Use the [httr::GET()] to
 #' send a request to the Google Maps API for geocoding information. The query will concatenate
 #' all the geographical information that is passed in into a long string.
 #' Then the function pulls the `formatted_address` endpoint of the API results
@@ -11,9 +11,10 @@
 #' @param state Optional. The state associated with the city that you wish to check against the Maps API.
 #' @param zip Optional. Supply a string of zipcode will help with matching precision
 #' @param key a character string to be passed into key=''
-#' @return A logical vector: If the city returned by the API comes
+#' @param display_full a logical vector. If true, the function returns the matched formatted address returned by API.
+#' @return By default, returns a logical vector: If the city returned by the API comes
 #' back the same as the city input, the function will evaluate to true;
-#' otherwise it will evaluate to false.The evaluation ignores case.
+#' otherwise it will evaluate to false.The evaluation ignores case. If the display
 #' @examples
 #' \dontrun{ requires Google API key
 #' check_city("WYOMISSING", "PA", key = your_key) #replace your_key with your API key
@@ -27,7 +28,7 @@
 #' @importFrom glue glue
 #' @family geographic normalization functions
 #' @export
-check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL) {
+check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, display_full = FALSE) {
   if(city == ""|is.na(city)){
     return(FALSE)
   }
@@ -51,11 +52,16 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL) {
     return(NA)
   }
   else{
-    returned_adress <- r_content$results[[1]]$formatted_address %>% str_to_upper()
-    returned_city <- str_match(returned_adress,"(^.[^,]+),\\s.+")[,2]
-    city_validity <- if_else(condition = str_to_upper(city) == returned_city,
+    returned_address <- r_content$results[[1]]$formatted_address %>% str_to_upper()
+    returned_city <- str_match(returned_address,"(^.[^,]+),\\s.+")[,2]
+    city_validity <- if_else(condition = str_to_upper(city) %>% trimws() == returned_city,
                              true = TRUE,
                              false = FALSE)
-    return(city_validity)
+    if(display_full){
+      return(returned_address)
+    }
+    else{
+      return(city_validity)
+    }
   }
 }

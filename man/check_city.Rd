@@ -2,9 +2,10 @@
 % Please edit documentation in R/check_city.R
 \name{check_city}
 \alias{check_city}
-\title{Check whether city input is a valid place with Google Maps API}
+\title{Check whether an input is a valid place with Google Maps API}
 \usage{
-check_city(city = NULL, state = NULL, zip = NULL, key = NULL)
+check_city(city = NULL, state = NULL, zip = NULL, key = NULL,
+  display_full = FALSE)
 }
 \arguments{
 \item{city}{A string of city name to be submitted to the Google Maps Geocode API and tested.}
@@ -14,15 +15,17 @@ check_city(city = NULL, state = NULL, zip = NULL, key = NULL)
 \item{zip}{Optional. Supply a string of zipcode will help with matching precision}
 
 \item{key}{a character string to be passed into key=''}
+
+\item{display_full}{a logical vector. If true, the function returns the matched formatted address returned by API.}
 }
 \value{
-A logical vector: If the city returned by the API comes
+By default, returns a logical vector: If the city returned by the API comes
 back the same as the city input, the function will evaluate to true;
-otherwise it will evaluate to false.The evaluation ignores case.
+otherwise it will evaluate to false.The evaluation ignores case. If the display
 }
 \description{
 Check whether a place is a valid place or misspelling by matching against
-the Google Geocode seaerch result. Use the \code{\link[httr:GET]{httr::GET()}} to
+the Google Geocoding seaerch result. Use the \code{\link[httr:GET]{httr::GET()}} to
 send a request to the Google Maps API for geocoding information. The query will concatenate
 all the geographical information that is passed in into a long string.
 Then the function pulls the \code{formatted_address} endpoint of the API results
