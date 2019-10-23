@@ -13,7 +13,8 @@
 #' @param rm_ext logical; Should extensions be removed from the end of a number.
 #' @return A normalized telephone number.
 #' @importFrom stringr str_detect str_sub str_replace_all str_replace
-#'   str_remove_all str_which str_to_lower str_length str_extract
+#'   str_remove_all str_which str_to_lower str_length str_extract str_trim
+#'   str_squish
 #' @importFrom rlang is_vector
 #' @examples
 #' normal_phone(number = c("916-225-5887"))
@@ -31,6 +32,7 @@ normal_phone <- function(number,
 
   # convert to character vector
   number <- as.character(number)
+  number <- str_trim(str_squish(number), "both")
 
   # find any num with letters
   has_letters <- stringr::str_detect(number, "[A-z&&[^x]]")
