@@ -11,10 +11,11 @@
 #' @param state Optional. The state associated with the city that you wish to check against the Maps API.
 #' @param zip Optional. Supply a string of zipcode will help with matching precision
 #' @param key a character string to be passed into key=''
-#' @param display_full a logical vector. If true, the function returns the matched formatted address returned by API.
+#' @param guess a logical vector. If true, the function returns the matched formatted address returned by API and normalized by normal_city.
 #' @return By default, returns a logical vector: If the city returned by the API comes
 #' back the same as the city input, the function will evaluate to true;
-#' otherwise it will evaluate to false.The evaluation ignores case. If the display
+#' otherwise it will evaluate to false.The evaluation ignores case.
+#' If the the guess argument is set to T, returns a dataframe with a logical vector in the first column and the normalized address in the second.
 #' @examples
 #' \dontrun{ requires Google API key
 #' check_city("WYOMISSING", "PA", key = your_key) #replace your_key with your API key
@@ -26,9 +27,10 @@
 #' @importFrom stringr str_c str_match
 #' @importFrom dplyr if_else
 #' @importFrom glue glue
+#' @importFrom tibble tibble
 #' @family geographic normalization functions
 #' @export
-check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, display_full = FALSE) {
+check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess = FALSE) {
   if(city == ""|is.na(city)){
     return(FALSE)
   }
@@ -54,11 +56,16 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, displa
   else{
     returned_address <- r_content$results[[1]]$formatted_address %>% str_to_upper()
     returned_city <- str_match(returned_address,"(^.[^,]+),\\s.+")[,2]
-    city_validity <- if_else(condition = str_to_upper(city) %>% trimws() == returned_city,
+    normal_returned <- normal_city(city = returned_city,
+                                   geo_abbs = campfin::usps_city,
+                                   st_abbs = c(campfin::valid_state),
+                                   na = campfin::invalid_city,
+                                   na_rep = TRUE)
+    city_validity <- if_else(condition = str_to_upper(city) %>% trimws() == normal_returned,
                              true = TRUE,
                              false = FALSE)
-    if(display_full){
-      return(returned_address)
+    if(guess){
+      return(data.frame(city_validity,normal_returned,stringsAsFactors = F))
     }
     else{
       return(city_validity)

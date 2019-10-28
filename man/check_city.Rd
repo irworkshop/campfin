@@ -5,7 +5,7 @@
 \title{Check whether an input is a valid place with Google Maps API}
 \usage{
 check_city(city = NULL, state = NULL, zip = NULL, key = NULL,
-  display_full = FALSE)
+  guess = FALSE)
 }
 \arguments{
 \item{city}{A string of city name to be submitted to the Google Maps Geocode API and tested.}
@@ -16,12 +16,13 @@ check_city(city = NULL, state = NULL, zip = NULL, key = NULL,
 
 \item{key}{a character string to be passed into key=''}
 
-\item{display_full}{a logical vector. If true, the function returns the matched formatted address returned by API.}
+\item{guess}{a logical vector. If true, the function returns the matched formatted address returned by API and normalized by normal_city.}
 }
 \value{
 By default, returns a logical vector: If the city returned by the API comes
 back the same as the city input, the function will evaluate to true;
-otherwise it will evaluate to false.The evaluation ignores case. If the display
+otherwise it will evaluate to false.The evaluation ignores case.
+If the the guess argument is set to T, returns a dataframe with a logical vector in the first column and the normalized address in the second.
 }
 \description{
 Check whether a place is a valid place or misspelling by matching against
