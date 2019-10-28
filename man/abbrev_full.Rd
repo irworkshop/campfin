@@ -37,7 +37,8 @@ abbrev_full("Low Iron Level", full = tibble::tibble(y = "Iron", x = "FE"))
 }
 \seealso{
 Other geographic normalization functions: \code{\link{abbrev_state}},
-  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
+  \code{\link{check_city}}, \code{\link{expand_abbrev}},
+  \code{\link{expand_state}}, \code{\link{fetch_city}},
   \code{\link{normal_address}}, \code{\link{normal_city}},
   \code{\link{normal_state}}, \code{\link{normal_zip}}
 }
