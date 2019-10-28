@@ -78,6 +78,13 @@
 #' @format A sorted vector of unique city names (length 19,083).
 "valid_city"
 
+#' @title Additional US City Names
+#' @description Cities not contained in [valid_city], but are
+#'    accepted localities (neighborhoods or census designated
+#'    places).
+#' @format A sorted vector of unique locality names (length 127).
+"extra_city"
+
 #' @title Invalid City Names
 #' @description A custom vector containing common invalid city names.
 #' @format A vector of length 54.

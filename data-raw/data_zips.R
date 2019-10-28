@@ -1,6 +1,8 @@
 ## code to modify `zipcode` dataframe goes here
 
 library(tidyverse)
+library(googledrive)
+library(googlesheets4)
 library(zipcode)
 
 cat(packageDescription(pkg = "zipcode", fields = "Description"))
@@ -67,3 +69,12 @@ usethis::use_data(valid_city, overwrite = TRUE)
 # save USA zipcodes vector
 valid_zip <- sort(unique(zipcodes$zip))
 usethis::use_data(valid_zip, overwrite = TRUE)
+
+# add extra cities
+# googledrive::drive_ls()
+sheet_id <- "17pi8LW1nTaGzThfUmQMZ_6HMWPxUPatqrTEWzY6LPoI"
+extra_city <- sort(unique(pull(read_sheet(ss = sheet_id))))
+extra_city <- extra_city[which(extra_city %out% valid_city)]
+
+# save extra custom city vector
+usethis::use_data(extra_city, overwrite = TRUE)
