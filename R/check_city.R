@@ -11,7 +11,11 @@
 #' @param state Optional. The state associated with the city that you wish to check against the Maps API.
 #' @param zip Optional. Supply a string of zipcode will help with matching precision
 #' @param key a character string to be passed into key=''
-#' @param guess a logical vector. If true, the function returns the matched formatted address returned by API and normalized by normal_city.
+#' @param guess a logical vector. If true, the function returns a dataframe with three columns. The first column is the
+#' logical The second column,
+#' `locality` is the API-matched locality, i.e. unincorporated cities or census designated places returned by API.
+#' The third column first part of matched formatted address returned by the API.
+#' When `place` is set to TRUE, the results returned can be any address, including highways, street addresses, cities, townships, states, provinces, countires, etc.
 #' @return By default, returns a logical vector: If the city returned by the API comes
 #' back the same as the city input, the function will evaluate to true;
 #' otherwise it will evaluate to false.The evaluation ignores case.
