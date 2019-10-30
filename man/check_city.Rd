@@ -16,7 +16,10 @@ check_city(city = NULL, state = NULL, zip = NULL, key = NULL,
 
 \item{key}{a character string to be passed into key=''}
 
-\item{guess}{a logical vector. If true, the function returns the matched formatted address returned by API and normalized by normal_city.}
+\item{guess}{a logical vector. If true, the function returns a dataframe with three columns. In addition to the first
+logical vector, it would return a \code{locality} column with the API-matched localities, i.e. unincorporated cities or census designated places returned by API,
+and a third column first part of matched formatted address returned by the API.
+When \code{place} is set to TRUE, the results returned can be any address, including highways, street addresses, cities, townships, states, provinces, countires, etc.}
 }
 \value{
 By default, returns a logical vector: If the city returned by the API comes

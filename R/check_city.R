@@ -11,10 +11,9 @@
 #' @param state Optional. The state associated with the city that you wish to check against the Maps API.
 #' @param zip Optional. Supply a string of zipcode will help with matching precision
 #' @param key a character string to be passed into key=''
-#' @param guess a logical vector. If true, the function returns a dataframe with three columns. The first column is the
-#' logical The second column,
-#' `locality` is the API-matched locality, i.e. unincorporated cities or census designated places returned by API.
-#' The third column first part of matched formatted address returned by the API.
+#' @param guess a logical vector. If true, the function returns a dataframe with three columns. In addition to the first
+#' logical vector, it would return a `locality` column with the API-matched localities, i.e. unincorporated cities or census designated places returned by API,
+#' and a third column first part of matched formatted address returned by the API.
 #' When `place` is set to TRUE, the results returned can be any address, including highways, street addresses, cities, townships, states, provinces, countires, etc.
 #' @return By default, returns a logical vector: If the city returned by the API comes
 #' back the same as the city input, the function will evaluate to true;
@@ -30,8 +29,8 @@
 #' @importFrom httr content
 #' @importFrom stringr str_c str_match
 #' @importFrom dplyr if_else
+#' @importFrom purrr map_lgl
 #' @importFrom glue glue
-#' @importFrom tibble tibble
 #' @family geographic normalization functions
 #' @export
 check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess = FALSE) {
@@ -68,8 +67,14 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess 
     city_validity <- if_else(condition = str_to_upper(city) %>% trimws() == normal_returned,
                              true = TRUE,
                              false = FALSE)
+    address_list <- r_content$results[[1]]$address_components
+    locality_position <- lapply(address_list, unlist,recursive = T) %>% map(str_detect, "locality") %>% map_lgl(any)
+    locality <- address_list[locality_position][[1]]$long_name %>% normal_city(.,geo_abbs = campfin::usps_city,
+                                                                               st_abbs = c(campfin::valid_state),
+                                                                               na = campfin::invalid_city,
+                                                                               na_rep = TRUE)
     if(guess){
-      return(data.frame(city_validity,normal_returned,stringsAsFactors = F))
+      return(data.frame(check_city_flag = city_validity,guess_city = locality,guess_place = normal_returned,stringsAsFactors = F))
     }
     else{
       return(city_validity)
