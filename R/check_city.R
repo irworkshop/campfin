@@ -69,10 +69,13 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess 
                              false = FALSE)
     address_list <- r_content$results[[1]]$address_components
     locality_position <- lapply(address_list, unlist,recursive = T) %>% map(str_detect, "locality") %>% map_lgl(any)
-    locality <- address_list[locality_position][[1]]$long_name %>% normal_city(.,geo_abbs = campfin::usps_city,
+    locality <- ifelse(TRUE %in% locality_position,
+      address_list[locality_position][[1]]$long_name %>% normal_city(.,geo_abbs = campfin::usps_city,
                                                                                st_abbs = c(campfin::valid_state),
                                                                                na = campfin::invalid_city,
-                                                                               na_rep = TRUE)
+                                                                               na_rep = TRUE),
+      NA_character_
+      )
     if(guess){
       return(data.frame(check_city_flag = city_validity,guess_city = locality,guess_place = normal_returned,stringsAsFactors = F))
     }
