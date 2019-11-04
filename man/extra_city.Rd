@@ -11,6 +11,10 @@ extra_city
 \description{
 Cities not contained in \link{valid_city}, but are
 accepted localities (neighborhoods or census designated
-places).
+places). This vector consists of normalized self-reported cities in the
+public data processed by accountability project that were validated
+by Google Maps Geocoding API (whose \code{\link[=check_city]{check_city()}} results evaluate to \code{TRUE}).
+The most recent updated version of the extra_city can be found in
+\href{https://docs.google.com/spreadsheets/d/17pi8LW1nTaGzThfUmQMZ_6HMWPxUPatqrTEWzY6LPoI}{this Google Sheet}
 }
 \keyword{datasets}

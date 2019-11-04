@@ -81,7 +81,11 @@
 #' @title Additional US City Names
 #' @description Cities not contained in [valid_city], but are
 #'    accepted localities (neighborhoods or census designated
-#'    places).
+#'    places). This vector consists of normalized self-reported cities in the
+#'    public data processed by accountability project that were validated
+#'    by Google Maps Geocoding API (whose [check_city()] results evaluate to `TRUE`).
+#'    The most recent updated version of the extra_city can be found in
+#'    [this Google Sheet](https://docs.google.com/spreadsheets/d/17pi8LW1nTaGzThfUmQMZ_6HMWPxUPatqrTEWzY6LPoI)
 #' @format A sorted vector of unique locality names (length 127).
 "extra_city"
 

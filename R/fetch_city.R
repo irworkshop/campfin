@@ -45,9 +45,13 @@ fetch_city <- function(address = NULL, city = NULL, state = NULL, key = NULL) {
     return(NA)
   }
   else{
-    address_list <- r_content$results[[1]]$address_components
     locality_position <- lapply(address_list, unlist,recursive = T) %>% map(str_detect, "locality") %>% map_lgl(any)
-    returned_city <- address_list[locality_position][[1]]$long_name
+    returned_city <- ifelse(TRUE %in% locality_position,
+                       address_list[locality_position][[1]]$long_name %>% normal_city(.,geo_abbs = campfin::usps_city,
+                                                                                      st_abbs = c(campfin::valid_state),
+                                                                                      na = campfin::invalid_city,
+                                                                                      na_rep = TRUE),
+                       NA_character_)
     return(returned_city)
   }
 }
