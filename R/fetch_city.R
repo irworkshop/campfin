@@ -4,7 +4,7 @@
 #' send a request to the Google Maps API for geocoding information. The query will concatenate
 #' all the geographical information that is passed in into a long string.
 #' Then the function pulls the `formatted_address` endpoint of the API results
-#' and then identifies and extracts the long name field from the API _locality_ result Note that you will
+#' and then identifies and extracts the the first field of the result. Note that you will
 #' need to pass in your Google Maps Place API key with the arguement `key=`.
 #' @param address A vector of street addresses. Sent to the API all in one string.
 #' @param city A string of city name to be submitted to the Google Maps Geocode API.
@@ -25,33 +25,34 @@
 #' @export
 fetch_city <- function(address = NULL, city = NULL, state = NULL, key = NULL) {
   if(str_c(address,city,state) %>% trimws() == ""|is.na(str_c(address,city,state))){
-    warning("geographical arguments required")
-    return(NA)
+    return(NA_character_)
+    stop("geographical arguments required")
   }
   api_url_root <- "https://maps.googleapis.com/maps/api/geocode/json?"
   response <- httr::GET(api_url_root, query = list(address = str_c(address, city, state, sep = "+"), key = key))
   stop_for_status(response)
   r_content <- content(response)
   if (identical(r_content$status,   "REQUEST_DENIED")) {
+    return(NA_character_)
     stop("You must use an API key", call. = FALSE)
-    return(NA)
   }
   else if (identical(r_content$status,   "ZERO_RESULTS")){
+    return(NA_character_)
     stop("No results were found", call. = FALSE)
-    return(NA)
   }
   else if(r_content$status != 'OK'){
     stop(glue("Error from API: {r_content$status}, see Google Maps Documentation for details"), call. = FALSE)
-    return(NA)
+    return(NA_character_)
   }
-  else{
-    locality_position <- lapply(address_list, unlist,recursive = T) %>% map(str_detect, "locality") %>% map_lgl(any)
-    returned_city <- ifelse(TRUE %in% locality_position,
-                       address_list[locality_position][[1]]$long_name %>% normal_city(.,geo_abbs = campfin::usps_city,
-                                                                                      st_abbs = c(campfin::valid_state),
-                                                                                      na = campfin::invalid_city,
-                                                                                      na_rep = TRUE),
-                       NA_character_)
-    return(returned_city)
+   else{
+     address_list <- r_content$results[[1]]$address_components
+     returned_address <- r_content$results[[1]]$formatted_address %>% str_to_upper()
+     returned_city <- str_match(returned_address,"(^.[^,]+),\\s.+")[,2]
+     normal_returned <- normal_city(city = returned_city,
+                                    geo_abbs = campfin::usps_city,
+                                    st_abbs = c(campfin::valid_state),
+                                    na = campfin::invalid_city,
+                                    na_rep = TRUE)
+    return(normal_returned)
   }
 }

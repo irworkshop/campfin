@@ -24,7 +24,7 @@ the Google Geocode seaerch result. Use the \code{\link[httr:GET]{httr::GET()}} t
 send a request to the Google Maps API for geocoding information. The query will concatenate
 all the geographical information that is passed in into a long string.
 Then the function pulls the \code{formatted_address} endpoint of the API results
-and then identifies and extracts the long name field from the API \emph{locality} result Note that you will
+and then identifies and extracts the the first field of the result. Note that you will
 need to pass in your Google Maps Place API key with the arguement \code{key=}.
 }
 \examples{
