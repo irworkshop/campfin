@@ -4,19 +4,16 @@
 \alias{fetch_city}
 \title{Return Closest Match Result of Cities from Google Maps API}
 \usage{
-fetch_city(address = NULL, city = NULL, state = NULL, key = NULL)
+fetch_city(address = NULL, key = NULL)
 }
 \arguments{
 \item{address}{A vector of street addresses. Sent to the API all in one string.}
 
-\item{city}{A string of city name to be submitted to the Google Maps Geocode API.}
-
-\item{state}{Optional. The state associated with the city that you wish to check against the Maps API.}
-
 \item{key}{a character string to be passed into key=''. This is your API key obtained from Google.}
 }
 \value{
-A character vector: results of the closest match of the submitted city names returned by the API.
+A character vector: results of the formatted address endpoint from Google. This will include all the fields
+from street address, city, state/province, zipcode/postal code to country/regions.
 }
 \description{
 Get the matching against
@@ -29,7 +26,7 @@ need to pass in your Google Maps Place API key with the arguement \code{key=}.
 }
 \examples{
 \dontrun{ requires Google API key
-fetch_city("One CVS Drive","RI", "02895", key = api_key)
+fetch_city("4400 Mass Ave. DC", key = api_key) # Use your API key from Google Maps
 }
 }
 \seealso{
