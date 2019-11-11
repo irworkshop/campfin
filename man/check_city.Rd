@@ -8,11 +8,14 @@ check_city(city = NULL, state = NULL, zip = NULL, key = NULL,
   guess = FALSE)
 }
 \arguments{
-\item{city}{A string of city name to be submitted to the Google Maps Geocode API and tested.}
+\item{city}{A string of city name to be submitted to the Google Maps Geocode
+API and tested.}
 
-\item{state}{Optional. The state associated with the city that you wish to check against the Maps API.}
+\item{state}{Optional. The state associated with the city that you wish to
+check against the Maps API.}
 
-\item{zip}{Optional. Supply a string of zipcode will help with matching precision}
+\item{zip}{Optional. Supply a string of zipcode will help with matching
+precision}
 
 \item{key}{a character string to be passed into key=''}
 
@@ -26,20 +29,23 @@ highways, street addresses, cities, townships, states, provinces,
 countires, etc.}
 }
 \value{
-By default, returns a logical vector: If the city returned by the API comes
-back the same as the city input, the function will evaluate to true;
-otherwise it will evaluate to false.The evaluation ignores case.
-If the the guess argument is set to T, returns a dataframe with a logical vector in the first column and the normalized address in the second.
+By default, returns a logical vector: If the city returned by the API
+comes back the same as the city input, the function will evaluate to true;
+otherwise it will evaluate to false.The evaluation ignores case. If the the
+guess argument is set to T, returns a dataframe with columns
+\code{original_city}, \code{original_state}, \code{original_zip}, \code{check_city_flag},
+\code{guess_city} and \code{guess_place}.
 }
 \description{
-Check whether a place is a valid place or misspelling by matching against
-the Google Geocoding seaerch result. Use the \code{\link[httr:GET]{httr::GET()}} to
-send a request to the Google Maps API for geocoding information. The query will concatenate
-all the geographical information that is passed in into a long string.
-Then the function pulls the \code{formatted_address} endpoint of the API results
-and then identifies and extracts the long name field from the API \emph{locality} result and compare
-it against the input to see if the input and output match up.
-Note that you will need to pass in your Google Maps Place API key with the arguement \code{key=}.
+Check whether a place is a valid place or misspelling by
+matching against the Google Geocoding seaerch result. Use the \code{\link[httr:GET]{httr::GET()}}
+to send a request to the Google Maps API for geocoding information. The
+query will concatenate all the geographical information that is passed in
+into a long string. Then the function pulls the \code{formatted_address}
+endpoint of the API results and then identifies and extracts the long name
+field from the API \emph{locality} result and compare it against the input to
+see if the input and output match up. Note that you will need to pass in
+your Google Maps Place API key with the arguement \code{key=}.
 }
 \examples{
 \dontrun{ requires Google API key
