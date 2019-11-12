@@ -2,7 +2,7 @@
 % Please edit documentation in R/most-common.R
 \name{most_common}
 \alias{most_common}
-\title{Find Most Common Values}
+\title{Find most common values}
 \usage{
 most_common(x, n = 6)
 }
