@@ -4,11 +4,16 @@
 \alias{normal_city}
 \title{Normalize City Names}
 \usage{
-normal_city(city, geo_abbs = NULL, st_abbs = NULL, na = c("", "NA"),
-  na_rep = FALSE)
+normal_city(city, abbs = NULL, na = c("", "NA"), na_rep = FALSE)
 }
 \arguments{
 \item{city}{A vector of city names.}
+
+\item{na}{A vector of values to make \code{NA} (useful with the \link{invalid_city}
+vector).}
+
+\item{na_rep}{logical; If \code{TRUE}, replace all single digit (repeating)
+strings with \code{NA}.}
 
 \item{geo_abbs}{A named vector or data frame of abbreviations passed to
 \link{expand_abbrev}; see \link{expand_abbrev} for format of \code{abb} argument or use
@@ -16,12 +21,6 @@ the \link{usps_city} tibble.}
 
 \item{st_abbs}{A vector of state abbreviations ("VT") to remove from the
 \emph{end} (and only end) of city names ("STOWE VT").}
-
-\item{na}{A vector of values to make \code{NA} (useful with the \link{invalid_city}
-vector).}
-
-\item{na_rep}{logical; If \code{TRUE}, replace all single digit (repeating)
-strings with \code{NA}.}
 }
 \value{
 A vector of normalized city names.
@@ -50,6 +49,7 @@ Other geographic normalization functions: \code{\link{abbrev_full}},
   \code{\link{abbrev_state}}, \code{\link{check_city}},
   \code{\link{expand_abbrev}}, \code{\link{expand_state}},
   \code{\link{fetch_city}}, \code{\link{normal_address}},
-  \code{\link{normal_state}}, \code{\link{normal_zip}}
+  \code{\link{normal_state}}, \code{\link{normal_zip}},
+  \code{\link{str_normal}}
 }
 \concept{geographic normalization functions}

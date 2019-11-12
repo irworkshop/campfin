@@ -32,7 +32,7 @@ normal_address <- function(address, abbs = NULL, na = c("", "NA"), na_rep = FALS
     stringr::str_squish() %>%
     stringr::str_replace_all("P\\sO", "PO")
 
-  if (!is.null(add_abbs)) {
+  if (!is.null(abbs)) {
     address2 <- expand_abbrev(x = address2, abb = abbs)
   }
   if (na_rep) {

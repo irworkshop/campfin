@@ -32,15 +32,8 @@
 #' @importFrom tibble tibble
 #' @family geographic normalization functions
 #' @export
-normal_city <- function(
-  city,
-  geo_abbs = NULL,
-  st_abbs = NULL,
-  na = c("", "NA"),
-  na_rep = FALSE
-) {
-
-  city_clean <- city %>%
+normal_city <- function(city, abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
+  city2 <- city %>%
     stringr::str_to_upper() %>%
     stringr::str_replace_all("-", " ") %>%
     stringr::str_replace_all("_", " ") %>%
@@ -49,21 +42,16 @@ normal_city <- function(
     stringr::str_trim() %>%
     stringr::str_squish()
 
-  if (!is.null(geo_abbs)) {
-    city_clean <- expand_abbrev(x = city_clean, abb = geo_abbs)
+  if (!is.null(abbs)) {
+    city2 <- expand_abbrev(x = city2, abb = abbs)
   }
-
-  if (!is.null(st_abbs)) {
-    for (i in seq_along(st_abbs)) {
-      city_clean <- stringr::str_remove(city_clean, str_c("\\s", st_abbs[i], "$"))
-    }
-  }
-
   if (na_rep) {
-    city_clean[city_clean %>% stringr::str_which("^(.)\\1+$")] <- NA
+    city2 <- na_rep(city2)
   }
-
-  city_clean[which(city_clean %in% stringr::str_to_upper(na))] <- NA
-
-  return(city_clean)
+  if (!rlang::is_empty(na)) {
+    city2 <- na_in(city2, na)
+  }
+  city2
 }
+
+
