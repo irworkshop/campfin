@@ -43,14 +43,15 @@
 
 
 <meta property="og:title" content="Check whether an input is a valid place with Google Maps API — check_city" />
-<meta property="og:description" content="Check whether a place is a valid place or misspelling by matching against
-the Google Geocoding seaerch result. Use the httr::GET() to
-send a request to the Google Maps API for geocoding information. The query will concatenate
-all the geographical information that is passed in into a long string.
-Then the function pulls the formatted_address endpoint of the API results
-and then identifies and extracts the long name field from the API locality result and compare
-it against the input to see if the input and output match up.
-Note that you will need to pass in your Google Maps Place API key with the arguement key=." />
+<meta property="og:description" content="Check whether a place is a valid place or misspelling by
+matching against the Google Geocoding seaerch result. Use the httr::GET()
+to send a request to the Google Maps API for geocoding information. The
+query will concatenate all the geographical information that is passed in
+into a long string. Then the function pulls the formatted_address
+endpoint of the API results and then identifies and extracts the long name
+field from the API locality result and compare it against the input to
+see if the input and output match up. Note that you will need to pass in
+your Google Maps Place API key with the arguement key=." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -141,14 +142,15 @@ Note that you will need to pass in your Google Maps Place API key with the argue
     </div>
 
     <div class="ref-description">
-    <p>Check whether a place is a valid place or misspelling by matching against
-the Google Geocoding seaerch result. Use the <code><a href='https://httr.r-lib.org/reference/GET.html'>httr::GET()</a></code> to
-send a request to the Google Maps API for geocoding information. The query will concatenate
-all the geographical information that is passed in into a long string.
-Then the function pulls the <code>formatted_address</code> endpoint of the API results
-and then identifies and extracts the long name field from the API <em>locality</em> result and compare
-it against the input to see if the input and output match up.
-Note that you will need to pass in your Google Maps Place API key with the arguement <code>key=</code>.</p>
+    <p>Check whether a place is a valid place or misspelling by
+matching against the Google Geocoding seaerch result. Use the <code><a href='https://httr.r-lib.org/reference/GET.html'>httr::GET()</a></code>
+to send a request to the Google Maps API for geocoding information. The
+query will concatenate all the geographical information that is passed in
+into a long string. Then the function pulls the <code>formatted_address</code>
+endpoint of the API results and then identifies and extracts the long name
+field from the API <em>locality</em> result and compare it against the input to
+see if the input and output match up. Note that you will need to pass in
+your Google Maps Place API key with the arguement <code>key=</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>check_city</span>(<span class='kw'>city</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>state</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -159,15 +161,18 @@ Note that you will need to pass in your Google Maps Place API key with the argue
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>city</th>
-      <td><p>A string of city name to be submitted to the Google Maps Geocode API and tested.</p></td>
+      <td><p>A string of city name to be submitted to the Google Maps Geocode
+API and tested.</p></td>
     </tr>
     <tr>
       <th>state</th>
-      <td><p>Optional. The state associated with the city that you wish to check against the Maps API.</p></td>
+      <td><p>Optional. The state associated with the city that you wish to
+check against the Maps API.</p></td>
     </tr>
     <tr>
       <th>zip</th>
-      <td><p>Optional. Supply a string of zipcode will help with matching precision</p></td>
+      <td><p>Optional. Supply a string of zipcode will help with matching
+precision</p></td>
     </tr>
     <tr>
       <th>key</th>
@@ -175,19 +180,25 @@ Note that you will need to pass in your Google Maps Place API key with the argue
     </tr>
     <tr>
       <th>guess</th>
-      <td><p>a logical vector. If true, the function returns a dataframe with three columns. In addition to the first
-logical vector, it would return a <code>locality</code> column with the API-matched localities, i.e. unincorporated cities or census designated places returned by API,
-and a third column first part of matched formatted address returned by the API.
-When <code>place</code> is set to TRUE, the results returned can be any address, including highways, street addresses, cities, townships, states, provinces, countires, etc.</p></td>
+      <td><p>a logical vector. If true, the function returns a dataframe with
+three columns. In addition to the first logical vector, it would return a
+<code>locality</code> column with the API-matched localities, i.e. unincorporated
+cities or census designated places returned by API, and a third column
+first part of matched formatted address returned by the API. When <code>place</code>
+is set to TRUE, the results returned can be any address, including
+highways, street addresses, cities, townships, states, provinces,
+countires, etc.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>By default, returns a logical vector: If the city returned by the API comes
-back the same as the city input, the function will evaluate to true;
-otherwise it will evaluate to false.The evaluation ignores case.
-If the the guess argument is set to T, returns a dataframe with a logical vector in the first column and the normalized address in the second.</p>
+    <p>By default, returns a logical vector: If the city returned by the API
+comes back the same as the city input, the function will evaluate to true;
+otherwise it will evaluate to false.The evaluation ignores case. If the the
+guess argument is set to T, returns a dataframe with columns
+<code>original_city</code>, <code>original_state</code>, <code>original_zip</code>, <code>check_city_flag</code>,
+<code>guess_city</code> and <code>guess_place</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='http://code.google.com/apis/maps/documentation/geocoding/'>http://code.google.com/apis/maps/documentation/geocoding/</a></p>

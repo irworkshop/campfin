@@ -48,7 +48,7 @@ the Google Geocode seaerch result. Use the httr::GET() to
 send a request to the Google Maps API for geocoding information. The query will concatenate
 all the geographical information that is passed in into a long string.
 Then the function pulls the formatted_address endpoint of the API results
-and then identifies and extracts the long name field from the API locality result Note that you will
+and then identifies and extracts the the first field of the result. Note that you will
 need to pass in your Google Maps Place API key with the arguement key=." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -145,11 +145,11 @@ the Google Geocode seaerch result. Use the <code><a href='https://httr.r-lib.org
 send a request to the Google Maps API for geocoding information. The query will concatenate
 all the geographical information that is passed in into a long string.
 Then the function pulls the <code>formatted_address</code> endpoint of the API results
-and then identifies and extracts the long name field from the API <em>locality</em> result Note that you will
+and then identifies and extracts the the first field of the result. Note that you will
 need to pass in your Google Maps Place API key with the arguement <code>key=</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fetch_city</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>city</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>state</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>fetch_city</span>(<span class='kw'>address</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,14 +159,6 @@ need to pass in your Google Maps Place API key with the arguement <code>key=</co
       <td><p>A vector of street addresses. Sent to the API all in one string.</p></td>
     </tr>
     <tr>
-      <th>city</th>
-      <td><p>A string of city name to be submitted to the Google Maps Geocode API.</p></td>
-    </tr>
-    <tr>
-      <th>state</th>
-      <td><p>Optional. The state associated with the city that you wish to check against the Maps API.</p></td>
-    </tr>
-    <tr>
       <th>key</th>
       <td><p>a character string to be passed into key=''. This is your API key obtained from Google.</p></td>
     </tr>
@@ -174,7 +166,8 @@ need to pass in your Google Maps Place API key with the arguement <code>key=</co
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector: results of the closest match of the submitted city names returned by the API.</p>
+    <p>A character vector: results of the formatted address endpoint from Google. This will include all the fields
+from street address, city, state/province, zipcode/postal code to country/regions.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='http://code.google.com/apis/maps/documentation/geocoding/'>http://code.google.com/apis/maps/documentation/geocoding/</a></p>
