@@ -27,8 +27,8 @@ numbers with their keypad equivalent.}
 A normalized telephone number.
 }
 \description{
-Take US phone numbers in any number of formats and try to
-convert them to a standard format.
+Take US phone numbers in any number of formats and try to convert them to a
+standard format.
 }
 \examples{
 normal_phone(number = c("916-225-5887"))
