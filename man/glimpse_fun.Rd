@@ -22,7 +22,6 @@ Apply a counting summary function like \code{\link[dplyr:n_distinct]{dplyr::n_di
 \code{\link[=count_na]{count_na()}} to every column of a dataframe and return the results along
 with a \emph{percentage} of that value.
 }
-\examples{
-glimpse_fun(dplyr::storms, dplyr::n_distinct)
-glimpse_fun(dplyr::storms, campfin::count_na)
+\details{
+Deprecated in favor or simpler \code{\link[=col_stats]{col_stats()}}.
 }

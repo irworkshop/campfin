@@ -2,14 +2,12 @@
 #' @description Apply a counting summary function like [dplyr::n_distinct()] or
 #'   [count_na()] to every column of a dataframe and return the results along
 #'   with a _percentage_ of that value.
+#' @details Deprecated in favor or simpler [col_stats()].
 #' @param data A data frame to glimpse.
 #' @param fun A function to map to each column.
 #' @param print logical; Should all columns be printed as rows?
 #' @return A tibble with a row for every column and new columns with count and
 #'   proportion.
-#' @examples
-#' glimpse_fun(dplyr::storms, dplyr::n_distinct)
-#' glimpse_fun(dplyr::storms, campfin::count_na)
 #' @importFrom purrr map
 #' @importFrom dplyr mutate select
 #' @importFrom tibble enframe
