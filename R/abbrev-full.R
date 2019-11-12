@@ -1,10 +1,12 @@
-#' @title Abbreviate Full Strings
-#' @description Create or use a named vector (`c("full" = "abb")`) and pass it
-#'   to [stringr::str_replace_all()]. The `full` argument is surrounded with
-#'   `\\b` to capture only isolated intended full versions. Note that the
-#'   built-in [usps_street], [usps_city], and [usps_state] dataframes have the
-#'   columns reversed from what this function needs (to work by default with the
-#'   counterpart [expand_abbrev()]).
+#' Abbreviate full strings
+#'
+#' Create or use a named vector (`c("full" = "abb")`) and pass it to
+#' [stringr::str_replace_all()]. The `full` argument is surrounded with `\\b` to
+#' capture only isolated intended full versions. Note that the built-in
+#' [usps_street], [usps_city], and [usps_state] dataframes have the columns
+#' reversed from what this function needs (to work by default with the
+#' counterpart [expand_abbrev()]).
+#'
 #' @param x A vector containing full words.
 #' @param full One of three objects: (1) A dataframe with full strings in the
 #'   _first_ column and corresponding abbreviations in the _second_

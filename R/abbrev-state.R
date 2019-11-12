@@ -1,41 +1,25 @@
-#' @title Abbreviate US State Names
-#' @description This function is used to first normalize a `full` state name and
-#'   then return any matching abbreviation. This package works for all state
-#'   names in `state.name` plus 12 additional territories (e.g., "Puerto Rico").
-#' @aliases abbreviate_state
+#' Abbreviate US state names
+#'
+#' This function is used to first normalize a `full` state name and then call
+#' [abbrev_state()] using [valid_name] and [valid_state] as the `full` and `rep`
+#' arguments.
+#'
 #' @param full A full US state name character vector (e.g., "Vermont").
-#' @param na_bad logical; Whether to return `NA` for invalid `full` names
-#'   (default `FALSE`).
-#' @param rm_nums logical; Whether to remove numbers from `full` (e.g., 1st)
-#'   before abbreviating. Particularly useful with US Congressional districts.
-#'   Only numbers 1 through 20 are supported at this time (default `FALSE`).
-#' @return A vector of 2 letter state abbreviations.
-#' @importFrom stringr str_to_upper str_trim str_squish str_replace_all str_remove_all
+#' @return The 2-letter USPS abbreviation of for state names (e.g., "VT").
+#' @importFrom stringr str_trim str_squish str_remove_all str_to_upper
 #' @examples
 #' abbrev_state(full = state.name)
-#' abbrev_state(full = c("new_mexico", "france"), na_bad = TRUE)
+#' abbrev_state(full = c("new mexico", "france"))
 #' @family geographic normalization functions
 #' @export
-abbrev_state <- function(full, na_bad = FALSE, rm_nums = FALSE) {
+abbrev_state <- function(full) {
   if (!is.character(full)) {
-    stop("Full state name must be a character vector")
+    stop("full state name must be a character vector")
   }
-  full <- stringr::str_to_upper(full)
-  full <- stringr::str_replace(full, "[:punct:]", " ")
-  if (rm_nums) {
-    for (pattern in c("1ST", "2ND", "3RD", stringr::str_c(1:19, "TH"))) {
-      full <- stringr::str_remove(full, pattern)
-    }
-    full <- stringr::str_remove_all(full, "\\d+")
-  }
-  full <- stringr::str_trim(full)
-  full <- stringr::str_squish(full)
-  if (na_bad) {
-    full[which(full %out% valid_name & full %out% valid_state)] <- NA
-  }
-  abb_match <- match(full[which(full %in% valid_name)], valid_name)
-  full[which(full %in% valid_name)] <- valid_state[abb_match]
-  return(full)
+  full <- full %>%
+    str_trim() %>%
+    str_squish() %>%
+    str_remove_all("^A-z") %>%
+    str_to_upper()
+  abbrev_full(x = full, full = campfin::valid_name, rep = campfin::valid_state)
 }
-
-utils::globalVariables(c("valid_state", "valid_name"))
