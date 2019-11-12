@@ -1,10 +1,11 @@
-#' Read Microsoft Access Table
+#' Read Microsoft Access tables
 #'
-#' @description Wraps around `readr::read_csv()` and `mdb-export`
-#' @param file A path to a .mdb file
-#' @param table A character string to a table name (see `mdb_tables()`)
-#' @param ... Arguments to be passed to `readr::read_csv()`
-#' @return A tibble
+#' Wraps around [readr::read_csv()] and the `mdb-export` command line tool.
+#'
+#' @param file A path to a `.mdb` file.
+#' @param table A character string to a table name (see [mdb_tables()]).
+#' @param ... Additional arguments passed to [readr::read_csv()].
+#' @return A tibble.
 #' @importFrom readr read_csv
 #' @export
 read_mdb <- function(file, table, ...) {
@@ -14,12 +15,14 @@ read_mdb <- function(file, table, ...) {
   )
 }
 
-#' Get Tables from Microsoft Access File
+#' Get tables from Microsoft Access file
 #'
-#' @description Wraps around `mdb-tables`
-#' @param file A path to a .mdb file
-#' @return A vector of table names
+#' Wraps around the `mdb-tables` command line tool.
+#'
+#' @param file A path to a .mdb file.
+#' @return A vector of table names.
 #' @importFrom readr read_csv
+#' @export
 mdb_tables <- function(file) {
   system(paste("mdb-tables -1", file), intern = TRUE)
 }
