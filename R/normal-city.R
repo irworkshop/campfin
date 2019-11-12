@@ -34,14 +34,8 @@
 #' @export
 normal_city <- function(city, abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
   city2 <- city %>%
-    stringr::str_to_upper() %>%
-    stringr::str_replace_all("-", " ") %>%
-    stringr::str_replace_all("_", " ") %>%
-    stringr::str_remove_all("[[:punct:]]") %>%
-    stringr::str_remove_all("\\d+") %>%
-    stringr::str_trim() %>%
-    stringr::str_squish()
-
+    str_normal() %>%
+    stringr::str_remove_all("\\d+")
   if (!is.null(abbs)) {
     city2 <- expand_abbrev(x = city2, abb = abbs)
   }

@@ -33,7 +33,7 @@ Invalid addresses from a vector can be removed (possibly using
 }
 \examples{
 normal_address("1600 Pennsylvania Ave NW")
-normal_address("12 e st main ave ste 209", add_abbs = usps_street)
+normal_address("12 e st main ave ste 209", abbs = usps_street)
 }
 \seealso{
 Other geographic normalization functions: \code{\link{abbrev_full}},

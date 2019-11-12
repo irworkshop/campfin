@@ -18,20 +18,14 @@
 #' @return A vector of normalized street addresses.
 #' @examples
 #' normal_address("1600 Pennsylvania Ave NW")
-#' normal_address("12 e st main ave ste 209", add_abbs = usps_street)
+#' normal_address("12 e st main ave ste 209", abbs = usps_street)
 #' @importFrom stringr str_to_upper str_replace_all str_trim str_squish str_replace
 #' @family geographic normalization functions
 #' @export
 normal_address <- function(address, abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
   address2 <- address %>%
-    stringr::str_to_upper() %>%
-    stringr::str_replace_all("-", " ") %>%
-    stringr::str_replace_all("_", " ") %>%
-    stringr::str_remove_all("[[:punct:]]") %>%
-    stringr::str_trim() %>%
-    stringr::str_squish() %>%
-    stringr::str_replace_all("P\\sO", "PO")
-
+    str_normal() %>%
+    stringr::str_replace_all("^P\\sO", "PO")
   if (!is.null(abbs)) {
     address2 <- expand_abbrev(x = address2, abb = abbs)
   }
