@@ -60,7 +60,6 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess 
       return(city_validity)
     }
   }
-
   if(city == ""|is.na(city)){
     stop("Input is empty", call. = FALSE)
     create_table()

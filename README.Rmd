@@ -22,6 +22,7 @@ options(width = 99)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
 [![Travis build status](https://travis-ci.org/irworkshop/campfin.svg?branch=master)](https://travis-ci.org/irworkshop/campfin)
+[![Codecov test coverage](https://codecov.io/gh/irworkshop/campfin/branch/master/graph/badge.svg)](https://codecov.io/gh/irworkshop/campfin?branch=master)
 <!-- badges: end -->
 
 ## Overview
@@ -193,3 +194,11 @@ US telephone numbers in a wide variety of common formats.
 str_trunc(rx_phone, width = 80, side = "center")
 str_detect(c("1-800-555-1234", "(800) 555-1234", "8005551234 x567"), rx_phone)
 ```
+
+## Code of Conduct
+  
+Please note that the `campfin` project is released with a 
+[Contributor Code of Conduct][coc]. By contributing to this project, you agree
+to abide by its terms.
+
+[coc]:https://contributor-covenant.org/version/1/0/0/CODE_OF_CONDUCT.html
