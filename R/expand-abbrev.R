@@ -43,4 +43,28 @@ expand_abbrev <- function(x, abb = NULL, rep = NULL) {
   stringr::str_replace_all(string = x, pattern = abb)
 }
 
-
+#' Expand US state names
+#'
+#' This function is used to first normalize an `abb` and then call
+#' [expand_full()] using [valid_state] and [valid_name] as the `abb` and `rep`
+#' arguments.
+#'
+#' @param abb A abb US state name character vector (e.g., "Vermont").
+#' @return The 2-letter USPS abbreviation of for state names (e.g., "VT").
+#' @importFrom stringr str_trim str_squish str_remove_all str_to_upper
+#' @examples
+#' expand_state(abb = state.abb)
+#' expand_state(abb = c("nm", "fr"))
+#' @family geographic normalization functions
+#' @export
+expand_state <- function(abb) {
+  if (!is.character(abb)) {
+    stop("abbreviated state name must be a character vector")
+  }
+  abb <- abb %>%
+    str_trim() %>%
+    str_squish() %>%
+    str_remove_all("^A-z") %>%
+    str_to_upper()
+  expand_abbrev(x = abb, campfin::valid_state, campfin::valid_name)
+}
