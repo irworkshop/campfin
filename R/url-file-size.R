@@ -1,6 +1,8 @@
-#' @title Check URL File Size
-#' @description Call [httr::HEAD()] and return the number of bytes in the file
-#'   to be downloaded.
+#' Check a URL file size
+#'
+#' Call [httr::HEAD()] and return the number of bytes in the file to be
+#' downloaded.
+#'
 #' @param url The URL of the file to query.
 #' @param format logical; Whether to format as byte measurment and symbol.
 #' @return The size of a file to be downloaded.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/url-file-size.R
 \name{url_file_size}
 \alias{url_file_size}
-\title{Check URL File Size}
+\title{Check a URL file size}
 \usage{
 url_file_size(url, format = FALSE)
 }
@@ -15,8 +15,8 @@ url_file_size(url, format = FALSE)
 The size of a file to be downloaded.
 }
 \description{
-Call \code{\link[httr:HEAD]{httr::HEAD()}} and return the number of bytes in the file
-to be downloaded.
+Call \code{\link[httr:HEAD]{httr::HEAD()}} and return the number of bytes in the file to be
+downloaded.
 }
 \examples{
 url_file_size("https://campaignfinance.cdn.sos.ca.gov/dbwebexport.zip", format = TRUE)
