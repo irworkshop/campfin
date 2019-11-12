@@ -9,7 +9,7 @@
 #' @param ... Optional arguments passed to [ggplot2::labs()].
 #' @return A bar plot.
 #' @examples
-#' glimpse_fun(dplyr::storms, dplyr::n_distinct)
+#' explore_plot(ggplot2::diamonds, cut)
 #' @importFrom snakecase to_title_case
 #' @importFrom ggplot2 ggplot geom_col scale_fill_brewer scale_y_continuous aes
 #' @importFrom dplyr count mutate desc

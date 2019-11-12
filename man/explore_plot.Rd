@@ -28,5 +28,5 @@ This function simply wraps around \code{\link[ggplot2:geom_col]{ggplot2::geom_co
 a dataframe and categorical variable to return a simple barplot count.
 }
 \examples{
-glimpse_fun(dplyr::storms, dplyr::n_distinct)
+explore_plot(ggplot2::diamonds, cut)
 }
