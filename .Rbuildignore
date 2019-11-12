@@ -5,3 +5,8 @@
 ^data-raw$
 ^cran-comments\.md$
 ^\.travis\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^codecov\.yml$
+^\.covrignore$
