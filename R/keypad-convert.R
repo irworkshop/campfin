@@ -1,10 +1,12 @@
-#' @title Convert Letter(s) or a Number to their Keypad Counterpart
-#' @description This function works best when converting numbers to letters, as
-#'   each number only has a single possible letter. For each letter, there are 3
-#'   or 4 possible letters, resulting in a number of possible conversions. This
-#'   function was inteded to convert phonetic telephone numbers to their valid
-#'   numeric equivalent; when used in this manner, each letter in a string can
-#'   be lazily replaced without changing the rest of the string.
+#' Convert letters or numbers to their keypad counterpart
+#'
+#' This function works best when converting numbers to letters, as each number
+#' only has a single possible letter. For each letter, there are 3 or 4 possible
+#' letters, resulting in a number of possible conversions. This function was
+#' inteded to convert phonetic telephone numbers to their valid numeric
+#' equivalent; when used in this manner, each letter in a string can be lazily
+#' replaced without changing the rest of the string.
+#'
 #' @details When replacing letters, this function relies on the feature of
 #'   [stringr::str_replace_all()] to work with named vectors (`c("A" = "2")`).
 #' @param x A vector of characters or letters.

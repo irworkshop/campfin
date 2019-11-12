@@ -2,7 +2,7 @@
 % Please edit documentation in R/keypad-convert.R
 \name{keypad_convert}
 \alias{keypad_convert}
-\title{Convert Letter(s) or a Number to their Keypad Counterpart}
+\title{Convert letters or numbers to their keypad counterpart}
 \usage{
 keypad_convert(x, ext = FALSE)
 }
@@ -19,12 +19,12 @@ character vector) is supplied, then a \strong{list} is returned, each element of
 which contacts a vector of letetrs for each number.
 }
 \description{
-This function works best when converting numbers to letters, as
-each number only has a single possible letter. For each letter, there are 3
-or 4 possible letters, resulting in a number of possible conversions. This
-function was inteded to convert phonetic telephone numbers to their valid
-numeric equivalent; when used in this manner, each letter in a string can
-be lazily replaced without changing the rest of the string.
+This function works best when converting numbers to letters, as each number
+only has a single possible letter. For each letter, there are 3 or 4 possible
+letters, resulting in a number of possible conversions. This function was
+inteded to convert phonetic telephone numbers to their valid numeric
+equivalent; when used in this manner, each letter in a string can be lazily
+replaced without changing the rest of the string.
 }
 \details{
 When replacing letters, this function relies on the feature of
