@@ -2,21 +2,20 @@
 % Please edit documentation in R/normal-address.R
 \name{normal_address}
 \alias{normal_address}
-\title{Normalize Street Addresses}
+\title{Normalize street addresses}
 \usage{
 normal_address(address, add_abbs = NULL, na = c("", "NA"),
   na_rep = FALSE)
 }
 \arguments{
-\item{address}{A vector of street addresses (ideally without city, state, and
-ZIP code; you can use the \link{rx_state} and \link{rx_zip} regular expression
-patterns to remove the later two).}
+\item{address}{A vector of street addresses (ideally without city, state, or
+postal code).}
 
-\item{add_abbs}{A two-column data frame like \link{usps_street}, with a full
-suffix ("STREET") in the first column and abbreviations ("ST") in the
-second. Replace all abbreviations with their full version.}
+\item{add_abbs}{A named vector or two-column data frame (like \link{usps_street})
+passed to \code{\link[=expand_abbrev]{expand_abbrev()}}. See \code{?expand_abbrev} for the type of object
+structure needed.}
 
-\item{na}{A vector of values to make \code{NA} (like \link{invalid_city}).}
+\item{na}{A charactr vector of values to make \code{NA} (like \link{invalid_city}).}
 
 \item{na_rep}{logical; If \code{TRUE}, replace all single digit (repeating)
 strings with \code{NA}.}
@@ -25,16 +24,15 @@ strings with \code{NA}.}
 A vector of normalized street addresses.
 }
 \description{
-Return consistent version of a US Street Address using
-\code{stringr::str_*()} functions. Letters are capitalized, hyphens and
-underscores are replaced with whitespaces, other punctuation is removed,
-and excess whitespace is trimed and squished. Optionally, street suffix
+Return consistent version of a US Street Address using \code{stringr::str_*()}
+functions. Letters are capitalized, punctuation is removed or replaced, and
+excess whitespace is trimed and squished. Optionally, street suffix
 abbreviations ("AVE") can be replaced with their long form ("AVENUE").
 Invalid addresses from a vector can be removed (possibly using
 \link{invalid_city}) as well as single (repeating) character strings ("XXXXXX").
 }
 \examples{
-normal_address("1600 Pennsylvania Ave NW", add_abbs = usps_street)
+normal_address("1600 Pennsylvania Ave NW")
 normal_address("12 e st main ave ste 209", add_abbs = usps_street)
 }
 \seealso{

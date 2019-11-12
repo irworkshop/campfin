@@ -17,7 +17,7 @@ count_out(x, y, na.rm = TRUE)
 The sum of \code{x} absent in \code{y}.
 }
 \description{
-Count the total values in \code{x} that are are \code{\%out\%} of the vector \code{y}.
+Count the total values of \code{x} that are are \code{\%out\%} of the vector \code{y}.
 }
 \details{
 \code{sum(x \%out\% y)}

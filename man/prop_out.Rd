@@ -17,7 +17,7 @@ prop_out(x, y, na.rm = TRUE)
 The proprtion of \code{x} absent in \code{y}.
 }
 \description{
-Find the proportion of values in \code{x} that are \code{\%out\%} of the vector \code{y}.
+Find the proportion of values of \code{x} that are \code{\%out\%} of the vector \code{y}.
 }
 \details{
 \code{mean(x \%out\% y)}

@@ -13,7 +13,7 @@ prop_na(x)
 The sum of \code{x} absent in \code{y}.
 }
 \description{
-Find the proportion of values in \code{x} that are \code{NA}.
+Find the proportion of values of \code{x} that are \code{NA}.
 }
 \details{
 \code{mean(is.na(x))}

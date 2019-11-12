@@ -15,7 +15,7 @@ na_in(x, y)
 The vector \code{x} missing any values in \code{y}.
 }
 \description{
-Set \code{NA} for the values of one \code{x} that are \code{\%in\%} the vector \code{y}.
+Set \code{NA} for the values of \code{x} that are \code{\%in\%} the vector \code{y}.
 }
 \concept{Simple counting wrappers
 na_in(c("VT", "NH", "ZZ", "ME"), state.abb)

@@ -16,7 +16,7 @@
 
 #' Proportion in
 #'
-#' Find the proportion of values in `x` that are `%in%` the vector `y`.
+#' Find the proportion of values of `x` that are `%in%` the vector `y`.
 #'
 #' @details `mean(x %in% y)`
 #' @param x A vector to check.
@@ -35,7 +35,7 @@ prop_in <- function(x, y, na.rm = TRUE) {
 
 #' Proportion out
 #'
-#' Find the proportion of values in `x` that are `%out%` of the vector `y`.
+#' Find the proportion of values of `x` that are `%out%` of the vector `y`.
 #'
 #' @details `mean(x %out% y)`
 #' @param x A vector to check.
@@ -54,7 +54,7 @@ prop_out <- function(x, y, na.rm = TRUE) {
 
 #' Count in
 #'
-#' Count the total values in `x` that are `%in%` the vector `y`.
+#' Count the total values of `x` that are `%in%` the vector `y`.
 #'
 #' @details `sum(x %out% y)`
 #' @param x A vector to check.
@@ -73,7 +73,7 @@ count_in <- function(x, y, na.rm = TRUE) {
 
 #' Count out
 #'
-#' Count the total values in `x` that are are `%out%` of the vector `y`.
+#' Count the total values of `x` that are are `%out%` of the vector `y`.
 #'
 #' @details `sum(x %out% y)`
 #' @param x A vector to check.
@@ -125,7 +125,7 @@ count_na <- function(x) {
 
 #' Proportion missing
 #'
-#' Find the proportion of values in `x` that are `NA`.
+#' Find the proportion of values of `x` that are `NA`.
 #'
 #' @details `mean(is.na(x))`
 #' @param x A vector to check.
@@ -141,7 +141,7 @@ prop_na <- function(x) {
 
 #' Remove in
 #'
-#' Set `NA` for the values of one `x` that are `%in%` the vector `y`.
+#' Set `NA` for the values of `x` that are `%in%` the vector `y`.
 #'
 #' @param x A vector to check.
 #' @param y A vector to compare against.
@@ -157,7 +157,7 @@ na_in <- function(x, y) {
 
 #' Remove out
 #'
-#' Set `NA` for the values of one `x` that are `%out%` of the vector `y`.
+#' Set `NA` for the values of `x` that are `%out%` of the vector `y`.
 #'
 #' @param x A vector to check.
 #' @param y A vector to compare against.
@@ -168,6 +168,26 @@ na_in <- function(x, y) {
 #' @export
 na_out <- function(x, y) {
   x[which(x %out% y)] <- NA
+  return(x)
+}
+
+#' Remove repeated character elements
+#'
+#' Set `NA` for the values of `x` that contain a single repeating character.
+#'
+#' @details Uses the regular expression `"^(.)\\1+$"`.
+#' @param x A vector to check.
+#' @param n The minumum number times a character must repeat.
+#' @return The vector `x` with `NA` replacing repeating character values.
+#' @family Simple counting wrappers
+#' na_rep(c("VT", "NH", "ZZ", "ME"))
+#' @export
+na_rep <- function(x, n = 1) {
+  if (n < 1) {
+    stop("n must be at least 1")
+  }
+  rx <- sprintf("^(.)\\1{%i,}$", n)
+  x[stringr::str_which(x, rx)] <- NA
   return(x)
 }
 

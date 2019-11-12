@@ -17,7 +17,7 @@ prop_in(x, y, na.rm = TRUE)
 The proprtion of \code{x} present in \code{y}.
 }
 \description{
-Find the proportion of values in \code{x} that are \code{\%in\%} the vector \code{y}.
+Find the proportion of values of \code{x} that are \code{\%in\%} the vector \code{y}.
 }
 \details{
 \code{mean(x \%in\% y)}
