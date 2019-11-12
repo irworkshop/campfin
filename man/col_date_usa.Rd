@@ -2,18 +2,19 @@
 % Please edit documentation in R/col-date-usa.R
 \name{col_date_usa}
 \alias{col_date_usa}
-\title{Parse USA Date Columns in readr Functions}
+\title{Parse USA date columns in readr functions}
 \usage{
 col_date_usa()
 }
 \value{
-A \code{POSIXct()} vector.
+A \code{POSIXct} vector.
 }
 \description{
 Parse dates with format MM/DD/YYYY. This function simply wraps around
-\code{\link[readr:col_date]{readr::col_date()}} with the \code{format} argument set to \code{"\%m/\%d/\%Y"}. Most US campaign finance
-datasets use this format. Does not work with \code{\link[vroom:vroom]{vroom::vroom()}} version 1.0.2.9000 or lower.
+\code{\link[readr:col_date]{readr::col_date()}} with the \code{format} argument set to \code{"\%m/\%d/\%Y"}. Most US
+campaign finance datasets use this format. Does not work with
+\code{\link[vroom:vroom]{vroom::vroom()}} version 1.0.2.9000 or lower.
 }
 \examples{
-readr::read_csv(file = "x\\n09/18/1996", col_types = readr::cols(x = col_date_usa()))
+readr::read_csv(file = "x\\n11/09/2016", col_types = readr::cols(x = col_date_usa()))
 }
