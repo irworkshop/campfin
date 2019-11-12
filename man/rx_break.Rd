@@ -2,7 +2,7 @@
 % Please edit documentation in R/rx-break.R
 \name{rx_break}
 \alias{rx_break}
-\title{Form a Word Break Regex}
+\title{Form a word break regex pattern}
 \usage{
 rx_break(pattern)
 }

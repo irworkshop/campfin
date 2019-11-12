@@ -1,4 +1,4 @@
-#' Form a Word Break Regex
+#' Form a word break regex pattern
 #'
 #' Wrap a word in word boundry (`\\b`) characters. Useful when combined with
 #' [stringr::str_which()] and [stringr::str_detect()] to match only entire words
