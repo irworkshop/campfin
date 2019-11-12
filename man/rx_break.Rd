@@ -10,15 +10,14 @@ rx_break(pattern)
 \item{pattern}{A regex pattern (a word) to wrap in \code{\\b}.}
 }
 \value{
-The \code{pattern} wrapped in \code{\\b}.
+The a glue vector of \code{pattern} wrapped in \code{\\b}.
 }
 \description{
-Wrape a word in word boundry (\code{\\b}) characters. Useful when
-combined with \code{\link[stringr:str_which]{stringr::str_which()}} and \code{\link[stringr:str_detect]{stringr::str_detect()}} to match
-only entire words and not that word \emph{inside} another word (e.g., "sting"
-and "testing").
+Wrap a word in word boundry (\code{\\b}) characters. Useful when combined with
+\code{\link[stringr:str_which]{stringr::str_which()}} and \code{\link[stringr:str_detect]{stringr::str_detect()}} to match only entire words
+and not that word \emph{inside} another word (e.g., "sting" and "testing").
 }
 \examples{
 rx_break("test")
-rx_break(state.abb)
+rx_break(state.abb[1:5])
 }
