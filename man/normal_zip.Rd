@@ -2,7 +2,7 @@
 % Please edit documentation in R/normal-zip.R
 \name{normal_zip}
 \alias{normal_zip}
-\title{Normalize US ZIP Codes}
+\title{Normalize ZIP codes}
 \usage{
 normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
 }

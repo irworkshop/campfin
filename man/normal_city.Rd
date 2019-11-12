@@ -2,7 +2,7 @@
 % Please edit documentation in R/normal-city.R
 \name{normal_city}
 \alias{normal_city}
-\title{Normalize City Names}
+\title{Normalize city names}
 \usage{
 normal_city(city, abbs = NULL, na = c("", "NA"), na_rep = FALSE)
 }
@@ -26,14 +26,13 @@ the \link{usps_city} tibble.}
 A vector of normalized city names.
 }
 \description{
-Return consistent version of a city names using
-\code{stringr::str_*()} functions. Letters are capitalized, hyphens and
-underscores are replaced with whitespace, other punctuation is removed,
-numbers are removed, and excess whitespace is trimed and squished.
-Optionally, geographic abbreviations ("MT") can be replaced with their long
-form ("MOUNT"). Invalid addresses from a vector can be removed (possibly
-using \link{invalid_city}) as well as single (repeating) character strings
-("XXXXXX").
+Return consistent version of a city names using \code{stringr::str_*()} functions.
+Letters are capitalized, hyphens and underscores are replaced with
+whitespace, other punctuation is removed, numbers are removed, and excess
+whitespace is trimed and squished. Optionally, geographic abbreviations
+("MT") can be replaced with their long form ("MOUNT"). Invalid addresses from
+a vector can be removed (possibly using \link{invalid_city}) as well as single
+(repeating) character strings ("XXXXXX").
 }
 \examples{
 normal_city(

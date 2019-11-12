@@ -2,7 +2,7 @@
 % Please edit documentation in R/normal-phone.R
 \name{normal_phone}
 \alias{normal_phone}
-\title{Normalize a US Phone Number}
+\title{Normalize phone number}
 \usage{
 normal_phone(number, format = "(\%a) \%e-\%l", na_bad = FALSE,
   convert = FALSE, rm_ext = FALSE)

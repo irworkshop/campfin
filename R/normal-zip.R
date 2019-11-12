@@ -1,4 +1,4 @@
-#' Normalize US ZIP Codes
+#' Normalize ZIP codes
 #'
 #' Return consistent version US ZIP codes using `stringr::str_*()` functions.
 #' Non-number characters are removed, strings are padded with zeroes on the left

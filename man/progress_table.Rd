@@ -2,7 +2,7 @@
 % Please edit documentation in R/progress-table.R
 \name{progress_table}
 \alias{progress_table}
-\title{Create a Progress Table}
+\title{Create a progress table}
 \usage{
 progress_table(..., compare)
 }
@@ -17,9 +17,8 @@ with \link{valid_zip}, \link{valid_state} (\link{valid_name}), or
 A table with a row for each vector in \code{...}.
 }
 \description{
-Create a tibble with rows for each stage of normalization
-and columsn for the various statistics most useful in assessing
-the progress of each stage.
+Create a tibble with rows for each stage of normalization and columsn for the
+various statistics most useful in assessing the progress of each stage.
 }
 \examples{
 progress_table(state.name, toupper(state.name), compare = valid_name)

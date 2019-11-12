@@ -1,4 +1,4 @@
-#' Normalize a US Phone Number
+#' Normalize phone number
 #'
 #' Take US phone numbers in any number of formats and try to convert them to a
 #' standard format.
