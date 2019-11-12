@@ -2,7 +2,7 @@
 % Please edit documentation in R/abbrev-full.R
 \name{abbrev_full}
 \alias{abbrev_full}
-\title{Abbreviate Full Strings}
+\title{Abbreviate full strings}
 \usage{
 abbrev_full(x, full = NULL, rep = NULL)
 }
