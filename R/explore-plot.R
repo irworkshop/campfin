@@ -12,10 +12,11 @@
 #' explore_plot(ggplot2::diamonds, cut)
 #' @importFrom ggplot2 ggplot geom_col scale_fill_brewer scale_y_continuous aes
 #' @importFrom dplyr count mutate desc
+#' @importFrom stringr str_to_title str_replace_all
 #' @export
 explore_plot <- function(data, var, flip = FALSE, nbar = 8, palette = "Dark2", ...) {
   var_string <- deparse(substitute(var))
-  title_var <- str_to_title(str_replace_all(var_string, "_|-|\\.", " "))
+  title_var <- stringr::str_to_title(stringr::str_replace_all(var_string, "_|-|\\.", " "))
   base_plot <- data %>%
     dplyr::count({{ var }}, sort = TRUE) %>%
     dplyr::mutate(p = .data$n/sum(.data$n)) %>%
