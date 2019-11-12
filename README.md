@@ -10,6 +10,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
 [![Travis build
 status](https://travis-ci.org/irworkshop/campfin.svg?branch=master)](https://travis-ci.org/irworkshop/campfin)
+[![Codecov test
+coverage](https://codecov.io/gh/irworkshop/campfin/branch/master/graph/badge.svg)](https://codecov.io/gh/irworkshop/campfin?branch=master)
 <!-- badges: end -->
 
 ## Overview
@@ -94,9 +96,11 @@ objects <- data(package = "campfin")$results[, "Item"]
 cat(str_c("* ", "`", objects, "`"), sep = "\n")
 ```
 
+  - `extra_city`
   - `invalid_city`
   - `rx_phone`
   - `rx_state`
+  - `rx_url`
   - `rx_zip`
   - `usps_city`
   - `usps_state`
@@ -139,21 +143,21 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-#>     zip            city state latitude longitude
-#> 1 62688         Tallula    IL 39.94426 -89.93366
-#> 2 53928      Doylestown    WI 43.42694 -89.14912
-#> 3 33321 Fort Lauderdale    FL 26.21112 -80.26310
+#>     zip        city state latitude  longitude
+#> 1 75446 Honey Grove    TX 33.58985  -95.90242
+#> 2 59430      Denton    MT 47.31630 -109.96291
+#> 3 51559       Neola    IA 41.45514  -95.64792
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 3)
 #> # A tibble: 3 x 3
-#>   city    state zip  
-#>   <chr>   <chr> <chr>
-#> 1 ERATH   LA    70533
-#> 2 ACWORTH GA    30102
-#> 3 GILLHAM AR    71841
+#>   city           state zip  
+#>   <chr>          <chr> <chr>
+#> 1 KOYUKUK        AK    99754
+#> 2 PLEASANT MOUNT PA    18453
+#> 3 ALTAMONT       KS    67330
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -176,18 +180,18 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
-#>   abb     full    
-#>   <chr>   <chr>   
-#> 1 CV      COVE    
-#> 2 MOUNTIN MOUNTAIN
-#> 3 TRLS    TRAIL
+#>   abb   full  
+#>   <chr> <chr> 
+#> 1 LF    LOAF  
+#> 2 AV    AVENUE
+#> 3 S     SOUTH
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   abb   full          
-#>   <chr> <chr>         
-#> 1 NH    NEW HAMPSHIRE 
-#> 2 NC    NORTH CAROLINA
-#> 3 IN    INDIANA
+#>   abb   full       
+#>   <chr> <chr>      
+#> 1 MO    MISSOURI   
+#> 2 CT    CONNECTICUT
+#> 3 KY    KENTUCKY
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```
@@ -225,3 +229,10 @@ str_trunc(rx_phone, width = 80, side = "center")
 str_detect(c("1-800-555-1234", "(800) 555-1234", "8005551234 x567"), rx_phone)
 #> [1] TRUE TRUE TRUE
 ```
+
+## Code of Conduct
+
+Please note that the `campfin` project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/1/0/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
