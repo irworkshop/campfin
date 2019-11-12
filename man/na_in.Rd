@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{na_in}
 \alias{na_in}
-\title{Remove In}
+\title{Remove in}
 \usage{
 na_in(x, y)
 }
@@ -15,8 +15,8 @@ na_in(x, y)
 The vector \code{x} missing any values in \code{y}.
 }
 \description{
-Remove the values of one vector that are in another vector.
+Set \code{NA} for the values of one \code{x} that are \code{\%in\%} the vector \code{y}.
 }
-\concept{Simple Counting Wrappers
+\concept{Simple counting wrappers
 na_in(c("VT", "NH", "ZZ", "ME"), state.abb)
 na_in(1:10, seq(1, 10, 2))}

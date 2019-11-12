@@ -24,10 +24,4 @@ the progress of each stage.
 \examples{
 progress_table(state.name, toupper(state.name), compare = valid_name)
 }
-\seealso{
-Other Simple Counting Wrappers: \code{\link{count_diff}},
-  \code{\link{count_in}}, \code{\link{count_na}},
-  \code{\link{count_out}}, \code{\link{prop_in}},
-  \code{\link{prop_na}}, \code{\link{prop_out}}
-}
 \concept{Simple Counting Wrappers}

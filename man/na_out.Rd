@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{na_out}
 \alias{na_out}
-\title{Remove Out}
+\title{Remove out}
 \usage{
 na_out(x, y)
 }
@@ -15,8 +15,8 @@ na_out(x, y)
 The vector \code{x} missing any values not in \code{y}.
 }
 \description{
-Remove the values of one vector that are not in another vector.
+Set \code{NA} for the values of one \code{x} that are \code{\%out\%} of the vector \code{y}.
 }
-\concept{Simple Counting Wrappers
+\concept{Simple counting wrappers
 na_out(c("VT", "NH", "ZZ", "ME"), state.abb)
 na_out(1:10, seq(1, 10, 2))}

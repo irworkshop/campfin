@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{count_na}
 \alias{count_na}
-\title{Count \code{NA}}
+\title{Count missing}
 \usage{
 count_na(x)
 }
@@ -13,7 +13,7 @@ count_na(x)
 The sum of \code{x} that are \code{NA}
 }
 \description{
-Count the values of a vector that are missing.
+Count the total values of \code{x} that are \code{NA}.
 }
 \details{
 \code{sum(is.na(x))}
@@ -22,9 +22,9 @@ Count the values of a vector that are missing.
 count_na(c("VT", "NH", NA, "ME"))
 }
 \seealso{
-Other Simple Counting Wrappers: \code{\link{count_diff}},
+Other Simple counting wrappers: \code{\link{count_diff}},
   \code{\link{count_in}}, \code{\link{count_out}},
-  \code{\link{progress_table}}, \code{\link{prop_in}},
-  \code{\link{prop_na}}, \code{\link{prop_out}}
+  \code{\link{prop_in}}, \code{\link{prop_na}},
+  \code{\link{prop_out}}
 }
-\concept{Simple Counting Wrappers}
+\concept{Simple counting wrappers}

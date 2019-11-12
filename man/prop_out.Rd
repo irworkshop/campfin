@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{prop_out}
 \alias{prop_out}
-\title{Proportion Out}
+\title{Proportion out}
 \usage{
 prop_out(x, y, na.rm = TRUE)
 }
@@ -17,7 +17,7 @@ prop_out(x, y, na.rm = TRUE)
 The proprtion of \code{x} absent in \code{y}.
 }
 \description{
-Find proportion of values of one vector not in another vector.
+Find the proportion of values in \code{x} that are \code{\%out\%} of the vector \code{y}.
 }
 \details{
 \code{mean(x \%out\% y)}
@@ -26,9 +26,9 @@ Find proportion of values of one vector not in another vector.
 prop_out(c("VT", "NH", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple Counting Wrappers: \code{\link{count_diff}},
+Other Simple counting wrappers: \code{\link{count_diff}},
   \code{\link{count_in}}, \code{\link{count_na}},
-  \code{\link{count_out}}, \code{\link{progress_table}},
-  \code{\link{prop_in}}, \code{\link{prop_na}}
+  \code{\link{count_out}}, \code{\link{prop_in}},
+  \code{\link{prop_na}}
 }
-\concept{Simple Counting Wrappers}
+\concept{Simple counting wrappers}
