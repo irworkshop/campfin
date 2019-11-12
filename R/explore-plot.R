@@ -10,13 +10,12 @@
 #' @return A bar plot.
 #' @examples
 #' explore_plot(ggplot2::diamonds, cut)
-#' @importFrom snakecase to_title_case
 #' @importFrom ggplot2 ggplot geom_col scale_fill_brewer scale_y_continuous aes
 #' @importFrom dplyr count mutate desc
 #' @export
 explore_plot <- function(data, var, flip = FALSE, nbar = 8, palette = "Dark2", ...) {
   var_string <- deparse(substitute(var))
-  title_var <- snakecase::to_title_case(var_string)
+  title_var <- str_to_title(str_replace_all(var_string, "_|-|\\.", " "))
   base_plot <- data %>%
     dplyr::count({{ var }}, sort = TRUE) %>%
     dplyr::mutate(p = .data$n/sum(.data$n)) %>%
