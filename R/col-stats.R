@@ -1,12 +1,13 @@
-#' @title Apply a statistic function to all column vectors
-#' @description Apply a counting summary function like [dplyr::n_distinct()] or
-#'   [count_na()] to every column of a dataframe and return the results along
-#'   with a _percentage_ of that value.
+#' Apply a statistic function to all column vectors
+#'
+#' Apply a counting summary function like [dplyr::n_distinct()] or [count_na()]
+#' to every column of a data frame and return the results along with a
+#' _percentage_ of that value.
+#'
 #' @param data A data frame to glimpse.
 #' @param fun A function to map to each column.
 #' @param print logical; Should all columns be printed as rows?
-#' @return A tibble with a row for every column and new columns with count and
-#'   proportion.
+#' @return A tibble with a row for every column with the count and proportion.
 #' @examples
 #' col_stats(dplyr::storms, dplyr::n_distinct)
 #' col_stats(dplyr::storms, campfin::count_na)

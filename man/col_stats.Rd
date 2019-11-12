@@ -14,13 +14,12 @@ col_stats(data, fun, print = TRUE)
 \item{print}{logical; Should all columns be printed as rows?}
 }
 \value{
-A tibble with a row for every column and new columns with count and
-proportion.
+A tibble with a row for every column with the count and proportion.
 }
 \description{
-Apply a counting summary function like \code{\link[dplyr:n_distinct]{dplyr::n_distinct()}} or
-\code{\link[=count_na]{count_na()}} to every column of a dataframe and return the results along
-with a \emph{percentage} of that value.
+Apply a counting summary function like \code{\link[dplyr:n_distinct]{dplyr::n_distinct()}} or \code{\link[=count_na]{count_na()}}
+to every column of a data frame and return the results along with a
+\emph{percentage} of that value.
 }
 \examples{
 col_stats(dplyr::storms, dplyr::n_distinct)
