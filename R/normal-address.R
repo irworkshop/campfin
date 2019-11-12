@@ -9,7 +9,7 @@
 #'
 #' @param address A vector of street addresses (ideally without city, state, or
 #'   postal code).
-#' @param add_abbs A named vector or two-column data frame (like [usps_street])
+#' @param abbs A named vector or two-column data frame (like [usps_street])
 #'   passed to [expand_abbrev()]. See `?expand_abbrev` for the type of object
 #'   structure needed.
 #' @param na A charactr vector of values to make `NA` (like [invalid_city]).
@@ -22,7 +22,7 @@
 #' @importFrom stringr str_to_upper str_replace_all str_trim str_squish str_replace
 #' @family geographic normalization functions
 #' @export
-normal_address <- function(address, add_abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
+normal_address <- function(address, abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
   address2 <- address %>%
     stringr::str_to_upper() %>%
     stringr::str_replace_all("-", " ") %>%
@@ -31,14 +31,15 @@ normal_address <- function(address, add_abbs = NULL, na = c("", "NA"), na_rep = 
     stringr::str_trim() %>%
     stringr::str_squish() %>%
     stringr::str_replace_all("P\\sO", "PO")
+
   if (!is.null(add_abbs)) {
-    address2 <- expand_abbrev(x = address2, abb = add_abbs)
+    address2 <- expand_abbrev(x = address2, abb = abbs)
   }
   if (na_rep) {
-    address2[stringr::str_which(address2, "^(.)\\1+$")] <- NA
+    address2 <- na_rep(address2)
   }
   if (!rlang::is_empty(na)) {
-    address2[which(address2 %in% stringr::str_to_upper(na))] <- NA
+    address2 <- na_in(address2, na)
   }
-  return(address2)
+  address2
 }

@@ -4,14 +4,14 @@
 \alias{normal_address}
 \title{Normalize street addresses}
 \usage{
-normal_address(address, add_abbs = NULL, na = c("", "NA"),
+normal_address(address, abbs = NULL, na = c("", "NA"),
   na_rep = FALSE)
 }
 \arguments{
 \item{address}{A vector of street addresses (ideally without city, state, or
 postal code).}
 
-\item{add_abbs}{A named vector or two-column data frame (like \link{usps_street})
+\item{abbs}{A named vector or two-column data frame (like \link{usps_street})
 passed to \code{\link[=expand_abbrev]{expand_abbrev()}}. See \code{?expand_abbrev} for the type of object
 structure needed.}
 
