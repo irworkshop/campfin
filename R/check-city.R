@@ -49,12 +49,14 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess 
   normal_returned = NA_character_
   create_table <- function() {
     if (guess) {
-      y <- tibble::tibble(original_city = city,
-                          original_state = ifelse(is.null(state),NA_character_,state),
-                          original_zip = ifelse(is.null(zip),NA_character_,zip),
-                          check_city_flag = city_validity,
-                          guess_city = locality,
-                          guess_place = normal_returned)
+      y <- tibble::tibble(
+        original_city = city,
+        original_state = ifelse(is.null(state),NA_character_,state),
+        original_zip = ifelse(is.null(zip),NA_character_,zip),
+        check_city_flag = city_validity,
+        guess_city = locality,
+        guess_place = normal_returned
+      )
       return(y)
     } else {
       return(city_validity)
@@ -84,17 +86,19 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess 
   } else {
     returned_address <- r_content$results[[1]]$formatted_address %>% str_to_upper()
     returned_city <- str_match(returned_address,"(^.[^,]+),\\s.+")[,2]
-    normal_returned <- normal_city(city = returned_city,
-                                   geo_abbs = campfin::usps_city,
-                                   st_abbs = c(campfin::valid_state),
-                                   na = campfin::invalid_city,
-                                   na_rep = TRUE)
+    normal_returned <- normal_city(
+      city = returned_city,
+      abbs = campfin::usps_city,
+      states = c(campfin::valid_state),
+      na = campfin::invalid_city,
+      na_rep = TRUE
+    )
     city_validity <- str_to_upper(city) %>% trimws() == normal_returned
     address_list <- r_content$results[[1]]$address_components
     locality_position <- lapply(address_list, unlist,recursive = T) %>% map(str_detect, "locality") %>% map_lgl(any)
     locality <- ifelse(TRUE %in% locality_position,
-                       address_list[locality_position][[1]]$long_name %>% normal_city(.,geo_abbs = campfin::usps_city,
-                                                                                      st_abbs = c(campfin::valid_state),
+                       address_list[locality_position][[1]]$long_name %>% normal_city(.,abbs = campfin::usps_city,
+                                                                                      states = c(campfin::valid_state),
                                                                                       na = campfin::invalid_city,
                                                                                       na_rep = TRUE),
                        NA_character_

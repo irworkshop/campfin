@@ -129,14 +129,14 @@ vt <- vt %>%
   mutate(
     address = normal_address(
       address = address,
-      add_abbs = usps_street,
+      abbs = usps_street,
       na = invalid_city,
       na_rep = TRUE
     ),
     city = normal_city(
       city = city,
-      geo_abbs = usps_city,
-      st_abbs = "VT",
+      abbs = usps_city,
+      states = "VT",
       na = invalid_city,
       na_rep = TRUE
     ),

@@ -12,6 +12,8 @@
 #' @param abbs A named vector or data frame of abbreviations passed to
 #'   [expand_abbrev]; see [expand_abbrev] for format of `abb` argument or use
 #'   the [usps_city] tibble.
+#' @param states A vector of state abbreviations ("VT") to remove from the
+#'   _end_ (and only end) of city names ("STOWE VT").
 #' @param na A vector of values to make `NA` (useful with the [invalid_city]
 #'   vector).
 #' @param na_rep logical; If `TRUE`, replace all single digit (repeating)
@@ -20,23 +22,26 @@
 #' @examples
 #' normal_city(
 #'   city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-#'   geo_abbs = c("ST" = "SAINT"),
-#'   st_abbs = c("VT"),
-#'   na = c("", "NA", "UNKNOWN"),
+#'   abbs = c("ST" = "SAINT"),
+#'   states = "VT",
+#'   na = invalid_city,
 #'   na_rep = TRUE
 #' )
-#' @importFrom stringr str_to_upper str_replace_all str_remove_all str_trim
-#'   str_squish str_c str_replace str_remove str_which
+#' @importFrom stringr str_remove_all str_remove
 #' @importFrom dplyr na_if
-#' @importFrom tibble tibble
 #' @family geographic normalization functions
 #' @export
-normal_city <- function(city, abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
+normal_city <- function(city, abbs = NULL, states = NULL, na = c("", "NA"), na_rep = FALSE) {
   city2 <- city %>%
     str_normal() %>%
     stringr::str_remove_all("\\d+")
   if (!is.null(abbs)) {
     city2 <- expand_abbrev(x = city2, abb = abbs)
+  }
+  if (!is.null(states)) {
+    for (i in seq_along(states)) {
+      city2 <- stringr::str_remove(city2, glue::glue("\\s{states[i]}$"))
+    }
   }
   if (na_rep) {
     city2 <- na_rep(city2)

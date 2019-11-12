@@ -4,7 +4,8 @@
 \alias{normal_city}
 \title{Normalize city names}
 \usage{
-normal_city(city, abbs = NULL, na = c("", "NA"), na_rep = FALSE)
+normal_city(city, abbs = NULL, states = NULL, na = c("", "NA"),
+  na_rep = FALSE)
 }
 \arguments{
 \item{city}{A vector of city names.}
@@ -12,6 +13,9 @@ normal_city(city, abbs = NULL, na = c("", "NA"), na_rep = FALSE)
 \item{abbs}{A named vector or data frame of abbreviations passed to
 \link{expand_abbrev}; see \link{expand_abbrev} for format of \code{abb} argument or use
 the \link{usps_city} tibble.}
+
+\item{states}{A vector of state abbreviations ("VT") to remove from the
+\emph{end} (and only end) of city names ("STOWE VT").}
 
 \item{na}{A vector of values to make \code{NA} (useful with the \link{invalid_city}
 vector).}
@@ -34,9 +38,9 @@ a vector can be removed (possibly using \link{invalid_city}) as well as single
 \examples{
 normal_city(
   city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-  geo_abbs = c("ST" = "SAINT"),
-  st_abbs = c("VT"),
-  na = c("", "NA", "UNKNOWN"),
+  abbs = c("ST" = "SAINT"),
+  states = "VT",
+  na = invalid_city,
   na_rep = TRUE
 )
 }
