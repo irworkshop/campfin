@@ -9,11 +9,9 @@
 #' (repeating) character strings ("XXXXXX").
 #'
 #' @param city A vector of city names.
-#' @param geo_abbs A named vector or data frame of abbreviations passed to
+#' @param abbs A named vector or data frame of abbreviations passed to
 #'   [expand_abbrev]; see [expand_abbrev] for format of `abb` argument or use
 #'   the [usps_city] tibble.
-#' @param st_abbs A vector of state abbreviations ("VT") to remove from the
-#'   _end_ (and only end) of city names ("STOWE VT").
 #' @param na A vector of values to make `NA` (useful with the [invalid_city]
 #'   vector).
 #' @param na_rep logical; If `TRUE`, replace all single digit (repeating)
