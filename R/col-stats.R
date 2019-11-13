@@ -34,5 +34,7 @@ col_stats <- function(data, fun, print = TRUE) {
     dplyr::select(.data$col, .data$class, .data$n, .data$p)
   if (print) {
     print(summary, n = length(data))
+  } else {
+    return(summary)
   }
 }

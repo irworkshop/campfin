@@ -3,7 +3,7 @@ library(testthat)
 library(campfin)
 
 test_that("column statistics can be found from a data frame", {
-  stats <- col_stats(diamonds, n_distinct)
+  stats <- col_stats(diamonds, n_distinct, print = FALSE)
   expect_length(stats, 4)
   expect_equal(nrow(stats), length(diamonds))
   expect_equal(n_distinct(diamonds[, 1]), stats[[1, 3]])
