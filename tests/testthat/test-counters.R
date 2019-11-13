@@ -1,0 +1,107 @@
+library(tidyverse)
+library(testthat)
+library(campfin)
+
+test_that("the %out% infix opperator works as an invert of %in%", {
+  x <- c("VT", "DC")
+  a <- x %out% state.abb
+  b <- !(x %in% state.abb)
+  expect_equal(a, b)
+  expect_equal(sum(a), 1)
+  expect_equal(sum(a), sum(b))
+})
+
+test_that("the prop_in counter wraps around mean(%in%)", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB")
+  a <- prop_in(x, state.abb)
+  b <- mean(x %in% state.abb)
+  expect_equal(a, b)
+})
+
+test_that("the prop_out counter wraps around mean(%out%)", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB")
+  a <- prop_out(x, state.abb)
+  b <- mean(x %out% state.abb)
+  expect_equal(a, b)
+})
+
+test_that("the count_in counter wraps around sum(%in%)", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB")
+  a <- count_in(x, state.abb)
+  b <- sum(x %in% state.abb)
+  expect_equal(a, b)
+})
+
+test_that("the count_out counter wraps around sum(%out%)", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB")
+  a <- count_out(x, state.abb)
+  b <- sum(x %out% state.abb)
+  expect_equal(a, b)
+})
+
+test_that("count_in and count_out can exclude NA", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB", NA)
+  a <- count_out(x, state.abb, na.rm = FALSE)
+  b <- sum(x %out% state.abb)
+  expect_equal(a, b)
+})
+
+test_that("count_diff wraps around length(setdiff())", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB")
+  a <- count_diff(x, state.abb)
+  b <- length(setdiff(x, state.abb))
+  expect_equal(a, b)
+})
+
+test_that("count_na wraps around sum(is.na())", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB", NA)
+  a <- count_na(x)
+  b <- sum(is.na(x))
+  expect_equal(a, b)
+})
+
+test_that("prop_na wraps around mean(is.na())", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB", NA)
+  a <- prop_na(x)
+  b <- mean(is.na(x))
+  expect_equal(a, b)
+})
+
+test_that("na_in can assign NA to values %in%", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB", NA)
+  y <- c("VT", "DC")
+  a <- na_in(x, y)
+  expect_equal(sum(is.na(a)), 3)
+})
+
+test_that("na_out can assign NA to values %out%", {
+  x <- c("VT", "DC", "MA", "FR", "NM", "TX", "QB", NA)
+  y <- c("VT", "DC")
+  a <- na_out(x, y)
+  expect_equal(sum(is.na(a)), 6)
+})
+
+test_that("na_rep can assign NA to any single-digit repeating string", {
+  x <- c("ABC", "AAA", "BBB")
+  a <- na_rep(x)
+  expect_equal(count_na(a), 2)
+})
+
+test_that("na_rep can ignore strings of only one character", {
+  x <- c("A", "B", "C")
+  a <- na_rep(x, n = 1)
+  expect_equal(a, x)
+})
+
+test_that("count_vec returns a dplyr::count() on a vector", {
+  x <- sample(
+    x = c("VT", "DC", "MA"),
+    size = 100,
+    replace = TRUE,
+    prob = c(0.75, 0.50, 0.25)
+  )
+  a <- count_vec(x)
+  expect_s3_class(a, "tbl")
+  expect_length(a, 2)
+  expect_equal(nrow(a), n_distinct(x))
+})
