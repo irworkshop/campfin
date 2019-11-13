@@ -36,3 +36,16 @@ test_that("abbreviation works with two vectors", {
   expect_detect(abbrev, "Fe")
   expect_detect(abbrev, "Au")
 })
+
+test_that("abbreviation stops with insufficient arguments", {
+  string <- "Gold and Iron are both metals"
+  a <- c("Gold", "Iron")
+  b <- c("Fe", "Au", "Pb")
+  expect_error(abbrev_full(string, full = a))
+  expect_error(abbrev_full(string, full = a, rep = b))
+})
+
+test_that("abbrev_state can wrap around abbrev_full for US states", {
+  expect_equal(abbrev_state("Vermont"), "VT")
+  expect_error(abbrev_state(state.x77))
+})
