@@ -173,19 +173,19 @@ na_out <- function(x, y) {
 
 #' Remove repeated character elements
 #'
-#' Set `NA` for the values of `x` that contain a single repeating character.
+#' Set `NA` for the values of `x` that contain a single repeating character and
+#' no other characters.
 #'
 #' @details Uses the regular expression `"^(.)\\1+$"`.
 #' @param x A vector to check.
-#' @param n The minumum number times a character must repeat.
+#' @param n The minumum number times a character must repeat. If 0, the default,
+#'   then any string of one character will be replaced with `NA`. If greater
+#'   than 0, the string must contain greater than `n` number of repetitions.
 #' @return The vector `x` with `NA` replacing repeating character values.
 #' @family Simple counting wrappers
 #' na_rep(c("VT", "NH", "ZZ", "ME"))
 #' @export
-na_rep <- function(x, n = 1) {
-  if (n < 1) {
-    stop("n must be at least 1")
-  }
+na_rep <- function(x, n = 0) {
   rx <- sprintf("^(.)\\1{%i,}$", n)
   x[stringr::str_which(x, rx)] <- NA
   return(x)
