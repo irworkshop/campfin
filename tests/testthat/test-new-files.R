@@ -8,7 +8,7 @@ dir_create(here("dir"))
 file_create(here("dir", "temp.txt"))
 
 test_that("the age of all files in a directory can be checked", {
-  expect_true(all_files_new("dir"))
+  expect_true(all_files_new(here("dir")))
   expect_false(all_files_new(here("data")))
 })
 
