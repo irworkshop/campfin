@@ -35,7 +35,7 @@ explore_plot <- function(data, var, flip = FALSE, nbar = 8, palette = "Dark2", .
       y = "Percent",
       ...
     )
-  if (!flip) {
+  if (flip) {
     base_plot + ggplot2::coord_flip()
   } else {
     base_plot
