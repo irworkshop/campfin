@@ -8,49 +8,50 @@ check_city(city = NULL, state = NULL, zip = NULL, key = NULL,
   guess = FALSE)
 }
 \arguments{
-\item{city}{A string of city name to be submitted to the Google Maps Geocode
-API and tested.}
+\item{city}{A string of city name to be submitted to the Geocode API.}
 
-\item{state}{Optional. The state associated with the city that you wish to
-check against the Maps API.}
+\item{state}{Optional. The state associated with the \code{city}.}
 
-\item{zip}{Optional. Supply a string of zipcode will help with matching
-precision}
+\item{zip}{Optional. Supply a string of ZIP code to increase precision.}
 
-\item{key}{a character string to be passed into key=''}
+\item{key}{A character string to be passed into \code{key}. Save your key as
+"GEOCODE_KEY" using \code{Sys.setenv()} or by editing your \code{.Renviron} file.}
 
-\item{guess}{a logical vector. If true, the function returns a dataframe with
-three columns. In addition to the first logical vector, it would return a
-\code{locality} column with the API-matched localities, i.e. unincorporated
-cities or census designated places returned by API, and a third column
-first part of matched formatted address returned by the API. When \code{place}
-is set to TRUE, the results returned can be any address, including
-highways, street addresses, cities, townships, states, provinces,
-countires, etc.}
+\item{guess}{logical; Should the function return a single row tibble
+containing the orignal data sent and the multi components returned by the
+Geocode API.}
 }
 \value{
-By default, returns a logical vector: If the city returned by the API
-comes back the same as the city input, the function will evaluate to true;
-otherwise it will evaluate to false.The evaluation ignores case. If the the
-guess argument is set to T, returns a dataframe with columns
-\code{original_city}, \code{original_state}, \code{original_zip}, \code{check_city_flag},
-\code{guess_city} and \code{guess_place}.
+A logical value by default. If the city returned by the API
+comes back the same as the city input, the function will evaluate to
+\code{TRUE}, in all other circumstances (including API errors) \code{FALSE} is returned.
+
+If the the \code{guess} argument is set to \code{TRUE}, a tibble with 1 row and six
+columns is returned:
+\itemize{
+\item \code{original_city}: The \code{city} value sent to the API.
+\item \code{original_state}: The \code{state} value sent to the API.
+\item \code{original_zip}: The \code{zip} value sent to the API.
+\item \code{check_city_flag}: logical; whether the guessed city matches.
+\item \code{guess_city}: The legal city guessed by the API.
+\item \code{guess_place}: The generic locality guessed by the API.
+}
 }
 \description{
-Check whether a place is a valid place or misspelling by
-matching against the Google Geocoding seaerch result. Use the \code{\link[httr:GET]{httr::GET()}}
-to send a request to the Google Maps API for geocoding information. The
-query will concatenate all the geographical information that is passed in
-into a long string. Then the function pulls the \code{formatted_address}
-endpoint of the API results and then identifies and extracts the long name
-field from the API \emph{locality} result and compare it against the input to
-see if the input and output match up. Note that you will need to pass in
-your Google Maps Place API key with the arguement \code{key=}.
+Check whether a place is a valid place or misspelling by matching against the
+Google Geocoding seaerch result. Use the \code{\link[httr:GET]{httr::GET()}} to send a request to
+the Google Maps API for geocoding information. The query will concatenate all
+the geographical information that is passed in into a long string. Then the
+function pulls the \code{formatted_address} endpoint of the API results and then
+identifies and extracts the long name field from the API \emph{locality} result
+and compare it against the input to see if the input and output match up.
+Note that you will need to pass in your Google Maps Place API key with the
+\code{key} arguement.
 }
 \examples{
-\dontrun{ requires Google API key
-check_city("WYOMISSING", "PA", key = your_key) #replace your_key with your API key
-check_city("Waggaman", "LA", "70094", key = your_key, guess = TRUE)
+\dontrun{requires Google API key
+check_city("WYOMISSING", "PA")
+check_city("Waggaman", "LA", "70094", guess = TRUE)
 }
 }
 \seealso{
