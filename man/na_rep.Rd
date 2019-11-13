@@ -4,18 +4,21 @@
 \alias{na_rep}
 \title{Remove repeated character elements}
 \usage{
-na_rep(x, n = 1)
+na_rep(x, n = 0)
 }
 \arguments{
 \item{x}{A vector to check.}
 
-\item{n}{The minumum number times a character must repeat.}
+\item{n}{The minumum number times a character must repeat. If 0, the default,
+then any string of one character will be replaced with \code{NA}. If greater
+than 0, the string must contain greater than \code{n} number of repetitions.}
 }
 \value{
 The vector \code{x} with \code{NA} replacing repeating character values.
 }
 \description{
-Set \code{NA} for the values of \code{x} that contain a single repeating character.
+Set \code{NA} for the values of \code{x} that contain a single repeating character and
+no other characters.
 }
 \details{
 Uses the regular expression \code{"^(.)\\1+$"}.
