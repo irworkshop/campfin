@@ -9,7 +9,6 @@
 #' @importFrom rlang set_names
 #' @examples
 #' invert_named(x = c("name" = "element"))
-#' invert_named(x = keypad)
 #' @export
 invert_named <- function(x) {
   if (is.null(names(x))) {

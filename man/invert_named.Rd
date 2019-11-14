@@ -19,5 +19,4 @@ their parent normalization functions like \code{\link[=normal_address]{normal_ad
 }
 \examples{
 invert_named(x = c("name" = "element"))
-invert_named(x = keypad)
 }
