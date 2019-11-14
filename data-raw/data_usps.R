@@ -36,14 +36,26 @@ usps_state <- usps_state %>%
 
 # save usps state abbs tibble
 usethis::use_data(usps_state, overwrite = TRUE)
+write_lines(
+  x = usps_state,
+  path = "data-raw/.csv"
+)
 
 # save state names vector
 valid_name <- usps_state$full
 usethis::use_data(valid_name, overwrite = TRUE)
+write_lines(
+  x = valid_name,
+  path = "data-raw/valid_name.csv"
+)
 
 # save state abbs vector
-valid_state <- usps_state$abb
-usethis::use_data(valid_state, overwrite = TRUE)
+valid_abb <- usps_state$abb
+usethis::use_data(valid_abb, overwrite = TRUE)
+write_lines(
+  x = valid_abb,
+  path = "data-raw/valid_abb.csv"
+)
 
 # street words and abbs ---------------------------------------------------
 
@@ -100,6 +112,10 @@ usps_street <- usps_street %>%
 
 # save usps street abbs tibble
 usethis::use_data(usps_street, overwrite = TRUE)
+write_lines(
+  x = usps_street,
+  path = "data-raw/usps_street.csv"
+)
 
 # city abbs ---------------------------------------------------------------
 
@@ -123,3 +139,7 @@ usps_city <- usps_street %>%
 
 # save usps city abbs object
 usethis::use_data(usps_city, overwrite = TRUE)
+write_lines(
+  x = usps_city,
+  path = "data-raw/usps_city.csv"
+)
