@@ -73,6 +73,11 @@
 #' @format A vector of 2-digit abbreviations (length 62).
 "valid_state"
 
+#' @title US State Abbreviations
+#' @description The `abb` column of the `usps_state` tibble.
+#' @format A vector of 2-digit abbreviations (length 62).
+"valid_abb"
+
 #' @title US City Names
 #' @description The `city` column of the `zipcodes` tibble.
 #' @format A sorted vector of unique city names (length 19,083).
