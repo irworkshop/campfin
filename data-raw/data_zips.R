@@ -61,14 +61,27 @@ zipcodes <-
 
 # save USA zipcodes tibble
 usethis::use_data(zipcodes, overwrite = TRUE)
+write_csv(
+  x = zipcodes,
+  path = "data-raw/zipcodes.csv"
+)
+
 
 # save USA cities vector
 valid_city <- sort(unique(zipcodes$city))
 usethis::use_data(valid_city, overwrite = TRUE)
+write_lines(
+  x = valid_city,
+  path = "data-raw/valid_city.csv"
+)
 
 # save USA zipcodes vector
 valid_zip <- sort(unique(zipcodes$zip))
 usethis::use_data(valid_zip, overwrite = TRUE)
+write_lines(
+  x = valid_zip,
+  path = "data-raw/valid_zip.csv"
+)
 
 # add extra cities
 # googledrive::drive_ls()
@@ -78,3 +91,8 @@ extra_city <- extra_city[which(extra_city %out% valid_city)]
 
 # save extra custom city vector
 usethis::use_data(extra_city, overwrite = TRUE)
+write_lines(
+  x = extra_city,
+  path = "data-raw/extra_city.csv"
+)
+
