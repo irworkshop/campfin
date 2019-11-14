@@ -46,7 +46,7 @@ expand_abbrev <- function(x, abb = NULL, rep = NULL) {
 #' Expand US state names
 #'
 #' This function is used to first normalize an `abb` and then call
-#' [expand_full()] using [valid_state] and [valid_name] as the `abb` and `rep`
+#' [expand_abbrev()] using [valid_state] and [valid_name] as the `abb` and `rep`
 #' arguments.
 #'
 #' @param abb A abb US state name character vector (e.g., "Vermont").

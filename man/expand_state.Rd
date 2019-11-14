@@ -14,7 +14,7 @@ The 2-letter USPS abbreviation of for state names (e.g., "VT").
 }
 \description{
 This function is used to first normalize an \code{abb} and then call
-\code{\link[=expand_full]{expand_full()}} using \link{valid_state} and \link{valid_name} as the \code{abb} and \code{rep}
+\code{\link[=expand_abbrev]{expand_abbrev()}} using \link{valid_state} and \link{valid_name} as the \code{abb} and \code{rep}
 arguments.
 }
 \examples{
