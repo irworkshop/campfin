@@ -117,18 +117,18 @@
 <p>In this vignette, we will clean some extremely messy fake contribution data from a fictitious campaign in Vermont. This data is found in the <code>vt_contribs</code> data frame.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(vt_contribs)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 10</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;    id    cand    date    amount first last   address   city    state zip   </span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill M… 09/02/…     10 Lisa  Miller 4 Sheffi… Sheffi… VT    05866 </span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill M… 09/03/…     20 Deb   Brown  Requested Reques… RE    00000 </span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake W… 09/04/…     25 &lt;NA&gt;  &lt;NA&gt;   "p.o. bo… Midleb… Verm… 05753…</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake W… 09/05/…    100 Josh  Jones  sugarhou… E Cori… VT    5076  </span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill M… 09/02/…     10 Lisa  Miller 4 Sheffi… Sheffi… VT    05866 </span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake W… 09/06/…   1000 Bob   Taylor 55 thisp… young … mn    55555 </span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake W… 09/07/…   -600 Alex  Johns… 11 Liber… Bristo… VT    05443…</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth W… 09/08/…      0 Ruth  Smith  2 Burlin… Brulin… VT    05401 </span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth W… 09/09/…     69 Joe   Garcia 770   5t… Washin… DC    20001…</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth W… 09/11/…    222 Dave  Wilson XXXXXXXX… SA      Texas 78202</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;    id    cand     date    amount first last   address     city      state zip   </span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill Mi… 09/02/…     10 Lisa  Miller 4 Sheffiel… Sheffield VT    05866 </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill Mi… 09/03/…     20 Deb   Brown  Requested   Requested RE    00000 </span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake Wh… 09/04/…     25 &lt;NA&gt;  &lt;NA&gt;   "p.o. box … Midlebury Verm… 05753…</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake Wh… 09/05/…    100 Josh  Jones  sugarhouse… E Corinth VT    5076  </span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill Mi… 09/02/…     10 Lisa  Miller 4 Sheffiel… Sheffield VT    05866 </span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake Wh… 09/06/…   1000 Bob   Taylor 55 thispla… young am… mn    55555 </span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake Wh… 09/07/…   -600 Alex  Johns… 11 Liberty… Bristol,… VT    05443…</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth Wa… 09/08/…      0 Ruth  Smith  2 Burlingt… Brulingt… VT    05401 </span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth Wa… 09/09/…     69 Joe   Garcia 770   5th-… Washingt… DC    20001…</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth Wa… 09/11/…    222 Dave  Wilson XXXXXXXXXX… SA        Texas 78202</span></a></code></pre></div>
 <p>What are some of the problems we can see in this data?</p>
 <ul>
 <li>The <code>date</code> column is not parsed as an R date.</li>
@@ -332,35 +332,34 @@
 <p>Once our data is as normal as we can confidently make it, we can begin to explore. First, we’ll explore the data for missing values with <code>flag_na</code>, which takes a <a href="https://github.com/r-lib/tidyselect" title="tidyselect">tidyselct</a> number of key columns to check (or something like <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">dplyr::everything()</a></code>).</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">(vt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flag_na.html">flag_na</a></span>(vt, last))</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 11</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#&gt;    id    cand  date       amount first last  address state zip   city </span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill… 2019-09-02     10 Lisa  Mill… 4 SHEF… VT    05866 SHEF…</span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill… 2009-09-03     20 Deb   Brown &lt;NA&gt;    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; </span></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake… 2019-09-04     25 &lt;NA&gt;  &lt;NA&gt;  PO BOX… VT    05753 MIDD…</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake… 2019-09-05    100 Josh  Jones SUGARH… VT    05076 EAST…</span></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill… 2019-09-02     10 Lisa  Mill… 4 SHEF… VT    05866 SHEF…</span></a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake… 2019-09-06   1000 Bob   Tayl… 55 THI… MN    55555 YOUN…</span></a>
-<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake… 2019-09-07   -600 Alex  John… 11 LIB… VT    05443 BRIS…</span></a>
-<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth… 2019-09-08      0 Ruth  Smith 2 BURL… VT    05401 BURL…</span></a>
-<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth… 2019-09-09     69 Joe   Garc… 770 5T… DC    20001 WASH…</span></a>
-<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth… 2019-09-11    222 Dave  Wils… &lt;NA&gt;    TX    78202 SAN …</span></a>
-<a class="sourceLine" id="cb15-15" data-line-number="15"><span class="co">#&gt; # … with 1 more variable: na_flag &lt;lgl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#&gt;    id    cand   date       amount first last  address  state zip   city  na_flag</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;  </span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill … 2019-09-02     10 Lisa  Mill… 4 SHEFF… VT    05866 SHEF… FALSE  </span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill … 2009-09-03     20 Deb   Brown &lt;NA&gt;     &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake … 2019-09-04     25 &lt;NA&gt;  &lt;NA&gt;  PO BOX … VT    05753 MIDD… TRUE   </span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake … 2019-09-05    100 Josh  Jones SUGARHO… VT    05076 EAST… FALSE  </span></a>
+<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill … 2019-09-02     10 Lisa  Mill… 4 SHEFF… VT    05866 SHEF… FALSE  </span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake … 2019-09-06   1000 Bob   Tayl… 55 THIS… MN    55555 YOUN… FALSE  </span></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake … 2019-09-07   -600 Alex  John… 11 LIBE… VT    05443 BRIS… FALSE  </span></a>
+<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth … 2019-09-08      0 Ruth  Smith 2 BURLI… VT    05401 BURL… FALSE  </span></a>
+<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth … 2019-09-09     69 Joe   Garc… 770 5TH… DC    20001 WASH… FALSE  </span></a>
+<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth … 2019-09-11    222 Dave  Wils… &lt;NA&gt;     TX    78202 SAN … FALSE</span></a></code></pre></div>
 <p>Next, we’ll want to check for duplicate rows using <code>flag_dupes</code>, which takes the same kind of arguments. Here, we can ignore the supposedly unique <code>id</code> variable. It’s possible for a person to make the same contribution on the same date, but we should flag them nonetheless.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">(vt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flag_dupes.html">flag_dupes</a></span>(vt, <span class="op">-</span>id))</a>
 <a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 12</span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">#&gt;    id    cand  date       amount first last  address state zip   city </span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill… 2019-09-02     10 Lisa  Mill… 4 SHEF… VT    05866 SHEF…</span></a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill… 2009-09-03     20 Deb   Brown &lt;NA&gt;    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; </span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake… 2019-09-04     25 &lt;NA&gt;  &lt;NA&gt;  PO BOX… VT    05753 MIDD…</span></a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake… 2019-09-05    100 Josh  Jones SUGARH… VT    05076 EAST…</span></a>
-<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill… 2019-09-02     10 Lisa  Mill… 4 SHEF… VT    05866 SHEF…</span></a>
-<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake… 2019-09-06   1000 Bob   Tayl… 55 THI… MN    55555 YOUN…</span></a>
-<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake… 2019-09-07   -600 Alex  John… 11 LIB… VT    05443 BRIS…</span></a>
-<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth… 2019-09-08      0 Ruth  Smith 2 BURL… VT    05401 BURL…</span></a>
-<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth… 2019-09-09     69 Joe   Garc… 770 5T… DC    20001 WASH…</span></a>
-<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth… 2019-09-11    222 Dave  Wils… &lt;NA&gt;    TX    78202 SAN …</span></a>
-<a class="sourceLine" id="cb16-15" data-line-number="15"><span class="co">#&gt; # … with 2 more variables: na_flag &lt;lgl&gt;, dupe_flag &lt;lgl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">#&gt;    id    cand  date       amount first last  address state zip   city  na_flag</span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;  </span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill… 2019-09-02     10 Lisa  Mill… 4 SHEF… VT    05866 SHEF… FALSE  </span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill… 2009-09-03     20 Deb   Brown &lt;NA&gt;    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake… 2019-09-04     25 &lt;NA&gt;  &lt;NA&gt;  PO BOX… VT    05753 MIDD… TRUE   </span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake… 2019-09-05    100 Josh  Jones SUGARH… VT    05076 EAST… FALSE  </span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill… 2019-09-02     10 Lisa  Mill… 4 SHEF… VT    05866 SHEF… FALSE  </span></a>
+<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake… 2019-09-06   1000 Bob   Tayl… 55 THI… MN    55555 YOUN… FALSE  </span></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake… 2019-09-07   -600 Alex  John… 11 LIB… VT    05443 BRIS… FALSE  </span></a>
+<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth… 2019-09-08      0 Ruth  Smith 2 BURL… VT    05401 BURL… FALSE  </span></a>
+<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth… 2019-09-09     69 Joe   Garc… 770 5T… DC    20001 WASH… FALSE  </span></a>
+<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth… 2019-09-11    222 Dave  Wils… &lt;NA&gt;    TX    78202 SAN … FALSE  </span></a>
+<a class="sourceLine" id="cb16-15" data-line-number="15"><span class="co">#&gt; # … with 1 more variable: dupe_flag &lt;lgl&gt;</span></a></code></pre></div>
 </div>
   </div>
 
