@@ -1,4 +1,3 @@
-library(tidyverse)
 library(testthat)
 library(campfin)
 

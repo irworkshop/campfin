@@ -1,4 +1,4 @@
-library(tidyverse)
+library(stringr)
 library(testthat)
 library(campfin)
 
