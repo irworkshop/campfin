@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Abbreviate US State Names — abbrev_state • campfin</title>
+<title>Abbreviate US state names — abbrev_state • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,10 +42,10 @@
 
 
 
-<meta property="og:title" content="Abbreviate US State Names — abbrev_state" />
-<meta property="og:description" content="This function is used to first normalize a full state name and
-then return any matching abbreviation. This package works for all state
-names in state.name plus 12 additional territories (e.g., &quot;Puerto Rico&quot;)." />
+<meta property="og:title" content="Abbreviate US state names — abbrev_state" />
+<meta property="og:description" content="This function is used to first normalize a full state name and then call
+abbrev_full() using valid_name and valid_state as the full and rep
+arguments." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -130,18 +130,18 @@ names in state.name plus 12 additional territories (e.g., &quot;Puerto Rico&quot
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Abbreviate US State Names</h1>
-    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/abbrev-state.R'><code>R/abbrev-state.R</code></a></small>
+    <h1>Abbreviate US state names</h1>
+    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/abbrev-full.R'><code>R/abbrev-full.R</code></a></small>
     <div class="hidden name"><code>abbrev_state.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function is used to first normalize a <code>full</code> state name and
-then return any matching abbreviation. This package works for all state
-names in <code>state.name</code> plus 12 additional territories (e.g., "Puerto Rico").</p>
+    <p>This function is used to first normalize a <code>full</code> state name and then call
+<code><a href='abbrev_full.html'>abbrev_full()</a></code> using <a href='valid_name.html'>valid_name</a> and <a href='valid_state.html'>valid_state</a> as the <code>full</code> and <code>rep</code>
+arguments.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>abbrev_state</span>(<span class='no'>full</span>, <span class='kw'>na_bad</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>rm_nums</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>abbrev_state</span>(<span class='no'>full</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,35 +150,25 @@ names in <code>state.name</code> plus 12 additional territories (e.g., "Puerto R
       <th>full</th>
       <td><p>A full US state name character vector (e.g., "Vermont").</p></td>
     </tr>
-    <tr>
-      <th>na_bad</th>
-      <td><p>logical; Whether to return <code>NA</code> for invalid <code>full</code> names
-(default <code>FALSE</code>).</p></td>
-    </tr>
-    <tr>
-      <th>rm_nums</th>
-      <td><p>logical; Whether to remove numbers from <code>full</code> (e.g., 1st)
-before abbreviating. Particularly useful with US Congressional districts.
-Only numbers 1 through 20 are supported at this time (default <code>FALSE</code>).</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of 2 letter state abbreviations.</p>
+    <p>The 2-letter USPS abbreviation of for state names (e.g., "VT").</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other geographic normalization functions: <code><a href='abbrev_full.html'>abbrev_full</a></code>,
   <code><a href='check_city.html'>check_city</a></code>, <code><a href='expand_abbrev.html'>expand_abbrev</a></code>,
   <code><a href='expand_state.html'>expand_state</a></code>, <code><a href='fetch_city.html'>fetch_city</a></code>,
   <code><a href='normal_address.html'>normal_address</a></code>, <code><a href='normal_city.html'>normal_city</a></code>,
-  <code><a href='normal_state.html'>normal_state</a></code>, <code><a href='normal_zip.html'>normal_zip</a></code></p></div>
+  <code><a href='normal_state.html'>normal_state</a></code>, <code><a href='normal_zip.html'>normal_zip</a></code>,
+  <code><a href='str_normal.html'>str_normal</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>abbrev_state</span>(<span class='kw'>full</span> <span class='kw'>=</span> <span class='no'>state.name</span>)</div><div class='output co'>#&gt;  [1] "AL" "AK" "AZ" "AR" "CA" "CO" "CT" "DE" "FL" "GA" "HI" "ID" "IL" "IN" "IA"
 #&gt; [16] "KS" "KY" "LA" "ME" "MD" "MA" "MI" "MN" "MS" "MO" "MT" "NE" "NV" "NH" "NJ"
 #&gt; [31] "NM" "NY" "NC" "ND" "OH" "OK" "OR" "PA" "RI" "SC" "SD" "TN" "TX" "UT" "VT"
-#&gt; [46] "VA" "WA" "WV" "WI" "WY"</div><div class='input'><span class='fu'>abbrev_state</span>(<span class='kw'>full</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"new_mexico"</span>, <span class='st'>"france"</span>), <span class='kw'>na_bad</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "NM" NA  </div></pre>
+#&gt; [46] "VA" "WA" "WV" "WI" "WY"</div><div class='input'><span class='fu'>abbrev_state</span>(<span class='kw'>full</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"new mexico"</span>, <span class='st'>"france"</span>))</div><div class='output co'>#&gt; [1] "NM"     "FRANCE"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Form a Word Break Regex — rx_break • campfin</title>
+<title>Form a word break regex pattern — rx_break • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,11 +42,10 @@
 
 
 
-<meta property="og:title" content="Form a Word Break Regex — rx_break" />
-<meta property="og:description" content="Wrape a word in word boundry (\b) characters. Useful when
-combined with stringr::str_which() and stringr::str_detect() to match
-only entire words and not that word inside another word (e.g., &quot;sting&quot;
-and &quot;testing&quot;)." />
+<meta property="og:title" content="Form a word break regex pattern — rx_break" />
+<meta property="og:description" content="Wrap a word in word boundry (\b) characters. Useful when combined with
+stringr::str_which() and stringr::str_detect() to match only entire words
+and not that word inside another word (e.g., &quot;sting&quot; and &quot;testing&quot;)." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -131,16 +130,15 @@ and &quot;testing&quot;)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Form a Word Break Regex</h1>
+    <h1>Form a word break regex pattern</h1>
     <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/rx-break.R'><code>R/rx-break.R</code></a></small>
     <div class="hidden name"><code>rx_break.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Wrape a word in word boundry (<code>\b</code>) characters. Useful when
-combined with <code><a href='https://stringr.tidyverse.org/reference/str_subset.html'>stringr::str_which()</a></code> and <code><a href='https://stringr.tidyverse.org/reference/str_detect.html'>stringr::str_detect()</a></code> to match
-only entire words and not that word <em>inside</em> another word (e.g., "sting"
-and "testing").</p>
+    <p>Wrap a word in word boundry (<code>\b</code>) characters. Useful when combined with
+<code><a href='https://stringr.tidyverse.org/reference/str_subset.html'>stringr::str_which()</a></code> and <code><a href='https://stringr.tidyverse.org/reference/str_detect.html'>stringr::str_detect()</a></code> to match only entire words
+and not that word <em>inside</em> another word (e.g., "sting" and "testing").</p>
     </div>
 
     <pre class="usage"><span class='fu'>rx_break</span>(<span class='no'>pattern</span>)</pre>
@@ -156,59 +154,14 @@ and "testing").</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The <code>pattern</code> wrapped in <code>\b</code>.</p>
+    <p>The a glue vector of <code>pattern</code> wrapped in <code>\b</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>rx_break</span>(<span class='st'>"test"</span>)</div><div class='output co'>#&gt; \btest\b</div><div class='input'><span class='fu'>rx_break</span>(<span class='no'>state.abb</span>)</div><div class='output co'>#&gt; \bAL\b
+    <pre class="examples"><div class='input'><span class='fu'>rx_break</span>(<span class='st'>"test"</span>)</div><div class='output co'>#&gt; \btest\b</div><div class='input'><span class='fu'>rx_break</span>(<span class='no'>state.abb</span>[<span class='fl'>1</span>:<span class='fl'>5</span>])</div><div class='output co'>#&gt; \bAL\b
 #&gt; \bAK\b
 #&gt; \bAZ\b
 #&gt; \bAR\b
-#&gt; \bCA\b
-#&gt; \bCO\b
-#&gt; \bCT\b
-#&gt; \bDE\b
-#&gt; \bFL\b
-#&gt; \bGA\b
-#&gt; \bHI\b
-#&gt; \bID\b
-#&gt; \bIL\b
-#&gt; \bIN\b
-#&gt; \bIA\b
-#&gt; \bKS\b
-#&gt; \bKY\b
-#&gt; \bLA\b
-#&gt; \bME\b
-#&gt; \bMD\b
-#&gt; \bMA\b
-#&gt; \bMI\b
-#&gt; \bMN\b
-#&gt; \bMS\b
-#&gt; \bMO\b
-#&gt; \bMT\b
-#&gt; \bNE\b
-#&gt; \bNV\b
-#&gt; \bNH\b
-#&gt; \bNJ\b
-#&gt; \bNM\b
-#&gt; \bNY\b
-#&gt; \bNC\b
-#&gt; \bND\b
-#&gt; \bOH\b
-#&gt; \bOK\b
-#&gt; \bOR\b
-#&gt; \bPA\b
-#&gt; \bRI\b
-#&gt; \bSC\b
-#&gt; \bSD\b
-#&gt; \bTN\b
-#&gt; \bTX\b
-#&gt; \bUT\b
-#&gt; \bVT\b
-#&gt; \bVA\b
-#&gt; \bWA\b
-#&gt; \bWV\b
-#&gt; \bWI\b
-#&gt; \bWY\b</div></pre>
+#&gt; \bCA\b</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

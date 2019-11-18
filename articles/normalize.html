@@ -180,12 +180,12 @@
 <a class="sourceLine" id="cb3-7" data-line-number="7">  )</a>
 <a class="sourceLine" id="cb3-8" data-line-number="8">)</a></code></pre></div>
 <p>Next, we should try to normalize our data as much as possible. We can use some simple counting functions and built in vectors to check our progress.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://scales.r-lib.org//reference/number_format.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>city, <span class="kw"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span>(valid_city)))</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; [1] "10.0%"</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="https://scales.r-lib.org//reference/number_format.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>state, valid_state))</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [1] "60.0%"</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="https://scales.r-lib.org//reference/number_format.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>zip, valid_zip))</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; [1] "50.0%"</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>city, <span class="kw"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span>(valid_city)))</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; [1] "10%"</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>state, valid_state))</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [1] "60%"</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>zip, valid_zip))</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; [1] "50%"</span></a></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/glimpse_fun.html">glimpse_fun</a></span>(vt, n_distinct)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Warning: 'glimpse_fun' is deprecated.</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Use 'col_stats' instead.</span></a>
@@ -225,14 +225,14 @@
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="dt">address =</span> <span class="kw"><a href="../reference/normal_address.html">normal_address</a></span>(</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4">      <span class="dt">address =</span> address,</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">      <span class="dt">add_abbs =</span> usps_street,</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">      <span class="dt">abbs =</span> usps_street,</a>
 <a class="sourceLine" id="cb6-6" data-line-number="6">      <span class="dt">na =</span> invalid_city,</a>
 <a class="sourceLine" id="cb6-7" data-line-number="7">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb6-8" data-line-number="8">    ),</a>
 <a class="sourceLine" id="cb6-9" data-line-number="9">    <span class="dt">city =</span> <span class="kw"><a href="../reference/normal_city.html">normal_city</a></span>(</a>
 <a class="sourceLine" id="cb6-10" data-line-number="10">      <span class="dt">city =</span> city,</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">      <span class="dt">geo_abbs =</span> usps_city,</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">      <span class="dt">st_abbs =</span> <span class="st">"VT"</span>,</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">      <span class="dt">abbs =</span> usps_city,</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">      <span class="dt">states =</span> <span class="st">"VT"</span>,</a>
 <a class="sourceLine" id="cb6-13" data-line-number="13">      <span class="dt">na =</span> invalid_city,</a>
 <a class="sourceLine" id="cb6-14" data-line-number="14">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb6-15" data-line-number="15">    ),</a>
@@ -256,16 +256,16 @@
 #&gt;  3 PO BOX 567               MIDLEBURY     VT    05753
 #&gt;  4 SUGARHOUSE ROAD          EAST CORINTH  VT    05076
 #&gt;  5 4 SHEFFIELD SQUARE ROAD  SHEFFIELD     VT    05866
-#&gt;  6 55 THISPLACE AVENUE      YOUNG AMERICA MN    55555
+#&gt;  6 55 THISPLACE AVENUE      YOUNG AMERICA MN    &lt;NA&gt; 
 #&gt;  7 11 LIBERTY STREET        BRISTOL       VT    05443
 #&gt;  8 2 BURLINGTON SQUARE      BRULINGTON    VT    05401
 #&gt;  9 770 5TH STREET NORTHWEST WASHINGTON    DC    20001
 #&gt; 10 &lt;NA&gt;                     SA            TX    78202</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://scales.r-lib.org//reference/number_format.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>city, valid_city))</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "66.7%"</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw"><a href="https://scales.r-lib.org//reference/number_format.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>state, valid_state))</a>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>city, valid_city))</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "67%"</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>state, valid_state))</a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "100%"</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw"><a href="https://scales.r-lib.org//reference/number_format.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>zip, valid_zip))</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>zip, valid_zip))</a>
 <a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; [1] "100%"</span></a></code></pre></div>
 </div>
 <div id="cities" class="section level2">
@@ -317,18 +317,17 @@
 <a class="sourceLine" id="cb13-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="op">-</span>city_raw, <span class="op">-</span>city_match, <span class="op">-</span>match_dist, <span class="op">-</span>match_abb)</a>
 <a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; Joining, by = c("state", "zip")</span></a></code></pre></div>
 <p>Now every <code>city</code>, <code>state</code>, and <code>zip</code> value is contained in our list of valid values.</p>
-<pre><code>#&gt; # A tibble: 9 x 5
-#&gt;   id    state zip   city          all_valid
-#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;         &lt;lgl&gt;    
-#&gt; 1 01    VT    05866 SHEFFIELD     TRUE     
-#&gt; 2 03    VT    05753 MIDDLEBURY    TRUE     
-#&gt; 3 04    VT    05076 EAST CORINTH  TRUE     
-#&gt; 4 05    VT    05866 SHEFFIELD     TRUE     
-#&gt; 5 06    MN    55555 YOUNG AMERICA TRUE     
-#&gt; 6 07    VT    05443 BRISTOL       TRUE     
-#&gt; 7 08    VT    05401 BURLINGTON    TRUE     
-#&gt; 8 09    DC    20001 WASHINGTON    TRUE     
-#&gt; 9 10    TX    78202 SAN ANTONIO   TRUE</code></pre>
+<pre><code>#&gt; # A tibble: 8 x 5
+#&gt;   id    state zip   city         all_valid
+#&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        &lt;lgl&gt;    
+#&gt; 1 01    VT    05866 SHEFFIELD    TRUE     
+#&gt; 2 03    VT    05753 MIDDLEBURY   TRUE     
+#&gt; 3 04    VT    05076 EAST CORINTH TRUE     
+#&gt; 4 05    VT    05866 SHEFFIELD    TRUE     
+#&gt; 5 07    VT    05443 BRISTOL      TRUE     
+#&gt; 6 08    VT    05401 BURLINGTON   TRUE     
+#&gt; 7 09    DC    20001 WASHINGTON   TRUE     
+#&gt; 8 10    TX    78202 SAN ANTONIO  TRUE</code></pre>
 <p>Once our data is as normal as we can confidently make it, we can begin to explore. First, we’ll explore the data for missing values with <code>flag_na</code>, which takes a <a href="https://github.com/r-lib/tidyselect" title="tidyselect">tidyselct</a> number of key columns to check (or something like <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">dplyr::everything()</a></code>).</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">(vt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flag_na.html">flag_na</a></span>(vt, last))</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 11</span></a>
@@ -339,7 +338,7 @@
 <a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake … 2019-09-04     25 &lt;NA&gt;  &lt;NA&gt;  PO BOX … VT    05753 MIDD… TRUE   </span></a>
 <a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake … 2019-09-05    100 Josh  Jones SUGARHO… VT    05076 EAST… FALSE  </span></a>
 <a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill … 2019-09-02     10 Lisa  Mill… 4 SHEFF… VT    05866 SHEF… FALSE  </span></a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake … 2019-09-06   1000 Bob   Tayl… 55 THIS… MN    55555 YOUN… FALSE  </span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake … 2019-09-06   1000 Bob   Tayl… 55 THIS… MN    &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
 <a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake … 2019-09-07   -600 Alex  John… 11 LIBE… VT    05443 BRIS… FALSE  </span></a>
 <a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth … 2019-09-08      0 Ruth  Smith 2 BURLI… VT    05401 BURL… FALSE  </span></a>
 <a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth … 2019-09-09     69 Joe   Garc… 770 5TH… DC    20001 WASH… FALSE  </span></a>
@@ -354,7 +353,7 @@
 <a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake… 2019-09-04     25 &lt;NA&gt;  &lt;NA&gt;  PO BOX… VT    05753 MIDD… TRUE   </span></a>
 <a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake… 2019-09-05    100 Josh  Jones SUGARH… VT    05076 EAST… FALSE  </span></a>
 <a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill… 2019-09-02     10 Lisa  Mill… 4 SHEF… VT    05866 SHEF… FALSE  </span></a>
-<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake… 2019-09-06   1000 Bob   Tayl… 55 THI… MN    55555 YOUN… FALSE  </span></a>
+<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake… 2019-09-06   1000 Bob   Tayl… 55 THI… MN    &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
 <a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake… 2019-09-07   -600 Alex  John… 11 LIB… VT    05443 BRIS… FALSE  </span></a>
 <a class="sourceLine" id="cb16-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth… 2019-09-08      0 Ruth  Smith 2 BURL… VT    05401 BURL… FALSE  </span></a>
 <a class="sourceLine" id="cb16-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth… 2019-09-09     69 Joe   Garc… 770 5T… DC    20001 WASH… FALSE  </span></a>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check whether an input is a valid place with Google Maps API — check_city • campfin</title>
+<title>Remove repeated character elements — na_rep • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,16 +42,9 @@
 
 
 
-<meta property="og:title" content="Check whether an input is a valid place with Google Maps API — check_city" />
-<meta property="og:description" content="Check whether a place is a valid place or misspelling by matching against the
-Google Geocoding seaerch result. Use the httr::GET() to send a request to
-the Google Maps API for geocoding information. The query will concatenate all
-the geographical information that is passed in into a long string. Then the
-function pulls the formatted_address endpoint of the API results and then
-identifies and extracts the long name field from the API locality result
-and compare it against the input to see if the input and output match up.
-Note that you will need to pass in your Google Maps Place API key with the
-key arguement." />
+<meta property="og:title" content="Remove repeated character elements — na_rep" />
+<meta property="og:description" content="Set NA for the values of x that contain a single repeating character and
+no other characters." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -136,89 +129,47 @@ key arguement." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check whether an input is a valid place with Google Maps API</h1>
-    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/check-city.R'><code>R/check-city.R</code></a></small>
-    <div class="hidden name"><code>check_city.Rd</code></div>
+    <h1>Remove repeated character elements</h1>
+    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/counters.R'><code>R/counters.R</code></a></small>
+    <div class="hidden name"><code>na_rep.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check whether a place is a valid place or misspelling by matching against the
-Google Geocoding seaerch result. Use the <code><a href='https://httr.r-lib.org/reference/GET.html'>httr::GET()</a></code> to send a request to
-the Google Maps API for geocoding information. The query will concatenate all
-the geographical information that is passed in into a long string. Then the
-function pulls the <code>formatted_address</code> endpoint of the API results and then
-identifies and extracts the long name field from the API <em>locality</em> result
-and compare it against the input to see if the input and output match up.
-Note that you will need to pass in your Google Maps Place API key with the
-<code>key</code> arguement.</p>
+    <p>Set <code>NA</code> for the values of <code>x</code> that contain a single repeating character and
+no other characters.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>check_city</span>(<span class='kw'>city</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>state</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>zip</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>guess</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>na_rep</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>city</th>
-      <td><p>A string of city name to be submitted to the Geocode API.</p></td>
+      <th>x</th>
+      <td><p>A vector to check.</p></td>
     </tr>
     <tr>
-      <th>state</th>
-      <td><p>Optional. The state associated with the <code>city</code>.</p></td>
-    </tr>
-    <tr>
-      <th>zip</th>
-      <td><p>Optional. Supply a string of ZIP code to increase precision.</p></td>
-    </tr>
-    <tr>
-      <th>key</th>
-      <td><p>A character string to be passed into <code>key</code>. Save your key as
-"GEOCODE_KEY" using <code><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv()</a></code> or by editing your <code>.Renviron</code> file.</p></td>
-    </tr>
-    <tr>
-      <th>guess</th>
-      <td><p>logical; Should the function return a single row tibble
-containing the orignal data sent and the multi components returned by the
-Geocode API.</p></td>
+      <th>n</th>
+      <td><p>The minumum number times a character must repeat. If 0, the default,
+then any string of one character will be replaced with <code>NA</code>. If greater
+than 0, the string must contain greater than <code>n</code> number of repetitions.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A logical value by default. If the city returned by the API
-comes back the same as the city input, the function will evaluate to
-<code>TRUE</code>, in all other circumstances (including API errors) <code>FALSE</code> is returned.</p>
-<p>If the the <code>guess</code> argument is set to <code>TRUE</code>, a tibble with 1 row and six
-columns is returned:</p><ul>
-<li><p><code>original_city</code>: The <code>city</code> value sent to the API.</p></li>
-<li><p><code>original_state</code>: The <code>state</code> value sent to the API.</p></li>
-<li><p><code>original_zip</code>: The <code>zip</code> value sent to the API.</p></li>
-<li><p><code>check_city_flag</code>: logical; whether the guessed city matches.</p></li>
-<li><p><code>guess_city</code>: The legal city guessed by the API.</p></li>
-<li><p><code>guess_place</code>: The generic locality guessed by the API.</p></li>
-</ul>
+    <p>The vector <code>x</code> with <code>NA</code> replacing repeating character values.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>Uses the regular expression <code>"^(.)\1+$"</code>.</p>
 
-    <div class='dont-index'><p><a href='http://code.google.com/apis/maps/documentation/geocoding/'>http://code.google.com/apis/maps/documentation/geocoding/</a></p>
-<p>Other geographic normalization functions: <code><a href='abbrev_full.html'>abbrev_full</a></code>,
-  <code><a href='abbrev_state.html'>abbrev_state</a></code>, <code><a href='expand_abbrev.html'>expand_abbrev</a></code>,
-  <code><a href='expand_state.html'>expand_state</a></code>, <code><a href='fetch_city.html'>fetch_city</a></code>,
-  <code><a href='normal_address.html'>normal_address</a></code>, <code><a href='normal_city.html'>normal_city</a></code>,
-  <code><a href='normal_state.html'>normal_state</a></code>, <code><a href='normal_zip.html'>normal_zip</a></code>,
-  <code><a href='str_normal.html'>str_normal</a></code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>

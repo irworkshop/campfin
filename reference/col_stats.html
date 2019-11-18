@@ -43,9 +43,9 @@
 
 
 <meta property="og:title" content="Apply a statistic function to all column vectors — col_stats" />
-<meta property="og:description" content="Apply a counting summary function like dplyr::n_distinct() or
-count_na() to every column of a dataframe and return the results along
-with a percentage of that value." />
+<meta property="og:description" content="Apply a counting summary function like dplyr::n_distinct() or count_na()
+to every column of a data frame and return the results along with a
+percentage of that value." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -136,9 +136,9 @@ with a percentage of that value." />
     </div>
 
     <div class="ref-description">
-    <p>Apply a counting summary function like <code><a href='https://dplyr.tidyverse.org/reference/n_distinct.html'>dplyr::n_distinct()</a></code> or
-<code><a href='count_na.html'>count_na()</a></code> to every column of a dataframe and return the results along
-with a <em>percentage</em> of that value.</p>
+    <p>Apply a counting summary function like <code><a href='https://dplyr.tidyverse.org/reference/n_distinct.html'>dplyr::n_distinct()</a></code> or <code><a href='count_na.html'>count_na()</a></code>
+to every column of a data frame and return the results along with a
+<em>percentage</em> of that value.</p>
     </div>
 
     <pre class="usage"><span class='fu'>col_stats</span>(<span class='no'>data</span>, <span class='no'>fun</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
@@ -162,8 +162,7 @@ with a <em>percentage</em> of that value.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble with a row for every column and new columns with count and
-proportion.</p>
+    <p>A tibble with a row for every column with the count and proportion.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>col_stats</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='no'><a href='https://dplyr.tidyverse.org/reference/storms.html'>storms</a></span>, <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='no'><a href='https://dplyr.tidyverse.org/reference/n_distinct.html'>n_distinct</a></span>)</div><div class='output co'>#&gt; # A tibble: 13 x 4

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if Abbreviation — is_abbrev • campfin</title>
+<title>Check if abbreviation — is_abbrev • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,11 +42,11 @@
 
 
 
-<meta property="og:title" content="Check if Abbreviation — is_abbrev" />
-<meta property="og:description" content="To return a value of TRUE, (1) the first letter of abb must
-match the first letter of full, (2) all letters of abb must exist in
-full, and (3) those letters of abb must be in the same order as they
-appear in full." />
+<meta property="og:title" content="Check if abbreviation — is_abbrev" />
+<meta property="og:description" content="To return a value of TRUE, (1) the first letter of abb must match the
+first letter of full, (2) all letters of abb must exist in full, and
+(3) those letters of abb must be in the same order as they appear in
+full." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -131,16 +131,16 @@ appear in full." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if Abbreviation</h1>
+    <h1>Check if abbreviation</h1>
     <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/is-abbrev.R'><code>R/is-abbrev.R</code></a></small>
     <div class="hidden name"><code>is_abbrev.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>To return a value of <code>TRUE</code>, (1) the first letter of <code>abb</code> must
-match the first letter of <code>full</code>, (2) <em>all</em> letters of <code>abb</code> must exist in
-<code>full</code>, and (3) those letters of <code>abb</code> must be in the same order as they
-appear in <code>full</code>.</p>
+    <p>To return a value of <code>TRUE</code>, (1) the first letter of <code>abb</code> must match the
+first letter of <code>full</code>, (2) <em>all</em> letters of <code>abb</code> must exist in <code>full</code>, and
+(3) those letters of <code>abb</code> must be in the same order as they appear in
+<code>full</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>is_abbrev</span>(<span class='no'>abb</span>, <span class='no'>full</span>)</pre>
@@ -166,7 +166,7 @@ appear in <code>full</code>.</p>
     <pre class="examples"><div class='input'><span class='fu'>is_abbrev</span>(<span class='kw'>abb</span> <span class='kw'>=</span> <span class='st'>"BRX"</span>, <span class='kw'>full</span> <span class='kw'>=</span> <span class='st'>"BRONX"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is_abbrev</span>(<span class='kw'>abb</span> <span class='kw'>=</span> <span class='no'>state.abb</span>, <span class='kw'>full</span> <span class='kw'>=</span> <span class='no'>state.name</span>)</div><div class='output co'>#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 #&gt; [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 #&gt; [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
-#&gt; [46] TRUE TRUE TRUE TRUE TRUE</div><div class='input'><span class='fu'>is_abbrev</span>(<span class='kw'>abb</span> <span class='kw'>=</span> <span class='st'>"NOLA"</span>, <span class='kw'>full</span> <span class='kw'>=</span> <span class='st'>"New Orleans"</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+#&gt; [46] TRUE TRUE TRUE TRUE TRUE</div><div class='input'><span class='fu'>is_abbrev</span>(<span class='kw'>abb</span> <span class='kw'>=</span> <span class='st'>"NOLA"</span>, <span class='kw'>full</span> <span class='kw'>=</span> <span class='st'>"New Orleans"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is_abbrev</span>(<span class='kw'>abb</span> <span class='kw'>=</span> <span class='st'>"FE"</span>, <span class='kw'>full</span> <span class='kw'>=</span> <span class='st'>"Iron"</span>)</div><div class='output co'>#&gt; [1] FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

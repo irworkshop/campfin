@@ -43,8 +43,7 @@
 
 
 <meta property="og:title" content="Make a File Path from a URL — url2path" />
-<meta property="og:description" content="Combine the basename() of a file URL with the path to a
-directory." />
+<meta property="og:description" content="Combine the basename() of a file URL with a directory path." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -135,8 +134,7 @@ directory." />
     </div>
 
     <div class="ref-description">
-    <p>Combine the <code><a href='https://rdrr.io/r/base/basename.html'>basename()</a></code> of a file URL with the path to a
-directory.</p>
+    <p>Combine the <code><a href='https://rdrr.io/r/base/basename.html'>basename()</a></code> of a file URL with a directory path.</p>
     </div>
 
     <pre class="usage"><span class='fu'>url2path</span>(<span class='no'>url</span>, <span class='no'>dir</span>)</pre>
@@ -159,8 +157,8 @@ directory.</p>
     <p>The desired file path to a URL file.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Useful in the <code>destfile</code> argument to <code><a href='https://rdrr.io/r/utils/download.file.html'>download.file()</a></code> to save a
-file with the same name as the URL's file name.</p>
+    <p>Useful in the <code>destfile</code> argument to <code><a href='https://rdrr.io/r/utils/download.file.html'>download.file()</a></code> to save a file with
+the same name as the URL's file name.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>url2path</span>(<span class='st'>"https://floridalobbyist.gov/reports/llob.txt"</span>, <span class='st'>"~/Downloads"</span>)</div><div class='output co'>#&gt; [1] "/home/travis/Downloads/llob.txt"</div></pre>

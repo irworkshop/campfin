@@ -43,8 +43,10 @@
 
 
 <meta property="og:title" content="Create Basic Barplots — explore_plot" />
-<meta property="og:description" content="This function simply wraps around ggplot2::geom_col() to take
-a dataframe and categorical variable to return a simple barplot count." />
+<meta property="og:description" content="This function simply wraps around ggplot2::geom_col() to take a dataframe
+and categorical variable to return a custom barplot ggplot object. The bars
+are arranged in descending order and are limited to the 8 most frequent
+values." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -135,8 +137,10 @@ a dataframe and categorical variable to return a simple barplot count." />
     </div>
 
     <div class="ref-description">
-    <p>This function simply wraps around <code><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>ggplot2::geom_col()</a></code> to take
-a dataframe and categorical variable to return a simple barplot count.</p>
+    <p>This function simply wraps around <code><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>ggplot2::geom_col()</a></code> to take a dataframe
+and categorical variable to return a custom barplot <code>ggplot</code> object. The bars
+are arranged in descending order and are limited to the 8 most frequent
+values.</p>
     </div>
 
     <pre class="usage"><span class='fu'>explore_plot</span>(<span class='no'>data</span>, <span class='no'>var</span>, <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>nbar</span> <span class='kw'>=</span> <span class='fl'>8</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='st'>"Dark2"</span>,
@@ -167,13 +171,14 @@ a dataframe and categorical variable to return a simple barplot count.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Optional arguments passed to <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::labs()</a></code>.</p></td>
+      <td><p>Additional optional arguments passed to <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::labs()</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A bar plot.</p>
+    <p>A <code>ggplot</code> barplot object. Can then be combined with other <code>ggplot</code>
+layers with <code>+</code> to customize.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>explore_plot</span>(<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>, <span class='no'>cut</span>)</div><div class='img'><img src='explore_plot-1.png' alt='' width='700' height='433' /></div></pre>

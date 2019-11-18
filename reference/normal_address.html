@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Normalize Street Addresses — normal_address • campfin</title>
+<title>Normalize street addresses — normal_address • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,11 +42,10 @@
 
 
 
-<meta property="og:title" content="Normalize Street Addresses — normal_address" />
-<meta property="og:description" content="Return consistent version of a US Street Address using
-stringr::str_*() functions. Letters are capitalized, hyphens and
-underscores are replaced with whitespaces, other punctuation is removed,
-and excess whitespace is trimed and squished. Optionally, street suffix
+<meta property="og:title" content="Normalize street addresses — normal_address" />
+<meta property="og:description" content="Return consistent version of a US Street Address using stringr::str_*()
+functions. Letters are capitalized, punctuation is removed or replaced, and
+excess whitespace is trimed and squished. Optionally, street suffix
 abbreviations (&quot;AVE&quot;) can be replaced with their long form (&quot;AVENUE&quot;).
 Invalid addresses from a vector can be removed (possibly using
 invalid_city) as well as single (repeating) character strings (&quot;XXXXXX&quot;)." />
@@ -134,22 +133,21 @@ invalid_city) as well as single (repeating) character strings (&quot;XXXXXX&quot
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Normalize Street Addresses</h1>
+    <h1>Normalize street addresses</h1>
     <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/normal-address.R'><code>R/normal-address.R</code></a></small>
     <div class="hidden name"><code>normal_address.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Return consistent version of a US Street Address using
-<code>stringr::str_*()</code> functions. Letters are capitalized, hyphens and
-underscores are replaced with whitespaces, other punctuation is removed,
-and excess whitespace is trimed and squished. Optionally, street suffix
+    <p>Return consistent version of a US Street Address using <code>stringr::str_*()</code>
+functions. Letters are capitalized, punctuation is removed or replaced, and
+excess whitespace is trimed and squished. Optionally, street suffix
 abbreviations ("AVE") can be replaced with their long form ("AVENUE").
 Invalid addresses from a vector can be removed (possibly using
 <a href='invalid_city.html'>invalid_city</a>) as well as single (repeating) character strings ("XXXXXX").</p>
     </div>
 
-    <pre class="usage"><span class='fu'>normal_address</span>(<span class='no'>address</span>, <span class='kw'>add_abbs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>),
+    <pre class="usage"><span class='fu'>normal_address</span>(<span class='no'>address</span>, <span class='kw'>abbs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>),
   <span class='kw'>na_rep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -157,19 +155,18 @@ Invalid addresses from a vector can be removed (possibly using
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>address</th>
-      <td><p>A vector of street addresses (ideally without city, state, and
-ZIP code; you can use the <a href='rx_state.html'>rx_state</a> and <a href='rx_zip.html'>rx_zip</a> regular expression
-patterns to remove the later two).</p></td>
+      <td><p>A vector of street addresses (ideally without city, state, or
+postal code).</p></td>
     </tr>
     <tr>
-      <th>add_abbs</th>
-      <td><p>A two-column data frame like <a href='usps_street.html'>usps_street</a>, with a full
-suffix ("STREET") in the first column and abbreviations ("ST") in the
-second. Replace all abbreviations with their full version.</p></td>
+      <th>abbs</th>
+      <td><p>A named vector or two-column data frame (like <a href='usps_street.html'>usps_street</a>)
+passed to <code><a href='expand_abbrev.html'>expand_abbrev()</a></code>. See <code><a href='expand_abbrev.html'>?expand_abbrev</a></code> for the type of object
+structure needed.</p></td>
     </tr>
     <tr>
       <th>na</th>
-      <td><p>A vector of values to make <code>NA</code> (like <a href='invalid_city.html'>invalid_city</a>).</p></td>
+      <td><p>A charactr vector of values to make <code>NA</code> (like <a href='invalid_city.html'>invalid_city</a>).</p></td>
     </tr>
     <tr>
       <th>na_rep</th>
@@ -187,10 +184,11 @@ strings with <code>NA</code>.</p></td>
   <code><a href='abbrev_state.html'>abbrev_state</a></code>, <code><a href='check_city.html'>check_city</a></code>,
   <code><a href='expand_abbrev.html'>expand_abbrev</a></code>, <code><a href='expand_state.html'>expand_state</a></code>,
   <code><a href='fetch_city.html'>fetch_city</a></code>, <code><a href='normal_city.html'>normal_city</a></code>,
-  <code><a href='normal_state.html'>normal_state</a></code>, <code><a href='normal_zip.html'>normal_zip</a></code></p></div>
+  <code><a href='normal_state.html'>normal_state</a></code>, <code><a href='normal_zip.html'>normal_zip</a></code>,
+  <code><a href='str_normal.html'>str_normal</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>normal_address</span>(<span class='st'>"1600 Pennsylvania Ave NW"</span>, <span class='kw'>add_abbs</span> <span class='kw'>=</span> <span class='no'>usps_street</span>)</div><div class='output co'>#&gt; [1] "1600 PENNSYLVANIA AVENUE NORTHWEST"</div><div class='input'><span class='fu'>normal_address</span>(<span class='st'>"12 e st main ave ste 209"</span>, <span class='kw'>add_abbs</span> <span class='kw'>=</span> <span class='no'>usps_street</span>)</div><div class='output co'>#&gt; [1] "12 EAST STREET MAIN AVENUE SUITE 209"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>normal_address</span>(<span class='st'>"1600 Pennsylvania Ave NW"</span>)</div><div class='output co'>#&gt; [1] "1600 PENNSYLVANIA AVE NW"</div><div class='input'><span class='fu'>normal_address</span>(<span class='st'>"12 e st main ave ste 209"</span>, <span class='kw'>abbs</span> <span class='kw'>=</span> <span class='no'>usps_street</span>)</div><div class='output co'>#&gt; [1] "12 EAST STREET MAIN AVENUE SUITE 209"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

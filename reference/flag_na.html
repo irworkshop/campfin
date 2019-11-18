@@ -43,9 +43,9 @@
 
 
 <meta property="og:title" content="Flag Missing Values With New Column — flag_na" />
-<meta property="og:description" content="This function uses dplyr::mutate() to create a new dupe_flag
-logical variable with TRUE values for any record duplicated more than
-once." />
+<meta property="og:description" content="This function uses dplyr::mutate() to create a new na_flag logical
+variable with TRUE values for any record missing any value in the
+selected columns." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -136,9 +136,9 @@ once." />
     </div>
 
     <div class="ref-description">
-    <p>This function uses <code><a href='https://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code> to create a new <code>dupe_flag</code>
-logical variable with <code>TRUE</code> values for any record duplicated more than
-once.</p>
+    <p>This function uses <code><a href='https://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code> to create a new <code>na_flag</code> logical
+variable with <code>TRUE</code> values for any record missing <em>any</em> value in the
+selected columns.</p>
     </div>
 
     <pre class="usage"><span class='fu'>flag_na</span>(<span class='no'>data</span>, <span class='no'>...</span>)</pre>
