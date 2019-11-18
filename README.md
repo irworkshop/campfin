@@ -7,7 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
 [![Travis build
 status](https://travis-ci.org/irworkshop/campfin.svg?branch=master)](https://travis-ci.org/irworkshop/campfin)
 [![Codecov test
@@ -143,21 +143,21 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-#>     zip        city state latitude  longitude
-#> 1 75446 Honey Grove    TX 33.58985  -95.90242
-#> 2 59430      Denton    MT 47.31630 -109.96291
-#> 3 51559       Neola    IA 41.45514  -95.64792
+#>     zip      city state latitude  longitude
+#> 1 26372    Horner    WV 38.96958  -80.36881
+#> 2 87537 Hernandez    NM 36.09402 -106.17472
+#> 3 74043   Leonard    OK 35.91828  -95.79881
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 3)
 #> # A tibble: 3 x 3
-#>   city           state zip  
-#>   <chr>          <chr> <chr>
-#> 1 KOYUKUK        AK    99754
-#> 2 PLEASANT MOUNT PA    18453
-#> 3 ALTAMONT       KS    67330
+#>   city       state zip  
+#>   <chr>      <chr> <chr>
+#> 1 DAYTON     NY    14041
+#> 2 WARD COVE  AK    99928
+#> 3 EDNEYVILLE NC    28727
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -182,16 +182,16 @@ sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
 #>   abb   full  
 #>   <chr> <chr> 
-#> 1 LF    LOAF  
-#> 2 AV    AVENUE
-#> 3 S     SOUTH
+#> 1 HOLW  HOLLOW
+#> 2 RPD   RAPID 
+#> 3 ARC   ARCADE
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   abb   full       
-#>   <chr> <chr>      
-#> 1 MO    MISSOURI   
-#> 2 CT    CONNECTICUT
-#> 3 KY    KENTUCKY
+#>   abb   full        
+#>   <chr> <chr>       
+#> 1 ND    NORTH DAKOTA
+#> 2 RI    RHODE ISLAND
+#> 3 NE    NEBRASKA
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```

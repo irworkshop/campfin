@@ -20,7 +20,7 @@ options(width = 99)
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
 [![Travis build status](https://travis-ci.org/irworkshop/campfin.svg?branch=master)](https://travis-ci.org/irworkshop/campfin)
 [![Codecov test coverage](https://codecov.io/gh/irworkshop/campfin/branch/master/graph/badge.svg)](https://codecov.io/gh/irworkshop/campfin?branch=master)
 <!-- badges: end -->
