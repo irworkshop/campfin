@@ -186,21 +186,21 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># zipcode version</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"zipcode"</span>)</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">sample_n</span>(zipcode, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;     zip        city state latitude  longitude</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 1 75446 Honey Grove    TX 33.58985  -95.90242</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 2 59430      Denton    MT 47.31630 -109.96291</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 3 51559       Neola    IA 41.45514  -95.64792</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;     zip      city state latitude  longitude</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 1 26372    Horner    WV 38.96958  -80.36881</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 2 87537 Hernandez    NM 36.09402 -106.17472</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 3 74043   Leonard    OK 35.91828  -95.79881</span></a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/class.html">class</a></span>(zipcode)</a>
 <a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; [1] "data.frame"</span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co"># campfin version</span></a>
 <a class="sourceLine" id="cb5-12" data-line-number="12"><span class="kw">sample_n</span>(zipcodes, <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; # A tibble: 3 x 3</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;   city           state zip  </span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; 1 KOYUKUK        AK    99754</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; 2 PLEASANT MOUNT PA    18453</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; 3 ALTAMONT       KS    67330</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;   city       state zip  </span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; 1 DAYTON     NY    14041</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; 2 WARD COVE  AK    99928</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; 3 EDNEYVILLE NC    28727</span></a>
 <a class="sourceLine" id="cb5-19" data-line-number="19"><span class="kw"><a href="https://rdrr.io/r/base/class.html">class</a></span>(zipcodes)</a>
 <a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></a></code></pre></div>
 </div>
@@ -214,16 +214,16 @@
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; # A tibble: 3 x 2</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;   abb   full  </span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; 1 LF    LOAF  </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 2 AV    AVENUE</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 3 S     SOUTH</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; 1 HOLW  HOLLOW</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 2 RPD   RAPID </span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 3 ARC   ARCADE</span></a>
 <a class="sourceLine" id="cb6-8" data-line-number="8"><span class="kw">sample_n</span>(usps_state, <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; # A tibble: 3 x 2</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;   abb   full       </span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 1 MO    MISSOURI   </span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 2 CT    CONNECTICUT</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 3 KY    KENTUCKY</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;   abb   full        </span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;       </span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 1 ND    NORTH DAKOTA</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 2 RI    RHODE ISLAND</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 3 NE    NEBRASKA</span></a>
 <a class="sourceLine" id="cb6-15" data-line-number="15"><span class="kw"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span>(valid_state, state.abb)</a>
 <a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt;  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"</span></a></code></pre></div>
 </div>
@@ -291,7 +291,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://cran.r-project.org/package=campfin"><img src="http://www.r-pkg.org/badges/version/campfin" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=campfin"><img src="https://www.r-pkg.org/badges/version/campfin" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://travis-ci.org/irworkshop/campfin"><img src="https://travis-ci.org/irworkshop/campfin.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://codecov.io/gh/irworkshop/campfin?branch=master"><img src="https://codecov.io/gh/irworkshop/campfin/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
