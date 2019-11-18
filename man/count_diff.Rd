@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{count_diff}
 \alias{count_diff}
-\title{Count Set Difference}
+\title{Count set difference}
 \usage{
 count_diff(x, y)
 }
@@ -15,7 +15,7 @@ count_diff(x, y)
 The number of \emph{unique} values of \code{x} not in \code{y}.
 }
 \description{
-Find length of the set of differences between \code{x} and \code{y}.
+Find the length of the set of difference between \code{x} and \code{y} vectors.
 }
 \details{
 \code{sum(x \%out\% y)}
@@ -25,9 +25,9 @@ Find length of the set of differences between \code{x} and \code{y}.
 count_diff(c("VT", "NH", "ZZ", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple Counting Wrappers: \code{\link{count_in}},
+Other Simple counting wrappers: \code{\link{count_in}},
   \code{\link{count_na}}, \code{\link{count_out}},
-  \code{\link{progress_table}}, \code{\link{prop_in}},
-  \code{\link{prop_na}}, \code{\link{prop_out}}
+  \code{\link{prop_in}}, \code{\link{prop_na}},
+  \code{\link{prop_out}}
 }
-\concept{Simple Counting Wrappers}
+\concept{Simple counting wrappers}

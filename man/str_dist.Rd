@@ -2,14 +2,14 @@
 % Please edit documentation in R/str-dist.R
 \name{str_dist}
 \alias{str_dist}
-\title{String Distance}
+\title{Calculate string distance}
 \usage{
 str_dist(a, b, method = "osa", ...)
 }
 \arguments{
-\item{a}{\code{R} object (target); will be converted by \code{\link[base:as.character]{base::as.character()}}}
+\item{a}{\code{R} object (target); will be converted by \code{\link[base:as.character]{base::as.character()}}.}
 
-\item{b}{\code{R} object (source); will be converted by \code{\link[base:as.character]{base::as.character()}}}
+\item{b}{\code{R} object (source); will be converted by \code{\link[base:as.character]{base::as.character()}}.}
 
 \item{method}{Method for distance calculation. The default is "osa."}
 
@@ -19,8 +19,8 @@ str_dist(a, b, method = "osa", ...)
 The distance between string \code{a} and string \code{b}.
 }
 \description{
-\code{str_dist} calls wraps around the
+This function wraps around \code{\link[stringdist:stringdist]{stringdist::stringdist()}}.
 }
 \examples{
-str_dist(a = "BRULINGTON", b = "BURLINGTON")
+str_dist(a = "BRULINGTN", b = "BURLINGTON")
 }

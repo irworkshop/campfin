@@ -1,5 +1,7 @@
-#' @title Find Most Common Values
-#' @description From a character vector, which values are most common?
+#' Find most common values
+#'
+#' From a character vector, which values are most common?
+#'
 #' @param x A vector.
 #' @param n Number of values to return.
 #' @return Sorted vector of `n` most common values.

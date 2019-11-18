@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{count_vec}
 \alias{count_vec}
-\title{Count Values of a Vector}
+\title{Count values of a vector}
 \usage{
 count_vec(x, sort = TRUE)
 }
@@ -15,9 +15,9 @@ count_vec(x, sort = TRUE)
 A tibble, with counts of each \code{value} in \code{n}.
 }
 \description{
-A version of \code{\link[dplyr:count]{dplyr::count()}} which uses \code{\link[tibble:enframe]{tibble::enframe()}} to
-count the number of values in a single vector.
+A version of \code{\link[dplyr:count]{dplyr::count()}} which uses \code{\link[tibble:enframe]{tibble::enframe()}} to count the
+number of values in a single vector.
 }
-\concept{Simple Counting Wrappers
+\concept{Simple counting wrappers
 count_vec(x = rivers)
 count_vec(x = sample(x = state.name, size = 1000, replace = TRUE))}

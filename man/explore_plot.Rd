@@ -18,14 +18,17 @@ explore_plot(data, var, flip = FALSE, nbar = 8, palette = "Dark2",
 
 \item{palette}{The color palette passed to [ggplot2::scale_fill_brewer().}
 
-\item{...}{Optional arguments passed to \code{\link[ggplot2:labs]{ggplot2::labs()}}.}
+\item{...}{Additional optional arguments passed to \code{\link[ggplot2:labs]{ggplot2::labs()}}.}
 }
 \value{
-A bar plot.
+A \code{ggplot} barplot object. Can then be combined with other \code{ggplot}
+layers with \code{+} to customize.
 }
 \description{
-This function simply wraps around \code{\link[ggplot2:geom_col]{ggplot2::geom_col()}} to take
-a dataframe and categorical variable to return a simple barplot count.
+This function simply wraps around \code{\link[ggplot2:geom_col]{ggplot2::geom_col()}} to take a dataframe
+and categorical variable to return a custom barplot \code{ggplot} object. The bars
+are arranged in descending order and are limited to the 8 most frequent
+values.
 }
 \examples{
 explore_plot(ggplot2::diamonds, cut)

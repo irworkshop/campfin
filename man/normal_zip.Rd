@@ -2,43 +2,27 @@
 % Please edit documentation in R/normal-zip.R
 \name{normal_zip}
 \alias{normal_zip}
-\title{Normalize US ZIP Codes}
+\title{Normalize ZIP codes}
 \usage{
 normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
 }
 \arguments{
 \item{zip}{A vector of US ZIP codes.}
 
-\item{na}{A vector of values to replace with \code{NA}.}
+\item{na}{A vector of values to pass to \code{\link[=na_in]{na_in()}}.}
 
-\item{na_rep}{logical; If \code{TRUE}, make all single digit repeating strings
-(e.g., "00000", "99999") \code{NA}. The valid ZIP codes "22222", "44444", and
-"55555" are not removed.}
+\item{na_rep}{logical; If \code{TRUE}, \code{\link[=na_rep]{na_rep()}} will be called. Please note that
+22222, 44444, and 55555 are rare but valid ZIP codes that wll be removed.}
 }
 \value{
-A vector of normalized 5-digit ZIP codes.
+A \emph{character} vector of normalized 5-digit ZIP codes.
 }
 \description{
-Return consistent version US ZIP codes using \code{stringr::str_*()}
-functions. Non-number characters are removed, strings are padded with
-zeroes on the left (leading zeroes for New England ZIP codes are often
-removed by Microsoft Excel and other progrmas), and ZIP+4 suffixes are
-removed. Invalid ZIP codes from a vector can be removed as well as single
-(repeating) character strings.
-}
-\details{
-From \href{https://en.wikipedia.org/wiki/ZIP_Code#ZIP+4}{Wikipedia}:
-
-In 1983, the U.S. Postal Service introduced an expanded ZIP Code system
-that it called ZIP+4, often called "plus-four codes", "add-on codes", or
-"add-ons". A ZIP+4 Code uses the basic five-digit code plus four additional
-digits to identify a geographic segment within the five-digit delivery
-area, such as a city block, a group of apartments, an individual
-high-volume receiver of mail, a post office box, or any other unit that
-could use an extra identifier to aid in efficient mail sorting and
-delivery. However, initial attempts to promote universal use of the new
-format met with public resistance and today the plus-four code is not
-required.
+Return consistent version US ZIP codes using \code{stringr::str_*()} functions.
+Non-number characters are removed, strings are padded with zeroes on the left
+(leading zeroes for New England ZIP codes are often removed by Microsoft
+Excel and other progrmas), and ZIP+4 suffixes are removed. Invalid ZIP codes
+from a vector can be removed as well as single (repeating) character strings.
 }
 \examples{
 normal_zip(
@@ -52,6 +36,7 @@ Other geographic normalization functions: \code{\link{abbrev_full}},
   \code{\link{abbrev_state}}, \code{\link{check_city}},
   \code{\link{expand_abbrev}}, \code{\link{expand_state}},
   \code{\link{fetch_city}}, \code{\link{normal_address}},
-  \code{\link{normal_city}}, \code{\link{normal_state}}
+  \code{\link{normal_city}}, \code{\link{normal_state}},
+  \code{\link{str_normal}}
 }
 \concept{geographic normalization functions}

@@ -16,9 +16,8 @@ flag_dupes(data, ...)
 A data frame with a new \code{dupe_flag} logical variable.
 }
 \description{
-This function uses \code{\link[dplyr:mutate]{dplyr::mutate()}} to create a new \code{dupe_flag}
-logical variable with \code{TRUE} values for any record duplicated more than
-once.
+This function uses \code{\link[dplyr:mutate]{dplyr::mutate()}} to create a new \code{dupe_flag} logical
+variable with \code{TRUE} values for any record duplicated more than once.
 }
 \examples{
 flag_dupes(iris, dplyr::everything())

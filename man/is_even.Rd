@@ -2,20 +2,20 @@
 % Please edit documentation in R/is-even.R
 \name{is_even}
 \alias{is_even}
-\title{Check if Even}
+\title{Check if even}
 \usage{
 is_even(x)
 }
 \arguments{
-\item{x}{An integer.}
+\item{x}{A numeric vector.}
 }
 \value{
 logical; Whether the integer is even or odd.
 }
 \description{
-Is a number even? Pretty simple...
+Check if even
 }
 \examples{
-is_even(5)
+is_even(1:10)
 is_even(10L)
 }

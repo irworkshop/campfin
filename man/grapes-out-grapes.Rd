@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{\%out\%}
 \alias{\%out\%}
-\title{Inverted Match}
+\title{Inverted match}
 \usage{
 x \%out\% table
 }
@@ -15,7 +15,7 @@ x \%out\% table
 logical; if \code{x} is not present in \code{table}
 }
 \description{
-\code{\%out\%} is an inverted version of the infix opperator \code{\%in\%}.
+\code{\%out\%} is an inverted version of the infix \code{\%in\%} opperator.
 }
 \details{
 \code{\%out\%} is currently defined as

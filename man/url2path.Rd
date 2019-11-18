@@ -15,12 +15,11 @@ url2path(url, dir)
 The desired file path to a URL file.
 }
 \description{
-Combine the \code{\link[=basename]{basename()}} of a file URL with the path to a
-directory.
+Combine the \code{\link[=basename]{basename()}} of a file URL with a directory path.
 }
 \details{
-Useful in the \code{destfile} argument to \code{\link[=download.file]{download.file()}} to save a
-file with the same name as the URL's file name.
+Useful in the \code{destfile} argument to \code{\link[=download.file]{download.file()}} to save a file with
+the same name as the URL's file name.
 }
 \examples{
 url2path("https://floridalobbyist.gov/reports/llob.txt", "~/Downloads")

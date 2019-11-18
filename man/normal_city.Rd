@@ -2,19 +2,19 @@
 % Please edit documentation in R/normal-city.R
 \name{normal_city}
 \alias{normal_city}
-\title{Normalize City Names}
+\title{Normalize city names}
 \usage{
-normal_city(city, geo_abbs = NULL, st_abbs = NULL, na = c("", "NA"),
+normal_city(city, abbs = NULL, states = NULL, na = c("", "NA"),
   na_rep = FALSE)
 }
 \arguments{
 \item{city}{A vector of city names.}
 
-\item{geo_abbs}{A named vector or data frame of abbreviations passed to
+\item{abbs}{A named vector or data frame of abbreviations passed to
 \link{expand_abbrev}; see \link{expand_abbrev} for format of \code{abb} argument or use
 the \link{usps_city} tibble.}
 
-\item{st_abbs}{A vector of state abbreviations ("VT") to remove from the
+\item{states}{A vector of state abbreviations ("VT") to remove from the
 \emph{end} (and only end) of city names ("STOWE VT").}
 
 \item{na}{A vector of values to make \code{NA} (useful with the \link{invalid_city}
@@ -27,21 +27,20 @@ strings with \code{NA}.}
 A vector of normalized city names.
 }
 \description{
-Return consistent version of a city names using
-\code{stringr::str_*()} functions. Letters are capitalized, hyphens and
-underscores are replaced with whitespace, other punctuation is removed,
-numbers are removed, and excess whitespace is trimed and squished.
-Optionally, geographic abbreviations ("MT") can be replaced with their long
-form ("MOUNT"). Invalid addresses from a vector can be removed (possibly
-using \link{invalid_city}) as well as single (repeating) character strings
-("XXXXXX").
+Return consistent version of a city names using \code{stringr::str_*()} functions.
+Letters are capitalized, hyphens and underscores are replaced with
+whitespace, other punctuation is removed, numbers are removed, and excess
+whitespace is trimed and squished. Optionally, geographic abbreviations
+("MT") can be replaced with their long form ("MOUNT"). Invalid addresses from
+a vector can be removed (possibly using \link{invalid_city}) as well as single
+(repeating) character strings ("XXXXXX").
 }
 \examples{
 normal_city(
   city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-  geo_abbs = c("ST" = "SAINT"),
-  st_abbs = c("VT"),
-  na = c("", "NA", "UNKNOWN"),
+  abbs = c("ST" = "SAINT"),
+  states = "VT",
+  na = invalid_city,
   na_rep = TRUE
 )
 }
@@ -50,6 +49,7 @@ Other geographic normalization functions: \code{\link{abbrev_full}},
   \code{\link{abbrev_state}}, \code{\link{check_city}},
   \code{\link{expand_abbrev}}, \code{\link{expand_state}},
   \code{\link{fetch_city}}, \code{\link{normal_address}},
-  \code{\link{normal_state}}, \code{\link{normal_zip}}
+  \code{\link{normal_state}}, \code{\link{normal_zip}},
+  \code{\link{str_normal}}
 }
 \concept{geographic normalization functions}

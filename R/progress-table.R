@@ -1,7 +1,8 @@
-#' @title Create a Progress Table
-#' @description Create a tibble with rows for each stage of normalization
-#'     and columsn for the various statistics most useful in assessing
-#'     the progress of each stage.
+#' Create a progress table
+#'
+#' Create a tibble with rows for each stage of normalization and columsn for the
+#' various statistics most useful in assessing the progress of each stage.
+#'
 #' @param ... Any number of vectors to check.
 #' @param compare A vector to compare each of `...` against. Useful
 #'     with [valid_zip], [valid_state] ([valid_name]), or
@@ -42,5 +43,5 @@ progress_table <- function(..., compare) {
       )
     }
   }
-  return(table)
+  table
 }

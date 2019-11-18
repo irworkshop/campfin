@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{prop_na}
 \alias{prop_na}
-\title{Proportion \code{NA}}
+\title{Proportion missing}
 \usage{
 prop_na(x)
 }
@@ -13,7 +13,7 @@ prop_na(x)
 The sum of \code{x} absent in \code{y}.
 }
 \description{
-Find the proportion of values of a vector that are missing.
+Find the proportion of values of \code{x} that are \code{NA}.
 }
 \details{
 \code{mean(is.na(x))}
@@ -22,9 +22,9 @@ Find the proportion of values of a vector that are missing.
 prop_na(c("VT", "NH", NA, "ME"))
 }
 \seealso{
-Other Simple Counting Wrappers: \code{\link{count_diff}},
+Other Simple counting wrappers: \code{\link{count_diff}},
   \code{\link{count_in}}, \code{\link{count_na}},
-  \code{\link{count_out}}, \code{\link{progress_table}},
-  \code{\link{prop_in}}, \code{\link{prop_out}}
+  \code{\link{count_out}}, \code{\link{prop_in}},
+  \code{\link{prop_out}}
 }
-\concept{Simple Counting Wrappers}
+\concept{Simple counting wrappers}

@@ -15,9 +15,9 @@ is_binary(x, na.rm = TRUE)
 \code{TRUE} if only 2 unique values.
 }
 \description{
-uses \code{\link[dplyr:n_distinct]{dplyr::n_distinct()}} to check if there are only two unique
-values. This function is useful when combined with both \code{\link[purrr:map_if]{purrr::map_if()}}
-\emph{and} \code{\link[batman:to_logical]{batman::to_logical()}}.
+Uses \code{\link[dplyr:n_distinct]{dplyr::n_distinct()}} to check if there are only two unique values. This
+function is useful when combined with both \code{\link[purrr:map_if]{purrr::map_if()}} \emph{and}
+\code{\link[batman:to_logical]{batman::to_logical()}}.
 }
 \examples{
 if (is_binary(x <- c("Yes", "No"))) x == "Yes"

@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{prop_in}
 \alias{prop_in}
-\title{Proportion In}
+\title{Proportion in}
 \usage{
 prop_in(x, y, na.rm = TRUE)
 }
@@ -17,7 +17,7 @@ prop_in(x, y, na.rm = TRUE)
 The proprtion of \code{x} present in \code{y}.
 }
 \description{
-Count total values of one vector in another vector.
+Find the proportion of values of \code{x} that are \code{\%in\%} the vector \code{y}.
 }
 \details{
 \code{mean(x \%in\% y)}
@@ -26,9 +26,9 @@ Count total values of one vector in another vector.
 prop_in(c("VT", "NH", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple Counting Wrappers: \code{\link{count_diff}},
+Other Simple counting wrappers: \code{\link{count_diff}},
   \code{\link{count_in}}, \code{\link{count_na}},
-  \code{\link{count_out}}, \code{\link{progress_table}},
-  \code{\link{prop_na}}, \code{\link{prop_out}}
+  \code{\link{count_out}}, \code{\link{prop_na}},
+  \code{\link{prop_out}}
 }
-\concept{Simple Counting Wrappers}
+\concept{Simple counting wrappers}

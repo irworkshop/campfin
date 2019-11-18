@@ -2,7 +2,7 @@
 % Please edit documentation in R/normal-phone.R
 \name{normal_phone}
 \alias{normal_phone}
-\title{Normalize a US Phone Number}
+\title{Normalize phone number}
 \usage{
 normal_phone(number, format = "(\%a) \%e-\%l", na_bad = FALSE,
   convert = FALSE, rm_ext = FALSE)
@@ -27,8 +27,8 @@ numbers with their keypad equivalent.}
 A normalized telephone number.
 }
 \description{
-Take US phone numbers in any number of formats and try to
-convert them to a standard format.
+Take US phone numbers in any number of formats and try to convert them to a
+standard format.
 }
 \examples{
 normal_phone(number = c("916-225-5887"))

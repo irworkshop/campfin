@@ -2,7 +2,7 @@
 % Please edit documentation in R/invert-named.R
 \name{invert_named}
 \alias{invert_named}
-\title{Invert a Named Vector}
+\title{Invert a named vector}
 \usage{
 invert_named(x)
 }
@@ -10,13 +10,12 @@ invert_named(x)
 \item{x}{A named vector.}
 }
 \value{
-A vector with names in place of elements and \emph{vice versa}.
+A named vector with names in place of elements and \emph{vice versa}.
 }
 \description{
-Invert the names and elements of a vector, useful when using
-named vectors as the abbreviation arguments both of \code{\link[=expand_abbrev]{expand_abbrev()}} and
-\code{\link[=abbrev_full]{abbrev_full()}} (or their parent normalization functions like
-\code{\link[=normal_address]{normal_address()}})
+Invert the names and elements of a vector, useful when using named vectors as
+the abbreviation arguments both of \code{\link[=expand_abbrev]{expand_abbrev()}} and \code{\link[=abbrev_full]{abbrev_full()}} (or
+their parent normalization functions like \code{\link[=normal_address]{normal_address()}})
 }
 \examples{
 invert_named(x = c("name" = "element"))

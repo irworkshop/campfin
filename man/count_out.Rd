@@ -2,7 +2,7 @@
 % Please edit documentation in R/counters.R
 \name{count_out}
 \alias{count_out}
-\title{Count Out}
+\title{Count out}
 \usage{
 count_out(x, y, na.rm = TRUE)
 }
@@ -17,7 +17,7 @@ count_out(x, y, na.rm = TRUE)
 The sum of \code{x} absent in \code{y}.
 }
 \description{
-Find proportion of values of one vector not in another vector.
+Count the total values of \code{x} that are are \code{\%out\%} of the vector \code{y}.
 }
 \details{
 \code{sum(x \%out\% y)}
@@ -26,9 +26,9 @@ Find proportion of values of one vector not in another vector.
 count_out(c("VT", "NH", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple Counting Wrappers: \code{\link{count_diff}},
+Other Simple counting wrappers: \code{\link{count_diff}},
   \code{\link{count_in}}, \code{\link{count_na}},
-  \code{\link{progress_table}}, \code{\link{prop_in}},
-  \code{\link{prop_na}}, \code{\link{prop_out}}
+  \code{\link{prop_in}}, \code{\link{prop_na}},
+  \code{\link{prop_out}}
 }
-\concept{Simple Counting Wrappers}
+\concept{Simple counting wrappers}

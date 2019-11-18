@@ -2,7 +2,7 @@
 % Please edit documentation in R/abbrev-full.R
 \name{abbrev_full}
 \alias{abbrev_full}
-\title{Abbreviate Full Strings}
+\title{Abbreviate full strings}
 \usage{
 abbrev_full(x, full = NULL, rep = NULL)
 }
@@ -23,11 +23,11 @@ for each full word in \code{abb}.}
 The vector \code{x} with full words replaced with their abbreviations.
 }
 \description{
-Create or use a named vector (\code{c("full" = "abb")}) and pass it
-to \code{\link[stringr:str_replace_all]{stringr::str_replace_all()}}. The \code{full} argument is surrounded with
-\code{\\b} to capture only isolated intended full versions. Note that the
-built-in \link{usps_street}, \link{usps_city}, and \link{usps_state} dataframes have the
-columns reversed from what this function needs (to work by default with the
+Create or use a named vector (\code{c("full" = "abb")}) and pass it to
+\code{\link[stringr:str_replace_all]{stringr::str_replace_all()}}. The \code{full} argument is surrounded with \code{\\b} to
+capture only isolated intended full versions. Note that the built-in
+\link{usps_street}, \link{usps_city}, and \link{usps_state} dataframes have the columns
+reversed from what this function needs (to work by default with the
 counterpart \code{\link[=expand_abbrev]{expand_abbrev()}}).
 }
 \examples{
@@ -40,6 +40,7 @@ Other geographic normalization functions: \code{\link{abbrev_state}},
   \code{\link{check_city}}, \code{\link{expand_abbrev}},
   \code{\link{expand_state}}, \code{\link{fetch_city}},
   \code{\link{normal_address}}, \code{\link{normal_city}},
-  \code{\link{normal_state}}, \code{\link{normal_zip}}
+  \code{\link{normal_state}}, \code{\link{normal_zip}},
+  \code{\link{str_normal}}
 }
 \concept{geographic normalization functions}
