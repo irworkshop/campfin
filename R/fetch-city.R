@@ -30,6 +30,9 @@ fetch_city <- function(address = NULL, key = NULL) {
   if (nchar(address) == 0 | is.na(address) | is.null(address)) {
     stop("Geographical arguments required")
   }
+  if (is.null(key)) {
+    key <- Sys.getenv("GEOCODE_KEY")
+  }
   api_url_root <- "https://maps.googleapis.com/maps/api/geocode/json?"
   response <- httr::GET(api_url_root, query = list(address = address, key = key))
   httr::stop_for_status(response)
