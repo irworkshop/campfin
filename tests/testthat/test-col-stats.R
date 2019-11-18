@@ -27,3 +27,8 @@ test_that("column statistics are printed by default", {
 test_that("column statistics can be saved without printing", {
   expect_output(col_stats(diamonds, n_distinct, print = FALSE), NA)
 })
+
+test_that("glimpse_fun produces a depracted warning", {
+  expect_warning(stats <- glimpse_fun(diamonds, n_distinct, print = FALSE))
+  expect_output(suppressWarnings(glimpse_fun(diamonds, n_distinct)), NULL)
+})
