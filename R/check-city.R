@@ -46,7 +46,7 @@
 check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess = FALSE) {
   city_validity = NA
   locality = NA_character_
-  normal_returned = NA_character_
+  returned_norm = NA_character_
   if (nchar(city) == 0 | is.na(city)) {
     stop("Input is empty", call. = FALSE)
     create_table()
@@ -84,7 +84,9 @@ check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess 
     warning("You must use an API key")
     create_table()
   } else if (r_content$status == "ZERO_RESULTS") {
-    warning(glue::glue("No results were found for {city}, {state}, {zip"))
+    result_state <- ifelse(is.null(state), "", state)
+    result_zip <- ifelse(is.null(zip), "", zip)
+    warning("No results were found for the given information")
     city_validity <- FALSE
     create_table()
   } else if(r_content$status != "OK"){

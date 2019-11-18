@@ -20,3 +20,21 @@ test_that("fetching city returns an entire address string", {
   fetch <- fetch_city("4529 Wisconsin Ave NW, Tenelytown, DC 20016")
   expect_type(fetch, "character")
 })
+
+test_that("fetching addresses returns warnings and errors", {
+  expect_error(fetch_city())
+  expect_error(fetch_city(""))
+  expect_error(fetch_city(NA))
+  expect_warning(fetch_city("test", key = ""))
+  expect_warning(fetch_city("hwiouehf;ehrg"))
+  expect_true(is.na(fetch_city("hwiouehf;ehrg")))
+})
+
+test_that("checking cities returns warnings and errors", {
+  expect_error(check_city())
+  expect_error(check_city(""))
+  expect_error(check_city(NA))
+  expect_warning(check_city("test", key = ""))
+  expect_warning(check_city("hwiouehf;ehrg", guess = TRUE))
+  expect_s3_class(suppressWarnings(check_city("hwiouehf;ehrg", guess = TRUE)), "tbl")
+})
