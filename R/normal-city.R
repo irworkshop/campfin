@@ -32,12 +32,7 @@
 #' @family geographic normalization functions
 #' @export
 normal_city <- function(city, abbs = NULL, states = NULL, na = c("", "NA"), na_rep = FALSE) {
-  city2 <- city %>%
-    str_normal() %>%
-    stringr::str_remove_all("\\d+")
-  if (!is.null(abbs)) {
-    city2 <- expand_abbrev(x = city2, abb = abbs)
-  }
+  city2 <- stringr::str_remove_all(str_normal(city), "\\d+")
   if (!is.null(states)) {
     for (i in seq_along(states)) {
       city2 <- stringr::str_remove(city2, glue::glue("\\s{states[i]}$"))
@@ -48,6 +43,9 @@ normal_city <- function(city, abbs = NULL, states = NULL, na = c("", "NA"), na_r
   }
   if (!rlang::is_empty(na)) {
     city2 <- na_in(city2, na)
+  }
+  if (!is.null(abbs)) {
+    city2 <- str_normal(expand_abbrev(x = city2, abb = abbs))
   }
   city2
 }
