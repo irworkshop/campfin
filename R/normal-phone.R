@@ -17,12 +17,11 @@
 #' @importFrom stringr str_detect str_sub str_replace_all str_replace
 #'   str_remove_all str_which str_to_lower str_length str_extract str_trim
 #'   str_squish
-#' @importFrom rlang is_vector
 #' @examples
 #' normal_phone(number = c("916-225-5887"))
 #' @export
 normal_phone <- function(number, format = "(%a) %e-%l", na_bad = FALSE, convert = FALSE, rm_ext = FALSE) {
-  if (!rlang::is_vector(number)) {
+  if (!is.vector(number)) {
     stop("Phone number is not a vector.")
   }
   number <- as.character(number)
@@ -73,6 +72,10 @@ normal_phone <- function(number, format = "(%a) %e-%l", na_bad = FALSE, convert 
 
   if (na_bad) {
     number[stringr::str_which(number, campfin::rx_phone, negate = TRUE)] <- NA
+  }
+
+  if (rm_ext) {
+    number <- stringr::str_remove(number, "\\sx(.*)$")
   }
 
   number
