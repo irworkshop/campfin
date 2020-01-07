@@ -22,11 +22,16 @@ abbrev_state(full = state.name)
 abbrev_state(full = c("new mexico", "france"))
 }
 \seealso{
-Other geographic normalization functions: \code{\link{abbrev_full}},
-  \code{\link{check_city}}, \code{\link{expand_abbrev}},
-  \code{\link{expand_state}}, \code{\link{fetch_city}},
-  \code{\link{normal_address}}, \code{\link{normal_city}},
-  \code{\link{normal_state}}, \code{\link{normal_zip}},
-  \code{\link{str_normal}}
+Other geographic normalization functions: 
+\code{\link{abbrev_full}()},
+\code{\link{check_city}()},
+\code{\link{expand_abbrev}()},
+\code{\link{expand_state}()},
+\code{\link{fetch_city}()},
+\code{\link{normal_address}()},
+\code{\link{normal_city}()},
+\code{\link{normal_state}()},
+\code{\link{normal_zip}()},
+\code{\link{str_normal}()}
 }
 \concept{geographic normalization functions}

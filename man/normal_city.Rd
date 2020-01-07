@@ -4,8 +4,7 @@
 \alias{normal_city}
 \title{Normalize city names}
 \usage{
-normal_city(city, abbs = NULL, states = NULL, na = c("", "NA"),
-  na_rep = FALSE)
+normal_city(city, abbs = NULL, states = NULL, na = c("", "NA"), na_rep = FALSE)
 }
 \arguments{
 \item{city}{A vector of city names.}
@@ -27,7 +26,7 @@ strings with \code{NA}.}
 A vector of normalized city names.
 }
 \description{
-Return consistent version of a city names using \code{stringr::str_*()} functions.
+Return consistent version of a city names using \verb{stringr::str_*()} functions.
 Letters are capitalized, hyphens and underscores are replaced with
 whitespace, other punctuation is removed, numbers are removed, and excess
 whitespace is trimed and squished. Optionally, geographic abbreviations
@@ -45,11 +44,16 @@ normal_city(
 )
 }
 \seealso{
-Other geographic normalization functions: \code{\link{abbrev_full}},
-  \code{\link{abbrev_state}}, \code{\link{check_city}},
-  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
-  \code{\link{fetch_city}}, \code{\link{normal_address}},
-  \code{\link{normal_state}}, \code{\link{normal_zip}},
-  \code{\link{str_normal}}
+Other geographic normalization functions: 
+\code{\link{abbrev_full}()},
+\code{\link{abbrev_state}()},
+\code{\link{check_city}()},
+\code{\link{expand_abbrev}()},
+\code{\link{expand_state}()},
+\code{\link{fetch_city}()},
+\code{\link{normal_address}()},
+\code{\link{normal_state}()},
+\code{\link{normal_zip}()},
+\code{\link{str_normal}()}
 }
 \concept{geographic normalization functions}

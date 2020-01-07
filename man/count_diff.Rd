@@ -25,9 +25,12 @@ Find the length of the set of difference between \code{x} and \code{y} vectors.
 count_diff(c("VT", "NH", "ZZ", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple counting wrappers: \code{\link{count_in}},
-  \code{\link{count_na}}, \code{\link{count_out}},
-  \code{\link{prop_in}}, \code{\link{prop_na}},
-  \code{\link{prop_out}}
+Other Simple counting wrappers: 
+\code{\link{count_in}()},
+\code{\link{count_na}()},
+\code{\link{count_out}()},
+\code{\link{prop_in}()},
+\code{\link{prop_na}()},
+\code{\link{prop_out}()}
 }
 \concept{Simple counting wrappers}

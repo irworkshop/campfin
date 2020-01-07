@@ -17,7 +17,7 @@ count_out(x, y, na.rm = TRUE)
 The sum of \code{x} absent in \code{y}.
 }
 \description{
-Count the total values of \code{x} that are are \code{\%out\%} of the vector \code{y}.
+Count the total values of \code{x} that are are \verb{\%out\%} of the vector \code{y}.
 }
 \details{
 \code{sum(x \%out\% y)}
@@ -26,9 +26,12 @@ Count the total values of \code{x} that are are \code{\%out\%} of the vector \co
 count_out(c("VT", "NH", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple counting wrappers: \code{\link{count_diff}},
-  \code{\link{count_in}}, \code{\link{count_na}},
-  \code{\link{prop_in}}, \code{\link{prop_na}},
-  \code{\link{prop_out}}
+Other Simple counting wrappers: 
+\code{\link{count_diff}()},
+\code{\link{count_in}()},
+\code{\link{count_na}()},
+\code{\link{prop_in}()},
+\code{\link{prop_na}()},
+\code{\link{prop_out}()}
 }
 \concept{Simple counting wrappers}

@@ -17,7 +17,7 @@ prop_out(x, y, na.rm = TRUE)
 The proprtion of \code{x} absent in \code{y}.
 }
 \description{
-Find the proportion of values of \code{x} that are \code{\%out\%} of the vector \code{y}.
+Find the proportion of values of \code{x} that are \verb{\%out\%} of the vector \code{y}.
 }
 \details{
 \code{mean(x \%out\% y)}
@@ -26,9 +26,12 @@ Find the proportion of values of \code{x} that are \code{\%out\%} of the vector 
 prop_out(c("VT", "NH", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple counting wrappers: \code{\link{count_diff}},
-  \code{\link{count_in}}, \code{\link{count_na}},
-  \code{\link{count_out}}, \code{\link{prop_in}},
-  \code{\link{prop_na}}
+Other Simple counting wrappers: 
+\code{\link{count_diff}()},
+\code{\link{count_in}()},
+\code{\link{count_na}()},
+\code{\link{count_out}()},
+\code{\link{prop_in}()},
+\code{\link{prop_na}()}
 }
 \concept{Simple counting wrappers}

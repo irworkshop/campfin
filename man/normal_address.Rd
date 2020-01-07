@@ -4,8 +4,7 @@
 \alias{normal_address}
 \title{Normalize street addresses}
 \usage{
-normal_address(address, abbs = NULL, na = c("", "NA"),
-  na_rep = FALSE)
+normal_address(address, abbs = NULL, na = c("", "NA"), na_rep = FALSE)
 }
 \arguments{
 \item{address}{A vector of street addresses (ideally without city, state, or
@@ -24,7 +23,7 @@ strings with \code{NA}.}
 A vector of normalized street addresses.
 }
 \description{
-Return consistent version of a US Street Address using \code{stringr::str_*()}
+Return consistent version of a US Street Address using \verb{stringr::str_*()}
 functions. Letters are capitalized, punctuation is removed or replaced, and
 excess whitespace is trimed and squished. Optionally, street suffix
 abbreviations ("AVE") can be replaced with their long form ("AVENUE").
@@ -36,11 +35,16 @@ normal_address("1600 Pennsylvania Ave NW")
 normal_address("12 e st main ave ste 209", abbs = usps_street)
 }
 \seealso{
-Other geographic normalization functions: \code{\link{abbrev_full}},
-  \code{\link{abbrev_state}}, \code{\link{check_city}},
-  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
-  \code{\link{fetch_city}}, \code{\link{normal_city}},
-  \code{\link{normal_state}}, \code{\link{normal_zip}},
-  \code{\link{str_normal}}
+Other geographic normalization functions: 
+\code{\link{abbrev_full}()},
+\code{\link{abbrev_state}()},
+\code{\link{check_city}()},
+\code{\link{expand_abbrev}()},
+\code{\link{expand_state}()},
+\code{\link{fetch_city}()},
+\code{\link{normal_city}()},
+\code{\link{normal_state}()},
+\code{\link{normal_zip}()},
+\code{\link{str_normal}()}
 }
 \concept{geographic normalization functions}

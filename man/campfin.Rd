@@ -3,7 +3,6 @@
 \docType{package}
 \name{campfin}
 \alias{campfin}
-\alias{campfin-package}
 \title{\code{campfin} package}
 \description{
 The campfin package was written to facilitate the work done on The

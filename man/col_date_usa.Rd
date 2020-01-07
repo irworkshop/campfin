@@ -16,5 +16,5 @@ campaign finance datasets use this format. Does not work with
 \code{\link[vroom:vroom]{vroom::vroom()}} version 1.0.2.9000 or lower.
 }
 \examples{
-readr::read_csv(file = "x\\n11/09/2016", col_types = readr::cols(x = col_date_usa()))
+readr::read_csv(file = "x\n11/09/2016", col_types = readr::cols(x = col_date_usa()))
 }

@@ -18,7 +18,7 @@ normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
 A \emph{character} vector of normalized 5-digit ZIP codes.
 }
 \description{
-Return consistent version US ZIP codes using \code{stringr::str_*()} functions.
+Return consistent version US ZIP codes using \verb{stringr::str_*()} functions.
 Non-number characters are removed, strings are padded with zeroes on the left
 (leading zeroes for New England ZIP codes are often removed by Microsoft
 Excel and other progrmas), and ZIP+4 suffixes are removed. Invalid ZIP codes
@@ -32,11 +32,16 @@ normal_zip(
 )
 }
 \seealso{
-Other geographic normalization functions: \code{\link{abbrev_full}},
-  \code{\link{abbrev_state}}, \code{\link{check_city}},
-  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
-  \code{\link{fetch_city}}, \code{\link{normal_address}},
-  \code{\link{normal_city}}, \code{\link{normal_state}},
-  \code{\link{str_normal}}
+Other geographic normalization functions: 
+\code{\link{abbrev_full}()},
+\code{\link{abbrev_state}()},
+\code{\link{check_city}()},
+\code{\link{expand_abbrev}()},
+\code{\link{expand_state}()},
+\code{\link{fetch_city}()},
+\code{\link{normal_address}()},
+\code{\link{normal_city}()},
+\code{\link{normal_state}()},
+\code{\link{str_normal}()}
 }
 \concept{geographic normalization functions}

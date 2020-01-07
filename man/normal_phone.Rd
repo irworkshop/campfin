@@ -4,14 +4,19 @@
 \alias{normal_phone}
 \title{Normalize phone number}
 \usage{
-normal_phone(number, format = "(\%a) \%e-\%l", na_bad = FALSE,
-  convert = FALSE, rm_ext = FALSE)
+normal_phone(
+  number,
+  format = "(\%a) \%e-\%l",
+  na_bad = FALSE,
+  convert = FALSE,
+  rm_ext = FALSE
+)
 }
 \arguments{
 \item{number}{A vector of phone number in any format.}
 
-\item{format}{The desired output format, with \code{\%a} representing the 3-digit
-\strong{area} code, \code{\%e} representing the 3-digit \strong{exchange}, and \code{\%l}
+\item{format}{The desired output format, with \verb{\%a} representing the 3-digit
+\strong{area} code, \verb{\%e} representing the 3-digit \strong{exchange}, and \verb{\%l}
 representing the 4-digit \strong{line} number. The puctuation between each part
 of the format is used in the normalized number (e.g., \code{"(\%a) \%e-\%l"} or
 \code{"\%a-\%e-\%l"}).}
