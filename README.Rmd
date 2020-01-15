@@ -52,12 +52,6 @@ if(!requireNamespace("remotes")) install.packages("remotes")
 remotes::install_github("irworkshop/campfin")
 ```
 
-Or you can install the development branch to get the latest features.
-
-```{r install_dev, eval=FALSE, warning=FALSE, message=FALSE}
-remotes::install_github("irworkshop/campfin", ref = "develop")
-```
-
 [cran]: https://cran.r-project.org/
 [tidyverse]: https://www.tidyverse.org/
 
@@ -91,7 +85,7 @@ inconsistencies:
 * Remove remaining punctuation with `str_remove()`
 * Remove either numbers or letters (depending on data) with `str_remove()`
 * Remove excess white space with `str_trim()` and `str_squish()`
-* Replace abbreviations with `expand_abbrev()` (and `str_replace_all()`)
+* Abbreiate addresses with `abbrev_full()` (and `str_replace_all()`)
 * Remove invalid values with `na_out()` (and `str_which()`)
 
 ## Data

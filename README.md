@@ -39,12 +39,6 @@ if(!requireNamespace("remotes")) install.packages("remotes")
 remotes::install_github("irworkshop/campfin")
 ```
 
-Or you can install the development branch to get the latest features.
-
-``` r
-remotes::install_github("irworkshop/campfin", ref = "develop")
-```
-
 ## Normalize
 
 The package was originally built to normalize geographic data using the
@@ -76,8 +70,7 @@ fix the following inconsistencies:
   - Remove either numbers or letters (depending on data) with
     `str_remove()`
   - Remove excess white space with `str_trim()` and `str_squish()`
-  - Replace abbreviations with `expand_abbrev()` (and
-    `str_replace_all()`)
+  - Abbreiate addresses with `abbrev_full()` (and `str_replace_all()`)
   - Remove invalid values with `na_out()` (and `str_which()`)
 
 ## Data
@@ -105,6 +98,7 @@ cat(str_c("* ", "`", objects, "`"), sep = "\n")
   - `usps_city`
   - `usps_state`
   - `usps_street`
+  - `valid_abb`
   - `valid_city`
   - `valid_name`
   - `valid_state`
@@ -143,21 +137,21 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-#>     zip      city state latitude  longitude
-#> 1 26372    Horner    WV 38.96958  -80.36881
-#> 2 87537 Hernandez    NM 36.09402 -106.17472
-#> 3 74043   Leonard    OK 35.91828  -95.79881
+#>     zip            city state latitude longitude
+#> 1 43789 Sycamore Valley    OH 39.65439 -81.24073
+#> 2 57051          Oldham    SD 44.21954 -97.34057
+#> 3 12741         Hankins    NY 41.83867 -75.08718
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 3)
 #> # A tibble: 3 x 3
-#>   city       state zip  
-#>   <chr>      <chr> <chr>
-#> 1 DAYTON     NY    14041
-#> 2 WARD COVE  AK    99928
-#> 3 EDNEYVILLE NC    28727
+#>   city    state zip  
+#>   <chr>   <chr> <chr>
+#> 1 SPOKANE WA    99258
+#> 2 TOWNLEY AL    35587
+#> 3 MORRIS  MN    56267
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -180,18 +174,18 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
-#>   abb   full  
-#>   <chr> <chr> 
-#> 1 HOLW  HOLLOW
-#> 2 RPD   RAPID 
-#> 3 ARC   ARCADE
+#>   abb   full      
+#>   <chr> <chr>     
+#> 1 PLZA  PLAZA     
+#> 2 EXPR  EXPRESSWAY
+#> 3 SPC   SPACE
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   abb   full        
-#>   <chr> <chr>       
-#> 1 ND    NORTH DAKOTA
-#> 2 RI    RHODE ISLAND
-#> 3 NE    NEBRASKA
+#>   abb   full      
+#>   <chr> <chr>     
+#> 1 MD    MARYLAND  
+#> 2 NJ    NEW JERSEY
+#> 3 ID    IDAHO
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```
