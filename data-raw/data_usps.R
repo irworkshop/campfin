@@ -82,10 +82,10 @@ usps_unit <-
   html_table(fill = TRUE, header = TRUE) %>%
   as_tibble(.name_repair = "unique") %>%
   slice(-26) %>%
-  select(3, 1) %>%
+  select(1, 3) %>%
   na_if("") %>%
   drop_na() %>%
-  set_names(nm = c("abb", "full")) %>%
+  set_names(nm = c("full", "abb")) %>%
   mutate(
     full = str_to_upper(full) %>% str_remove_all("[^\\w]"),
     abb = str_remove_all(abb, "[^\\w]")
@@ -98,7 +98,6 @@ usps_dirs <-
   html_node(css = "#ep19168") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   set_names(nm = c("full", "abb")) %>%
-  select(abb, full) %>%
   mutate(full = str_to_upper(full))
 
 # combine tables

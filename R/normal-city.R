@@ -22,7 +22,7 @@
 #' @examples
 #' normal_city(
 #'   city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-#'   abbs = c("ST" = "SAINT"),
+#'   abbs = c("SAINT" = "ST"),
 #'   states = "VT",
 #'   na = invalid_city,
 #'   na_rep = TRUE
@@ -45,7 +45,7 @@ normal_city <- function(city, abbs = NULL, states = NULL, na = c("", "NA"), na_r
     city2 <- na_in(city2, na)
   }
   if (!is.null(abbs)) {
-    city2 <- str_normal(expand_abbrev(x = city2, abb = abbs))
+    city2 <- str_normal(abbrev_full(x = city2, full = abbs))
   }
   city2
 }
