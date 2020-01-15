@@ -16,7 +16,6 @@ usps_state <-
   html_node(css = "#ep18684") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   set_names(nm = c("full", "abb")) %>%
-  select(abb, full) %>%
   mutate(full = str_to_upper(full))
 
 # scrape armed forces table
@@ -25,7 +24,6 @@ usps_armed <-
   html_node(css = "#ep19241") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   set_names(nm = c("full", "abb")) %>%
-  select(abb, full) %>%
   mutate(full = str_to_upper(str_remove(full, "([:punct:].*)$")))
 
 # combined tables
@@ -38,7 +36,7 @@ usps_state <- usps_state %>%
 usethis::use_data(usps_state, overwrite = TRUE)
 write_lines(
   x = usps_state,
-  path = "data-raw/.csv"
+  path = "data-raw/usps_state.csv"
 )
 
 # save state names vector
@@ -68,9 +66,8 @@ usps_street <-
   read_html(x = usps_c1) %>%
   html_node(css = "#ep533076") %>%
   html_table(fill = TRUE, header = TRUE) %>%
-  select(1, 2) %>%
+  select(2, 3) %>%
   set_names(nm = c("full", "abb")) %>%
-  select(abb, full) %>%
   filter(full != abb) %>%
   as_tibble()
 
