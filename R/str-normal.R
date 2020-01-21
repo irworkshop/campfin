@@ -19,6 +19,7 @@ str_normal <- function(x) {
   x %>%
     stringr::str_to_upper() %>%
     stringr::str_replace_all("[[:punct:]]", " ") %>%
+    stringr::str_replace_all("\"", "\'") %>%
     stringr::str_trim() %>%
     stringr::str_squish()
 }
