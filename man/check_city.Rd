@@ -38,13 +38,13 @@ columns is returned:
 }
 \description{
 Check whether a place is a valid place or misspelling by matching against the
-Google Geocoding seaerch result. Use the \code{\link[httr:GET]{httr::GET()}} to send a request to
+Google Geocoding search result. Use the \code{\link[httr:GET]{httr::GET()}} to send a request to
 the Google Maps API for geocoding information. The query will concatenate all
 the geographical information that is passed in into a long string. Then the
 function pulls the \code{formatted_address} endpoint of the API results and then
 identifies and extracts the long name field from the API \emph{locality} result
 and compare it against the input to see if the input and output match up.
-Note that you will need to pass in your Google Maps Place API key with the
+Note that you will need to pass in your Google Maps Place API key to the
 \code{key} arguement.
 }
 \examples{
