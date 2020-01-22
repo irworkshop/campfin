@@ -4,13 +4,16 @@
 \alias{flag_dupes}
 \title{Flag Duplicate Rows With New Column}
 \usage{
-flag_dupes(data, ...)
+flag_dupes(data, ..., .check = TRUE)
 }
 \arguments{
 \item{data}{A data frame to flag.}
 
 \item{...}{Arguments passed to \code{\link[dplyr:select]{dplyr::select()}} (needs to be at least
 \code{\link[dplyr:everything]{dplyr::everything()}}).}
+
+\item{.check}{Whether the resulting column should be summed and
+removed if empty.}
 }
 \value{
 A data frame with a new \code{dupe_flag} logical variable.
