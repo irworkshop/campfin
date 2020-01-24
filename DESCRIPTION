@@ -7,12 +7,10 @@ Authors@R:
            family = "Nicholls",
            role = c("aut", "cre"),
            email = "kiernann@protonmail.com")
-Description: This package was created for use by the
-    Accountability Project team at the Investigative Reporting Workshop.
-    The Accountability Project standardizes and disambiguates campaign
-    finance data to make it more searchable. The functions included
-    facilitate the exploration and wrangling of data, with an emphasis on
-    string normalization.
+Description: Explore and normalize American campaign finance data. Created by
+    the Investigative Reporting Workshop to facilitate work on The
+    Accountability Project, an effort to collect public data into a central,
+    standard, searchable database.
 License: CC BY 4.0
 URL: https://github.com/irworkshop/campfin
 BugReports: https://github.com/irworkshop/campfin/issues
