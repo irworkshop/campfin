@@ -34,10 +34,9 @@ Accountability Project curates, cleans, and indexes public data to give
 journalists, researchers and others a simple way to search across otherwise
 siloed records. 
 
-The data focuses on people, organizations and locations. This
-package was created specifically to help with state-level **camp**aign
-**fin**ance data, although the tools included are useful in general database
-exploration and normalization.
+The data focuses on people, organizations and locations. This package was
+created specifically to help with state-level campaign finance data, although
+the tools included are useful in general database exploration and normalization.
 
 [tap]: https://www.publicaccountability.org/
 [irw]: https://investigativereportingworkshop.org/
@@ -48,7 +47,7 @@ exploration and normalization.
 The package is not yet on [CRAN][cran] and must be installed from GitHub.
 
 ```{r install, eval=FALSE, warning=FALSE, message=FALSE}
-if(!requireNamespace("remotes")) install.packages("remotes")
+# install.packages("remotes")
 remotes::install_github("irworkshop/campfin")
 ```
 
@@ -68,7 +67,7 @@ normalization.
 * `normal_zip()` takes [ZIP Codes][zip] and aims to return a valid 5-digit code.
 * `normal_state()` takes US states and returns a [2 digit abbreviation][abbs].
 * `normal_city()` takes cities and reduces inconsistencies.
-* `normal_phone()` consistently fornats US telephone numbers.
+* `normal_phone()` consistently formats US telephone numbers.
 
 [txt]: https://en.wikipedia.org/wiki/Text_normalization
 [stringr]: https://github.com/tidyverse/stringr
@@ -85,21 +84,25 @@ inconsistencies:
 * Remove remaining punctuation with `str_remove()`
 * Remove either numbers or letters (depending on data) with `str_remove()`
 * Remove excess white space with `str_trim()` and `str_squish()`
-* Abbreiate addresses with `abbrev_full()` (and `str_replace_all()`)
+* Abbreviate addresses with `abbrev_full()` (and `str_replace_all()`)
 * Remove invalid values with `na_out()` (and `str_which()`)
 
 ## Data
 
 ```{r library, message=FALSE, warning=FALSE}
-library(campfin)
+if (!require(zipcode, quietly = TRUE)) {
+  zip_url <- "https://cran.r-project.org/src/contrib/Archive/zipcode/zipcode_1.0.tar.gz"
+  install.packages(zip_url, repos = NULL, type = "source")
+}
 library(zipcode)
+library(campfin)
 library(tidyverse)
 ```
 
 The campfin package contains a number of built in data frames and strings used
 to help wrangle campaign finance data.
 
-```{r data, results='asis'}
+```{r data, results='asis', echo=FALSE}
 objects <- data(package = "campfin")$results[, "Item"]
 cat(str_c("* ", "`", objects, "`"), sep = "\n")
 ```
@@ -109,8 +112,8 @@ The `/data-raw` directory contains the code used to create the objects.
 ### `zipcodes`
 
 The `zipcodes` (plural) data frame is a normalized version of the `zipcode`
-(singular) data frame from the [`zipcode`][zip] R package, which itself is a
-version of the [CivicSpace US ZIP Code Database][civic]:
+(singular) data frame from the archived [`zipcode`][zip] R package, which itself
+is a version of the [CivicSpace US ZIP Code Database][civic]:
 
 > This database was composed using ZIP code gazetteers from the US Census Bureau
 from 1999 and 2000, augmented with additional ZIP code information The database
@@ -127,7 +130,7 @@ The included `valid_city` and `valid_zip` vectors are sorted, unique columns
 from the `zipcodes` data frame (although `valid_city` is being updated to
 include more common neighborhoods and census-designated places)
 
-[zip]: https://cran.r-project.org/web/packages/zipcode/
+[zip]: https://cran.r-project.org/src/contrib/Archive/zipcode/
 [civic]: https://boutell.com/zipcodes/
 
 ```{r geo_df, collapse=TRUE, warning=FALSE, message=FALSE, error=FALSE}

@@ -25,9 +25,9 @@ to give journalists, researchers and others a simple way to search
 across otherwise siloed records.
 
 The data focuses on people, organizations and locations. This package
-was created specifically to help with state-level **camp**aign
-**fin**ance data, although the tools included are useful in general
-database exploration and normalization.
+was created specifically to help with state-level campaign finance data,
+although the tools included are useful in general database exploration
+and normalization.
 
 ## Installation
 
@@ -35,7 +35,7 @@ The package is not yet on [CRAN](https://cran.r-project.org/) and must
 be installed from GitHub.
 
 ``` r
-if(!requireNamespace("remotes")) install.packages("remotes")
+# install.packages("remotes")
 remotes::install_github("irworkshop/campfin")
 ```
 
@@ -52,12 +52,12 @@ other sub-functions to streamline normalization.
   - `normal_address()` takes a *street* address and reduces
     inconsistencies.
   - `normal_zip()` takes [ZIP
-    Codes](https://cran.r-project.org/web/packages/zipcode/) and aims to
-    return a valid 5-digit code.
+    Codes](https://cran.r-project.org/src/contrib/Archive/zipcode/) and
+    aims to return a valid 5-digit code.
   - `normal_state()` takes US states and returns a [2 digit
     abbreviation](https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations).
   - `normal_city()` takes cities and reduces inconsistencies.
-  - `normal_phone()` consistently fornats US telephone numbers.
+  - `normal_phone()` consistently formats US telephone numbers.
 
 Please see the vignette on normalization for an example of how these
 functions are used to fix a wide variety of string inconsistencies and
@@ -70,24 +70,23 @@ fix the following inconsistencies:
   - Remove either numbers or letters (depending on data) with
     `str_remove()`
   - Remove excess white space with `str_trim()` and `str_squish()`
-  - Abbreiate addresses with `abbrev_full()` (and `str_replace_all()`)
+  - Abbreviate addresses with `abbrev_full()` (and `str_replace_all()`)
   - Remove invalid values with `na_out()` (and `str_which()`)
 
 ## Data
 
 ``` r
-library(campfin)
+if (!require(zipcode, quietly = TRUE)) {
+  zip_url <- "https://cran.r-project.org/src/contrib/Archive/zipcode/zipcode_1.0.tar.gz"
+  install.packages(zip_url, repos = NULL, type = "source")
+}
 library(zipcode)
+library(campfin)
 library(tidyverse)
 ```
 
 The campfin package contains a number of built in data frames and
 strings used to help wrangle campaign finance data.
-
-``` r
-objects <- data(package = "campfin")$results[, "Item"]
-cat(str_c("* ", "`", objects, "`"), sep = "\n")
-```
 
   - `extra_city`
   - `invalid_city`
@@ -111,9 +110,9 @@ The `/data-raw` directory contains the code used to create the objects.
 ### `zipcodes`
 
 The `zipcodes` (plural) data frame is a normalized version of the
-`zipcode` (singular) data frame from the
-[`zipcode`](https://cran.r-project.org/web/packages/zipcode/) R package,
-which itself is a version of the [CivicSpace US ZIP Code
+`zipcode` (singular) data frame from the archived
+[`zipcode`](https://cran.r-project.org/src/contrib/Archive/zipcode/) R
+package, which itself is a version of the [CivicSpace US ZIP Code
 Database](https://boutell.com/zipcodes/):
 
 > This database was composed using ZIP code gazetteers from the US
@@ -137,21 +136,21 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-#>     zip            city state latitude longitude
-#> 1 43789 Sycamore Valley    OH 39.65439 -81.24073
-#> 2 57051          Oldham    SD 44.21954 -97.34057
-#> 3 12741         Hankins    NY 41.83867 -75.08718
+#>     zip        city state latitude longitude
+#> 1 12037     Chatham    NY 42.34676 -73.57852
+#> 2 48004 Anchorville    MI 42.82409 -82.66522
+#> 3 33604       Tampa    FL 28.01685 -82.45660
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 3)
 #> # A tibble: 3 x 3
-#>   city    state zip  
-#>   <chr>   <chr> <chr>
-#> 1 SPOKANE WA    99258
-#> 2 TOWNLEY AL    35587
-#> 3 MORRIS  MN    56267
+#>   city         state zip  
+#>   <chr>        <chr> <chr>
+#> 1 LINDSEYVILLE KY    42257
+#> 2 DODGEVILLE   MI    49921
+#> 3 NEW CASTLE   AL    35119
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -174,18 +173,18 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
-#>   abb   full      
-#>   <chr> <chr>     
-#> 1 PLZA  PLAZA     
-#> 2 EXPR  EXPRESSWAY
-#> 3 SPC   SPACE
+#>   full   abb  
+#>   <chr>  <chr>
+#> 1 CLUB   CLB  
+#> 2 CNTER  CTR  
+#> 3 COMMON CMN
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   abb   full      
-#>   <chr> <chr>     
-#> 1 MD    MARYLAND  
-#> 2 NJ    NEW JERSEY
-#> 3 ID    IDAHO
+#>   full                  abb  
+#>   <chr>                 <chr>
+#> 1 NEBRASKA              NE   
+#> 2 MARSHALL ISLANDS      MH   
+#> 3 ARMED FORCES AMERICAS AA
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```
