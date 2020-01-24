@@ -25,10 +25,10 @@
 #' @param ignore.case logical; if `FALSE`, the pattern matching is case
 #'   sensitive and if `TRUE`, case is ignored during matching.
 #' @return The proprtion of `x` present in `y`.
-#' @family Simple counting wrappers
-#' @importFrom stats na.omit
+#' @family counting wrappers
 #' @examples
 #' prop_in(c("VT", "NH", "ZZ", "ME"), state.abb)
+#' @importFrom stats na.omit
 #' @importFrom stringr str_to_lower
 #' @export
 prop_in <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
@@ -53,10 +53,10 @@ prop_in <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
 #' @param ignore.case logical; if `FALSE`, the pattern matching is case
 #'   sensitive and if `TRUE`, case is ignored during matching.
 #' @return The proprtion of `x` absent in `y`.
-#' @family Simple counting wrappers
-#' @importFrom stats na.omit
+#' @family counting wrappers
 #' @examples
 #' prop_out(c("VT", "NH", "ZZ", "ME"), state.abb)
+#' @importFrom stats na.omit
 #' @importFrom stringr str_to_lower
 #' @export
 prop_out <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
@@ -81,10 +81,10 @@ prop_out <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
 #' @param ignore.case logical; if `FALSE`, the pattern matching is case
 #'   sensitive and if `TRUE`, case is ignored during matching.
 #' @return The sum of `x` present in `y`.
-#' @family Simple counting wrappers
-#' @importFrom stats na.omit
+#' @family counting wrappers
 #' @examples
 #' count_in(c("VT", "NH", "ZZ", "ME"), state.abb)
+#' @importFrom stats na.omit
 #' @importFrom stringr str_to_lower
 #' @export
 count_in <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
@@ -109,10 +109,10 @@ count_in <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
 #' @param ignore.case logical; if `FALSE`, the pattern matching is case
 #'   sensitive and if `TRUE`, case is ignored during matching.
 #' @return The sum of `x` absent in `y`.
-#' @family Simple counting wrappers
-#' @importFrom stats na.omit
+#' @family counting wrappers
 #' @examples
 #' count_out(c("VT", "NH", "ZZ", "ME"), state.abb)
+#' @importFrom stats na.omit
 #' @importFrom stringr str_to_lower
 #' @export
 count_out <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
@@ -136,9 +136,9 @@ count_out <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
 #' @return The number of _unique_ values of `x` not in `y`.
 #' @param ignore.case logical; if `FALSE`, the pattern matching is case
 #'   sensitive and if `TRUE`, case is ignored during matching.
-#' @family Simple counting wrappers
+#' @family counting wrappers
 #' @examples
-#' # Only unique values are checked
+#' # only unique values are checked
 #' count_diff(c("VT", "NH", "ZZ", "ZZ", "ME"), state.abb)
 #' @importFrom stringr str_to_lower
 #' @export
@@ -157,10 +157,10 @@ count_diff <- function(x, y, ignore.case = FALSE) {
 #' @details `sum(is.na(x))`
 #' @param x A vector to check.
 #' @return The sum of `x` that are `NA`
-#' @family Simple counting wrappers
-#' @importFrom stats na.omit
+#' @family counting wrappers
 #' @examples
 #' count_na(c("VT", "NH", NA, "ME"))
+#' @importFrom stats na.omit
 #' @export
 count_na <- function(x) {
   sum(is.na(x))
@@ -173,10 +173,10 @@ count_na <- function(x) {
 #' @details `mean(is.na(x))`
 #' @param x A vector to check.
 #' @return The sum of `x` absent in `y`.
-#' @family Simple counting wrappers
-#' @importFrom stats na.omit
+#' @family counting wrappers
 #' @examples
 #' prop_na(c("VT", "NH", NA, "ME"))
+#' @importFrom stats na.omit
 #' @export
 prop_na <- function(x) {
   mean(is.na(x))
@@ -191,7 +191,8 @@ prop_na <- function(x) {
 #' @param ignore.case logical; if `FALSE`, the pattern matching is case
 #'   sensitive and if `TRUE`, case is ignored during matching.
 #' @return The vector `x` missing any values in `y`.
-#' @family Simple counting wrappers
+#' @family counting wrappers
+#' @examples
 #' na_in(c("VT", "NH", "ZZ", "ME"), state.abb)
 #' na_in(1:10, seq(1, 10, 2))
 #' @importFrom stringr str_to_lower
@@ -214,7 +215,8 @@ na_in <- function(x, y, ignore.case = FALSE) {
 #' @param ignore.case logical; if `FALSE`, the pattern matching is case
 #'   sensitive and if `TRUE`, case is ignored during matching.
 #' @return The vector `x` missing any values not in `y`.
-#' @family Simple counting wrappers
+#' @family counting wrappers
+#' @examples
 #' na_out(c("VT", "NH", "ZZ", "ME"), state.abb)
 #' na_out(1:10, seq(1, 10, 2))
 #' @importFrom stringr str_to_lower
@@ -239,7 +241,8 @@ na_out <- function(x, y, ignore.case = FALSE) {
 #'   then any string of one character will be replaced with `NA`. If greater
 #'   than 0, the string must contain greater than `n` number of repetitions.
 #' @return The vector `x` with `NA` replacing repeating character values.
-#' @family Simple counting wrappers
+#' @family counting wrappers
+#' @examples
 #' na_rep(c("VT", "NH", "ZZ", "ME"))
 #' @export
 na_rep <- function(x, n = 0) {
@@ -256,7 +259,8 @@ na_rep <- function(x, n = 0) {
 #' @param x A vector to check.
 #' @param sort logical; if TRUE will sort output in descending order of `n`
 #' @return A tibble, with counts of each `value` in `n`.
-#' @family Simple counting wrappers
+#' @family counting wrappers
+#' @examples
 #' count_vec(x = rivers)
 #' count_vec(x = sample(x = state.name, size = 1000, replace = TRUE))
 #' @importFrom dplyr count

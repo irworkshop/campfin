@@ -20,6 +20,21 @@ The vector \code{x} missing any values not in \code{y}.
 \description{
 Set \code{NA} for the values of \code{x} that are \verb{\%out\%} of the vector \code{y}.
 }
-\concept{Simple counting wrappers
+\examples{
 na_out(c("VT", "NH", "ZZ", "ME"), state.abb)
-na_out(1:10, seq(1, 10, 2))}
+na_out(1:10, seq(1, 10, 2))
+}
+\seealso{
+Other counting wrappers: 
+\code{\link{count_diff}()},
+\code{\link{count_in}()},
+\code{\link{count_na}()},
+\code{\link{count_out}()},
+\code{\link{count_vec}()},
+\code{\link{na_in}()},
+\code{\link{na_rep}()},
+\code{\link{prop_in}()},
+\code{\link{prop_na}()},
+\code{\link{prop_out}()}
+}
+\concept{counting wrappers}

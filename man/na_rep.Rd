@@ -23,5 +23,20 @@ no other characters.
 \details{
 Uses the regular expression \code{"^(.)\\\\1+$"}.
 }
-\concept{Simple counting wrappers
-na_rep(c("VT", "NH", "ZZ", "ME"))}
+\examples{
+na_rep(c("VT", "NH", "ZZ", "ME"))
+}
+\seealso{
+Other counting wrappers: 
+\code{\link{count_diff}()},
+\code{\link{count_in}()},
+\code{\link{count_na}()},
+\code{\link{count_out}()},
+\code{\link{count_vec}()},
+\code{\link{na_in}()},
+\code{\link{na_out}()},
+\code{\link{prop_in}()},
+\code{\link{prop_na}()},
+\code{\link{prop_out}()}
+}
+\concept{counting wrappers}

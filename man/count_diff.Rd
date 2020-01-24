@@ -24,16 +24,20 @@ Find the length of the set of difference between \code{x} and \code{y} vectors.
 \code{sum(x \%out\% y)}
 }
 \examples{
-# Only unique values are checked
+# only unique values are checked
 count_diff(c("VT", "NH", "ZZ", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple counting wrappers: 
+Other counting wrappers: 
 \code{\link{count_in}()},
 \code{\link{count_na}()},
 \code{\link{count_out}()},
+\code{\link{count_vec}()},
+\code{\link{na_in}()},
+\code{\link{na_out}()},
+\code{\link{na_rep}()},
 \code{\link{prop_in}()},
 \code{\link{prop_na}()},
 \code{\link{prop_out}()}
 }
-\concept{Simple counting wrappers}
+\concept{counting wrappers}

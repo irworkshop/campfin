@@ -29,12 +29,16 @@ Find the proportion of values of \code{x} that are \verb{\%out\%} of the vector 
 prop_out(c("VT", "NH", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple counting wrappers: 
+Other counting wrappers: 
 \code{\link{count_diff}()},
 \code{\link{count_in}()},
 \code{\link{count_na}()},
 \code{\link{count_out}()},
+\code{\link{count_vec}()},
+\code{\link{na_in}()},
+\code{\link{na_out}()},
+\code{\link{na_rep}()},
 \code{\link{prop_in}()},
 \code{\link{prop_na}()}
 }
-\concept{Simple counting wrappers}
+\concept{counting wrappers}

@@ -18,6 +18,21 @@ A tibble, with counts of each \code{value} in \code{n}.
 A version of \code{\link[dplyr:count]{dplyr::count()}} which uses \code{\link[tibble:enframe]{tibble::enframe()}} to count the
 number of values in a single vector.
 }
-\concept{Simple counting wrappers
+\examples{
 count_vec(x = rivers)
-count_vec(x = sample(x = state.name, size = 1000, replace = TRUE))}
+count_vec(x = sample(x = state.name, size = 1000, replace = TRUE))
+}
+\seealso{
+Other counting wrappers: 
+\code{\link{count_diff}()},
+\code{\link{count_in}()},
+\code{\link{count_na}()},
+\code{\link{count_out}()},
+\code{\link{na_in}()},
+\code{\link{na_out}()},
+\code{\link{na_rep}()},
+\code{\link{prop_in}()},
+\code{\link{prop_na}()},
+\code{\link{prop_out}()}
+}
+\concept{counting wrappers}
