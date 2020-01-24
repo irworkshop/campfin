@@ -2,8 +2,7 @@
 #'
 #' Parse dates with format MM/DD/YYYY. This function simply wraps around
 #' [readr::col_date()] with the `format` argument set to `"%m/%d/%Y"`. Most US
-#' campaign finance datasets use this format. Does not work with
-#' [vroom::vroom()] version 1.0.2.9000 or lower.
+#' campaign finance datasets use this format.
 #'
 #' @return A `POSIXct` vector.
 #' @importFrom readr col_date cols
