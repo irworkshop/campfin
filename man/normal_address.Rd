@@ -31,7 +31,6 @@ Invalid addresses from a vector can be removed (possibly using
 \link{invalid_city}) as well as single (repeating) character strings ("XXXXXX").
 }
 \examples{
-normal_address("1600 Pennsylvania Avenue NW", abbs = usps_street)
 normal_address("12 east street, suite 209", abbs = usps_street)
 }
 \seealso{

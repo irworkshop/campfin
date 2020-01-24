@@ -31,8 +31,9 @@ A vector of normalized 2-digit state abbreviations.
 }
 \description{
 Return consistent version of a state \emph{abbreviations} using
-\verb{stringr::str_*()} functions. Letters are capitalized, all non-letters are
-removed, nand excess whitespace is trimed and squished.
+\verb{stringr::str_*()} functions. Letters are capitalized, all non-letters
+characters are removed, and excess whitespace is trimed and squished, and
+then \code{\link[=abbrev_full]{abbrev_full()}} is called with \link{usps_state}.
 }
 \examples{
 normal_state(

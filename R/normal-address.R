@@ -17,7 +17,6 @@
 #'   strings with `NA`.
 #' @return A vector of normalized street addresses.
 #' @examples
-#' normal_address("1600 Pennsylvania Avenue NW", abbs = usps_street)
 #' normal_address("12 east street, suite 209", abbs = usps_street)
 #' @importFrom stringr str_to_upper str_replace_all str_trim str_squish str_replace
 #' @family geographic normalization functions
