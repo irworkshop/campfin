@@ -9,20 +9,20 @@ keypad_convert(x, ext = FALSE)
 \arguments{
 \item{x}{A vector of characters or letters.}
 
-\item{ext}{logical; Should exension text be converted to numbers. Defaults to
+\item{ext}{logical; Should extension text be converted to numbers. Defaults to
 \code{FALSE} and matches x, ext, and extension followed by a space or number.}
 }
 \value{
 If a character vector is supplied, a vector of each elements numeric
 counterpart is returned. If a numeric vector (or a completely coercible
 character vector) is supplied, then a \strong{list} is returned, each element of
-which contacts a vector of letetrs for each number.
+which contacts a vector of letters for each number.
 }
 \description{
 This function works best when converting numbers to letters, as each number
 only has a single possible letter. For each letter, there are 3 or 4 possible
 letters, resulting in a number of possible conversions. This function was
-inteded to convert phonetic telephone numbers to their valid numeric
+intended to convert phonetic telephone numbers to their valid numeric
 equivalent; when used in this manner, each letter in a string can be lazily
 replaced without changing the rest of the string.
 }

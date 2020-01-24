@@ -105,7 +105,7 @@ vt <- read_csv(
 ```
 
 We can see how the new `date` column is an actual date object, allowing for 
-mathematical manipulaton.
+mathematical manipulation.
 
 ```{r date_math}
 transmute(vt, date, next_week = date + 7)
@@ -131,7 +131,7 @@ normalize our data enough that less than 5% of our data can not be easily
 confirmed as valid using a fairly comprehensive list of cities, states, and
 ZIP codes.
 
-We will first try to reach this threshhold by normalizing our data. This process
+We will first try to reach this threshold by normalizing our data. This process
 involves reducing inconsistencies through string manipulation. There are 
 separate `normal_*()` functions for each of the 4 types of geographic variables.
 Here, we will use `dplyr::mutate()` to create _new_, normalized versions of our 
@@ -182,7 +182,7 @@ ZIP codes), that it can be difficult to normalize and difficult to assess.
 
 Our `valid_city` vector contains many city names, but far less than exist in the
 country, especially when you account for neighborhoods that aren't _really_ 
-cities, but shouldn't be changed (some of these are contained in our currated
+cities, but shouldn't be changed (some of these are contained in our curated
 `extra_city` vector).
 
 ```{r length_city}
@@ -213,15 +213,15 @@ a given ZIP code.
   left_join(zipcodes, by = c("zip", "state"), suffix = c("_raw", "_match")))
 ```
 
-Now the problems become clear. Two city names are mispelled and the third is
+Now the problems become clear. Two city names are misspelled and the third is
 an obvious abbreviation. When dealing with millions of city names, we need a
-way to check each raw value against it's excpected ZIP code match.
+way to check each raw value against it's expected ZIP code match.
 
 The `str_dist()` and `is_abbrev()` functions can
 be used to compared the value we have with the value we expect. By only checking
-against the corrisponding city to that record's ZIP code, we are making
-extremelly _confident_ changes (compared to the incredibly useful clustering 
-algorithms like thise provided by the `refinr` package).
+against the corresponding city to that record's ZIP code, we are making
+extremely _confident_ changes (compared to the incredibly useful clustering 
+algorithms like those provided by the `refinr` package).
 
 First, we can use `str_dist()`, which calls the `stringdist::stringdist()`
 function to check the _distance_ between the two strings; that is, the number of

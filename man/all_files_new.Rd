@@ -21,7 +21,7 @@ date equal to today.
 Tests whether all the files in a given directory have a modification date
 equal to the system date. Useful when repeatedly running code with a lengthy
 download stage. Many state databases are updated daily, so new data can be
-helpful but not always neccesary. Set this function in an \code{if} statement.
+helpful but not always necessary. Set this function in an \code{if} statement.
 }
 \examples{
 temp <- tempdir()

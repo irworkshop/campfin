@@ -17,7 +17,7 @@ normal_phone(
 
 \item{format}{The desired output format, with \verb{\%a} representing the 3-digit
 \strong{area} code, \verb{\%e} representing the 3-digit \strong{exchange}, and \verb{\%l}
-representing the 4-digit \strong{line} number. The puctuation between each part
+representing the 4-digit \strong{line} number. The punctuation between each part
 of the format is used in the normalized number (e.g., \code{"(\%a) \%e-\%l"} or
 \code{"\%a-\%e-\%l"}).}
 

@@ -1,8 +1,10 @@
-#' @title Normalize US State Abbreviations
-#' @description Return consistent version of a state _abbreviations_ using
-#'   `stringr::str_*()` functions. Letters are capitalized, all non-letters
-#'   characters are removed, and excess whitespace is trimed and squished, and
-#'   then [abbrev_full()] is called with [usps_state].
+#' Normalize US State Abbreviations
+#'
+#' Return consistent version of a state _abbreviations_ using `stringr::str_*()`
+#' functions. Letters are capitalized, all non-letters characters are removed,
+#' and excess whitespace is trimmed and squished, and then [abbrev_full()] is
+#' called with [usps_state].
+#'
 #' @param state A vector of US state names or abbreviations.
 #' @param abbreviate If TRUE (default), replace state names with the 2-digit
 #'   abbreviation using the built-in `state.abb` and `state.name` vectors.

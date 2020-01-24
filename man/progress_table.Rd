@@ -17,7 +17,7 @@ with \link{valid_zip}, \link{valid_state} (\link{valid_name}), or
 A table with a row for each vector in \code{...}.
 }
 \description{
-Create a tibble with rows for each stage of normalization and columsn for the
+Create a tibble with rows for each stage of normalization and columns for the
 various statistics most useful in assessing the progress of each stage.
 }
 \examples{

@@ -17,7 +17,7 @@ check_city(city = NULL, state = NULL, zip = NULL, key = NULL, guess = FALSE)
 "GEOCODE_KEY" using \code{Sys.setenv()} or by editing your \code{.Renviron} file.}
 
 \item{guess}{logical; Should the function return a single row tibble
-containing the orignal data sent and the multi components returned by the
+containing the original data sent and the multi components returned by the
 Geocode API.}
 }
 \value{
@@ -45,7 +45,7 @@ function pulls the \code{formatted_address} endpoint of the API results and then
 identifies and extracts the long name field from the API \emph{locality} result
 and compare it against the input to see if the input and output match up.
 Note that you will need to pass in your Google Maps Place API key to the
-\code{key} arguement.
+\code{key} argument.
 }
 \examples{
 \dontrun{requires Google API key

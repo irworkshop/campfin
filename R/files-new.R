@@ -3,7 +3,7 @@
 #' Tests whether all the files in a given directory have a modification date
 #' equal to the system date. Useful when repeatedly running code with a lengthy
 #' download stage. Many state databases are updated daily, so new data can be
-#' helpful but not always neccesary. Set this function in an `if` statement.
+#' helpful but not always necessary. Set this function in an `if` statement.
 #'
 #' @param path The path to a directory to check.
 #' @param glob A pattern to search for files (e.g., "*.csv").
@@ -41,7 +41,7 @@ all_files_new <- function(path, glob = NULL, ...) {
 #' This function tests whether a single file has a modification date equal to
 #' the system date. Useful when repeatedly running code with a lengthy download
 #' stage. Many state databases are updated daily, so new data can be helpful but
-#' not always neccesary. Set this function in an `if` statement.
+#' not always necessary. Set this function in an `if` statement.
 #'
 #' @param path The path to a file to check.
 #' @return logical; Whether the file has a modification date equal to today.

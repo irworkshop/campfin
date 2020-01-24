@@ -17,7 +17,7 @@ prop_in(x, y, na.rm = TRUE, ignore.case = FALSE)
 sensitive and if \code{TRUE}, case is ignored during matching.}
 }
 \value{
-The proprtion of \code{x} present in \code{y}.
+The proportion of \code{x} present in \code{y}.
 }
 \description{
 Find the proportion of values of \code{x} that are \code{\%in\%} the vector \code{y}.

@@ -3,7 +3,7 @@
 #' Return consistent version of a city names using `stringr::str_*()` functions.
 #' Letters are capitalized, hyphens and underscores are replaced with
 #' whitespace, other punctuation is removed, numbers are removed, and excess
-#' whitespace is trimed and squished. Optionally, geographic abbreviations
+#' whitespace is trimmed and squished. Optionally, geographic abbreviations
 #' ("MT") can be replaced with their long form ("MOUNT"). Invalid addresses from
 #' a vector can be removed (possibly using [invalid_city]) as well as single
 #' (repeating) character strings ("XXXXXX").

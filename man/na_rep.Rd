@@ -9,7 +9,7 @@ na_rep(x, n = 0)
 \arguments{
 \item{x}{A vector to check.}
 
-\item{n}{The minumum number times a character must repeat. If 0, the default,
+\item{n}{The minimum number times a character must repeat. If 0, the default,
 then any string of one character will be replaced with \code{NA}. If greater
 than 0, the string must contain greater than \code{n} number of repetitions.}
 }

@@ -8,7 +8,7 @@
 #' identifies and extracts the long name field from the API _locality_ result
 #' and compare it against the input to see if the input and output match up.
 #' Note that you will need to pass in your Google Maps Place API key to the
-#' `key` arguement.
+#' `key` argument.
 #'
 #' @param city A string of city name to be submitted to the Geocode API.
 #' @param state Optional. The state associated with the `city`.
@@ -16,7 +16,7 @@
 #' @param key A character string to be passed into `key`. Save your key as
 #'   "GEOCODE_KEY" using `Sys.setenv()` or by editing your `.Renviron` file.
 #' @param guess logical; Should the function return a single row tibble
-#'   containing the orignal data sent and the multi components returned by the
+#'   containing the original data sent and the multi components returned by the
 #'   Geocode API.
 #' @return A logical value by default. If the city returned by the API
 #'   comes back the same as the city input, the function will evaluate to

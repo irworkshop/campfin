@@ -17,7 +17,7 @@ prop_out(x, y, na.rm = TRUE, ignore.case = FALSE)
 sensitive and if \code{TRUE}, case is ignored during matching.}
 }
 \value{
-The proprtion of \code{x} absent in \code{y}.
+The proportion of \code{x} absent in \code{y}.
 }
 \description{
 Find the proportion of values of \code{x} that are \verb{\%out\%} of the vector \code{y}.

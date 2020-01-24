@@ -4,7 +4,7 @@
 #' downloaded.
 #'
 #' @param url The URL of the file to query.
-#' @param format logical; Whether to format as byte measurment and symbol.
+#' @param format logical; Whether to format as byte measurement and symbol.
 #' @return The size of a file to be downloaded.
 #' @importFrom httr HEAD headers
 #' @importFrom scales number_bytes

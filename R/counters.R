@@ -1,6 +1,6 @@
 #' Inverted match
 #'
-#' `%out%` is an inverted version of the infix `%in%` opperator.
+#' `%out%` is an inverted version of the infix `%in%` operator.
 #'
 #' @param x vector: the values to be matched. Long vectors are supported.
 #' @param table vector or `NULL`: the values to be matched against.
@@ -24,7 +24,7 @@
 #' @param na.rm logical; Should `NA` be ignored?
 #' @param ignore.case logical; if `FALSE`, the pattern matching is case
 #'   sensitive and if `TRUE`, case is ignored during matching.
-#' @return The proprtion of `x` present in `y`.
+#' @return The proportion of `x` present in `y`.
 #' @family counting wrappers
 #' @examples
 #' prop_in(c("VT", "NH", "ZZ", "ME"), state.abb)
@@ -52,7 +52,7 @@ prop_in <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
 #' @param na.rm logical; Should `NA` be ignored?
 #' @param ignore.case logical; if `FALSE`, the pattern matching is case
 #'   sensitive and if `TRUE`, case is ignored during matching.
-#' @return The proprtion of `x` absent in `y`.
+#' @return The proportion of `x` absent in `y`.
 #' @family counting wrappers
 #' @examples
 #' prop_out(c("VT", "NH", "ZZ", "ME"), state.abb)
@@ -237,7 +237,7 @@ na_out <- function(x, y, ignore.case = FALSE) {
 #'
 #' @details Uses the regular expression `"^(.)\\1+$"`.
 #' @param x A vector to check.
-#' @param n The minumum number times a character must repeat. If 0, the default,
+#' @param n The minimum number times a character must repeat. If 0, the default,
 #'   then any string of one character will be replaced with `NA`. If greater
 #'   than 0, the string must contain greater than `n` number of repetitions.
 #' @return The vector `x` with `NA` replacing repeating character values.

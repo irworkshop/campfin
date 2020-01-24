@@ -23,7 +23,7 @@ information. The query will concatenate all the geographical information that
 is passed in into a single string. Then the function pulls the
 \code{formatted_address} endpoint of the API results and extracts the the first
 field of the result. Note that you will need to pass in your Google Maps
-Place API key with the \code{key} arguement.
+Place API key with the \code{key} argument.
 }
 \examples{
 \dontrun{Requires Google API key

@@ -9,7 +9,7 @@ url_file_size(url, format = FALSE)
 \arguments{
 \item{url}{The URL of the file to query.}
 
-\item{format}{logical; Whether to format as byte measurment and symbol.}
+\item{format}{logical; Whether to format as byte measurement and symbol.}
 }
 \value{
 The size of a file to be downloaded.

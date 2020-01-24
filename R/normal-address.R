@@ -2,7 +2,7 @@
 #'
 #' Return consistent version of a US Street Address using `stringr::str_*()`
 #' functions. Letters are capitalized, punctuation is removed or replaced, and
-#' excess whitespace is trimed and squished. Optionally, street suffix
+#' excess whitespace is trimmed and squished. Optionally, street suffix
 #' abbreviations ("AVE") can be replaced with their long form ("AVENUE").
 #' Invalid addresses from a vector can be removed (possibly using
 #' [invalid_city]) as well as single (repeating) character strings ("XXXXXX").
@@ -12,7 +12,7 @@
 #' @param abbs A named vector or two-column data frame (like [usps_street])
 #'   passed to [expand_abbrev()]. See `?expand_abbrev` for the type of object
 #'   structure needed.
-#' @param na A charactr vector of values to make `NA` (like [invalid_city]).
+#' @param na A character vector of values to make `NA` (like [invalid_city]).
 #' @param na_rep logical; If `TRUE`, replace all single digit (repeating)
 #'   strings with `NA`.
 #' @return A vector of normalized street addresses.

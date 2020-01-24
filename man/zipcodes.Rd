@@ -17,7 +17,7 @@ CivicSpace US ZIP Code Database written by Schuyler Erle
 \href{mailto:schuyler@geocoder.us}{schuyler@geocoder.us}, 5 August 2004. Original CSV files available from
 \url{http://federalgovernmentzipcodes.us/free-zipcode-database-Primary.csv},
 \url{http://www.boutell.com/zipcodes/}, and
-\url{http://mappinghacks.com/data/}.
+\url{htt/mappinghacks.com/data/}.
 }
 \usage{
 zipcodes

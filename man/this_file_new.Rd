@@ -16,7 +16,7 @@ logical; Whether the file has a modification date equal to today.
 This function tests whether a single file has a modification date equal to
 the system date. Useful when repeatedly running code with a lengthy download
 stage. Many state databases are updated daily, so new data can be helpful but
-not always neccesary. Set this function in an \code{if} statement.
+not always necessary. Set this function in an \code{if} statement.
 }
 \examples{
 temp <- tempfile()

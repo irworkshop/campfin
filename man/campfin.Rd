@@ -18,5 +18,5 @@ provides examples on how this process improved a database.
 The other functions in this package are written to facilitate the exploration
 of a database. The Investigative Reporting Workshop writes public data
 diaries to document the data wrangling process; the open source campfin
-functions help download, import, explore, and wrangle public databasee.
+functions help download, import, explore, and wrangle public database.
 }

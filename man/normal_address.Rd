@@ -14,7 +14,7 @@ postal code).}
 passed to \code{\link[=expand_abbrev]{expand_abbrev()}}. See \code{?expand_abbrev} for the type of object
 structure needed.}
 
-\item{na}{A charactr vector of values to make \code{NA} (like \link{invalid_city}).}
+\item{na}{A character vector of values to make \code{NA} (like \link{invalid_city}).}
 
 \item{na_rep}{logical; If \code{TRUE}, replace all single digit (repeating)
 strings with \code{NA}.}
@@ -25,7 +25,7 @@ A vector of normalized street addresses.
 \description{
 Return consistent version of a US Street Address using \verb{stringr::str_*()}
 functions. Letters are capitalized, punctuation is removed or replaced, and
-excess whitespace is trimed and squished. Optionally, street suffix
+excess whitespace is trimmed and squished. Optionally, street suffix
 abbreviations ("AVE") can be replaced with their long form ("AVENUE").
 Invalid addresses from a vector can be removed (possibly using
 \link{invalid_city}) as well as single (repeating) character strings ("XXXXXX").

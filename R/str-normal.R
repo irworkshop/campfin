@@ -5,12 +5,12 @@
 #' [normal_address()]. This function simply chains together three
 #' `stringr::str_*()` functions:
 #'   1. Convert to uppercase.
-#'   2. Replace punctutations with whitespaces.
+#'   2. Replace punctuation with whitespaces.
 #'   4. Trim and squish excess whitespace.
 #'
 #' @param x A character string to normalize.
 #' @param case logical; whether [stringr::str_to_upper()] should be called.
-#' @param punct logical; whether [stringr::str_replace_all()] should be called on puctuation.
+#' @param punct logical; whether [stringr::str_replace_all()] should be called on punctuation.
 #' @param quote logical; whether [stringr::str_replace_all()] should be called on double quotes.
 #' @param trim logical; whether [stringr::str_trim()] should be called.
 #' @param squish logical; whether [stringr::str_squish()] should be called.
