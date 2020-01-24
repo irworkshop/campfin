@@ -8,19 +8,17 @@ library(rvest)
 
 # Publication 28 - Postal Addressing Standards
 # Appendix B - Two–Letter State and Possession Abbreviations
-usps_b0 <- "https://pe.usps.com/text/pub28/28apb.htm"
+usps_b0 <- read_html("https://pe.usps.com/text/pub28/28apb.htm")
 
 # scrape states table
-usps_state <-
-  read_html(x = usps_b0) %>%
+usps_state <- usps_b0 %>%
   html_node(css = "#ep18684") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   set_names(nm = c("full", "abb")) %>%
   mutate(full = str_to_upper(full))
 
 # scrape armed forces table
-usps_armed <-
-  read_html(x = usps_b0) %>%
+usps_armed <- usps_b0 %>%
   html_node(css = "#ep19241") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   set_names(nm = c("full", "abb")) %>%
@@ -59,11 +57,10 @@ write_lines(
 
 # Publication 28 - Postal Addressing Standards
 # Appendix C - C1 Street Suffix Abbreviations
-usps_c1 <- "https://pe.usps.com/text/pub28/28apc_002.htm"
+usps_c1 <- read_html("https://pe.usps.com/text/pub28/28apc_002.htm")
 
 # scrape states table
-usps_street <-
-  read_html(x = usps_c1) %>%
+usps_street <- usps_c1 %>%
   html_node(css = "#ep533076") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   select(2, 3) %>%
@@ -73,11 +70,10 @@ usps_street <-
 
 # Publication 28 - Postal Addressing Standards
 # Appendix C - C2 Secondary Unit Designators
-usps_c2 <- "https://pe.usps.com/text/pub28/28apc_003.htm"
+usps_c2 <- read_html("https://pe.usps.com/text/pub28/28apc_003.htm")
 
 # scrape states table
-usps_unit <-
-  read_html(x = usps_c2) %>%
+usps_unit <- usps_c2 %>%
   html_node(css = "#ep538257") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   as_tibble(.name_repair = "unique") %>%
@@ -93,8 +89,7 @@ usps_unit <-
   filter(full != abb)
 
 # scrape geographic directions
-usps_dirs <-
-  read_html(x = usps_b0) %>%
+usps_dirs <- usps_b0 %>%
   html_node(css = "#ep19168") %>%
   html_table(fill = TRUE, header = TRUE) %>%
   set_names(nm = c("full", "abb")) %>%
@@ -117,6 +112,7 @@ write_lines(
 
 # create a subet of abbs in city names
 usps_city <- usps_street %>%
+  select(2, 1) %>%
   filter(
     # keep only those used
     full %in% valid_city,
@@ -125,8 +121,8 @@ usps_city <- usps_street %>%
   ) %>%
   # add those not included
   add_row(
-    full = c("FORT", "HEIGHTS", "MOUNT", "MOUNTAIN", "PORT", "SAINT", "TOWNSHIP"),
-    abb  = c("FT",   "HTS",     "MT",    "MTN",      "PRT",  "ST",    "TWP")
+    abb  = c("FT",   "HTS",     "MT",    "MTN",      "PRT",  "ST",    "TWP"),
+    full = c("FORT", "HEIGHTS", "MOUNT", "MOUNTAIN", "PORT", "SAINT", "TOWNSHIP")
   ) %>%
   # add directional abbs
   bind_rows(usps_dirs) %>%

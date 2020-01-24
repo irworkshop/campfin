@@ -36,8 +36,8 @@ a vector can be removed (possibly using \link{invalid_city}) as well as single
 }
 \examples{
 normal_city(
-  city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-  abbs = c("SAINT" = "ST"),
+  city = c("Stowe, VT", "UNKNOWN CITY", "Burlington", "ST JOHNSBURY", "XXX"),
+  abbs = c("ST" = "SAINT"),
   states = "VT",
   na = invalid_city,
   na_rep = TRUE

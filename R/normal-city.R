@@ -21,8 +21,8 @@
 #' @return A vector of normalized city names.
 #' @examples
 #' normal_city(
-#'   city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
-#'   abbs = c("SAINT" = "ST"),
+#'   city = c("Stowe, VT", "UNKNOWN CITY", "Burlington", "ST JOHNSBURY", "XXX"),
+#'   abbs = c("ST" = "SAINT"),
 #'   states = "VT",
 #'   na = invalid_city,
 #'   na_rep = TRUE
@@ -45,7 +45,7 @@ normal_city <- function(city, abbs = NULL, states = NULL, na = c("", "NA"), na_r
     city2 <- na_in(city2, na)
   }
   if (!is.null(abbs)) {
-    city2 <- str_normal(abbrev_full(x = city2, full = abbs))
+    city2 <- str_normal(expand_abbrev(x = city2, abb = abbs))
   }
   city2
 }

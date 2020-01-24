@@ -2,7 +2,7 @@ id,cand,date,amount,first,last,address,city,state,zip
 01,Bill Miller,09/02/2019,10,Lisa,Miller,4 Sheffield square Rd,Sheffield,VT,05866
 02,Bill Miller,09/03/2009,20,Deb,Brown,Requested,Requested,RE,00000
 03,Jake White,09/04/2019,25,NA,NA,p.o. box 567   ,Midlebury,Vermont,05753-0567
-04,Jake White,09/05/2019,100,Josh,Jones,sugarhouse road,East Corinth,V.T.,5076
+04,Jake White,09/05/2019,100,Josh,Jones,sugarhouse road,e Corinth,V.T.,5076
 05,Bill Miller,09/02/2019,10,Lisa,Miller,4 Sheffield square Rd,Sheffield,VT,05866
 06,Jake White,09/06/2019,1000,Bob,Taylor,55 thisplace av,young america,mn,55555
 07,Jake White,09/07/2019,-600,Alex,Johnson,11 Liberty STR,"Bristol, VT",VT,05443
