@@ -26,7 +26,7 @@ progress_table <- function(..., compare) {
   )
   extra <- list(...)
   dot_names <- function(...) {
-    varnames = lapply(substitute(list(...))[-1], deparse)
+    varnames <- lapply(substitute(list(...))[-1], deparse)
     varnames <- stringr::str_remove(varnames, "(.*)\\$")
     return(varnames)
   }

@@ -44,9 +44,9 @@
 #' @family geographic normalization functions
 #' @export
 check_city <- function(city = NULL, state = NULL, zip = NULL, key = NULL, guess = FALSE) {
-  city_validity = NA
-  locality = NA_character_
-  returned_norm = NA_character_
+  city_validity <- NA
+  locality <- NA_character_
+  returned_norm <- NA_character_
   if (nchar(city) == 0 | is.na(city)) {
     stop("Input is empty", call. = FALSE)
     create_table()

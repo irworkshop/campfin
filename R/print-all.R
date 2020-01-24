@@ -6,6 +6,7 @@
 #' @param x An object used to select a method.
 #' @examples
 #' print_all(state.name)
+#' @importFrom tibble is_tibble
 #' @export
 print_all <- function(x) {
   if (tibble::is_tibble(x)) {

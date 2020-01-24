@@ -24,5 +24,5 @@ test_that("suffixes can be changed to prefixes without moving punctuation", {
 test_that("suffixes cannot be renamed without sufficient values", {
   a <- data.frame(x = letters[1:3], y = 1:3)
   b <- data.frame(x = letters[1:3], y = 4:6)
-  expect_error(dplyr::left_join(a, b, by = "x", suffix = c(".")))
+  expect_error(rename_prefix(dplyr::left_join(a, b, by = "x"), suffix = c(".")))
 })

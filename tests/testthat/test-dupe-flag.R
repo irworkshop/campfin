@@ -21,3 +21,10 @@ test_that("columns can be ignored when flagging dupes", {
   expect_type(df$dupe_flag, "logical")
   expect_equal(sum(df$dupe_flag), 1)
 })
+
+test_that("useless dupe column can be removed automatically", {
+  expect_equal(
+    object = ncol(flag_dupes(mtcars, everything(), .check = TRUE)),
+    expected = ncol(mtcars)
+  )
+})
