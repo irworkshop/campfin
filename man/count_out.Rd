@@ -4,7 +4,7 @@
 \alias{count_out}
 \title{Count out}
 \usage{
-count_out(x, y, na.rm = TRUE)
+count_out(x, y, na.rm = TRUE, ignore.case = FALSE)
 }
 \arguments{
 \item{x}{A vector to check.}
@@ -12,6 +12,9 @@ count_out(x, y, na.rm = TRUE)
 \item{y}{A vector to compare against.}
 
 \item{na.rm}{logical; Should \code{NA} be ignored?}
+
+\item{ignore.case}{logical; if \code{FALSE}, the pattern matching is case
+sensitive and if \code{TRUE}, case is ignored during matching.}
 }
 \value{
 The sum of \code{x} absent in \code{y}.

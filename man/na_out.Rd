@@ -4,12 +4,15 @@
 \alias{na_out}
 \title{Remove out}
 \usage{
-na_out(x, y)
+na_out(x, y, ignore.case = FALSE)
 }
 \arguments{
 \item{x}{A vector to check.}
 
 \item{y}{A vector to compare against.}
+
+\item{ignore.case}{logical; if \code{FALSE}, the pattern matching is case
+sensitive and if \code{TRUE}, case is ignored during matching.}
 }
 \value{
 The vector \code{x} missing any values not in \code{y}.

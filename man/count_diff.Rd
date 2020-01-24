@@ -4,12 +4,15 @@
 \alias{count_diff}
 \title{Count set difference}
 \usage{
-count_diff(x, y)
+count_diff(x, y, ignore.case = FALSE)
 }
 \arguments{
 \item{x}{A vector to check.}
 
 \item{y}{A vector to compare against.}
+
+\item{ignore.case}{logical; if \code{FALSE}, the pattern matching is case
+sensitive and if \code{TRUE}, case is ignored during matching.}
 }
 \value{
 The number of \emph{unique} values of \code{x} not in \code{y}.
