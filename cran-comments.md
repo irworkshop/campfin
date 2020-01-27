@@ -13,5 +13,6 @@
 
 ## Resubmission
 
-* The `.github/CODE_OF_CONDUCT.md` file and accompanying URL in the `README.md`
-file were updates to version 2, which has a valid URL.
+* Updated `.github/CODE_OF_CONDUCT.md` file and URL in the `README.md` to
+version 2.0 with valid URL.
+* Removed old, dead reference links for the original `zipcodes` data.
