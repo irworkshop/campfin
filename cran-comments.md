@@ -10,3 +10,8 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+
+## Resubmission
+
+* The `.github/CODE_OF_CONDUCT.md` file and accompanying URL in the `README.md`
+file were updates to version 2, which has a valid URL.

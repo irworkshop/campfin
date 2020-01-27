@@ -136,21 +136,21 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-#>     zip        city state latitude longitude
-#> 1 12037     Chatham    NY 42.34676 -73.57852
-#> 2 48004 Anchorville    MI 42.82409 -82.66522
-#> 3 33604       Tampa    FL 28.01685 -82.45660
+#>     zip         city state latitude longitude
+#> 1 54556     Prentice    WI 45.54942 -90.31571
+#> 2 41054        Mason    KY 38.59323 -84.57855
+#> 3 31096 Wrightsville    GA 32.71732 -82.68926
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 3)
 #> # A tibble: 3 x 3
-#>   city         state zip  
-#>   <chr>        <chr> <chr>
-#> 1 LINDSEYVILLE KY    42257
-#> 2 DODGEVILLE   MI    49921
-#> 3 NEW CASTLE   AL    35119
+#>   city       state zip  
+#>   <chr>      <chr> <chr>
+#> 1 BROWNSDALE MN    55918
+#> 2 SILVERDALE WA    98315
+#> 3 SCOTT      AR    72142
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -175,16 +175,16 @@ sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
 #>   full   abb  
 #>   <chr>  <chr>
-#> 1 CLUB   CLB  
-#> 2 CNTER  CTR  
-#> 3 COMMON CMN
+#> 1 FORK   FRK  
+#> 2 MNTAIN MTN  
+#> 3 GREEN  GRN
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   full                  abb  
-#>   <chr>                 <chr>
-#> 1 NEBRASKA              NE   
-#> 2 MARSHALL ISLANDS      MH   
-#> 3 ARMED FORCES AMERICAS AA
+#>   full       abb  
+#>   <chr>      <chr>
+#> 1 NEBRASKA   NE   
+#> 2 WASHINGTON WA   
+#> 3 UTAH       UT
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```
@@ -227,5 +227,5 @@ str_detect(c("1-800-555-1234", "(800) 555-1234", "8005551234 x567"), rx_phone)
 
 Please note that the `campfin` project is released with a [Contributor
 Code of
-Conduct](https://contributor-covenant.org/version/1/0/0/CODE_OF_CONDUCT.html).
+Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).
 By contributing to this project, you agree to abide by its terms.

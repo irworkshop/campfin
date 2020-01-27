@@ -198,4 +198,4 @@ Please note that the `campfin` project is released with a
 [Contributor Code of Conduct][coc]. By contributing to this project, you agree
 to abide by its terms.
 
-[coc]:https://contributor-covenant.org/version/1/0/0/CODE_OF_CONDUCT.html
+[coc]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html
