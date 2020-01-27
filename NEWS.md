@@ -1,9 +1,7 @@
 # campfin 0.2.0
 
-* The `normal_address` and `normal_city` functions now call `abbrev_full()`
-instead of `expand_abbrev()`.
-* The order of columns in `usps_street`, `usps_state`, and `usps_city` data
-frames has been reversed accordingly.
+* The `normal_address()` now calls `abbrev_full()` instead of `expand_abbrev()`.
+* Reverse order of columns in `usps_street`, `usps_state`, and `usps_city`.
 
 # campfin 0.1.1.9000
 
