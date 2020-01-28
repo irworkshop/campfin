@@ -172,7 +172,7 @@ count_na <- function(x) {
 #'
 #' @details `mean(is.na(x))`
 #' @param x A vector to check.
-#' @return The sum of `x` absent in `y`.
+#' @return The proprtion of values of `x` that are `NA`.
 #' @family counting wrappers
 #' @examples
 #' prop_na(c("VT", "NH", NA, "ME"))
@@ -268,4 +268,19 @@ na_rep <- function(x, n = 0) {
 #' @export
 count_vec <- function(x, sort = TRUE) {
   dplyr::count(x = tibble::enframe(x = x), .data$value, sort = sort)
+}
+
+#' Proportion missing
+#'
+#' Find the proportion of values of `x` that are distinct.
+#'
+#' @details `length(unique(x))/length(x)`
+#' @param x A vector to check.
+#' @return The ratio of distinct values `x` to total values of `x`.
+#' @family counting wrappers
+#' @examples
+#' prop_distinct(c("VT", "VT", NA, "ME"))
+#' @export
+prop_distinct <- function(x) {
+  length(unique(x))/length(x)
 }

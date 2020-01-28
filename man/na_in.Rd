@@ -33,6 +33,7 @@ Other counting wrappers:
 \code{\link{count_vec}()},
 \code{\link{na_out}()},
 \code{\link{na_rep}()},
+\code{\link{prop_distinct}()},
 \code{\link{prop_in}()},
 \code{\link{prop_na}()},
 \code{\link{prop_out}()}

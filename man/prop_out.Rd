@@ -38,6 +38,7 @@ Other counting wrappers:
 \code{\link{na_in}()},
 \code{\link{na_out}()},
 \code{\link{na_rep}()},
+\code{\link{prop_distinct}()},
 \code{\link{prop_in}()},
 \code{\link{prop_na}()}
 }

@@ -1,3 +1,7 @@
+# campfin 0.2.2
+
+* Create `prop_distinct()`.
+
 # campfin 0.2.1
 
 * The `normal_address()` now calls `abbrev_full()` instead of `expand_abbrev()`.
