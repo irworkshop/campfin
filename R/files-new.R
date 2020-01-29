@@ -57,7 +57,7 @@ all_files_new <- function(path, glob = NULL, ...) {
 #' }
 #' @export
 this_file_new <- function(path) {
-  if (!file.exists(path)) {
+  if (all(!file.exists(path))) {
     warning("file does not exist, proceeding.")
     new <- FALSE
   } else {
