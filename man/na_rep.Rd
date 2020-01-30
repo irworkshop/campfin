@@ -21,7 +21,7 @@ Set \code{NA} for the values of \code{x} that contain a single repeating charact
 no other characters.
 }
 \details{
-Uses the regular expression \code{"^(.)\\1+$"}.
+Uses the regular expression \code{"^(.)\\\\1+$"}.
 }
 \concept{Simple counting wrappers
 na_rep(c("VT", "NH", "ZZ", "ME"))}

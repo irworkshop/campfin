@@ -4,8 +4,7 @@
 \alias{explore_plot}
 \title{Create Basic Barplots}
 \usage{
-explore_plot(data, var, flip = FALSE, nbar = 8, palette = "Dark2",
-  ...)
+explore_plot(data, var, flip = FALSE, nbar = 8, palette = "Dark2", ...)
 }
 \arguments{
 \item{data}{The data frame to explore.}

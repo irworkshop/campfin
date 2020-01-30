@@ -24,7 +24,7 @@ The vector \code{x} with abbreviation replaced with their full version.
 }
 \description{
 Create or use a named vector (\code{c("abb" = "rep")}) and pass it to
-\code{\link[stringr:str_replace_all]{stringr::str_replace_all()}}. The \code{abb} argument is surrounded with \code{\\b}
+\code{\link[stringr:str_replace_all]{stringr::str_replace_all()}}. The \code{abb} argument is surrounded with \verb{\\\\b}
 to capture only isolated abbreviations. To be used inside
 \code{\link[=normal_address]{normal_address()}} and \code{\link[=normal_city]{normal_city()}} with \link{usps_street} and \link{usps_city},
 respectively.
@@ -35,11 +35,16 @@ expand_abbrev(x = "VT", abb = state.abb, rep = state.name)
 expand_abbrev(x = "Low FE Level", abb = tibble::tibble(x = "FE", y = "Iron"))
 }
 \seealso{
-Other geographic normalization functions: \code{\link{abbrev_full}},
-  \code{\link{abbrev_state}}, \code{\link{check_city}},
-  \code{\link{expand_state}}, \code{\link{fetch_city}},
-  \code{\link{normal_address}}, \code{\link{normal_city}},
-  \code{\link{normal_state}}, \code{\link{normal_zip}},
-  \code{\link{str_normal}}
+Other geographic normalization functions: 
+\code{\link{abbrev_full}()},
+\code{\link{abbrev_state}()},
+\code{\link{check_city}()},
+\code{\link{expand_state}()},
+\code{\link{fetch_city}()},
+\code{\link{normal_address}()},
+\code{\link{normal_city}()},
+\code{\link{normal_state}()},
+\code{\link{normal_zip}()},
+\code{\link{str_normal}()}
 }
 \concept{geographic normalization functions}

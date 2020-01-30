@@ -4,8 +4,7 @@
 \alias{check_city}
 \title{Check whether an input is a valid place with Google Maps API}
 \usage{
-check_city(city = NULL, state = NULL, zip = NULL, key = NULL,
-  guess = FALSE)
+check_city(city = NULL, state = NULL, zip = NULL, key = NULL, guess = FALSE)
 }
 \arguments{
 \item{city}{A string of city name to be submitted to the Geocode API.}
@@ -57,11 +56,16 @@ check_city("Waggaman", "LA", "70094", guess = TRUE)
 \seealso{
 \url{http://code.google.com/apis/maps/documentation/geocoding/}
 
-Other geographic normalization functions: \code{\link{abbrev_full}},
-  \code{\link{abbrev_state}}, \code{\link{expand_abbrev}},
-  \code{\link{expand_state}}, \code{\link{fetch_city}},
-  \code{\link{normal_address}}, \code{\link{normal_city}},
-  \code{\link{normal_state}}, \code{\link{normal_zip}},
-  \code{\link{str_normal}}
+Other geographic normalization functions: 
+\code{\link{abbrev_full}()},
+\code{\link{abbrev_state}()},
+\code{\link{expand_abbrev}()},
+\code{\link{expand_state}()},
+\code{\link{fetch_city}()},
+\code{\link{normal_address}()},
+\code{\link{normal_city}()},
+\code{\link{normal_state}()},
+\code{\link{normal_zip}()},
+\code{\link{str_normal}()}
 }
 \concept{geographic normalization functions}

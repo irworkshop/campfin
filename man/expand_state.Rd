@@ -22,11 +22,16 @@ expand_state(abb = state.abb)
 expand_state(abb = c("nm", "fr"))
 }
 \seealso{
-Other geographic normalization functions: \code{\link{abbrev_full}},
-  \code{\link{abbrev_state}}, \code{\link{check_city}},
-  \code{\link{expand_abbrev}}, \code{\link{fetch_city}},
-  \code{\link{normal_address}}, \code{\link{normal_city}},
-  \code{\link{normal_state}}, \code{\link{normal_zip}},
-  \code{\link{str_normal}}
+Other geographic normalization functions: 
+\code{\link{abbrev_full}()},
+\code{\link{abbrev_state}()},
+\code{\link{check_city}()},
+\code{\link{expand_abbrev}()},
+\code{\link{fetch_city}()},
+\code{\link{normal_address}()},
+\code{\link{normal_city}()},
+\code{\link{normal_state}()},
+\code{\link{normal_zip}()},
+\code{\link{str_normal}()}
 }
 \concept{geographic normalization functions}

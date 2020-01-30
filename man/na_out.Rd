@@ -15,7 +15,7 @@ na_out(x, y)
 The vector \code{x} missing any values not in \code{y}.
 }
 \description{
-Set \code{NA} for the values of \code{x} that are \code{\%out\%} of the vector \code{y}.
+Set \code{NA} for the values of \code{x} that are \verb{\%out\%} of the vector \code{y}.
 }
 \concept{Simple counting wrappers
 na_out(c("VT", "NH", "ZZ", "ME"), state.abb)

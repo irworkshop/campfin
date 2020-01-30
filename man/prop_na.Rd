@@ -22,9 +22,12 @@ Find the proportion of values of \code{x} that are \code{NA}.
 prop_na(c("VT", "NH", NA, "ME"))
 }
 \seealso{
-Other Simple counting wrappers: \code{\link{count_diff}},
-  \code{\link{count_in}}, \code{\link{count_na}},
-  \code{\link{count_out}}, \code{\link{prop_in}},
-  \code{\link{prop_out}}
+Other Simple counting wrappers: 
+\code{\link{count_diff}()},
+\code{\link{count_in}()},
+\code{\link{count_na}()},
+\code{\link{count_out}()},
+\code{\link{prop_in}()},
+\code{\link{prop_out}()}
 }
 \concept{Simple counting wrappers}

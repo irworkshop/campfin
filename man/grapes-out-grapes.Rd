@@ -15,10 +15,10 @@ x \%out\% table
 logical; if \code{x} is not present in \code{table}
 }
 \description{
-\code{\%out\%} is an inverted version of the infix \code{\%in\%} opperator.
+\verb{\%out\%} is an inverted version of the infix \code{\%in\%} opperator.
 }
 \details{
-\code{\%out\%} is currently defined as
+\verb{\%out\%} is currently defined as
 \code{"\%out\%" <- function(x, table) match(x, table, nomatch = 0) == 0}
 }
 \examples{

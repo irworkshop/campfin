@@ -4,8 +4,13 @@
 \alias{normal_state}
 \title{Normalize US State Abbreviations}
 \usage{
-normal_state(state, abbreviate = TRUE, na = c("", "NA"),
-  na_rep = FALSE, valid = NULL)
+normal_state(
+  state,
+  abbreviate = TRUE,
+  na = c("", "NA"),
+  na_rep = FALSE,
+  valid = NULL
+)
 }
 \arguments{
 \item{state}{A vector of US state names or abbreviations.}
@@ -26,7 +31,7 @@ A vector of normalized 2-digit state abbreviations.
 }
 \description{
 Return consistent version of a state \emph{abbreviations} using
-\code{stringr::str_*()} functions. Letters are capitalized, all non-letters are
+\verb{stringr::str_*()} functions. Letters are capitalized, all non-letters are
 removed, nand excess whitespace is trimed and squished.
 }
 \examples{
@@ -39,11 +44,16 @@ normal_state(
 )
 }
 \seealso{
-Other geographic normalization functions: \code{\link{abbrev_full}},
-  \code{\link{abbrev_state}}, \code{\link{check_city}},
-  \code{\link{expand_abbrev}}, \code{\link{expand_state}},
-  \code{\link{fetch_city}}, \code{\link{normal_address}},
-  \code{\link{normal_city}}, \code{\link{normal_zip}},
-  \code{\link{str_normal}}
+Other geographic normalization functions: 
+\code{\link{abbrev_full}()},
+\code{\link{abbrev_state}()},
+\code{\link{check_city}()},
+\code{\link{expand_abbrev}()},
+\code{\link{expand_state}()},
+\code{\link{fetch_city}()},
+\code{\link{normal_address}()},
+\code{\link{normal_city}()},
+\code{\link{normal_zip}()},
+\code{\link{str_normal}()}
 }
 \concept{geographic normalization functions}
