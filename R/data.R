@@ -148,3 +148,8 @@
 #'   ...
 #' }
 "vt_contribs"
+
+#' @title Dark Color Palette
+#' @description The Dark2 brewer color pallete.
+#' @format A named character vector of hex color codes (length 8).
+"dark2"
