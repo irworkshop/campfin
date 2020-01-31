@@ -23,7 +23,7 @@ vt_contribs
 }
 \description{
 This randomly generated data frame shows some of the many
-formatting problems politicians, journalists, and political scientists will
+formatting problems politicans, journalists, and political scientists will
 likely face when processing state level campaign finance data. Missing or
 invalid values, duplicate rows, negative amounts, questionable dates, and
 incredibly inconsistent string formatting. The functions in this package

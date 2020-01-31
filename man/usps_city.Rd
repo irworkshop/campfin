@@ -18,7 +18,7 @@ USPS Appendix C1,
 usps_city
 }
 \description{
-A curated and edited subset of \link{usps_street} containing the
+A currated and edited subset of \link{usps_street} containing the
 USPS abbreviations found in city names. Useful as the \code{geo_abbs} argument
 of \code{\link[=normal_city]{normal_city()}}.
 }
