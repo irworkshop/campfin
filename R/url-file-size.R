@@ -8,7 +8,7 @@
 #' @importFrom httr HEAD headers
 #' @importFrom fs as_fs_bytes
 #' @examples
-#' url_file_size("https://campaignfinance.cdn.sos.ca.gov/dbwebexport.zip", format = TRUE)
+#' url_file_size("https://campaignfinance.cdn.sos.ca.gov/dbwebexport.zip")
 #' @export
 url_file_size <- function(url) {
   file_head <- httr::HEAD(url = url)
