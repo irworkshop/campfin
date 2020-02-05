@@ -33,6 +33,8 @@ Other counting wrappers:
 \code{\link{prop_distinct}()},
 \code{\link{prop_in}()},
 \code{\link{prop_na}()},
-\code{\link{prop_out}()}
+\code{\link{prop_out}()},
+\code{\link{which_in}()},
+\code{\link{which_out}()}
 }
 \concept{counting wrappers}

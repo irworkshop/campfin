@@ -40,6 +40,8 @@ Other counting wrappers:
 \code{\link{na_rep}()},
 \code{\link{prop_distinct}()},
 \code{\link{prop_in}()},
-\code{\link{prop_na}()}
+\code{\link{prop_na}()},
+\code{\link{which_in}()},
+\code{\link{which_out}()}
 }
 \concept{counting wrappers}

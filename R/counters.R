@@ -284,3 +284,53 @@ count_vec <- function(x, sort = TRUE) {
 prop_distinct <- function(x) {
   length(unique(x))/length(x)
 }
+
+#' Which in
+#'
+#' Return the values of `x` that are `%in%` of the vector `y`.
+#'
+#' @details `x[which(x %in% y)]`
+#' @param x A vector to check.
+#' @param y A vector to compare against.
+#' @param ignore.case logical; if `FALSE`, the pattern matching is case
+#'   sensitive and if `TRUE`, case is ignored during matching.
+#' @return The elements of `x` that are `%in%` y.
+#' @family counting wrappers
+#' @examples
+#' which_in(c("VT", "DC", NA), state.abb)
+#' @importFrom stats na.omit
+#' @export
+which_in <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
+  if (ignore.case) {
+    x <- stringr::str_to_lower(x)
+    y <- stringr::str_to_lower(y)
+  }
+  x[which(x %in% y)]
+}
+
+#' Which out
+#'
+#' Return the values of `x` that are `%out%` of the vector `y`.
+#'
+#' @details `x[which(x %out% y)]`
+#' @param x A vector to check.
+#' @param y A vector to compare against.
+#' @param na.rm logical; Should `NA` be ignored?
+#' @param ignore.case logical; if `FALSE`, the pattern matching is case
+#'   sensitive and if `TRUE`, case is ignored during matching.
+#' @return The elements of `x` that are `%out%` y.
+#' @family counting wrappers
+#' @examples
+#' which_out(c("VT", "DC", NA), state.abb)
+#' @importFrom stats na.omit
+#' @export
+which_out <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
+  if (ignore.case) {
+    x <- stringr::str_to_lower(x)
+    y <- stringr::str_to_lower(y)
+  }
+  if (na.rm) {
+    x <- stats::na.omit(x)
+  }
+  x[which(x %out% y)]
+}
