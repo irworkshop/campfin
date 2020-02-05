@@ -1,5 +1,6 @@
 # campfin 0.2.2
 
+* Separate address `[:digit:]` from `[:alpha:]` with space.
 * Create `prop_distinct()`.
 
 # campfin 0.2.1
