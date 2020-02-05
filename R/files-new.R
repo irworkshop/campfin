@@ -15,13 +15,9 @@
 #' @importFrom magrittr use_series equals
 #' @importFrom rlang .data is_empty
 #' @examples
-#' temp <- tempdir()
-#' if (!all_files_new(temp)) {
-#'   download.file(
-#'     url = "http://212.183.159.230/5MB.zip",
-#'     destfile = tempfile()
-#'   )
-#' }
+#' tmp <- tempdir()
+#' file.create(tempfile(pattern = as.character(1:5)))
+#' all_files_new(tmp)
 #' @export
 all_files_new <- function(path, glob = NULL, ...) {
   files <- fs::dir_ls(path = path, ...)
@@ -48,13 +44,8 @@ all_files_new <- function(path, glob = NULL, ...) {
 #' @importFrom lubridate today floor_date
 #' @importFrom magrittr use_series equals
 #' @examples
-#' temp <- tempfile()
-#' if (!this_file_new(temp)) {
-#'   download.file(
-#'     url = "http://212.183.159.230/5MB.zip",
-#'     destfile = temp
-#'   )
-#' }
+#' tmp <- tempfile()
+#' this_file_new(tmp)
 #' @export
 this_file_new <- function(path) {
   if (all(!file.exists(path))) {

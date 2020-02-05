@@ -23,7 +23,3 @@ flag_dupes <- function(data, ..., .check = TRUE) {
     dplyr::mutate(data, dupe_flag = dupe_vec)
   }
 }
-
-sub_data <- dplyr::select(iris, everything())
-dupe_vec <- duplicated(sub_data)
-dplyr::mutate(sub_data, dupe_flag = dupe_vec)
