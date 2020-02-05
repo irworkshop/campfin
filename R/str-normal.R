@@ -25,7 +25,9 @@ str_normal <- function(x, case = TRUE, punct = TRUE, quote = TRUE, trim = TRUE, 
     x <- stringr::str_to_upper(x)
   }
   if (punct) {
-    x <- stringr::str_replace_all(x, "[[:punct:]]", " ")
+    x <- stringr::str_replace_all(x, "\\.", " ")
+    x <- stringr::str_replace_all(x, "&", "AND")
+    x <- stringr::str_remove_all(x, "[[:punct:]]")
   }
   if (quote) {
     x <- stringr::str_replace_all(x, "\"", "\'")
