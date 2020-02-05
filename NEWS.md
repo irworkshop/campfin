@@ -1,5 +1,6 @@
 # campfin 0.2.2
 
+* `flag_dupes()` now also calls `duplicated(fromLast = TRUE)` to capture all.
 * Separate address `[:digit:]` from `[:alpha:]` with space.
 * Create `prop_distinct()`.
 
