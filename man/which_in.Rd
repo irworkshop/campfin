@@ -11,8 +11,6 @@ which_in(x, y, na.rm = TRUE, ignore.case = FALSE)
 
 \item{y}{A vector to compare against.}
 
-\item{na.rm}{logical; Should \code{NA} be ignored?}
-
 \item{ignore.case}{logical; if \code{FALSE}, the pattern matching is case
 sensitive and if \code{TRUE}, case is ignored during matching.}
 }
