@@ -9,13 +9,14 @@
 #' @return The file path of new diary, invisibly.
 #' @examples
 #' use_diary("VT", "contribs", "Kiernan Nicholls")
-#' @importFrom stringr str_to_upper str_to_lower str_sub str_replace_all
+#' @importFrom stringr str_to_upper str_to_lower str_sub str_replace_all str_to_title
 #' @importFrom readr read_lines write_lines
 #' @importFrom fs path
 #' @export
 use_diary <- function(st, type = c("contribs", "expends", "lobby"), author) {
   ST <- match.arg(st, campfin::valid_state)
   State <- campfin::valid_name[match(stringr::str_to_upper(st), campfin::valid_state)]
+  State <- stringr::str_to_title(State)
   STATE <- stringr::str_to_upper(State)
   st <- stringr::str_to_lower(ST)
   stt <- paste0(st, stringr::str_sub(type, end = 1))
