@@ -300,7 +300,7 @@ prop_distinct <- function(x) {
 #' which_in(c("VT", "DC", NA), state.abb)
 #' @importFrom stats na.omit
 #' @export
-which_in <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
+which_in <- function(x, y, ignore.case = FALSE) {
   if (ignore.case) {
     x <- stringr::str_to_lower(x)
     y <- stringr::str_to_lower(y)

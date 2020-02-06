@@ -4,7 +4,7 @@
 \alias{which_in}
 \title{Which in}
 \usage{
-which_in(x, y, na.rm = TRUE, ignore.case = FALSE)
+which_in(x, y, ignore.case = FALSE)
 }
 \arguments{
 \item{x}{A vector to check.}

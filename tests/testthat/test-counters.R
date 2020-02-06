@@ -126,5 +126,5 @@ test_that("which_out can ignore case", {
 
 test_that("which_out can ignore NA", {
   x <- c("VT", "DC", NA)
-  expect_length(which_in(x, state.abb, na.rm = TRUE), 1)
+  expect_length(which_out(x, state.abb, na.rm = TRUE), 1)
 })

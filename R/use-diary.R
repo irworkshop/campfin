@@ -14,8 +14,8 @@
 #' @importFrom fs path
 #' @export
 use_diary <- function(st, type = c("contribs", "expends", "lobby"), author) {
-  ST <- match.arg(st, c(state.abb, "DC", "PR"))
-  State <- state.name[match(stringr::str_to_upper(st), state.abb)]
+  ST <- match.arg(st, campfin::valid_state)
+  State <- campfin::valid_name[match(stringr::str_to_upper(st), campfin::valid_state)]
   STATE <- stringr::str_to_upper(State)
   st <- stringr::str_to_lower(ST)
   stt <- paste0(st, stringr::str_sub(type, end = 1))
@@ -29,7 +29,7 @@ use_diary <- function(st, type = c("contribs", "expends", "lobby"), author) {
   }
   temp <- system.file("templates", "template_diary.Rmd", package = "campfin")
   lines <- readr::read_lines(temp)
-  new_lines <- temp_lines %>%
+  new_lines <- lines %>%
     stringr::str_replace_all("\\{State\\}", State) %>%
     stringr::str_replace_all("\\{STATE\\}", STATE) %>%
     stringr::str_replace_all("\\{Type\\}", Type) %>%
