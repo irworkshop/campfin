@@ -46,7 +46,7 @@
 <meta property="og:description" content="This function tests whether a single file has a modification date equal to
 the system date. Useful when repeatedly running code with a lengthy download
 stage. Many state databases are updated daily, so new data can be helpful but
-not always neccesary. Set this function in an if statement." />
+not always necessary. Set this function in an if statement." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -80,7 +80,7 @@ not always neccesary. Set this function in an if statement." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -140,7 +140,7 @@ not always neccesary. Set this function in an if statement." />
     <p>This function tests whether a single file has a modification date equal to
 the system date. Useful when repeatedly running code with a lengthy download
 stage. Many state databases are updated daily, so new data can be helpful but
-not always neccesary. Set this function in an <code>if</code> statement.</p>
+not always necessary. Set this function in an <code>if</code> statement.</p>
     </div>
 
     <pre class="usage"><span class='fu'>this_file_new</span>(<span class='no'>path</span>)</pre>
@@ -159,13 +159,8 @@ not always neccesary. Set this function in an <code>if</code> statement.</p>
     <p>logical; Whether the file has a modification date equal to today.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>temp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
-<span class='kw'>if</span> (!<span class='fu'>this_file_new</span>(<span class='no'>temp</span>)) {
-  <span class='fu'><a href='https://rdrr.io/r/utils/download.file.html'>download.file</a></span>(
-    <span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"http://212.183.159.230/5MB.zip"</span>,
-    <span class='kw'>destfile</span> <span class='kw'>=</span> <span class='no'>temp</span>
-  )
-}</div><div class='output co'>#&gt; <span class='warning'>Warning: file does not exist, proceeding.</span></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
+<span class='fu'>this_file_new</span>(<span class='no'>tmp</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: file does not exist, proceeding.</span></div><div class='output co'>#&gt; [1] FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

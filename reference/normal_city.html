@@ -46,7 +46,7 @@
 <meta property="og:description" content="Return consistent version of a city names using stringr::str_*() functions.
 Letters are capitalized, hyphens and underscores are replaced with
 whitespace, other punctuation is removed, numbers are removed, and excess
-whitespace is trimed and squished. Optionally, geographic abbreviations
+whitespace is trimmed and squished. Optionally, geographic abbreviations
 (&quot;MT&quot;) can be replaced with their long form (&quot;MOUNT&quot;). Invalid addresses from
 a vector can be removed (possibly using invalid_city) as well as single
 (repeating) character strings (&quot;XXXXXX&quot;)." />
@@ -83,7 +83,7 @@ a vector can be removed (possibly using invalid_city) as well as single
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -143,14 +143,13 @@ a vector can be removed (possibly using invalid_city) as well as single
     <p>Return consistent version of a city names using <code>stringr::str_*()</code> functions.
 Letters are capitalized, hyphens and underscores are replaced with
 whitespace, other punctuation is removed, numbers are removed, and excess
-whitespace is trimed and squished. Optionally, geographic abbreviations
+whitespace is trimmed and squished. Optionally, geographic abbreviations
 ("MT") can be replaced with their long form ("MOUNT"). Invalid addresses from
 a vector can be removed (possibly using <a href='invalid_city.html'>invalid_city</a>) as well as single
 (repeating) character strings ("XXXXXX").</p>
     </div>
 
-    <pre class="usage"><span class='fu'>normal_city</span>(<span class='no'>city</span>, <span class='kw'>abbs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>states</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>),
-  <span class='kw'>na_rep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>normal_city</span>(<span class='no'>city</span>, <span class='kw'>abbs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>states</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>), <span class='kw'>na_rep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -187,16 +186,21 @@ strings with <code>NA</code>.</p></td>
     <p>A vector of normalized city names.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other geographic normalization functions: <code><a href='abbrev_full.html'>abbrev_full</a></code>,
-  <code><a href='abbrev_state.html'>abbrev_state</a></code>, <code><a href='check_city.html'>check_city</a></code>,
-  <code><a href='expand_abbrev.html'>expand_abbrev</a></code>, <code><a href='expand_state.html'>expand_state</a></code>,
-  <code><a href='fetch_city.html'>fetch_city</a></code>, <code><a href='normal_address.html'>normal_address</a></code>,
-  <code><a href='normal_state.html'>normal_state</a></code>, <code><a href='normal_zip.html'>normal_zip</a></code>,
-  <code><a href='str_normal.html'>str_normal</a></code></p></div>
+    <div class='dont-index'><p>Other geographic normalization functions: 
+<code><a href='abbrev_full.html'>abbrev_full</a>()</code>,
+<code><a href='abbrev_state.html'>abbrev_state</a>()</code>,
+<code><a href='check_city.html'>check_city</a>()</code>,
+<code><a href='expand_abbrev.html'>expand_abbrev</a>()</code>,
+<code><a href='expand_state.html'>expand_state</a>()</code>,
+<code><a href='fetch_city.html'>fetch_city</a>()</code>,
+<code><a href='normal_address.html'>normal_address</a>()</code>,
+<code><a href='normal_state.html'>normal_state</a>()</code>,
+<code><a href='normal_zip.html'>normal_zip</a>()</code>,
+<code><a href='str_normal.html'>str_normal</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>normal_city</span>(
-  <span class='kw'>city</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Stowe, VT"</span>, <span class='st'>"N/A"</span>, <span class='st'>"Burlington"</span>, <span class='st'>"ST JOHNSBURY"</span>, <span class='st'>"XXXXXXXXX"</span>),
+  <span class='kw'>city</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Stowe, VT"</span>, <span class='st'>"UNKNOWN CITY"</span>, <span class='st'>"Burlington"</span>, <span class='st'>"ST JOHNSBURY"</span>, <span class='st'>"XXX"</span>),
   <span class='kw'>abbs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ST"</span> <span class='kw'>=</span> <span class='st'>"SAINT"</span>),
   <span class='kw'>states</span> <span class='kw'>=</span> <span class='st'>"VT"</span>,
   <span class='kw'>na</span> <span class='kw'>=</span> <span class='no'>invalid_city</span>,

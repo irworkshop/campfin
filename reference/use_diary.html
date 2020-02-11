@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Invalid City Names — invalid_city • campfin</title>
+<title>Create a new template data diary — use_diary • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,9 @@
 
 
 
-<meta property="og:title" content="Invalid City Names — invalid_city" />
-<meta property="og:description" content="A custom vector containing common invalid city names." />
+<meta property="og:title" content="Create a new template data diary — use_diary" />
+<meta property="og:description" content="Take the arguments supplied and put them into the appropriate places in a
+new template diary. Write the new template diary in the supplied directory." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -128,27 +129,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Invalid City Names</h1>
-    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>invalid_city.Rd</code></div>
+    <h1>Create a new template data diary</h1>
+    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/use-diary.R'><code>R/use-diary.R</code></a></small>
+    <div class="hidden name"><code>use_diary.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A custom vector containing common invalid city names.</p>
+    <p>Take the arguments supplied and put them into the appropriate places in a
+new template diary. Write the new template diary in the supplied directory.</p>
     </div>
 
-    <pre class="usage"><span class='no'>invalid_city</span></pre>
+    <pre class="usage"><span class='fu'>use_diary</span>(<span class='no'>st</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"contribs"</span>, <span class='st'>"expends"</span>, <span class='st'>"lobby"</span>), <span class='no'>author</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>st</th>
+      <td><p>The USPS state abbreviation.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>The type of data, one of "contribs", "expends", or "lobby".</p></td>
+    </tr>
+    <tr>
+      <th>author</th>
+      <td><p>The author name of the new diary.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of length 54.</p>
+    <p>The file path of new diary, invisibly.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>use_diary</span>(<span class='st'>"VT"</span>, <span class='st'>"contribs"</span>, <span class='st'>"Kiernan Nicholls"</span>)</div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpzWzfW4/file66442bf66329/reference/vt/contribs/docs/vt_contribs_diary.Rmd was created</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

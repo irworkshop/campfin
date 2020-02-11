@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -103,8 +103,7 @@
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr)</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(readr)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringdist)</a></code></pre></div>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)</a></code></pre></div>
 <div id="background" class="section level2">
 <h2 class="hasAnchor">
 <a href="#background" class="anchor"></a>Background</h2>
@@ -117,29 +116,29 @@
 <p>In this vignette, we will clean some extremely messy fake contribution data from a fictitious campaign in Vermont. This data is found in the <code>vt_contribs</code> data frame.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(vt_contribs)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 10</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;    id    cand     date    amount first last   address     city      state zip   </span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill Mi… 09/02/…     10 Lisa  Miller 4 Sheffiel… Sheffield VT    05866 </span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill Mi… 09/03/…     20 Deb   Brown  Requested   Requested RE    00000 </span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake Wh… 09/04/…     25 &lt;NA&gt;  &lt;NA&gt;   "p.o. box … Midlebury Verm… 05753…</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake Wh… 09/05/…    100 Josh  Jones  sugarhouse… E Corinth VT    5076  </span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill Mi… 09/02/…     10 Lisa  Miller 4 Sheffiel… Sheffield VT    05866 </span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake Wh… 09/06/…   1000 Bob   Taylor 55 thispla… young am… mn    55555 </span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake Wh… 09/07/…   -600 Alex  Johns… 11 Liberty… Bristol,… VT    05443…</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth Wa… 09/08/…      0 Ruth  Smith  2 Burlingt… Brulingt… VT    05401 </span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth Wa… 09/09/…     69 Joe   Garcia 770   5th-… Washingt… DC    20001…</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth Wa… 09/11/…    222 Dave  Wilson XXXXXXXXXX… SA        Texas 78202</span></a></code></pre></div>
-<p>What are some of the problems we can see in this data?</p>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;    id    cand    date       amount first last   address     city    state zip   </span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill M… 2019-09-02     10 Lisa  Miller "4 Sheffie… Sheffi… VT    05866 </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill M… 2009-09-03     20 Deb   Brown  "Requested" Reques… RE    00000 </span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake W… 2019-09-04     25 &lt;NA&gt;  &lt;NA&gt;   "p.o. box … Midleb… Verm… 05753…</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake W… 2019-09-05    100 Josh  Jones  "sugarhous… e Cori… V.T.  5076  </span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill M… 2019-09-02     10 Lisa  Miller "4 Sheffie… Sheffi… VT    05866 </span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake W… 2019-09-06   1000 Bob   Taylor "55 thispl… young … mn    55555 </span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake W… 2019-09-07   -600 Alex  Johns… "11 Libert… Bristo… VT    05443 </span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth W… 2019-09-08      0 Ruth  Smith  "2 Burling… Brulin… vt    05401 </span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth W… 2019-09-09     69 Joe   Garcia "770   5th… Washin… DC    20001…</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth W… 2019-09-11    222 Dave  Wilson "XXXXXXXXX… SA      Texas 78202</span></a></code></pre></div>
+<p>What are some of the potential problems we can see in this data?</p>
 <ul>
 <li>The <code>date</code> column is not parsed as an R date.</li>
 <li>There is one negative <code>amount</code> value and another that’s zero.</li>
 <li>One record is missing both the contributor’s <code>first</code> and <code>last</code> name.</li>
-<li>One record is duplicated.</li>
+<li>One record is fully duplicated.</li>
 <li>In <code>address</code> we see:
 <ul>
 <li>Inconsistent capitalization,</li>
 <li>A mix of full and abbreviated suffixes,</li>
-<li>Invalid text in the place of <code>NA</code>,</li>
+<li>Alternative versions of <code>NA</code>,</li>
 <li>Unnecessary and inconsistent punctuation,</li>
 <li>Excess trailing white space,</li>
 <li>Excess internal white space,</li>
@@ -170,7 +169,7 @@
 <div id="read" class="section level2">
 <h2 class="hasAnchor">
 <a href="#read" class="anchor"></a>Read</h2>
-<p>In most cases, the first step is to download and read the file from a state agency. When reading the data with the popular <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_delim</a></code> function, the <code>col_date_usa</code> function can be used as a quick shortcut for <code><a href="https://readr.tidyverse.org/reference/parse_datetime.html">readr::col_date(format = "%m/%d/%Y")</a></code>, the format most commonly found in U.S. campaign finance data.</p>
+<p>In most cases, the first step is to download and read the file from a state agency. When reading the data with the popular <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_delim()</a></code> function, the <code>col_date_usa</code> function can be used as a quick shortcut for <code><a href="https://readr.tidyverse.org/reference/parse_datetime.html">readr::col_date(format = "%m/%d/%Y")</a></code>, the format most commonly found in U.S. campaign finance data.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">vt &lt;-<span class="st"> </span><span class="kw"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="dt">file =</span> <span class="kw"><a href="https://readr.tidyverse.org/reference/format_delim.html">format_csv</a></span>(vt_contribs),</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="dt">trim_ws =</span> <span class="ot">FALSE</span>,</a>
@@ -178,103 +177,125 @@
 <a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="dt">amount =</span> <span class="kw"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span>(),</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6">    <span class="dt">date =</span> <span class="kw"><a href="../reference/col_date_usa.html">col_date_usa</a></span>()</a>
 <a class="sourceLine" id="cb3-7" data-line-number="7">  )</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">)</a></code></pre></div>
-<p>Next, we should try to normalize our data as much as possible. We can use some simple counting functions and built in vectors to check our progress.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>city, <span class="kw"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span>(valid_city)))</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; [1] "10%"</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>state, valid_state))</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [1] "60%"</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>zip, valid_zip))</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; [1] "50%"</span></a></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/glimpse_fun.html">glimpse_fun</a></span>(vt, n_distinct)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Warning: 'glimpse_fun' is deprecated.</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Use 'col_stats' instead.</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; See help("Deprecated")</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; # A tibble: 10 x 4</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;    col     type       n     p</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;  1 id      &lt;chr&gt;     10   1  </span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  2 cand    &lt;chr&gt;      3   0.3</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;  3 date    &lt;date&gt;     9   0.9</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  4 amount  &lt;dbl&gt;      9   0.9</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  5 first   &lt;chr&gt;      9   0.9</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  6 last    &lt;chr&gt;      9   0.9</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  7 address &lt;chr&gt;      9   0.9</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;  8 city    &lt;chr&gt;      9   0.9</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;  9 state   &lt;chr&gt;      6   0.6</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; 10 zip     &lt;chr&gt;      9   0.9</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="kw"><a href="../reference/glimpse_fun.html">glimpse_fun</a></span>(vt, count_na)</a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; Warning: 'glimpse_fun' is deprecated.</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; Use 'col_stats' instead.</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; See help("Deprecated")</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; # A tibble: 10 x 4</span></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;    col     type       n     p</span></a>
-<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  1 id      &lt;chr&gt;      0   0  </span></a>
-<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  2 cand    &lt;chr&gt;      0   0  </span></a>
-<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  3 date    &lt;date&gt;     0   0  </span></a>
-<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt;  4 amount  &lt;dbl&gt;      0   0  </span></a>
-<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt;  5 first   &lt;chr&gt;      1   0.1</span></a>
-<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt;  6 last    &lt;chr&gt;      1   0.1</span></a>
-<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="co">#&gt;  7 address &lt;chr&gt;      0   0  </span></a>
-<a class="sourceLine" id="cb5-32" data-line-number="32"><span class="co">#&gt;  8 city    &lt;chr&gt;      0   0  </span></a>
-<a class="sourceLine" id="cb5-33" data-line-number="33"><span class="co">#&gt;  9 state   &lt;chr&gt;      0   0  </span></a>
-<a class="sourceLine" id="cb5-34" data-line-number="34"><span class="co">#&gt; 10 zip     &lt;chr&gt;      0   0</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-8" data-line-number="8">)</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; Warning: 10 parsing failures.</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; row  col           expected     actual         file</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;   1 date date like %m/%d/%Y 2019-09-02 literal data</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;   2 date date like %m/%d/%Y 2009-09-03 literal data</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;   3 date date like %m/%d/%Y 2019-09-04 literal data</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;   4 date date like %m/%d/%Y 2019-09-05 literal data</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;   5 date date like %m/%d/%Y 2019-09-02 literal data</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; ... .... .................. .......... ............</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; See problems(...) for more details.</span></a></code></pre></div>
+<p>We can see how the new <code>date</code> column is an actual date object, allowing for mathematical manipulation.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(vt, date, <span class="dt">next_week =</span> date <span class="op">+</span><span class="st"> </span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 2</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;    date       next_week </span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;    &lt;date&gt;     &lt;date&gt;    </span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;  1 NA         NA        </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  2 NA         NA        </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;  3 NA         NA        </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;  4 NA         NA        </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;  5 NA         NA        </span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;  6 NA         NA        </span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  7 NA         NA        </span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  8 NA         NA        </span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  9 NA         NA        </span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 10 NA         NA</span></a></code></pre></div>
+<p>Next, we should try to normalize our data as much as possible. We can use some simple counting functions and built in vectors to check the cleanliness of our raw data.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>city, <span class="kw"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span>(valid_city)))</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; [1] "10%"</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>state, valid_state))</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; [1] "40%"</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>zip, valid_zip))</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; [1] "60%"</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/col_stats.html">col_stats</a></span>(vt, n_distinct)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 4</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;    col     class      n     p</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;  1 id      &lt;chr&gt;     10   1  </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;  2 cand    &lt;chr&gt;      3   0.3</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;  3 date    &lt;date&gt;     1   0.1</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  4 amount  &lt;dbl&gt;      9   0.9</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;  5 first   &lt;chr&gt;      9   0.9</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;  6 last    &lt;chr&gt;      9   0.9</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;  7 address &lt;chr&gt;      9   0.9</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  8 city    &lt;chr&gt;      9   0.9</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;  9 state   &lt;chr&gt;      8   0.8</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; 10 zip     &lt;chr&gt;      9   0.9</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="kw"><a href="../reference/col_stats.html">col_stats</a></span>(vt, count_na)</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; # A tibble: 10 x 4</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt;    col     class      n     p</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;  1 id      &lt;chr&gt;      0   0  </span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;  2 cand    &lt;chr&gt;      0   0  </span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;  3 date    &lt;date&gt;    10   1  </span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;  4 amount  &lt;dbl&gt;      0   0  </span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;  5 first   &lt;chr&gt;      1   0.1</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt;  6 last    &lt;chr&gt;      1   0.1</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt;  7 address &lt;chr&gt;      0   0  </span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt;  8 city    &lt;chr&gt;      0   0  </span></a>
+<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt;  9 state   &lt;chr&gt;      0   0  </span></a>
+<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt; 10 zip     &lt;chr&gt;      0   0</span></a></code></pre></div>
 <p>A typical benchmark is to reach greater than 95% “valid.” That is, we want to normalize our data enough that less than 5% of our data can not be easily confirmed as valid using a fairly comprehensive list of cities, states, and ZIP codes.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">vt &lt;-<span class="st"> </span>vt <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">    <span class="dt">address =</span> <span class="kw"><a href="../reference/normal_address.html">normal_address</a></span>(</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">      <span class="dt">address =</span> address,</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">      <span class="dt">abbs =</span> usps_street,</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">      <span class="dt">na =</span> invalid_city,</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">    ),</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">    <span class="dt">city =</span> <span class="kw"><a href="../reference/normal_city.html">normal_city</a></span>(</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">      <span class="dt">city =</span> city,</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">      <span class="dt">abbs =</span> usps_city,</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12">      <span class="dt">states =</span> <span class="st">"VT"</span>,</a>
-<a class="sourceLine" id="cb6-13" data-line-number="13">      <span class="dt">na =</span> invalid_city,</a>
-<a class="sourceLine" id="cb6-14" data-line-number="14">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15">    ),</a>
-<a class="sourceLine" id="cb6-16" data-line-number="16">    <span class="dt">state =</span> <span class="kw"><a href="../reference/normal_state.html">normal_state</a></span>(</a>
-<a class="sourceLine" id="cb6-17" data-line-number="17">      <span class="dt">state =</span> state,</a>
-<a class="sourceLine" id="cb6-18" data-line-number="18">      <span class="dt">abbreviate =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb6-19" data-line-number="19">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb6-20" data-line-number="20">      <span class="dt">valid =</span> valid_state</a>
-<a class="sourceLine" id="cb6-21" data-line-number="21">    ),</a>
-<a class="sourceLine" id="cb6-22" data-line-number="22">    <span class="dt">zip =</span> <span class="kw"><a href="../reference/normal_zip.html">normal_zip</a></span>(</a>
-<a class="sourceLine" id="cb6-23" data-line-number="23">      <span class="dt">zip =</span> zip,</a>
-<a class="sourceLine" id="cb6-24" data-line-number="24">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb6-25" data-line-number="25">    )</a>
-<a class="sourceLine" id="cb6-26" data-line-number="26">  )</a></code></pre></div>
+<p>We will first try to reach this threshold by normalizing our data. This process involves reducing inconsistencies through string manipulation. There are separate <code>normal_*()</code> functions for each of the 4 types of geographic variables. Here, we will use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> to create <em>new</em>, normalized versions of our messy columns. This preserves the old data for transparency.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">vt &lt;-<span class="st"> </span>vt <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">    <span class="dt">address =</span> <span class="kw"><a href="../reference/normal_address.html">normal_address</a></span>(</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">      <span class="dt">address =</span> address,</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">      <span class="dt">abbs =</span> usps_street,</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">      <span class="dt">na =</span> invalid_city,</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">    ),</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="dt">city =</span> <span class="kw"><a href="../reference/normal_city.html">normal_city</a></span>(</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">      <span class="dt">city =</span> city,</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">      <span class="dt">abbs =</span> usps_city,</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">      <span class="dt">states =</span> <span class="st">"VT"</span>,</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">      <span class="dt">na =</span> invalid_city,</a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15">    ),</a>
+<a class="sourceLine" id="cb7-16" data-line-number="16">    <span class="dt">state =</span> <span class="kw"><a href="../reference/normal_state.html">normal_state</a></span>(</a>
+<a class="sourceLine" id="cb7-17" data-line-number="17">      <span class="dt">state =</span> state,</a>
+<a class="sourceLine" id="cb7-18" data-line-number="18">      <span class="dt">abbreviate =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb7-19" data-line-number="19">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb7-20" data-line-number="20">      <span class="dt">valid =</span> valid_state</a>
+<a class="sourceLine" id="cb7-21" data-line-number="21">    ),</a>
+<a class="sourceLine" id="cb7-22" data-line-number="22">    <span class="dt">zip =</span> <span class="kw"><a href="../reference/normal_zip.html">normal_zip</a></span>(</a>
+<a class="sourceLine" id="cb7-23" data-line-number="23">      <span class="dt">zip =</span> zip,</a>
+<a class="sourceLine" id="cb7-24" data-line-number="24">      <span class="dt">na_rep =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb7-25" data-line-number="25">    )</a>
+<a class="sourceLine" id="cb7-26" data-line-number="26">  )</a></code></pre></div>
 <p>We can see how these functions and our built in data was used to normalize the geographic contributor data and remove anything that didn’t present real information. This format is much more explorable and searchable.</p>
 <pre><code>#&gt; # A tibble: 10 x 4
-#&gt;    address                  city          state zip  
-#&gt;    &lt;chr&gt;                    &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;
-#&gt;  1 4 SHEFFIELD SQUARE ROAD  SHEFFIELD     VT    05866
-#&gt;  2 &lt;NA&gt;                     &lt;NA&gt;          &lt;NA&gt;  &lt;NA&gt; 
-#&gt;  3 PO BOX 567               MIDLEBURY     VT    05753
-#&gt;  4 SUGARHOUSE ROAD          EAST CORINTH  VT    05076
-#&gt;  5 4 SHEFFIELD SQUARE ROAD  SHEFFIELD     VT    05866
-#&gt;  6 55 THISPLACE AVENUE      YOUNG AMERICA MN    &lt;NA&gt; 
-#&gt;  7 11 LIBERTY STREET        BRISTOL       VT    05443
-#&gt;  8 2 BURLINGTON SQUARE      BRULINGTON    VT    05401
-#&gt;  9 770 5TH STREET NORTHWEST WASHINGTON    DC    20001
-#&gt; 10 &lt;NA&gt;                     SA            TX    78202</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>city, valid_city))</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; [1] "67%"</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>state, valid_state))</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "100%"</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="kw"><a href="../reference/prop_in.html">prop_in</a></span>(vt<span class="op">$</span>zip, valid_zip))</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; [1] "100%"</span></a></code></pre></div>
+#&gt;    address           city          state zip  
+#&gt;    &lt;chr&gt;             &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;
+#&gt;  1 4 SHEFFIELD SQ RD SHEFFIELD     VT    05866
+#&gt;  2 &lt;NA&gt;              &lt;NA&gt;          &lt;NA&gt;  &lt;NA&gt; 
+#&gt;  3 PO BOX 567        MIDLEBURY     VT    05753
+#&gt;  4 SUGARHOUSE RD     EAST CORINTH  VT    05076
+#&gt;  5 4 SHEFFIELD SQ RD SHEFFIELD     VT    05866
+#&gt;  6 55 THISPLACE AVE  YOUNG AMERICA MN    &lt;NA&gt; 
+#&gt;  7 11 LIBERTY ST     BRISTOL       VT    05443
+#&gt;  8 2 BURLINGTON SQ   BRULINGTON    VT    05401
+#&gt;  9 770 5 THSTNW      WASHINGTON    DC    20001
+#&gt; 10 &lt;NA&gt;              SA            TX    78202</code></pre>
 </div>
 <div id="cities" class="section level2">
 <h2 class="hasAnchor">
 <a href="#cities" class="anchor"></a>Cities</h2>
-<p>However, not problem has been solved. Most troublesome are the city names. There are so many city names and such great variety (compared to states and ZIP codes) that it can be difficult to normalize and difficult to assess.</p>
-<p>Our <code>valid_city</code> vector contains many city names, but far less than exist in the country, especially when you account for neighborhoods that aren’t <em>really</em> cities, but shouldn’t be changed.</p>
+<p>However, the problem has not been solved. Most troublesome are the city names. There are so many city names and such great variety (compared to states and ZIP codes), that it can be difficult to normalize and difficult to assess.</p>
+<p>Our <code>valid_city</code> vector contains many city names, but far less than exist in the country, especially when you account for neighborhoods that aren’t <em>really</em> cities, but shouldn’t be changed (some of these are contained in our curated <code>extra_city</code> vector).</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(valid_city)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; [1] 19083</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; [1] 19083</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(valid_city, <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; [1] "RENTON"                    "SALFORD"                  </span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt; [3] "YORKTOWN"                  "SOUTH INTERNATIONAL FALLS"</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; [5] "FOUNTAINVILLE"             "BUTTERFIELD"</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(extra_city, <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; [1] "DORMONT"      "TROPHY CLUB"  "EAST OAKMONT" "CANE RIDGE"   "CORBIN CITY" </span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; [6] "LAKE QUIVIRA"</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co"># combine both vectors</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">many_city &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(valid_city, extra_city)</a></code></pre></div>
 <p>Still, checking against this list is a good way to check for values that need additional attention.</p>
 <pre><code>#&gt; # A tibble: 3 x 5
 #&gt;   id    city       state zip   valid
@@ -289,8 +310,8 @@
 #&gt; 1 03    MIDLEBURY  VT    05753 FALSE MIDDLEBURY 
 #&gt; 2 08    BRULINGTON VT    05401 FALSE BURLINGTON 
 #&gt; 3 10    SA         TX    78202 FALSE SAN ANTONIO</code></pre>
-<p>Now the problems become clear. Two city names are mispelled and the third is an obvious abbreviation. When dealing with millions of city names, we need a way to check each raw value against it’s excpected ZIP code match.</p>
-<p>The <code><a href="../reference/str_dist.html">str_dist()</a></code> and <code><a href="../reference/is_abbrev.html">is_abbrev()</a></code> functions can be used to compared the value we have with the value we expect. By only checking against the corrisponding city to that record’s ZIP code, we are making extremelly <em>confident</em> changes (compared to the incredibly useful clustering algorithms like thise provided by the <code>refinr</code> package).</p>
+<p>Now the problems become clear. Two city names are misspelled and the third is an obvious abbreviation. When dealing with millions of city names, we need a way to check each raw value against it’s expected ZIP code match.</p>
+<p>The <code><a href="../reference/str_dist.html">str_dist()</a></code> and <code><a href="../reference/is_abbrev.html">is_abbrev()</a></code> functions can be used to compared the value we have with the value we expect. By only checking against the corresponding city to that record’s ZIP code, we are making extremely <em>confident</em> changes (compared to the incredibly useful clustering algorithms like those provided by the <code>refinr</code> package).</p>
 <p>First, we can use <code><a href="../reference/str_dist.html">str_dist()</a></code>, which calls the <code><a href="https://rdrr.io/pkg/stringdist/man/stringdist.html">stringdist::stringdist()</a></code> function to check the <em>distance</em> between the two strings; that is, the number of changes we’d need to make to our normalized value to get our expected matched value. If that distance is small (usually 1 or 2), we can confidently use the matched value!</p>
 <p>But the string distance does not catch colloquial city abbreviations. NYC, BOS, LA, CHI, ABQ, BRNX, DFW, OKC. Many residents of a city get so used to writing their city’s name they use abbreviations and assume them to be universally understood. The <code><a href="../reference/is_abbrev.html">is_abbrev()</a></code> function can be used to check to one string might be an abbreviation for another using 3 common abbreviation characteristics: (1) is the abbreviation at least 2 characters shorter than the full name, (2) is the first letter of both strings the same, and (3) do the letters of the abbreviation appear in the same order as the full name. Every abbreviation generated by the <code><a href="https://rdrr.io/r/base/abbreviate.html">base::abbreviate()</a></code> function would satisfy these characteristics.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">(bad &lt;-<span class="st"> </span>bad <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -310,7 +331,7 @@
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(zipcodes) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">city_match =</span> city) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb13-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</a>
-<a class="sourceLine" id="cb13-6" data-line-number="6">    <span class="dt">match_dist =</span> <span class="kw"><a href="https://rdrr.io/pkg/stringdist/man/stringdist.html">stringdist</a></span>(city_raw, city_match),</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">    <span class="dt">match_dist =</span> <span class="kw"><a href="../reference/str_dist.html">str_dist</a></span>(city_raw, city_match),</a>
 <a class="sourceLine" id="cb13-7" data-line-number="7">    <span class="dt">match_abb =</span> <span class="kw"><a href="../reference/is_abbrev.html">is_abbrev</a></span>(city_raw, city_match),</a>
 <a class="sourceLine" id="cb13-8" data-line-number="8">    <span class="dt">city =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span>(match_abb <span class="op">|</span><span class="st"> </span>match_dist <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, city_match, city_raw)</a>
 <a class="sourceLine" id="cb13-9" data-line-number="9">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -331,33 +352,33 @@
 <p>Once our data is as normal as we can confidently make it, we can begin to explore. First, we’ll explore the data for missing values with <code>flag_na</code>, which takes a <a href="https://github.com/r-lib/tidyselect" title="tidyselect">tidyselct</a> number of key columns to check (or something like <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">dplyr::everything()</a></code>).</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">(vt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flag_na.html">flag_na</a></span>(vt, last))</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 11</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#&gt;    id    cand   date       amount first last  address  state zip   city  na_flag</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;  </span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill … 2019-09-02     10 Lisa  Mill… 4 SHEFF… VT    05866 SHEF… FALSE  </span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill … 2009-09-03     20 Deb   Brown &lt;NA&gt;     &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake … 2019-09-04     25 &lt;NA&gt;  &lt;NA&gt;  PO BOX … VT    05753 MIDD… TRUE   </span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake … 2019-09-05    100 Josh  Jones SUGARHO… VT    05076 EAST… FALSE  </span></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill … 2019-09-02     10 Lisa  Mill… 4 SHEFF… VT    05866 SHEF… FALSE  </span></a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake … 2019-09-06   1000 Bob   Tayl… 55 THIS… MN    &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
-<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake … 2019-09-07   -600 Alex  John… 11 LIBE… VT    05443 BRIS… FALSE  </span></a>
-<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth … 2019-09-08      0 Ruth  Smith 2 BURLI… VT    05401 BURL… FALSE  </span></a>
-<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth … 2019-09-09     69 Joe   Garc… 770 5TH… DC    20001 WASH… FALSE  </span></a>
-<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth … 2019-09-11    222 Dave  Wils… &lt;NA&gt;     TX    78202 SAN … FALSE</span></a></code></pre></div>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co">#&gt;    id    cand   date       amount first last   address state zip   city  na_flag</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;  </span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill … NA             10 Lisa  Miller 4 SHEF… VT    05866 SHEF… FALSE  </span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill … NA             20 Deb   Brown  &lt;NA&gt;    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake … NA             25 &lt;NA&gt;  &lt;NA&gt;   PO BOX… VT    05753 MIDD… TRUE   </span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake … NA            100 Josh  Jones  SUGARH… VT    05076 EAST… FALSE  </span></a>
+<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill … NA             10 Lisa  Miller 4 SHEF… VT    05866 SHEF… FALSE  </span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake … NA           1000 Bob   Taylor 55 THI… MN    &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake … NA           -600 Alex  Johns… 11 LIB… VT    05443 BRIS… FALSE  </span></a>
+<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth … NA              0 Ruth  Smith  2 BURL… VT    05401 BURL… FALSE  </span></a>
+<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth … NA             69 Joe   Garcia 770 5 … DC    20001 WASH… FALSE  </span></a>
+<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth … NA            222 Dave  Wilson &lt;NA&gt;    TX    78202 SAN … FALSE</span></a></code></pre></div>
 <p>Next, we’ll want to check for duplicate rows using <code>flag_dupes</code>, which takes the same kind of arguments. Here, we can ignore the supposedly unique <code>id</code> variable. It’s possible for a person to make the same contribution on the same date, but we should flag them nonetheless.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">(vt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/flag_dupes.html">flag_dupes</a></span>(vt, <span class="op">-</span>id))</a>
 <a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10 x 12</span></a>
 <a class="sourceLine" id="cb16-3" data-line-number="3"><span class="co">#&gt;    id    cand  date       amount first last  address state zip   city  na_flag</span></a>
 <a class="sourceLine" id="cb16-4" data-line-number="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;  </span></a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill… 2019-09-02     10 Lisa  Mill… 4 SHEF… VT    05866 SHEF… FALSE  </span></a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill… 2009-09-03     20 Deb   Brown &lt;NA&gt;    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake… 2019-09-04     25 &lt;NA&gt;  &lt;NA&gt;  PO BOX… VT    05753 MIDD… TRUE   </span></a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake… 2019-09-05    100 Josh  Jones SUGARH… VT    05076 EAST… FALSE  </span></a>
-<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill… 2019-09-02     10 Lisa  Mill… 4 SHEF… VT    05866 SHEF… FALSE  </span></a>
-<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake… 2019-09-06   1000 Bob   Tayl… 55 THI… MN    &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
-<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake… 2019-09-07   -600 Alex  John… 11 LIB… VT    05443 BRIS… FALSE  </span></a>
-<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth… 2019-09-08      0 Ruth  Smith 2 BURL… VT    05401 BURL… FALSE  </span></a>
-<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth… 2019-09-09     69 Joe   Garc… 770 5T… DC    20001 WASH… FALSE  </span></a>
-<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth… 2019-09-11    222 Dave  Wils… &lt;NA&gt;    TX    78202 SAN … FALSE  </span></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="co">#&gt;  1 01    Bill… NA             10 Lisa  Mill… 4 SHEF… VT    05866 SHEF… FALSE  </span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co">#&gt;  2 02    Bill… NA             20 Deb   Brown &lt;NA&gt;    &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">#&gt;  3 03    Jake… NA             25 &lt;NA&gt;  &lt;NA&gt;  PO BOX… VT    05753 MIDD… TRUE   </span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">#&gt;  4 04    Jake… NA            100 Josh  Jones SUGARH… VT    05076 EAST… FALSE  </span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">#&gt;  5 05    Bill… NA             10 Lisa  Mill… 4 SHEF… VT    05866 SHEF… FALSE  </span></a>
+<a class="sourceLine" id="cb16-10" data-line-number="10"><span class="co">#&gt;  6 06    Jake… NA           1000 Bob   Tayl… 55 THI… MN    &lt;NA&gt;  &lt;NA&gt;  FALSE  </span></a>
+<a class="sourceLine" id="cb16-11" data-line-number="11"><span class="co">#&gt;  7 07    Jake… NA           -600 Alex  John… 11 LIB… VT    05443 BRIS… FALSE  </span></a>
+<a class="sourceLine" id="cb16-12" data-line-number="12"><span class="co">#&gt;  8 08    Beth… NA              0 Ruth  Smith 2 BURL… VT    05401 BURL… FALSE  </span></a>
+<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="co">#&gt;  9 09    Beth… NA             69 Joe   Garc… 770 5 … DC    20001 WASH… FALSE  </span></a>
+<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="co">#&gt; 10 10    Beth… NA            222 Dave  Wils… &lt;NA&gt;    TX    78202 SAN … FALSE  </span></a>
 <a class="sourceLine" id="cb16-15" data-line-number="15"><span class="co">#&gt; # … with 1 more variable: dupe_flag &lt;lgl&gt;</span></a></code></pre></div>
 </div>
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Invalid City Names — invalid_city • campfin</title>
+<title>Which out — which_out • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Invalid City Names — invalid_city" />
-<meta property="og:description" content="A custom vector containing common invalid city names." />
+<meta property="og:title" content="Which out — which_out" />
+<meta property="og:description" content="Return the values of x that are %out% of the vector y." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -128,27 +128,73 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Invalid City Names</h1>
-    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>invalid_city.Rd</code></div>
+    <h1>Which out</h1>
+    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/counters.R'><code>R/counters.R</code></a></small>
+    <div class="hidden name"><code>which_out.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A custom vector containing common invalid city names.</p>
+    <p>Return the values of <code>x</code> that are <code>%out%</code> of the vector <code>y</code>.</p>
     </div>
 
-    <pre class="usage"><span class='no'>invalid_city</span></pre>
+    <pre class="usage"><span class='fu'>which_out</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A vector to check.</p></td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td><p>A vector to compare against.</p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>logical; Should <code>NA</code> be ignored?</p></td>
+    </tr>
+    <tr>
+      <th>ignore.case</th>
+      <td><p>logical; if <code>FALSE</code>, the pattern matching is case
+sensitive and if <code>TRUE</code>, case is ignored during matching.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of length 54.</p>
+    <p>The elements of <code>x</code> that are <code>%out%</code> y.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p><code>x[which(x %out% y)]</code></p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other counting wrappers: 
+<code><a href='count_diff.html'>count_diff</a>()</code>,
+<code><a href='count_in.html'>count_in</a>()</code>,
+<code><a href='count_na.html'>count_na</a>()</code>,
+<code><a href='count_out.html'>count_out</a>()</code>,
+<code><a href='count_vec.html'>count_vec</a>()</code>,
+<code><a href='na_in.html'>na_in</a>()</code>,
+<code><a href='na_out.html'>na_out</a>()</code>,
+<code><a href='na_rep.html'>na_rep</a>()</code>,
+<code><a href='prop_distinct.html'>prop_distinct</a>()</code>,
+<code><a href='prop_in.html'>prop_in</a>()</code>,
+<code><a href='prop_na.html'>prop_na</a>()</code>,
+<code><a href='prop_out.html'>prop_out</a>()</code>,
+<code><a href='which_in.html'>which_in</a>()</code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>which_out</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"VT"</span>, <span class='st'>"DC"</span>, <span class='fl'>NA</span>), <span class='no'>state.abb</span>)</div><div class='output co'>#&gt; [1] "DC"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

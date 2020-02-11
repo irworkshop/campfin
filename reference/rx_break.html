@@ -43,7 +43,7 @@
 
 
 <meta property="og:title" content="Form a word break regex pattern — rx_break" />
-<meta property="og:description" content="Wrap a word in word boundry (\b) characters. Useful when combined with
+<meta property="og:description" content="Wrap a word in word boundary (\\b) characters. Useful when combined with
 stringr::str_which() and stringr::str_detect() to match only entire words
 and not that word inside another word (e.g., &quot;sting&quot; and &quot;testing&quot;)." />
 <meta property="og:image" content="/logo.png" />
@@ -79,7 +79,7 @@ and not that word inside another word (e.g., &quot;sting&quot; and &quot;testing
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -136,7 +136,7 @@ and not that word inside another word (e.g., &quot;sting&quot; and &quot;testing
     </div>
 
     <div class="ref-description">
-    <p>Wrap a word in word boundry (<code>\b</code>) characters. Useful when combined with
+    <p>Wrap a word in word boundary (<code>\\b</code>) characters. Useful when combined with
 <code><a href='https://stringr.tidyverse.org/reference/str_subset.html'>stringr::str_which()</a></code> and <code><a href='https://stringr.tidyverse.org/reference/str_detect.html'>stringr::str_detect()</a></code> to match only entire words
 and not that word <em>inside</em> another word (e.g., "sting" and "testing").</p>
     </div>
@@ -148,13 +148,13 @@ and not that word <em>inside</em> another word (e.g., "sting" and "testing").</p
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>pattern</th>
-      <td><p>A regex pattern (a word) to wrap in <code>\b</code>.</p></td>
+      <td><p>A regex pattern (a word) to wrap in <code>\\b</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The a glue vector of <code>pattern</code> wrapped in <code>\b</code>.</p>
+    <p>The a glue vector of <code>pattern</code> wrapped in <code>\\b</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>rx_break</span>(<span class='st'>"test"</span>)</div><div class='output co'>#&gt; \btest\b</div><div class='input'><span class='fu'>rx_break</span>(<span class='no'>state.abb</span>[<span class='fl'>1</span>:<span class='fl'>5</span>])</div><div class='output co'>#&gt; \bAL\b

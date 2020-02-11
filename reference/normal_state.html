@@ -43,9 +43,10 @@
 
 
 <meta property="og:title" content="Normalize US State Abbreviations — normal_state" />
-<meta property="og:description" content="Return consistent version of a state abbreviations using
-stringr::str_*() functions. Letters are capitalized, all non-letters are
-removed, nand excess whitespace is trimed and squished." />
+<meta property="og:description" content="Return consistent version of a state abbreviations using stringr::str_*()
+functions. Letters are capitalized, all non-letters characters are removed,
+and excess whitespace is trimmed and squished, and then abbrev_full() is
+called with usps_state." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -79,7 +80,7 @@ removed, nand excess whitespace is trimed and squished." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -136,13 +137,19 @@ removed, nand excess whitespace is trimed and squished." />
     </div>
 
     <div class="ref-description">
-    <p>Return consistent version of a state <em>abbreviations</em> using
-<code>stringr::str_*()</code> functions. Letters are capitalized, all non-letters are
-removed, nand excess whitespace is trimed and squished.</p>
+    <p>Return consistent version of a state <em>abbreviations</em> using <code>stringr::str_*()</code>
+functions. Letters are capitalized, all non-letters characters are removed,
+and excess whitespace is trimmed and squished, and then <code><a href='abbrev_full.html'>abbrev_full()</a></code> is
+called with <a href='usps_state.html'>usps_state</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>normal_state</span>(<span class='no'>state</span>, <span class='kw'>abbreviate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>),
-  <span class='kw'>na_rep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>valid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>normal_state</span>(
+  <span class='no'>state</span>,
+  <span class='kw'>abbreviate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>),
+  <span class='kw'>na_rep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>valid</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,12 +184,17 @@ not shared.</p></td>
     <p>A vector of normalized 2-digit state abbreviations.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other geographic normalization functions: <code><a href='abbrev_full.html'>abbrev_full</a></code>,
-  <code><a href='abbrev_state.html'>abbrev_state</a></code>, <code><a href='check_city.html'>check_city</a></code>,
-  <code><a href='expand_abbrev.html'>expand_abbrev</a></code>, <code><a href='expand_state.html'>expand_state</a></code>,
-  <code><a href='fetch_city.html'>fetch_city</a></code>, <code><a href='normal_address.html'>normal_address</a></code>,
-  <code><a href='normal_city.html'>normal_city</a></code>, <code><a href='normal_zip.html'>normal_zip</a></code>,
-  <code><a href='str_normal.html'>str_normal</a></code></p></div>
+    <div class='dont-index'><p>Other geographic normalization functions: 
+<code><a href='abbrev_full.html'>abbrev_full</a>()</code>,
+<code><a href='abbrev_state.html'>abbrev_state</a>()</code>,
+<code><a href='check_city.html'>check_city</a>()</code>,
+<code><a href='expand_abbrev.html'>expand_abbrev</a>()</code>,
+<code><a href='expand_state.html'>expand_state</a>()</code>,
+<code><a href='fetch_city.html'>fetch_city</a>()</code>,
+<code><a href='normal_address.html'>normal_address</a>()</code>,
+<code><a href='normal_city.html'>normal_city</a>()</code>,
+<code><a href='normal_zip.html'>normal_zip</a>()</code>,
+<code><a href='str_normal.html'>str_normal</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>normal_state</span>(

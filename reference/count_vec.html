@@ -78,7 +78,7 @@ number of values in a single vector." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -157,13 +157,59 @@ number of values in a single vector.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble, with counts of each <code>value</code> in <code>n</code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
+    <div class='dont-index'><p>Other counting wrappers: 
+<code><a href='count_diff.html'>count_diff</a>()</code>,
+<code><a href='count_in.html'>count_in</a>()</code>,
+<code><a href='count_na.html'>count_na</a>()</code>,
+<code><a href='count_out.html'>count_out</a>()</code>,
+<code><a href='na_in.html'>na_in</a>()</code>,
+<code><a href='na_out.html'>na_out</a>()</code>,
+<code><a href='na_rep.html'>na_rep</a>()</code>,
+<code><a href='prop_distinct.html'>prop_distinct</a>()</code>,
+<code><a href='prop_in.html'>prop_in</a>()</code>,
+<code><a href='prop_na.html'>prop_na</a>()</code>,
+<code><a href='prop_out.html'>prop_out</a>()</code>,
+<code><a href='which_in.html'>which_in</a>()</code>,
+<code><a href='which_out.html'>which_out</a>()</code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>count_vec</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>rivers</span>)</div><div class='output co'>#&gt; # A tibble: 114 x 2
+#&gt;    value     n
+#&gt;    &lt;dbl&gt; &lt;int&gt;
+#&gt;  1   350     4
+#&gt;  2   360     4
+#&gt;  3   250     3
+#&gt;  4   280     3
+#&gt;  5   300     3
+#&gt;  6   600     3
+#&gt;  7   210     2
+#&gt;  8   230     2
+#&gt;  9   260     2
+#&gt; 10   310     2
+#&gt; # … with 104 more rows</div><div class='input'><span class='fu'>count_vec</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>state.name</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; # A tibble: 50 x 2
+#&gt;    value              n
+#&gt;    &lt;chr&gt;          &lt;int&gt;
+#&gt;  1 North Carolina    30
+#&gt;  2 Connecticut       28
+#&gt;  3 Hawaii            27
+#&gt;  4 Montana           27
+#&gt;  5 Idaho             26
+#&gt;  6 Minnesota         26
+#&gt;  7 Tennessee         26
+#&gt;  8 California        24
+#&gt;  9 Florida           24
+#&gt; 10 West Virginia     24
+#&gt; # … with 40 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

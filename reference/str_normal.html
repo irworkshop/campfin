@@ -47,7 +47,7 @@
 normal_address(). This function simply chains together three
 stringr::str_*() functions:
 Convert to uppercase.
-Replace punctutations with whitespaces.
+Replace punctuation with whitespaces.
 Trim and squish excess whitespace.
 
 " />
@@ -84,7 +84,7 @@ Trim and squish excess whitespace.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -145,13 +145,20 @@ Trim and squish excess whitespace.
 <code><a href='normal_address.html'>normal_address()</a></code>. This function simply chains together three
 <code>stringr::str_*()</code> functions:</p><ol>
 <li><p>Convert to uppercase.</p></li>
-<li><p>Replace punctutations with whitespaces.</p></li>
+<li><p>Replace punctuation with whitespaces.</p></li>
 <li><p>Trim and squish excess whitespace.</p></li>
 </ol>
 
     </div>
 
-    <pre class="usage"><span class='fu'>str_normal</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>str_normal</span>(
+  <span class='no'>x</span>,
+  <span class='kw'>case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>punct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>quote</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>squish</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,6 +167,26 @@ Trim and squish excess whitespace.
       <th>x</th>
       <td><p>A character string to normalize.</p></td>
     </tr>
+    <tr>
+      <th>case</th>
+      <td><p>logical; whether <code><a href='https://stringr.tidyverse.org/reference/case.html'>stringr::str_to_upper()</a></code> should be called.</p></td>
+    </tr>
+    <tr>
+      <th>punct</th>
+      <td><p>logical; whether <code><a href='https://stringr.tidyverse.org/reference/str_replace.html'>stringr::str_replace_all()</a></code> should be called on punctuation.</p></td>
+    </tr>
+    <tr>
+      <th>quote</th>
+      <td><p>logical; whether <code><a href='https://stringr.tidyverse.org/reference/str_replace.html'>stringr::str_replace_all()</a></code> should be called on double quotes.</p></td>
+    </tr>
+    <tr>
+      <th>trim</th>
+      <td><p>logical; whether <code><a href='https://stringr.tidyverse.org/reference/str_trim.html'>stringr::str_trim()</a></code> should be called.</p></td>
+    </tr>
+    <tr>
+      <th>squish</th>
+      <td><p>logical; whether <code><a href='https://stringr.tidyverse.org/reference/str_trim.html'>stringr::str_squish()</a></code> should be called.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -167,15 +194,20 @@ Trim and squish excess whitespace.
     <p>A normalized vector of the same length.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other geographic normalization functions: <code><a href='abbrev_full.html'>abbrev_full</a></code>,
-  <code><a href='abbrev_state.html'>abbrev_state</a></code>, <code><a href='check_city.html'>check_city</a></code>,
-  <code><a href='expand_abbrev.html'>expand_abbrev</a></code>, <code><a href='expand_state.html'>expand_state</a></code>,
-  <code><a href='fetch_city.html'>fetch_city</a></code>, <code><a href='normal_address.html'>normal_address</a></code>,
-  <code><a href='normal_city.html'>normal_city</a></code>, <code><a href='normal_state.html'>normal_state</a></code>,
-  <code><a href='normal_zip.html'>normal_zip</a></code></p></div>
+    <div class='dont-index'><p>Other geographic normalization functions: 
+<code><a href='abbrev_full.html'>abbrev_full</a>()</code>,
+<code><a href='abbrev_state.html'>abbrev_state</a>()</code>,
+<code><a href='check_city.html'>check_city</a>()</code>,
+<code><a href='expand_abbrev.html'>expand_abbrev</a>()</code>,
+<code><a href='expand_state.html'>expand_state</a>()</code>,
+<code><a href='fetch_city.html'>fetch_city</a>()</code>,
+<code><a href='normal_address.html'>normal_address</a>()</code>,
+<code><a href='normal_city.html'>normal_city</a>()</code>,
+<code><a href='normal_state.html'>normal_state</a>()</code>,
+<code><a href='normal_zip.html'>normal_zip</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>str_normal</span>(<span class='st'>"   TestING 123   example_test.String   "</span>)</div><div class='output co'>#&gt; [1] "TESTING 123 EXAMPLE TEST STRING"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>str_normal</span>(<span class='st'>"   TestING 123   example_test.String   "</span>)</div><div class='output co'>#&gt; [1] "TESTING 123 EXAMPLETEST STRING"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -78,7 +78,7 @@ standard format." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -139,8 +139,13 @@ standard format." />
 standard format.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>normal_phone</span>(<span class='no'>number</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"(%a) %e-%l"</span>, <span class='kw'>na_bad</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>convert</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>rm_ext</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>normal_phone</span>(
+  <span class='no'>number</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"(%a) %e-%l"</span>,
+  <span class='kw'>na_bad</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>convert</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>rm_ext</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,7 +158,7 @@ standard format.</p>
       <th>format</th>
       <td><p>The desired output format, with <code>%a</code> representing the 3-digit
 <strong>area</strong> code, <code>%e</code> representing the 3-digit <strong>exchange</strong>, and <code>%l</code>
-representing the 4-digit <strong>line</strong> number. The puctuation between each part
+representing the 4-digit <strong>line</strong> number. The punctuation between each part
 of the format is used in the normalized number (e.g., <code>"(%a) %e-%l"</code> or
 <code>"%a-%e-%l"</code>).</p></td>
     </tr>
