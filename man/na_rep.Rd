@@ -9,7 +9,7 @@ na_rep(x, n = 0)
 \arguments{
 \item{x}{A vector to check.}
 
-\item{n}{The minumum number times a character must repeat. If 0, the default,
+\item{n}{The minimum number times a character must repeat. If 0, the default,
 then any string of one character will be replaced with \code{NA}. If greater
 than 0, the string must contain greater than \code{n} number of repetitions.}
 }
@@ -23,5 +23,23 @@ no other characters.
 \details{
 Uses the regular expression \code{"^(.)\\\\1+$"}.
 }
-\concept{Simple counting wrappers
-na_rep(c("VT", "NH", "ZZ", "ME"))}
+\examples{
+na_rep(c("VT", "NH", "ZZ", "ME"))
+}
+\seealso{
+Other counting wrappers: 
+\code{\link{count_diff}()},
+\code{\link{count_in}()},
+\code{\link{count_na}()},
+\code{\link{count_out}()},
+\code{\link{count_vec}()},
+\code{\link{na_in}()},
+\code{\link{na_out}()},
+\code{\link{prop_distinct}()},
+\code{\link{prop_in}()},
+\code{\link{prop_na}()},
+\code{\link{prop_out}()},
+\code{\link{which_in}()},
+\code{\link{which_out}()}
+}
+\concept{counting wrappers}

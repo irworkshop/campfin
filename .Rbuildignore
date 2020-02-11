@@ -11,3 +11,5 @@
 ^codecov\.yml$
 ^\.covrignore$
 ^\.github$
+^CRAN-RELEASE$
+^CODE_OF_CONDUCT\.md$

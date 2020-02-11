@@ -104,3 +104,27 @@ test_that("count_vec returns a dplyr::count() on a vector", {
   expect_length(a, 2)
   expect_equal(nrow(a), n_distinct(x))
 })
+
+test_that("comparisong counters can ignore case", {
+  expect_equal(prop_in(letters, LETTERS, ignore.case = TRUE), 1)
+  expect_equal(prop_out(letters, LETTERS, ignore.case = TRUE), 0)
+  expect_equal(count_in(letters, LETTERS, ignore.case = TRUE), 26)
+  expect_equal(count_out(letters, LETTERS, ignore.case = TRUE), 0)
+  expect_equal(count_na(na_in(letters, LETTERS, ignore.case = TRUE)), 26)
+  expect_equal(count_na(na_out(letters, LETTERS, ignore.case = TRUE)), 0)
+})
+
+test_that("which_in can ignore case", {
+  x <- c("vt", "ma", NA)
+  expect_length(which_in(x, state.abb, ignore.case = TRUE), 2)
+})
+
+test_that("which_out can ignore case", {
+  x <- c("vt", "ma", NA)
+  expect_length(which_out(x, state.abb, ignore.case = TRUE), 0)
+})
+
+test_that("which_out can ignore NA", {
+  x <- c("VT", "DC", NA)
+  expect_length(which_out(x, state.abb, na.rm = TRUE), 1)
+})

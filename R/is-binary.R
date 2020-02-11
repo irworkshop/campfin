@@ -1,8 +1,6 @@
 #' Check if Binary
 #'
-#' Uses [dplyr::n_distinct()] to check if there are only two unique values. This
-#' function is useful when combined with both [purrr::map_if()] _and_
-#' [batman::to_logical()].
+#' Uses [dplyr::n_distinct()] to check if there are only two unique values.
 #'
 #' @param x A vector.
 #' @param na.rm logical; Should NA be ignored, `TRUE` by default.

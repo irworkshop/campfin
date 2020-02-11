@@ -13,7 +13,7 @@ str_dist(a, b, method = "osa", ...)
 
 \item{method}{Method for distance calculation. The default is "osa."}
 
-\item{...}{Other rguments passed to \code{\link[stringdist:stringdist]{stringdist::stringdist()}}.}
+\item{...}{Other arguments passed to \code{\link[stringdist:stringdist]{stringdist::stringdist()}}.}
 }
 \value{
 The distance between string \code{a} and string \code{b}.

@@ -29,14 +29,14 @@ A vector of normalized city names.
 Return consistent version of a city names using \verb{stringr::str_*()} functions.
 Letters are capitalized, hyphens and underscores are replaced with
 whitespace, other punctuation is removed, numbers are removed, and excess
-whitespace is trimed and squished. Optionally, geographic abbreviations
+whitespace is trimmed and squished. Optionally, geographic abbreviations
 ("MT") can be replaced with their long form ("MOUNT"). Invalid addresses from
 a vector can be removed (possibly using \link{invalid_city}) as well as single
 (repeating) character strings ("XXXXXX").
 }
 \examples{
 normal_city(
-  city = c("Stowe, VT", "N/A", "Burlington", "ST JOHNSBURY", "XXXXXXXXX"),
+  city = c("Stowe, VT", "UNKNOWN CITY", "Burlington", "ST JOHNSBURY", "XXX"),
   abbs = c("ST" = "SAINT"),
   states = "VT",
   na = invalid_city,

@@ -4,10 +4,27 @@
 \alias{str_normal}
 \title{Normalize a character string}
 \usage{
-str_normal(x)
+str_normal(
+  x,
+  case = TRUE,
+  punct = TRUE,
+  quote = TRUE,
+  trim = TRUE,
+  squish = TRUE
+)
 }
 \arguments{
 \item{x}{A character string to normalize.}
+
+\item{case}{logical; whether \code{\link[stringr:str_to_upper]{stringr::str_to_upper()}} should be called.}
+
+\item{punct}{logical; whether \code{\link[stringr:str_replace_all]{stringr::str_replace_all()}} should be called on punctuation.}
+
+\item{quote}{logical; whether \code{\link[stringr:str_replace_all]{stringr::str_replace_all()}} should be called on double quotes.}
+
+\item{trim}{logical; whether \code{\link[stringr:str_trim]{stringr::str_trim()}} should be called.}
+
+\item{squish}{logical; whether \code{\link[stringr:str_squish]{stringr::str_squish()}} should be called.}
 }
 \value{
 A normalized vector of the same length.
@@ -18,7 +35,7 @@ The generic normalization that underpins functions like \code{\link[=normal_city
 \verb{stringr::str_*()} functions:
 \enumerate{
 \item Convert to uppercase.
-\item Replace punctutations with whitespaces.
+\item Replace punctuation with whitespaces.
 \item Trim and squish excess whitespace.
 }
 }

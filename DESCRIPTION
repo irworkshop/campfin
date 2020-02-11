@@ -1,18 +1,16 @@
 Type: Package
 Package: campfin
 Title: Help Wrangle Campaign Finance Data
-Version: 0.1.1.9000
+Version: 0.2.2
 Authors@R: 
     person(given = "Kiernan",
            family = "Nicholls",
            role = c("aut", "cre"),
            email = "kiernann@protonmail.com")
-Description: This package was created for use by the
-    Accountability Project team at the Investigative Reporting Workshop.
-    The Accountability Project standardizes and disambiguates campaign
-    finance data to make it more searchable. The functions included
-    facilitate the exploration and wrangling of data, with an emphasis on
-    string normalization.
+Description: Explore and normalize American campaign finance
+    data. Created by the Investigative Reporting Workshop to facilitate
+    work on The Accountability Project, an effort to collect public data
+    into a central, standard database that is more easily searched.
 License: CC BY 4.0
 URL: https://github.com/irworkshop/campfin
 BugReports: https://github.com/irworkshop/campfin/issues
@@ -37,10 +35,12 @@ Suggests:
     covr (>= 3.3.2),
     knitr (>= 1.23),
     rmarkdown (>= 1.14),
+    spelling (>= 2.1),
     testthat (>= 2.1.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2

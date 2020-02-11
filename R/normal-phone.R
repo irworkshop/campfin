@@ -6,7 +6,7 @@
 #' @param number A vector of phone number in any format.
 #' @param format The desired output format, with `%a` representing the 3-digit
 #'   **area** code, `%e` representing the 3-digit **exchange**, and `%l`
-#'   representing the 4-digit **line** number. The puctuation between each part
+#'   representing the 4-digit **line** number. The punctuation between each part
 #'   of the format is used in the normalized number (e.g., `"(%a) %e-%l"` or
 #'   `"%a-%e-%l"`).
 #' @param na_bad logical; Should invalid numbers be replaced with `NA`.

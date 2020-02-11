@@ -3,13 +3,13 @@
 #' Return consistent version US ZIP codes using `stringr::str_*()` functions.
 #' Non-number characters are removed, strings are padded with zeroes on the left
 #' (leading zeroes for New England ZIP codes are often removed by Microsoft
-#' Excel and other progrmas), and ZIP+4 suffixes are removed. Invalid ZIP codes
+#' Excel and other programs), and ZIP+4 suffixes are removed. Invalid ZIP codes
 #' from a vector can be removed as well as single (repeating) character strings.
 #'
 #' @param zip A vector of US ZIP codes.
 #' @param na A vector of values to pass to [na_in()].
 #' @param na_rep logical; If `TRUE`, [na_rep()] will be called. Please note that
-#'   22222, 44444, and 55555 are rare but valid ZIP codes that wll be removed.
+#'   22222, 44444, and 55555 are rare but valid ZIP codes that will be removed.
 #' @return A _character_ vector of normalized 5-digit ZIP codes.
 #' @examples
 #' normal_zip(

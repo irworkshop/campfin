@@ -15,7 +15,7 @@ x \%out\% table
 logical; if \code{x} is not present in \code{table}
 }
 \description{
-\verb{\%out\%} is an inverted version of the infix \code{\%in\%} opperator.
+\verb{\%out\%} is an inverted version of the infix \code{\%in\%} operator.
 }
 \details{
 \verb{\%out\%} is currently defined as

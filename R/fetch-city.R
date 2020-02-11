@@ -5,7 +5,7 @@
 #' is passed in into a single string. Then the function pulls the
 #' `formatted_address` endpoint of the API results and extracts the the first
 #' field of the result. Note that you will need to pass in your Google Maps
-#' Place API key with the `key` arguement.
+#' Place API key with the `key` argument.
 #'
 #' @param address A vector of street addresses. Sent to the API as one string.
 #' @param key A character containing your alphanumeric Google Maps API key.

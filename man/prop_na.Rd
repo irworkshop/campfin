@@ -10,7 +10,7 @@ prop_na(x)
 \item{x}{A vector to check.}
 }
 \value{
-The sum of \code{x} absent in \code{y}.
+The proprtion of values of \code{x} that are \code{NA}.
 }
 \description{
 Find the proportion of values of \code{x} that are \code{NA}.
@@ -22,12 +22,19 @@ Find the proportion of values of \code{x} that are \code{NA}.
 prop_na(c("VT", "NH", NA, "ME"))
 }
 \seealso{
-Other Simple counting wrappers: 
+Other counting wrappers: 
 \code{\link{count_diff}()},
 \code{\link{count_in}()},
 \code{\link{count_na}()},
 \code{\link{count_out}()},
+\code{\link{count_vec}()},
+\code{\link{na_in}()},
+\code{\link{na_out}()},
+\code{\link{na_rep}()},
+\code{\link{prop_distinct}()},
 \code{\link{prop_in}()},
-\code{\link{prop_out}()}
+\code{\link{prop_out}()},
+\code{\link{which_in}()},
+\code{\link{which_out}()}
 }
-\concept{Simple counting wrappers}
+\concept{counting wrappers}

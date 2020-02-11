@@ -1,6 +1,6 @@
 #' Form a word break regex pattern
 #'
-#' Wrap a word in word boundry (`\\b`) characters. Useful when combined with
+#' Wrap a word in word boundary (`\\b`) characters. Useful when combined with
 #' [stringr::str_which()] and [stringr::str_detect()] to match only entire words
 #' and not that word _inside_ another word (e.g., "sting" and "testing").
 #'

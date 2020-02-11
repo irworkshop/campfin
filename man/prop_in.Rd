@@ -4,7 +4,7 @@
 \alias{prop_in}
 \title{Proportion in}
 \usage{
-prop_in(x, y, na.rm = TRUE)
+prop_in(x, y, na.rm = TRUE, ignore.case = FALSE)
 }
 \arguments{
 \item{x}{A vector to check.}
@@ -12,9 +12,12 @@ prop_in(x, y, na.rm = TRUE)
 \item{y}{A vector to compare against.}
 
 \item{na.rm}{logical; Should \code{NA} be ignored?}
+
+\item{ignore.case}{logical; if \code{FALSE}, the pattern matching is case
+sensitive and if \code{TRUE}, case is ignored during matching.}
 }
 \value{
-The proprtion of \code{x} present in \code{y}.
+The proportion of \code{x} present in \code{y}.
 }
 \description{
 Find the proportion of values of \code{x} that are \code{\%in\%} the vector \code{y}.
@@ -26,12 +29,19 @@ Find the proportion of values of \code{x} that are \code{\%in\%} the vector \cod
 prop_in(c("VT", "NH", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple counting wrappers: 
+Other counting wrappers: 
 \code{\link{count_diff}()},
 \code{\link{count_in}()},
 \code{\link{count_na}()},
 \code{\link{count_out}()},
+\code{\link{count_vec}()},
+\code{\link{na_in}()},
+\code{\link{na_out}()},
+\code{\link{na_rep}()},
+\code{\link{prop_distinct}()},
 \code{\link{prop_na}()},
-\code{\link{prop_out}()}
+\code{\link{prop_out}()},
+\code{\link{which_in}()},
+\code{\link{which_out}()}
 }
-\concept{Simple counting wrappers}
+\concept{counting wrappers}

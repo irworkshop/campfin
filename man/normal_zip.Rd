@@ -12,7 +12,7 @@ normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
 \item{na}{A vector of values to pass to \code{\link[=na_in]{na_in()}}.}
 
 \item{na_rep}{logical; If \code{TRUE}, \code{\link[=na_rep]{na_rep()}} will be called. Please note that
-22222, 44444, and 55555 are rare but valid ZIP codes that wll be removed.}
+22222, 44444, and 55555 are rare but valid ZIP codes that will be removed.}
 }
 \value{
 A \emph{character} vector of normalized 5-digit ZIP codes.
@@ -21,7 +21,7 @@ A \emph{character} vector of normalized 5-digit ZIP codes.
 Return consistent version US ZIP codes using \verb{stringr::str_*()} functions.
 Non-number characters are removed, strings are padded with zeroes on the left
 (leading zeroes for New England ZIP codes are often removed by Microsoft
-Excel and other progrmas), and ZIP+4 suffixes are removed. Invalid ZIP codes
+Excel and other programs), and ZIP+4 suffixes are removed. Invalid ZIP codes
 from a vector can be removed as well as single (repeating) character strings.
 }
 \examples{

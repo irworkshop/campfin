@@ -3,7 +3,7 @@
 #' Tests whether all the files in a given directory have a modification date
 #' equal to the system date. Useful when repeatedly running code with a lengthy
 #' download stage. Many state databases are updated daily, so new data can be
-#' helpful but not always neccesary. Set this function in an `if` statement.
+#' helpful but not always necessary. Set this function in an `if` statement.
 #'
 #' @param path The path to a directory to check.
 #' @param glob A pattern to search for files (e.g., "*.csv").
@@ -15,13 +15,9 @@
 #' @importFrom magrittr use_series equals
 #' @importFrom rlang .data is_empty
 #' @examples
-#' temp <- tempdir()
-#' if (!all_files_new(temp)) {
-#'   download.file(
-#'     url = "http://212.183.159.230/5MB.zip",
-#'     destfile = tempfile()
-#'   )
-#' }
+#' tmp <- tempdir()
+#' file.create(tempfile(pattern = as.character(1:5)))
+#' all_files_new(tmp)
 #' @export
 all_files_new <- function(path, glob = NULL, ...) {
   files <- fs::dir_ls(path = path, ...)
@@ -41,23 +37,18 @@ all_files_new <- function(path, glob = NULL, ...) {
 #' This function tests whether a single file has a modification date equal to
 #' the system date. Useful when repeatedly running code with a lengthy download
 #' stage. Many state databases are updated daily, so new data can be helpful but
-#' not always neccesary. Set this function in an `if` statement.
+#' not always necessary. Set this function in an `if` statement.
 #'
 #' @param path The path to a file to check.
 #' @return logical; Whether the file has a modification date equal to today.
 #' @importFrom lubridate today floor_date
 #' @importFrom magrittr use_series equals
 #' @examples
-#' temp <- tempfile()
-#' if (!this_file_new(temp)) {
-#'   download.file(
-#'     url = "http://212.183.159.230/5MB.zip",
-#'     destfile = temp
-#'   )
-#' }
+#' tmp <- tempfile()
+#' this_file_new(tmp)
 #' @export
 this_file_new <- function(path) {
-  if (!file.exists(path)) {
+  if (all(!file.exists(path))) {
     warning("file does not exist, proceeding.")
     new <- FALSE
   } else {

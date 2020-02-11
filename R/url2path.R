@@ -7,10 +7,10 @@
 #' @param url The URL of a file to download.
 #' @param dir The directory where the file will be downloaded.
 #' @return The desired file path to a URL file.
-#' @importFrom stringr str_c
+#' @importFrom fs as_fs_path
 #' @examples
 #' url2path("https://floridalobbyist.gov/reports/llob.txt", "~/Downloads")
 #' @export
 url2path <- function(url, dir) {
-  stringr::str_c(path.expand(dir), basename(url), sep = "/")
+  fs::path(dir, basename(url))
 }

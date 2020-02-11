@@ -1,6 +1,6 @@
 #' Create a progress table
 #'
-#' Create a tibble with rows for each stage of normalization and columsn for the
+#' Create a tibble with rows for each stage of normalization and columns for the
 #' various statistics most useful in assessing the progress of each stage.
 #'
 #' @param ... Any number of vectors to check.
@@ -26,7 +26,7 @@ progress_table <- function(..., compare) {
   )
   extra <- list(...)
   dot_names <- function(...) {
-    varnames = lapply(substitute(list(...))[-1], deparse)
+    varnames <- lapply(substitute(list(...))[-1], deparse)
     varnames <- stringr::str_remove(varnames, "(.*)\\$")
     return(varnames)
   }

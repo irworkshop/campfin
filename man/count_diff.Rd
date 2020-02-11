@@ -4,12 +4,15 @@
 \alias{count_diff}
 \title{Count set difference}
 \usage{
-count_diff(x, y)
+count_diff(x, y, ignore.case = FALSE)
 }
 \arguments{
 \item{x}{A vector to check.}
 
 \item{y}{A vector to compare against.}
+
+\item{ignore.case}{logical; if \code{FALSE}, the pattern matching is case
+sensitive and if \code{TRUE}, case is ignored during matching.}
 }
 \value{
 The number of \emph{unique} values of \code{x} not in \code{y}.
@@ -21,16 +24,23 @@ Find the length of the set of difference between \code{x} and \code{y} vectors.
 \code{sum(x \%out\% y)}
 }
 \examples{
-# Only unique values are checked
+# only unique values are checked
 count_diff(c("VT", "NH", "ZZ", "ZZ", "ME"), state.abb)
 }
 \seealso{
-Other Simple counting wrappers: 
+Other counting wrappers: 
 \code{\link{count_in}()},
 \code{\link{count_na}()},
 \code{\link{count_out}()},
+\code{\link{count_vec}()},
+\code{\link{na_in}()},
+\code{\link{na_out}()},
+\code{\link{na_rep}()},
+\code{\link{prop_distinct}()},
 \code{\link{prop_in}()},
 \code{\link{prop_na}()},
-\code{\link{prop_out}()}
+\code{\link{prop_out}()},
+\code{\link{which_in}()},
+\code{\link{which_out}()}
 }
-\concept{Simple counting wrappers}
+\concept{counting wrappers}
