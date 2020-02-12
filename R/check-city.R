@@ -16,8 +16,8 @@
 #' @param key A character string to be passed into `key`. Save your key as
 #'   "GEOCODE_KEY" using `Sys.setenv()` or by editing your `.Renviron` file.
 #' @param guess logical; Should the function return a single row tibble
-#'   containing the original data sent and the multi components returned by the
-#'   Geocode API.
+#'   containing the original data sent and the multiple components returned by
+#'   the Geocode API.
 #' @return A logical value by default. If the city returned by the API
 #'   comes back the same as the city input, the function will evaluate to
 #'   `TRUE`, in all other circumstances (including API errors) `FALSE` is returned.
@@ -31,10 +31,9 @@
 #'   * `guess_city`: The legal city guessed by the API.
 #'   * `guess_place`: The generic locality guessed by the API.
 #' @examples
-#' \dontrun{requires Google API key
-#' check_city("WYOMISSING", "PA")
-#' check_city("Waggaman", "LA", "70094", guess = TRUE)
-#' }
+#' # requires Google API key
+#' # check_city("WYOMISSING", "PA")
+#' # check_city("Waggaman", "LA", "70094", guess = TRUE)
 #' @seealso \url{http://code.google.com/apis/maps/documentation/geocoding/}
 #' @importFrom httr GET stop_for_status content
 #' @importFrom stringr str_c str_match

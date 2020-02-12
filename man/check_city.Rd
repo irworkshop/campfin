@@ -17,8 +17,8 @@ check_city(city = NULL, state = NULL, zip = NULL, key = NULL, guess = FALSE)
 "GEOCODE_KEY" using \code{Sys.setenv()} or by editing your \code{.Renviron} file.}
 
 \item{guess}{logical; Should the function return a single row tibble
-containing the original data sent and the multi components returned by the
-Geocode API.}
+containing the original data sent and the multiple components returned by
+the Geocode API.}
 }
 \value{
 A logical value by default. If the city returned by the API
@@ -48,10 +48,9 @@ Note that you will need to pass in your Google Maps Place API key to the
 \code{key} argument.
 }
 \examples{
-\dontrun{requires Google API key
-check_city("WYOMISSING", "PA")
-check_city("Waggaman", "LA", "70094", guess = TRUE)
-}
+# requires Google API key
+# check_city("WYOMISSING", "PA")
+# check_city("Waggaman", "LA", "70094", guess = TRUE)
 }
 \seealso{
 \url{http://code.google.com/apis/maps/documentation/geocoding/}

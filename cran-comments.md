@@ -13,6 +13,4 @@
 
 ## Resubmission
 
-* Updated `.github/CODE_OF_CONDUCT.md` file and URL in the `README.md` to
-version 2.0 with valid URL.
-* Removed old, dead reference links for the original `zipcodes` data.
+* Commented out the examples in `fetch_city()` and `check_city()`.

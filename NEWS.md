@@ -1,8 +1,11 @@
-# campfin 0.2.2
+# campfin 0.2.3
 
 * `flag_dupes()` now also calls `duplicated(fromLast = TRUE)` to capture all.
 * Separate address `[:digit:]` from `[:alpha:]` with space.
-* Create `prop_distinct()`.
+* Create `prop_distinct()`, `which_in()` and `which_out()`.
+* Comment out examples for fetching and checking cities.
+* Use 'fs' bytes and paths.
+* Create `use_diary()` with template diary.
 
 # campfin 0.2.1
 
@@ -10,7 +13,7 @@
 * Reverse order of columns in `usps_street`, `usps_state`, and `usps_city`.
 * Update to version 2.0 of the `CODE_OF_CONDUCT.md` and URL.
 
-# campfin 0.1.1.9000
+# campfin 0.1.1
 
 * Added a `NEWS.md` file to track changes to the package.
 * Deprecated `glimpse_fun()` for more simple `col_stats()`.
