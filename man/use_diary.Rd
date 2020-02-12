@@ -4,7 +4,7 @@
 \alias{use_diary}
 \title{Create a new template data diary}
 \usage{
-use_diary(st, type = c("contribs", "expends", "lobby"), author)
+use_diary(st, type = c("contribs", "expends", "lobby"), author, dir = NULL)
 }
 \arguments{
 \item{st}{The USPS state abbreviation.}
@@ -12,6 +12,9 @@ use_diary(st, type = c("contribs", "expends", "lobby"), author)
 \item{type}{The type of data, one of "contribs", "expends", or "lobby".}
 
 \item{author}{The author name of the new diary.}
+
+\item{dir}{If \code{TRUE}, file is created in the correct working directory. If
+not \code{TRUE}, pass a character directory to use.}
 }
 \value{
 The file path of new diary, invisibly.
@@ -21,5 +24,5 @@ Take the arguments supplied and put them into the appropriate places in a
 new template diary. Write the new template diary in the supplied directory.
 }
 \examples{
-use_diary("VT", "contribs", "Kiernan Nicholls")
+# use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
 }

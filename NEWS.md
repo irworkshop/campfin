@@ -6,6 +6,7 @@
 * Comment out examples for fetching and checking cities.
 * Use 'fs' bytes and paths.
 * Create `use_diary()` with template diary.
+* Remove `print_all()`
 
 # campfin 0.2.1
 

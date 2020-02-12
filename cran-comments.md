@@ -14,4 +14,4 @@
 ## Resubmission
 
 * Commented out the examples in `fetch_city()` and `check_city()`.
-* Deleted files at the end of tests for `use_diary()`.
+* Use `tempdir()` by default with `use_diary()`.
