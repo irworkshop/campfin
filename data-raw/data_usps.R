@@ -110,14 +110,14 @@ write_lines(
 
 # city abbs ---------------------------------------------------------------
 
-# create a subet of abbs in city names
+# create a subset of abbs in city names
 usps_city <- usps_street %>%
   select(2, 1) %>%
   filter(
     # keep only those used
     full %in% valid_city,
     # drop those shouldn't be changed
-    abb %out% c("CENTRE", "ST", "ARC")
+    abb %out% c("CENTRE", "ST", "ARC", "PARK")
   ) %>%
   # add those not included
   add_row(
