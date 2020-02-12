@@ -23,8 +23,10 @@ test_that("columns can be ignored when flagging dupes", {
 })
 
 test_that("useless dupe column can be removed automatically", {
-  expect_equal(
-    object = ncol(flag_dupes(mtcars, everything(), .check = TRUE)),
-    expected = ncol(mtcars)
+  expect_warning(
+    expect_equal(
+      object = ncol(flag_dupes(mtcars, everything(), .check = TRUE)),
+      expected = ncol(mtcars)
+    )
   )
 })

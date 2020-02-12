@@ -31,7 +31,7 @@ test_that("fetching addresses returns warnings and errors", {
   expect_error(fetch_city(NA))
   expect_warning(fetch_city("test", key = ""))
   expect_warning(fetch_city("hwiouehf;ehrg"))
-  expect_true(is.na(fetch_city("hwiouehf;ehrg")))
+  expect_warning(expect_true(is.na(fetch_city("hwiouehf;ehrg"))))
 })
 
 test_that("checking cities returns warnings and errors", {
