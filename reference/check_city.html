@@ -85,7 +85,7 @@ key argument." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
 
@@ -178,8 +178,8 @@ Note that you will need to pass in your Google Maps Place API key to the
     <tr>
       <th>guess</th>
       <td><p>logical; Should the function return a single row tibble
-containing the original data sent and the multi components returned by the
-Geocode API.</p></td>
+containing the original data sent and the multiple components returned by
+the Geocode API.</p></td>
     </tr>
     </table>
 
@@ -214,7 +214,10 @@ columns is returned:</p><ul>
 <code><a href='str_normal.html'>str_normal</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'># requires Google API key
+# check_city("WYOMISSING", "PA")
+# check_city("Waggaman", "LA", "70094", guess = TRUE)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
