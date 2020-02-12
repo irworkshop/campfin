@@ -175,7 +175,7 @@ summary({stt}$amount)
 mean({stt}$amount <= 0)
 ```
 
-```{r amount_histogram, echo=FALSE}
+```{r hist_amount, echo=FALSE}
 {stt} %>%
   ggplot(aes(amount)) +
   geom_histogram(fill = dark2["purple"]) +
@@ -207,7 +207,7 @@ max({stt}$date)
 sum({stt}$date > today())
 ```
 
-```{r year_bar}
+```{r bar_year, echo=FALSE}
 {stt} %>% 
   count(year) %>% 
   mutate(even = is_even(year)) %>% 
@@ -230,18 +230,17 @@ sum({stt}$date > today())
 
 To improve the searchability of the database, we will perform some consistent,
 confident string normalization. For geographic variables like city names and
-ZIP codes, the corresponding `campfin::normal_*()` functions are taylor made to 
+ZIP codes, the corresponding `campfin::normal_*()` functions are tailor made to 
 facilitate this process.
 
 ### Address
 
 For the street `addresss` variable, the `campfin::normal_address()` function
-will force consistence case, remove punctuation, and abbreviation official 
+will force consistence case, remove punctuation, and abbreviate official 
 USPS suffixes.
 
 ```{r address_norm}
 {stt} <- {stt} %>% 
-  # combine street addr
   unite(
     col = address_full,
     starts_with("address"),
@@ -249,7 +248,6 @@ USPS suffixes.
     remove = FALSE,
     na.rm = TRUE
   ) %>% 
-  # normalize combined addr
   mutate(
     address_norm = normal_address(
       address = address_full,
@@ -270,7 +268,7 @@ USPS suffixes.
 ### ZIP
 
 For ZIP codes, the `campfin::normal_zip()` function will attempt to create
-valied _five_ digit codes by removing the ZIP+4 suffix and returning leading
+valid _five_ digit codes by removing the ZIP+4 suffix and returning leading
 zeroes dropped by other programs like Microsoft Excel.
 
 ```{r zip_norm}
@@ -349,7 +347,7 @@ removing punctuation, but _expanding_ USPS abbreviations. We can also remove
 #### Swap
 
 We can further improve normalization by comparing our normalized value
-agaist the _expected_ value for that record's state abbreviation and ZIP code.
+against the _expected_ value for that record's state abbreviation and ZIP code.
 If the normalized value is either an abbreviation for or very similar to the
 expected value, we can confidently swap those two.
 
@@ -389,7 +387,7 @@ strings that have a valid city/state/zip combination.
 
 [or]: https://openrefine.org/
 
-```{r refine_city}
+```{r city_refine}
 good_refine <- {stt} %>% 
   mutate(
     city_refine = city_swap %>% 
@@ -407,7 +405,7 @@ good_refine <- {stt} %>%
   )
 ```
 
-```{r view_city_refines, echo=FALSE}
+```{r city_count, echo=FALSE}
 good_refine %>%
   count(
     state_norm, 
@@ -420,7 +418,7 @@ good_refine %>%
 
 Then we can join the refined values back to the database.
 
-```{r join_refine}
+```{r city_join}
 {stt} <- {stt} %>% 
   left_join(good_refine) %>% 
   mutate(city_refine = coalesce(city_refine, city_swap))
@@ -436,16 +434,13 @@ progress <- progress_table(
   {stt}$city_swap,
   compare = many_city
 ) %>% mutate(stage = as_factor(stage))
-```
-
-```{r progress_print, echo=FALSE}
 kable(progress, digits = 3)
 ```
 
 You can see how the percentage of valid values increased with each stage.
 
-```{r progress_bar, echo=FALSE}
-raw_in <- prop_in({stt}$city_raw, vald_city)
+```{r bar_progress, echo=FALSE}
+raw_in <- percent(prop_in({stt}$city_raw, valid_city))
 progress %>% 
   ggplot(aes(x = stage, y = prop_in)) +
   geom_hline(yintercept = 0.99) +
@@ -464,7 +459,7 @@ More importantly, the number of distinct values decreased each stage. We were
 able to confidently change many distinct invalid values to their valid
 equivalent.
 
-```{r distinct_bar}
+```{r bar_distinct, echo=FALSE}
 progress %>% 
   select(
     stage, 
@@ -483,23 +478,32 @@ progress %>%
     title = "{State} City Normalization Progress",
     subtitle = "Distinct values, valid and invalid",
     x = "Stage",
-    y = "Percent Valid",
+    y = "Distinct Values",
     fill = "Valid"
   )
-  
 ```
 
 ## Conclude
+
+```{r clean_select}
+{stt} <- {stt} %>% 
+  select(
+    -city_norm,
+    -city_swap,
+    city_clean = city_refine
+  ) %>% 
+  rename_all(~str_replace(., "_norm", "_clean"))
+```
 
 ```{r clean_glimpse}
 glimpse(sample_n({stt}, 20))
 ```
 
-1. There are `r nrow({stt})` records in the database.
-1. There are `r sum({stt}$dupe_flag)` duplicate records in the database.
+1. There are `r comma(nrow({stt}))` records in the database.
+1. There are `r comma(sum({stt}$dupe_flag))` duplicate records in the database.
 1. The range and distribution of `amount` and `date` seem reasonable.
-1. There are `r sum({stt}$na_flag)` records missing either recipient or date.
-1. Consistency in goegraphic data has been improved with `campfin::normal_*()`.
+1. There are `r comma(sum({stt}$na_flag))` records missing ....
+1. Consistency in geographic data has been improved with `campfin::normal_*()`.
 1. The 4-digit `year` variable has been created with `lubridate::year()`.
 
 ## Export
@@ -508,9 +512,9 @@ glimpse(sample_n({stt}, 20))
 clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
 ```
 
-```{r write_clean}
+```{r clean_write}
 write_csv(
-  x = df,
+  x = {stt},
   path = path(clean_dir, "{st}_{type}_clean.csv"),
   na = ""
 )
