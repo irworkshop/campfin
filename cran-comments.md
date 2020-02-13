@@ -14,4 +14,4 @@
 ## Resubmission
 
 * Commented out the examples in `fetch_city()` and `check_city()`.
-* Use `tempdir()` by default with `use_diary()`.
+* Have `use_diary()` return string or use `tempdir()`. No automatic writing.
