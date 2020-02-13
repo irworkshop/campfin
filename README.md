@@ -6,12 +6,13 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
+experimental](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/campfin)](https://CRAN.R-project.org/package=campfin)
 [![Travis build
-status](https://travis-ci.org/irworkshop/campfin.svg?branch=master)](https://travis-ci.org/irworkshop/campfin)
+status](https://travis-ci.org/kiernann/campfin.svg?branch=master)](https://travis-ci.org/kiernann/campfin)
 [![Codecov test
-coverage](https://codecov.io/gh/irworkshop/campfin/branch/master/graph/badge.svg)](https://codecov.io/gh/irworkshop/campfin?branch=master)
+coverage](https://img.shields.io/codecov/c/github/kiernann/campfin/master.svg)](https://codecov.io/gh/kiernann/campfin?branch=master)
 <!-- badges: end -->
 
 ## Overview
@@ -88,6 +89,7 @@ library(tidyverse)
 The campfin package contains a number of built in data frames and
 strings used to help wrangle campaign finance data.
 
+  - `dark2`
   - `extra_city`
   - `invalid_city`
   - `rx_phone`
@@ -136,10 +138,10 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-#>     zip         city state latitude longitude
-#> 1 54556     Prentice    WI 45.54942 -90.31571
-#> 2 41054        Mason    KY 38.59323 -84.57855
-#> 3 31096 Wrightsville    GA 32.71732 -82.68926
+#>     zip             city state latitude longitude
+#> 1 15687       Stahlstown    PA 40.13466 -79.31493
+#> 2 44039 North Ridgeville    OH 41.38955 -82.00460
+#> 3 63742         Commerce    MO 37.15713 -89.44651
 class(zipcode)
 #> [1] "data.frame"
 
@@ -148,9 +150,9 @@ sample_n(zipcodes, 3)
 #> # A tibble: 3 x 3
 #>   city       state zip  
 #>   <chr>      <chr> <chr>
-#> 1 BROWNSDALE MN    55918
-#> 2 SILVERDALE WA    98315
-#> 3 SCOTT      AR    72142
+#> 1 STELLA     MO    64867
+#> 2 SACRAMENTO CA    95894
+#> 3 DULUTH     MN    55814
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -173,18 +175,18 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
-#>   full   abb  
-#>   <chr>  <chr>
-#> 1 FORK   FRK  
-#> 2 MNTAIN MTN  
-#> 3 GREEN  GRN
+#>   full      abb  
+#>   <chr>     <chr>
+#> 1 ANNEX     ANX  
+#> 2 STRAVENUE STRA 
+#> 3 CIRCL     CIR
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   full       abb  
-#>   <chr>      <chr>
-#> 1 NEBRASKA   NE   
-#> 2 WASHINGTON WA   
-#> 3 UTAH       UT
+#>   full        abb  
+#>   <chr>       <chr>
+#> 1 ALABAMA     AL   
+#> 2 PALAU       PW   
+#> 3 MISSISSIPPI MS
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```
@@ -223,9 +225,13 @@ str_detect(c("1-800-555-1234", "(800) 555-1234", "8005551234 x567"), rx_phone)
 #> [1] TRUE TRUE TRUE
 ```
 
-## Code of Conduct
+-----
 
 Please note that the `campfin` project is released with a [Contributor
 Code of
 Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).
 By contributing to this project, you agree to abide by its terms.
+
+<!-- refs: start -->
+
+<!-- refs: end -->

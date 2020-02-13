@@ -19,10 +19,10 @@ options(width = 99)
 # campfin <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/campfin)](https://cran.r-project.org/package=campfin)
-[![Travis build status](https://travis-ci.org/irworkshop/campfin.svg?branch=master)](https://travis-ci.org/irworkshop/campfin)
-[![Codecov test coverage](https://codecov.io/gh/irworkshop/campfin/branch/master/graph/badge.svg)](https://codecov.io/gh/irworkshop/campfin?branch=master)
+[![Lifecycle: experimental][life_badge]][life_link]
+[![CRAN status][cran_badge]][cran_link]
+[![Travis build status][trav_badge]][trav_link]
+[![Codecov test coverage][cov_badge]][cov_link]
 <!-- badges: end -->
 
 ## Overview
@@ -38,10 +38,6 @@ The data focuses on people, organizations and locations. This package was
 created specifically to help with state-level campaign finance data, although
 the tools included are useful in general database exploration and normalization.
 
-[tap]: https://www.publicaccountability.org/
-[irw]: https://investigativereportingworkshop.org/
-[fin]: https://en.wikipedia.org/wiki/Campaign_finance
-
 ## Installation
 
 The package is not yet on [CRAN][cran] and must be installed from GitHub.
@@ -50,9 +46,6 @@ The package is not yet on [CRAN][cran] and must be installed from GitHub.
 # install.packages("remotes")
 remotes::install_github("irworkshop/campfin")
 ```
-
-[cran]: https://cran.r-project.org/
-[tidyverse]: https://www.tidyverse.org/
 
 ## Normalize
 
@@ -68,11 +61,6 @@ normalization.
 * `normal_state()` takes US states and returns a [2 digit abbreviation][abbs].
 * `normal_city()` takes cities and reduces inconsistencies.
 * `normal_phone()` consistently formats US telephone numbers.
-
-[txt]: https://en.wikipedia.org/wiki/Text_normalization
-[stringr]: https://github.com/tidyverse/stringr
-[zip]: https://en.wikipedia.org/wiki/ZIP_Code 
-[abbs]: https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations
 
 Please see the vignette on normalization for an example of how these functions
 are used to fix a wide variety of string inconsistencies and make campaign 
@@ -130,9 +118,6 @@ The included `valid_city` and `valid_zip` vectors are sorted, unique columns
 from the `zipcodes` data frame (although `valid_city` is being updated to
 include more common neighborhoods and census-designated places)
 
-[zip]: https://cran.r-project.org/src/contrib/Archive/zipcode/
-[civic]: https://boutell.com/zipcodes/
-
 ```{r geo_df, collapse=TRUE, warning=FALSE, message=FALSE, error=FALSE}
 # zipcode version
 data("zipcode")
@@ -147,11 +132,9 @@ class(zipcodes)
 ### `usps_*` and `valid_*`
 
 The `usps_*` data frames were scraped from the official United States Postal
-Service (USPS) 
-[Postal Addressing Standards](https://pe.usps.com/text/pub28/28apc_002.htm). 
-These data frames are designed to work with the abbreviation functionality of
-`normal_address()` and `normal_city()` to replace common abbreviations with
-their full equivalent.
+Service (USPS) [Postal Addressing Standards][pub]. These data frames are
+designed to work with the abbreviation functionality of `normal_address()` and
+`normal_city()` to replace common abbreviations with their full equivalent.
 
 `usps_city` is a curated subset of `usps_state`, whose full version appear at
 least once in the `valid_city` vector from `zipcodes`. The `valid_state` and
@@ -192,10 +175,32 @@ str_trunc(rx_phone, width = 80, side = "center")
 str_detect(c("1-800-555-1234", "(800) 555-1234", "8005551234 x567"), rx_phone)
 ```
 
-## Code of Conduct
-  
+*****
+
 Please note that the `campfin` project is released with a 
 [Contributor Code of Conduct][coc]. By contributing to this project, you agree
 to abide by its terms.
 
+<!-- refs: start -->
+[life_badge]: https://img.shields.io/badge/lifecycle-maturing-blue.svg
+[life_link]: https://www.tidyverse.org/lifecycle/#maturing
+[cran_badge]: https://www.r-pkg.org/badges/version/campfin
+[cran_link]: https://CRAN.R-project.org/package=campfin
+[trav_badge]: https://travis-ci.org/kiernann/campfin.svg?branch=master
+[trav_link]: https://travis-ci.org/kiernann/campfin
+[cov_badge]: https://img.shields.io/codecov/c/github/kiernann/campfin/master.svg
+[cov_link]: https://codecov.io/gh/kiernann/campfin?branch=master
+[tap]: https://www.publicaccountability.org/
+[irw]: https://investigativereportingworkshop.org/
+[fin]: https://en.wikipedia.org/wiki/Campaign_finance
+[cran]: https://cran.r-project.org/
+[tidyverse]: https://www.tidyverse.org/
+[txt]: https://en.wikipedia.org/wiki/Text_normalization
+[stringr]: https://github.com/tidyverse/stringr
+[zip]: https://en.wikipedia.org/wiki/ZIP_Code 
+[abbs]: https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations
+[zip]: https://cran.r-project.org/src/contrib/Archive/zipcode/
+[civic]: https://boutell.com/zipcodes/
+[pub]: https://pe.usps.com/text/pub28/28apc_002.htm
 [coc]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html
+<!-- refs: end -->
