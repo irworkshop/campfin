@@ -37,7 +37,7 @@
 "usps_street"
 
 #' @title USPS City Abbreviations
-#' @description A currated and edited subset of [usps_street] containing the
+#' @description A curated and edited subset of [usps_street] containing the
 #'   USPS abbreviations found in city names. Useful as the `geo_abbs` argument
 #'   of [normal_city()].
 #' @format A tibble with 154 rows of 2 variables:
@@ -65,7 +65,7 @@
 #' @title US State Names
 #' @description The `state` column of the `usps_state` tibble.
 #' @details Contains 12 more names than [datasets::state.name].
-#' @format A vectory of state names (length 62).
+#' @format A vector of state names (length 62).
 "valid_name"
 
 #' @title US State Abbreviations
@@ -127,7 +127,7 @@
 
 #' @title Example Vermont Contributions
 #' @description This randomly generated data frame shows some of the many
-#'   formatting problems politicans, journalists, and political scientists will
+#'   formatting problems politicians, journalists, and political scientists will
 #'   likely face when processing state level campaign finance data. Missing or
 #'   invalid values, duplicate rows, negative amounts, questionable dates, and
 #'   incredibly inconsistent string formatting. The functions in this package
@@ -150,6 +150,6 @@
 "vt_contribs"
 
 #' @title Dark Color Palette
-#' @description The Dark2 brewer color pallete.
+#' @description The Dark2 brewer color palette
 #' @format A named character vector of hex color codes (length 8).
 "dark2"

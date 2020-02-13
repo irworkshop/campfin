@@ -9,6 +9,6 @@
 dark2
 }
 \description{
-The Dark2 brewer color pallete.
+The Dark2 brewer color palette
 }
 \keyword{datasets}

@@ -10,7 +10,7 @@ prop_na(x)
 \item{x}{A vector to check.}
 }
 \value{
-The proprtion of values of \code{x} that are \code{NA}.
+The proportion of values of \code{x} that are \code{NA}.
 }
 \description{
 Find the proportion of values of \code{x} that are \code{NA}.

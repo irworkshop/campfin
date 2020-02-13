@@ -4,7 +4,7 @@
 \name{valid_name}
 \alias{valid_name}
 \title{US State Names}
-\format{A vectory of state names (length 62).}
+\format{A vector of state names (length 62).}
 \usage{
 valid_name
 }

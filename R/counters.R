@@ -172,7 +172,7 @@ count_na <- function(x) {
 #'
 #' @details `mean(is.na(x))`
 #' @param x A vector to check.
-#' @return The proprtion of values of `x` that are `NA`.
+#' @return The proportion of values of `x` that are `NA`.
 #' @family counting wrappers
 #' @examples
 #' prop_na(c("VT", "NH", NA, "ME"))
