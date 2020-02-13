@@ -43,9 +43,9 @@ use_diary <- function(st, type = c("contribs", "expends", "lobby"), author, auto
     stringr::str_replace_all("\\{ST\\}", ST) %>%
     stringr::str_replace_all("\\{stt\\}", stt) %>%
     stringr::str_replace_all("\\{Author\\}", author)
-  if (isFALSE(auto)) {
+  if (is.logical(auto) & !auto) {
     return(new_lines)
-  } else if (isTRUE(auto)) {
+  } else if (is.logical(auto) & auto) {
     dir <- paste(getwd(), st, type, "docs", sep = "/")
     fs::dir_create(dir)
   } else {
