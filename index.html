@@ -155,6 +155,7 @@
 <a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a></code></pre></div>
 <p>The campfin package contains a number of built in data frames and strings used to help wrangle campaign finance data.</p>
 <ul>
+<li><code>dark2</code></li>
 <li><code>extra_city</code></li>
 <li><code>invalid_city</code></li>
 <li><code>rx_phone</code></li>
@@ -185,10 +186,10 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># zipcode version</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"zipcode"</span>)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">sample_n</span>(zipcode, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;     zip         city state latitude longitude</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 54556     Prentice    WI 45.54942 -90.31571</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 41054        Mason    KY 38.59323 -84.57855</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 3 31096 Wrightsville    GA 32.71732 -82.68926</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;     zip             city state latitude longitude</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 1 15687       Stahlstown    PA 40.13466 -79.31493</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 44039 North Ridgeville    OH 41.38955 -82.00460</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 3 63742         Commerce    MO 37.15713 -89.44651</span></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/class.html">class</a></span>(zipcode)</a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; [1] "data.frame"</span></a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"></a>
@@ -197,9 +198,9 @@
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; # A tibble: 3 x 3</span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;   city       state zip  </span></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 1 BROWNSDALE MN    55918</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; 2 SILVERDALE WA    98315</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; 3 SCOTT      AR    72142</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 1 STELLA     MO    64867</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; 2 SACRAMENTO CA    95894</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; 3 DULUTH     MN    55814</span></a>
 <a class="sourceLine" id="cb3-19" data-line-number="19"><span class="kw"><a href="https://rdrr.io/r/base/class.html">class</a></span>(zipcodes)</a>
 <a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></a></code></pre></div>
 </div>
@@ -211,18 +212,18 @@
 <p><code>usps_city</code> is a curated subset of <code>usps_state</code>, whose full version appear at least once in the <code>valid_city</code> vector from <code>zipcodes</code>. The <code>valid_state</code> and <code>valid_name</code> vectors contain the columns from <code>usps_state</code> and include territories not found in R’s build in <code>state.abb</code> and <code>state.name</code> vectors.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">sample_n</span>(usps_street, <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 3 x 2</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;   full   abb  </span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1 FORK   FRK  </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2 MNTAIN MTN  </span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3 GREEN  GRN</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;   full      abb  </span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1 ANNEX     ANX  </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2 STRAVENUE STRA </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3 CIRCL     CIR</span></a>
 <a class="sourceLine" id="cb4-8" data-line-number="8"><span class="kw">sample_n</span>(usps_state, <span class="dv">3</span>)</a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; # A tibble: 3 x 2</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;   full       abb  </span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 1 NEBRASKA   NE   </span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; 2 WASHINGTON WA   </span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 3 UTAH       UT</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;   full        abb  </span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 1 ALABAMA     AL   </span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; 2 PALAU       PW   </span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 3 MISSISSIPPI MS</span></a>
 <a class="sourceLine" id="cb4-15" data-line-number="15"><span class="kw"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span>(valid_state, state.abb)</a>
 <a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"</span></a></code></pre></div>
 </div>
@@ -245,12 +246,11 @@
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; [1] "^(?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:\\(\\s*([2...(?:#|x\\.?|ext\\.?|extension)\\s*(\\d+))?$"</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">str_detect</span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"1-800-555-1234"</span>, <span class="st">"(800) 555-1234"</span>, <span class="st">"8005551234 x567"</span>), rx_phone)</a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; [1] TRUE TRUE TRUE</span></a></code></pre></div>
-</div>
-</div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<hr>
 <p>Please note that the <code>campfin</code> project is released with a <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<!-- refs: start -->
+<!-- refs: end -->
+</div>
 </div>
 </div>
   </div>
@@ -289,10 +289,10 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://cran.r-project.org/package=campfin"><img src="https://www.r-pkg.org/badges/version/campfin" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://travis-ci.org/irworkshop/campfin"><img src="https://travis-ci.org/irworkshop/campfin.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://codecov.io/gh/irworkshop/campfin?branch=master"><img src="https://codecov.io/gh/irworkshop/campfin/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=campfin"><img src="https://www.r-pkg.org/badges/version/campfin" alt="CRAN status"></a></li>
+<li><a href="https://travis-ci.org/kiernann/campfin"><img src="https://travis-ci.org/kiernann/campfin.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://codecov.io/gh/kiernann/campfin?branch=master"><img src="https://img.shields.io/codecov/c/github/kiernann/campfin/master.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 </div>
