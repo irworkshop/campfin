@@ -6,16 +6,18 @@
 #' @param st The USPS state abbreviation.
 #' @param type The type of data, one of "contribs", "expends", or "lobby".
 #' @param author The author name of the new diary.
-#' @param dir If `TRUE`, file is created in the correct working directory. If
-#'   not `TRUE`, pass a character directory to use.
+#' @param auto If `TRUE`, file is created in the correct working directory.
+#'   If `FALSE`, a plain character string is returned. If a directory name, the
+#'   file is automatically written to that directory.
 #' @return The file path of new diary, invisibly.
 #' @examples
+#' use_diary("VT", "contribs", "Kiernan Nicholls", FALSE)
 #' # use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
 #' @importFrom stringr str_to_upper str_to_lower str_sub str_replace_all str_to_title
 #' @importFrom readr read_lines write_lines
 #' @importFrom fs path
 #' @export
-use_diary <- function(st, type = c("contribs", "expends", "lobby"), author, dir = NULL) {
+use_diary <- function(st, type = c("contribs", "expends", "lobby"), author, auto = FALSE) {
   ST <- match.arg(st, campfin::valid_state)
   State <- campfin::valid_name[match(stringr::str_to_upper(st), campfin::valid_state)]
   State <- stringr::str_to_title(State)
@@ -41,9 +43,13 @@ use_diary <- function(st, type = c("contribs", "expends", "lobby"), author, dir 
     stringr::str_replace_all("\\{ST\\}", ST) %>%
     stringr::str_replace_all("\\{stt\\}", stt) %>%
     stringr::str_replace_all("\\{Author\\}", author)
-  if (is.null(dir)) {
+  if (isFALSE(auto)) {
+    return(new_lines)
+  } else if (isTRUE(auto)) {
     dir <- paste(getwd(), st, type, "docs", sep = "/")
     fs::dir_create(dir)
+  } else {
+    dir <- auto
   }
   file <- paste(st, type, "diary.Rmd", sep = "_")
   path <- fs::path(dir, file)
