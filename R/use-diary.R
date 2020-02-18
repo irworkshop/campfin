@@ -16,6 +16,7 @@
 #' @importFrom stringr str_to_upper str_to_lower str_sub str_replace_all str_to_title
 #' @importFrom readr read_lines write_lines
 #' @importFrom fs path
+#' @importFrom utils file.edit
 #' @export
 use_diary <- function(st, type = c("contribs", "expends", "lobby"), author, auto = FALSE) {
   ST <- match.arg(st, campfin::valid_state)
@@ -43,11 +44,13 @@ use_diary <- function(st, type = c("contribs", "expends", "lobby"), author, auto
     stringr::str_replace_all("\\{ST\\}", ST) %>%
     stringr::str_replace_all("\\{stt\\}", stt) %>%
     stringr::str_replace_all("\\{Author\\}", author)
-  if (is.logical(auto) & !auto) {
-    return(new_lines)
-  } else if (is.logical(auto) & auto) {
-    dir <- paste(getwd(), st, type, "docs", sep = "/")
-    fs::dir_create(dir)
+  if (is.logical(auto)) {
+    if (!auto) {
+      return(new_lines)
+    } else {
+      dir <- paste(getwd(), st, type, "docs", sep = "/")
+      fs::dir_create(dir)
+    }
   } else {
     dir <- auto
   }
