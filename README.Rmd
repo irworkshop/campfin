@@ -186,10 +186,10 @@ to abide by its terms.
 [life_link]: https://www.tidyverse.org/lifecycle/#maturing
 [cran_badge]: https://www.r-pkg.org/badges/version/campfin
 [cran_link]: https://CRAN.R-project.org/package=campfin
-[trav_badge]: https://travis-ci.org/kiernann/campfin.svg?branch=master
-[trav_link]: https://travis-ci.org/kiernann/campfin
-[cov_badge]: https://img.shields.io/codecov/c/github/kiernann/campfin/master.svg
-[cov_link]: https://codecov.io/gh/kiernann/campfin?branch=master
+[trav_badge]: https://travis-ci.org/irworkshop/campfin.svg?branch=master
+[trav_link]: https://travis-ci.org/irworkshop/campfin
+[cov_badge]: https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg
+[cov_link]: https://codecov.io/gh/irworkshop/campfin?branch=master
 [tap]: https://www.publicaccountability.org/
 [irw]: https://investigativereportingworkshop.org/
 [fin]: https://en.wikipedia.org/wiki/Campaign_finance

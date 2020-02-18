@@ -10,9 +10,9 @@ experimental](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https:/
 [![CRAN
 status](https://www.r-pkg.org/badges/version/campfin)](https://CRAN.R-project.org/package=campfin)
 [![Travis build
-status](https://travis-ci.org/kiernann/campfin.svg?branch=master)](https://travis-ci.org/kiernann/campfin)
+status](https://travis-ci.org/irworkshop/campfin.svg?branch=master)](https://travis-ci.org/irworkshop/campfin)
 [![Codecov test
-coverage](https://img.shields.io/codecov/c/github/kiernann/campfin/master.svg)](https://codecov.io/gh/kiernann/campfin?branch=master)
+coverage](https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg)](https://codecov.io/gh/irworkshop/campfin?branch=master)
 <!-- badges: end -->
 
 ## Overview
@@ -138,21 +138,21 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-#>     zip             city state latitude longitude
-#> 1 15687       Stahlstown    PA 40.13466 -79.31493
-#> 2 44039 North Ridgeville    OH 41.38955 -82.00460
-#> 3 63742         Commerce    MO 37.15713 -89.44651
+#>     zip          city state latitude  longitude
+#> 1 13656 La Fargeville    NY 44.19413  -75.95725
+#> 2 62966   Murphysboro    IL 37.77181  -89.33971
+#> 3 81081     Trinchera    CO 37.09625 -104.14826
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 3)
 #> # A tibble: 3 x 3
-#>   city       state zip  
-#>   <chr>      <chr> <chr>
-#> 1 STELLA     MO    64867
-#> 2 SACRAMENTO CA    95894
-#> 3 DULUTH     MN    55814
+#>   city        state zip  
+#>   <chr>       <chr> <chr>
+#> 1 HOWARD CITY MI    49329
+#> 2 WALL LAKE   IA    51466
+#> 3 SEWARD      PA    15954
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -175,18 +175,18 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
-#>   full      abb  
-#>   <chr>     <chr>
-#> 1 ANNEX     ANX  
-#> 2 STRAVENUE STRA 
-#> 3 CIRCL     CIR
+#>   full  abb  
+#>   <chr> <chr>
+#> 1 RIDGE RDG  
+#> 2 GROVE GRV  
+#> 3 SUMIT SMT
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   full        abb  
-#>   <chr>       <chr>
-#> 1 ALABAMA     AL   
-#> 2 PALAU       PW   
-#> 3 MISSISSIPPI MS
+#>   full         abb  
+#>   <chr>        <chr>
+#> 1 NEW JERSEY   NJ   
+#> 2 PENNSYLVANIA PA   
+#> 3 MISSISSIPPI  MS
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```
