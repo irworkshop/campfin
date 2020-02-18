@@ -1,3 +1,7 @@
+# campfin (development version)
+
+* `flag_dupes()` has an argument to flag both duplicates.
+
 # campfin 0.2.3
 
 * `flag_dupes()` now also calls `duplicated(fromLast = TRUE)` to capture all.
