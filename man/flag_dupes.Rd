@@ -4,7 +4,7 @@
 \alias{flag_dupes}
 \title{Flag Duplicate Rows With New Column}
 \usage{
-flag_dupes(data, ..., .check = TRUE)
+flag_dupes(data, ..., .check = TRUE, .both = TRUE)
 }
 \arguments{
 \item{data}{A data frame to flag.}
@@ -14,6 +14,8 @@ flag_dupes(data, ..., .check = TRUE)
 
 \item{.check}{Whether the resulting column should be summed and
 removed if empty.}
+
+\item{.both}{Whether to flag both duplicates or just subsequent.}
 }
 \value{
 A data frame with a new \code{dupe_flag} logical variable.
@@ -24,4 +26,5 @@ variable with \code{TRUE} values for any record duplicated more than once.
 }
 \examples{
 flag_dupes(iris, dplyr::everything())
+flag_dupes(iris, dplyr::everything(), .both = FALSE)
 }
