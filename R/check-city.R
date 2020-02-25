@@ -30,10 +30,6 @@
 #'   * `check_city_flag`: logical; whether the guessed city matches.
 #'   * `guess_city`: The legal city guessed by the API.
 #'   * `guess_place`: The generic locality guessed by the API.
-#' @examples
-#' # requires Google API key
-#' # check_city("WYOMISSING", "PA")
-#' # check_city("Waggaman", "LA", "70094", guess = TRUE)
 #' @seealso \url{http://code.google.com/apis/maps/documentation/geocoding/}
 #' @importFrom httr GET stop_for_status content
 #' @importFrom stringr str_c str_match

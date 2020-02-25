@@ -14,7 +14,7 @@
 #' @importFrom purrr map
 #' @importFrom dplyr mutate select
 #' @importFrom tibble enframe
-#' @importFrom rlang as_label
+#' @importFrom rlang as_label .data
 #' @export
 col_stats <- function(data, fun, print = TRUE) {
   if (class(fun) != "function") {

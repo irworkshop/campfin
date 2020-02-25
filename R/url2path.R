@@ -9,7 +9,7 @@
 #' @return The desired file path to a URL file.
 #' @importFrom fs as_fs_path
 #' @examples
-#' url2path("https://floridalobbyist.gov/reports/llob.txt", "~/Downloads")
+#' url2path("https://floridalobbyist.gov/reports/llob.txt", tempdir())
 #' @export
 url2path <- function(url, dir) {
   fs::path(dir, basename(url))

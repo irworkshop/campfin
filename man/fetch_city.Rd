@@ -25,10 +25,6 @@ is passed in into a single string. Then the function pulls the
 field of the result. Note that you will need to pass in your Google Maps
 Place API key with the \code{key} argument.
 }
-\examples{
-# Requires Google API key
-# fetch_city("4400 Mass Ave. DC")
-}
 \seealso{
 \url{http://code.google.com/apis/maps/documentation/geocoding/}
 

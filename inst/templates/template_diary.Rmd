@@ -513,10 +513,16 @@ clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
 ```
 
 ```{r clean_write}
-write_csv(
+{st}_file <- write_csv(
   x = {stt},
   path = path(clean_dir, "{st}_{type}_clean.csv"),
   na = ""
 )
+```
+
+## Encoding
+
+```{r check_encoding}
+Encoding({st}_file)
 ```
 

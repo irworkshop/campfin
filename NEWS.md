@@ -1,6 +1,8 @@
-# campfin (development version)
+# campfin 0.2.4
 
 * `flag_dupes()` has an argument to flag both duplicates.
+* Add encoding check to `use_diary().`
+* Improve documentation examples.
 
 # campfin 0.2.3
 

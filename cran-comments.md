@@ -13,5 +13,6 @@
 
 ## Resubmission
 
-* Commented out the examples in `fetch_city()` and `check_city()`.
-* Have `use_diary()` return string or use `tempdir()`. No automatic writing.
+* Removed the examples in `fetch_city()` and `check_city()`.
+* Use `tempdir()` in all example documentation, no writing is done.
+* Add <https:.....> tag to DESCRIPTION.

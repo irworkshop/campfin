@@ -1,7 +1,7 @@
 Type: Package
 Package: campfin
 Title: Help Wrangle Campaign Finance Data
-Version: 0.2.3.9000
+Version: 0.2.4
 Authors@R: 
     person(given = "Kiernan",
            family = "Nicholls",
@@ -10,7 +10,8 @@ Authors@R:
 Description: Explore and normalize American campaign finance
     data. Created by the Investigative Reporting Workshop to facilitate
     work on The Accountability Project, an effort to collect public data
-    into a central, standard database that is more easily searched.
+    into a central, standard database that is more easily searched
+    <https://publicaccountability.org/>.
 License: CC BY 4.0
 URL: https://github.com/irworkshop/campfin
 BugReports: https://github.com/irworkshop/campfin/issues

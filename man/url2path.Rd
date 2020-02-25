@@ -22,5 +22,5 @@ Useful in the \code{destfile} argument to \code{\link[=download.file]{download.f
 the same name as the URL's file name.
 }
 \examples{
-url2path("https://floridalobbyist.gov/reports/llob.txt", "~/Downloads")
+url2path("https://floridalobbyist.gov/reports/llob.txt", tempdir())
 }

@@ -13,9 +13,6 @@
 #'   will include all the fields from street address, city, state/province,
 #'   zipcode/postal code to country/regions. `NA_character_` is returned for
 #'   all errored API calls.
-#' @examples
-#' # Requires Google API key
-#' # fetch_city("4400 Mass Ave. DC")
 #' @seealso \url{http://code.google.com/apis/maps/documentation/geocoding/}
 #' @importFrom dplyr if_else
 #' @importFrom glue glue

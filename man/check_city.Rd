@@ -47,11 +47,6 @@ and compare it against the input to see if the input and output match up.
 Note that you will need to pass in your Google Maps Place API key to the
 \code{key} argument.
 }
-\examples{
-# requires Google API key
-# check_city("WYOMISSING", "PA")
-# check_city("Waggaman", "LA", "70094", guess = TRUE)
-}
 \seealso{
 \url{http://code.google.com/apis/maps/documentation/geocoding/}
 
