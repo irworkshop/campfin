@@ -56,8 +56,12 @@ use_diary <- function(st, type = c("contribs", "expends", "lobby"), author, auto
   }
   file <- paste(st, type, "diary.Rmd", sep = "_")
   path <- fs::path(dir, file)
-  readr::write_lines(new_lines, path = path)
-  message(path, " was created")
-  file.edit(path)
+  if (fs::file_exists(path)) {
+    stop(basename(path), " already exists")
+  } else {
+    readr::write_lines(new_lines, path = path)
+    message(path, " was created")
+    file.edit(path)
+  }
   invisible(path)
 }
