@@ -78,7 +78,7 @@ new template diary. Write the new template diary in the supplied directory." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -537,7 +537,7 @@ file is automatically written to that directory.</p></td>
 #&gt; [366] "    match_abb = is_abbrev(city_norm, city_match),"                               
 #&gt; [367] "    match_dist = str_dist(city_norm, city_match),"                               
 #&gt; [368] "    city_swap = if_else("                                                        
-#&gt; [369] "      condition = !is.na(match_dist) &amp; match_abb | match_dist == 1,"             
+#&gt; [369] "      condition = !is.na(match_dist) &amp; (match_abb | match_dist == 1),"           
 #&gt; [370] "      true = city_match,"                                                        
 #&gt; [371] "      false = city_norm"                                                         
 #&gt; [372] "    )"                                                                           
@@ -684,13 +684,19 @@ file is automatically written to that directory.</p></td>
 #&gt; [513] "```"                                                                             
 #&gt; [514] ""                                                                                
 #&gt; [515] "```{r clean_write}"                                                              
-#&gt; [516] "write_csv("                                                                      
+#&gt; [516] "vt_file &lt;- write_csv("                                                           
 #&gt; [517] "  x = vtc,"                                                                      
 #&gt; [518] "  path = path(clean_dir, \"vt_contribs_clean.csv\"),"                            
 #&gt; [519] "  na = \"\""                                                                     
 #&gt; [520] ")"                                                                               
 #&gt; [521] "```"                                                                             
-#&gt; [522] ""                                                                                </div><div class='input'># use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
+#&gt; [522] ""                                                                                
+#&gt; [523] "## Encoding"                                                                     
+#&gt; [524] ""                                                                                
+#&gt; [525] "```{r check_encoding}"                                                           
+#&gt; [526] "Encoding(vt_file)"                                                               
+#&gt; [527] "```"                                                                             
+#&gt; [528] ""                                                                                </div><div class='input'># use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
