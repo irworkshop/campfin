@@ -26,5 +26,5 @@ new template diary. Write the new template diary in the supplied directory.
 }
 \examples{
 use_diary("VT", "contribs", "Kiernan Nicholls", FALSE)
-# use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
+use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
 }

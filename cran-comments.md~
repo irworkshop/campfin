@@ -13,4 +13,6 @@
 
 ## Resubmission
 
+* Removed the examples in `fetch_city()` and `check_city()`.
+* Use `tempdir()` in all example documentation, no writing is done.
 * Use `tempdir()` in `use_diary()` example, un-comment the writing example.

@@ -12,7 +12,7 @@
 #' @return The file path of new diary, invisibly.
 #' @examples
 #' use_diary("VT", "contribs", "Kiernan Nicholls", FALSE)
-#' use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
+#' # use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
 #' @importFrom stringr str_to_upper str_to_lower str_sub str_replace_all str_to_title
 #' @importFrom readr read_lines write_lines
 #' @importFrom fs path
