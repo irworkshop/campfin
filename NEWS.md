@@ -1,3 +1,7 @@
+# campfin 0.2.5
+
+* Improve the handling of internal data and vignette.
+
 # campfin 0.2.4
 
 * `flag_dupes()` has an argument to flag both duplicates.
