@@ -13,4 +13,4 @@
 
 ## Resubmission
 
-* Use `tempdir()` in `use_diary()` example, un-comment the writing example.
+* Give vignette a more meaningful title.
