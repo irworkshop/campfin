@@ -17,5 +17,5 @@ Call \code{\link[httr:HEAD]{httr::HEAD()}} and return the number of bytes in the
 downloaded.
 }
 \examples{
-url_file_size("https://campaignfinance.cdn.sos.ca.gov/dbwebexport.zip")
+url_file_size("https://cran.r-project.org/bin/macosx/el-capitan/contrib/3.6/gluedown_1.0.2.tgz")
 }
