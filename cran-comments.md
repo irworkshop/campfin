@@ -13,4 +13,7 @@
 
 ## Resubmission
 
-* Give vignette a more meaningful title.
+* Gave vignette a more meaningful title.
+* Moved `vt_contribs` to `inst/extdata` for vignette.
+* The string in the `col_date_usa()` example is not a file path and should be
+just a string, not a file.

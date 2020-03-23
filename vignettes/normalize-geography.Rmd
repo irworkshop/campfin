@@ -46,10 +46,12 @@ consistent, confident, and programmatic manner.
 
 In this vignette, we will clean some extremely messy fake contribution data from
 a fictitious campaign in Vermont. This data is found in the `vt_contribs` data
-frame.
+frame found in the `inst/extdata` or `data-raw` directories.
 
 ```{r view_messy}
-print(vt_contribs)
+read_csv(
+  file = system.file("extdata", "vt_contribs.csv", package = "campfin")
+)
 ```
 
 What are some of the potential problems we can see in this data?
@@ -95,7 +97,7 @@ campaign finance data.
 
 ```{r read_messy}
 vt <- read_csv(
-  file = format_csv(vt_contribs),
+  file = system.file("extdata", "vt_contribs.csv", package = "campfin"),
   trim_ws = FALSE,
   col_types = cols(
     amount = col_number(),
