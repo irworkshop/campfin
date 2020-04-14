@@ -4,7 +4,9 @@
 \name{invalid_city}
 \alias{invalid_city}
 \title{Invalid City Names}
-\format{A vector of length 54.}
+\format{
+A vector of length 54.
+}
 \usage{
 invalid_city
 }

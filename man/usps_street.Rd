@@ -4,12 +4,14 @@
 \name{usps_street}
 \alias{usps_street}
 \title{USPS Street Abbreviations}
-\format{A tibble with 325 rows of 3 variables:
+\format{
+A tibble with 325 rows of 3 variables:
 \describe{
 \item{full}{Primary Street Suffix.}
 \item{abb}{Commonly Used Street Suffix or Abbreviation.}
 ...
-}}
+}
+}
 \source{
 USPS Appendix
 \href{https://pe.usps.com/text/pub28/28apc_002.htm}{C1 Street Abbreviations}.

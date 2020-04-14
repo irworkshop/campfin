@@ -4,7 +4,9 @@
 \name{valid_abb}
 \alias{valid_abb}
 \title{US State Abbreviations}
-\format{A vector of 2-digit abbreviations (length 62).}
+\format{
+A vector of 2-digit abbreviations (length 62).
+}
 \usage{
 valid_abb
 }

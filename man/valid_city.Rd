@@ -4,7 +4,9 @@
 \name{valid_city}
 \alias{valid_city}
 \title{US City Names}
-\format{A sorted vector of unique city names (length 19,083).}
+\format{
+A sorted vector of unique city names (length 19,083).
+}
 \usage{
 valid_city
 }

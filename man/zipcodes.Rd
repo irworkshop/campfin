@@ -4,13 +4,15 @@
 \name{zipcodes}
 \alias{zipcodes}
 \title{US City, state, and ZIP}
-\format{A tibble with 44,336 rows of 3 variables:
+\format{
+A tibble with 44,336 rows of 3 variables:
 \describe{
 \item{city}{Normalized city name.}
 \item{state}{Two letter state abbreviation.}
 \item{zip}{Five-digit ZIP Code.}
 ...
-}}
+}
+}
 \source{
 Daniel Coven's federalgovernmentzipcodes.us web site and the
 CivicSpace US ZIP Code Database written by Schuyler Erle

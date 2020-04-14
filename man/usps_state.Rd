@@ -4,12 +4,14 @@
 \name{usps_state}
 \alias{usps_state}
 \title{USPS State Abbreviations}
-\format{A tibble with 62 rows of 2 variables:
+\format{
+A tibble with 62 rows of 2 variables:
 \describe{
 \item{full}{Primary Street Suffix}
 \item{abb}{Commonly Used Street Suffix or Abbreviation}
 ...
-}}
+}
+}
 \source{
 USPS Appendix B,
 \href{https://pe.usps.com/text/pub28/28apb.htm}{Two–Letter State Abbreviations}

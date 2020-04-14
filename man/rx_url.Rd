@@ -4,7 +4,9 @@
 \name{rx_url}
 \alias{rx_url}
 \title{URL regex}
-\format{A character string (length 1).}
+\format{
+A character string (length 1).
+}
 \usage{
 rx_url
 }

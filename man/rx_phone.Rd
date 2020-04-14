@@ -4,7 +4,9 @@
 \name{rx_phone}
 \alias{rx_phone}
 \title{Phone number regex}
-\format{A character string (length 1).}
+\format{
+A character string (length 1).
+}
 \usage{
 rx_phone
 }

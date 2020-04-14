@@ -4,7 +4,9 @@
 \name{dark2}
 \alias{dark2}
 \title{Dark Color Palette}
-\format{A named character vector of hex color codes (length 8).}
+\format{
+A named character vector of hex color codes (length 8).
+}
 \usage{
 dark2
 }

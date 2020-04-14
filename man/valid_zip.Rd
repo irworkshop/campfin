@@ -4,7 +4,9 @@
 \name{valid_zip}
 \alias{valid_zip}
 \title{Almost all of the valid USA ZIP Codes}
-\format{A sorted vector of 5-digit ZIP codes (length 44334).}
+\format{
+A sorted vector of 5-digit ZIP codes (length 44334).
+}
 \usage{
 valid_zip
 }

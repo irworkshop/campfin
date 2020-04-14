@@ -4,7 +4,9 @@
 \name{rx_zip}
 \alias{rx_zip}
 \title{ZIP code regex}
-\format{A character string (length 1).}
+\format{
+A character string (length 1).
+}
 \usage{
 rx_zip
 }

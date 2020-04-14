@@ -4,7 +4,9 @@
 \name{extra_city}
 \alias{extra_city}
 \title{Additional US City Names}
-\format{A sorted vector of unique locality names (length 127).}
+\format{
+A sorted vector of unique locality names (length 127).
+}
 \usage{
 extra_city
 }
