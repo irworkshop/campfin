@@ -1,6 +1,7 @@
-# campfin 0.2.5
+# campfin 1.0.0
 
 * Improve the handling of internal data and vignette.
+* Create `read_names()`.
 
 # campfin 0.2.4
 
