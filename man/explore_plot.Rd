@@ -4,7 +4,15 @@
 \alias{explore_plot}
 \title{Create Basic Barplots}
 \usage{
-explore_plot(data, var, flip = FALSE, nbar = 8, palette = "Dark2", ...)
+explore_plot(
+  data,
+  var,
+  flip = FALSE,
+  nbar = 8,
+  palette = "Dark2",
+  na.rm = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{The data frame to explore.}
@@ -16,6 +24,8 @@ explore_plot(data, var, flip = FALSE, nbar = 8, palette = "Dark2", ...)
 \item{nbar}{The number of bars to plot. Always shows most common values.}
 
 \item{palette}{The color palette passed to [ggplot2::scale_fill_brewer().}
+
+\item{na.rm}{logical: Should \code{NA} values of \code{var} be removed?}
 
 \item{...}{Additional optional arguments passed to \code{\link[ggplot2:labs]{ggplot2::labs()}}.}
 }
