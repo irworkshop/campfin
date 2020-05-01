@@ -61,7 +61,9 @@ use_diary <- function(st, type = c("contribs", "expends", "lobby"), author, auto
   } else {
     readr::write_lines(new_lines, path = path)
     message(path, " was created")
-    file.edit(path)
+    if (requireNamespace("usethis", quietly = TRUE) & interactive()) {
+      usethis::edit_file(path)
+    }
   }
   invisible(path)
 }
