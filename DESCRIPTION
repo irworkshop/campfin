@@ -3,14 +3,18 @@ Package: campfin
 Title: Wrangle Campaign Finance Data
 Version: 1.0.0
 Authors@R: 
-    person(given = "Kiernan",
-           family = "Nicholls",
-           role = c("aut", "cre"),
-           email = "kiernann@protonmail.com")
+    c(person(given = "Kiernan",
+             family = "Nicholls",
+             role = c("aut", "cre", "cph"),
+             email = "kiernann@protonmail.com"),
+      person(given = "Schuyler",
+             family = "Erle",
+             role = "cph",
+             email = "schuyler@geocoder.us"))
 Description: Explore and normalize American campaign finance
     data. Created by the Investigative Reporting Workshop to facilitate
     work on The Accountability Project, an effort to collect public data
-    into a central, standard database that is more easily searched
+    into a central, standard database that is more easily searched:
     <https://publicaccountability.org/>.
 License: CC BY 4.0
 URL: https://github.com/irworkshop/campfin
