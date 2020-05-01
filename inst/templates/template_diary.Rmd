@@ -27,12 +27,14 @@ opts_chunk$set(
   fig.width = 10,
   dpi = 300
 )
-options(width = 99)
-set.seed(5)
+if (!interactive()) {
+  options(width = 99)
+  set.seed(5)
+}
 ```
 
 ```{r create_docs_dir, eval=FALSE, echo=FALSE, include=FALSE}
-fs::dir_create(here::here("{st}", "{type}", "docs"))
+doc_dir <- fs::dir_create(here::here("{st}", "{type}", "docs"))
 ```
 
 ## Project
@@ -78,15 +80,18 @@ pacman::p_load_gh("irworkshop/campfin")
 pacman::p_load(
   tidyverse, # data manipulation
   lubridate, # datetime strings
+  gluedown, # printing markdown
   magrittr, # pipe operators
-  janitor, # dataframe clean
+  janitor, # clean data frames
   refinr, # cluster and merge
   scales, # format strings
   knitr, # knit documents
   vroom, # read files fast
+  rvest, # html scraping
   glue, # combine strings
-  here, # relative storage
-  fs # search storage 
+  here, # relative paths
+  httr, # http requests
+  fs # local storage 
 )
 ```
 
@@ -131,9 +136,8 @@ download.file()
 ## Explore
 
 ```{r glimpse}
-head({stt})
+glimpse({stt})
 tail({stt})
-glimpse(sample_n({stt}, 20))
 ```
 
 ### Missing
@@ -145,6 +149,12 @@ col_stats({stt}, count_na)
 ```{r na_flag}
 {stt} <- {stt} %>% flag_na(date, last, amount, committee)
 sum({stt}$na_flag)
+```
+
+```{r na_view}
+{stt} %>% 
+  filter(na_flag) %>% 
+  select(date, last, amount, committee)
 ```
 
 ### Duplicates
@@ -195,6 +205,8 @@ mean({stt}$amount <= 0)
 ```
 
 #### Dates
+
+We can add the calendar year from `date` with `lubridate::year()`
 
 ```{r date_year}
 {stt} <- mutate({stt}, year = year(date))
@@ -432,6 +444,7 @@ progress <- progress_table(
   str_to_upper({stt}$city_raw),
   {stt}$city_norm,
   {stt}$city_swap,
+  {stt}$city_refine,
   compare = many_city
 ) %>% mutate(stage = as_factor(stage))
 kable(progress, digits = 3)
@@ -485,6 +498,9 @@ progress %>%
 
 ## Conclude
 
+Before exporting, we can remove the intermediary normalization columns and
+rename all added variables with the `_clean` suffix.
+
 ```{r clean_select}
 {stt} <- {stt} %>% 
   select(
@@ -492,7 +508,8 @@ progress %>%
     -city_swap,
     city_clean = city_refine
   ) %>% 
-  rename_all(~str_replace(., "_norm", "_clean"))
+  rename_all(~str_replace(., "_norm", "_clean")) %>% 
+  rename_all(~str_remove(., "_raw"))
 ```
 
 ```{r clean_glimpse}
@@ -502,27 +519,77 @@ glimpse(sample_n({stt}, 20))
 1. There are `r comma(nrow({stt}))` records in the database.
 1. There are `r comma(sum({stt}$dupe_flag))` duplicate records in the database.
 1. The range and distribution of `amount` and `date` seem reasonable.
-1. There are `r comma(sum({stt}$na_flag))` records missing ....
+1. There are `r comma(sum({stt}$na_flag))` records missing key variables.
 1. Consistency in geographic data has been improved with `campfin::normal_*()`.
 1. The 4-digit `year` variable has been created with `lubridate::year()`.
 
 ## Export
 
+Now the file can be saved on disk for upload to the Accountability server.
+
 ```{r clean_dir}
 clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
+clean_path <- path(clean_dir, "{st}_{type}_clean.csv")
+write_csv({stt}, clean_path, na = "")
+file_size(clean_path)
+guess_encoding(clean_path)
 ```
 
-```{r clean_write}
-{st}_file <- write_csv(
-  x = {stt},
-  path = path(clean_dir, "{st}_{type}_clean.csv"),
-  na = ""
+The encoding of the exported file should be UTF-8 or ASCII.
+
+```{r clean_encode}
+enc <- system2("file", args = paste("-i", clean_path), stdout = TRUE)
+str_replace_all(enc, clean_path, basename)
+```
+
+## Dictionary
+
+The following table describes the variables in our final exported file:
+
+```{r dict_make, echo=FALSE}
+dict_raw <- tibble(
+  var = md_code(names({stt})),
+  type = md_code(map_chr({stt}, typeof)),
+  def = c(
+    "Date contribution was made",
+    "Contribution amount or correction",
+    "Contributor name",
+    "Contributor unique ID",
+    "Contributor street address",
+    "Contributor secondary address",
+    "Contributor city name",
+    "Contributor state abbreviation",
+    "Contributor ZIP+4 code",
+    "Contributor occupation",
+    "Contributor employer name",
+    "Contributor type",
+    "Recipient committee name",
+    "Recipient unique ID",
+    "Contribution method",
+    "Recipient election or office sought",
+    "Flag for missing date, amount, or name",
+    "Flag for completely duplicated record",
+    "Calendar year of contribution date",
+    "Normalized combined street address",
+    "Normalized 5-digit ZIP code",
+    "Normalized 2-digit state abbreviation",
+    "Normalized city name"
+  )
 )
 ```
 
-## Encoding
+```{r dict_md, echo=FALSE}
+(dict_md <- kable(
+  x = dict_raw,
+  format = "markdown",
+  col.names = c("Column", "Type", "Definition")
+))
+```
 
-```{r check_encoding}
-Encoding({st}_file)
+```{r dict_write}
+write_lines(
+  x = c("# {State} {Type} Data Dictionary\n", dict_md),
+  path = here("{st}", "{type}", "{st}_{type}_dict.md"),
+)
 ```
 
