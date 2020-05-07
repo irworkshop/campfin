@@ -4,7 +4,7 @@
 \alias{use_diary}
 \title{Create a new template data diary}
 \usage{
-use_diary(st, type = c("contribs", "expends", "lobby"), author, auto = FALSE)
+use_diary(st, type, author, auto = FALSE)
 }
 \arguments{
 \item{st}{The USPS state abbreviation.}
