@@ -65,10 +65,9 @@ abbrev_state <- function(full) {
     stop("full state name must be a character vector")
   }
   full <- full %>%
-    str_trim() %>%
-    str_squish() %>%
-    str_remove_all("^A-z") %>%
-    str_to_upper()
+    stringr::str_squish() %>%
+    stringr::str_remove_all("^A-z") %>%
+    stringr::str_to_upper()
   abbrev_full(full, campfin::valid_name, campfin::valid_state) %>%
     stringr::str_replace("^WEST VA$", "WV")
 }

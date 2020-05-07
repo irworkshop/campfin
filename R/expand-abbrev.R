@@ -62,7 +62,6 @@ expand_state <- function(abb) {
     stop("abbreviated state name must be a character vector")
   }
   abb <- abb %>%
-    str_trim() %>%
     str_squish() %>%
     str_remove_all("^A-z") %>%
     str_to_upper()

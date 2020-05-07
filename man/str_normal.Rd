@@ -4,14 +4,7 @@
 \alias{str_normal}
 \title{Normalize a character string}
 \usage{
-str_normal(
-  x,
-  case = TRUE,
-  punct = TRUE,
-  quote = TRUE,
-  trim = TRUE,
-  squish = TRUE
-)
+str_normal(x, case = TRUE, punct = TRUE, quote = TRUE, squish = TRUE)
 }
 \arguments{
 \item{x}{A character string to normalize.}
@@ -21,8 +14,6 @@ str_normal(
 \item{punct}{logical; whether \code{\link[stringr:str_replace_all]{stringr::str_replace_all()}} should be called on punctuation.}
 
 \item{quote}{logical; whether \code{\link[stringr:str_replace_all]{stringr::str_replace_all()}} should be called on double quotes.}
-
-\item{trim}{logical; whether \code{\link[stringr:str_trim]{stringr::str_trim()}} should be called.}
 
 \item{squish}{logical; whether \code{\link[stringr:str_squish]{stringr::str_squish()}} should be called.}
 }

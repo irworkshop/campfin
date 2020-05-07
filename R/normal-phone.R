@@ -25,7 +25,7 @@ normal_phone <- function(number, format = "(%a) %e-%l", na_bad = FALSE, convert 
     stop("Phone number is not a vector.")
   }
   number <- as.character(number)
-  number <- str_trim(str_squish(number), "both")
+  number <- stringr::str_squish(number)
   has_letters <- stringr::str_detect(number, "[A-z&&[^x]]")
   first_digit <- stringr::str_sub(number, end = 1L)
   ends_letters <- stringr::str_detect(first_digit, "[:alpha:]", negate = TRUE)
