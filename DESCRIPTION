@@ -41,7 +41,8 @@ Suggests:
     knitr (>= 1.23),
     rmarkdown (>= 1.14),
     spelling (>= 2.1),
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    usethis (>= 1.6.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
