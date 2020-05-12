@@ -532,14 +532,7 @@ clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
 clean_path <- path(clean_dir, "{st}_{type}_clean.csv")
 write_csv({stt}, clean_path, na = "")
 file_size(clean_path)
-guess_encoding(clean_path)
-```
-
-The encoding of the exported file should be UTF-8 or ASCII.
-
-```{r clean_encode}
-enc <- system2("file", args = paste("-i", clean_path), stdout = TRUE)
-str_replace_all(enc, clean_path, basename)
+file_encoding(clean_path)
 ```
 
 ## Dictionary
