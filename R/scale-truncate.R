@@ -9,5 +9,5 @@
 #' @importFrom stringr str_trunc
 #' @export
 scale_x_truncate <- function(n = 20, ...) {
-   ggplot2::scale_x_discrete(..., label = function(x) stringr::str_trunc(x, 20))
+   ggplot2::scale_x_discrete(..., label = function(x) stringr::str_trunc(x, n))
 }
