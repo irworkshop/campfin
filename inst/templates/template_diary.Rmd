@@ -113,9 +113,7 @@ here::here()
 
 ## Data
 
-## Import
-
-### Download
+## Download
 
 ```{r raw_dir}
 raw_dir <- dir_create(here("{st}", "{type}", "data", "raw"))
@@ -125,7 +123,7 @@ raw_dir <- dir_create(here("{st}", "{type}", "data", "raw"))
 download.file()
 ```
 
-### Read
+## Read
 
 ```{r raw_read}
 {stt} <- read_delim(
@@ -172,13 +170,15 @@ sum({stt}$dupe_flag)
 
 ### Categorical
 
-```{r n_distinct}
+```{r distinct_count}
 col_stats({stt}, n_distinct)
 ```
 
-### Continuous
+```{r distinct_plots}
+explore_plot({stt}, type)
+```
 
-#### Amounts
+### Amounts
 
 ```{r ammount_summary}
 summary({stt}$amount)
@@ -204,7 +204,7 @@ mean({stt}$amount <= 0)
   )
 ```
 
-#### Dates
+### Dates
 
 We can add the calendar year from `date` with `lubridate::year()`
 
