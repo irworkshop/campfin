@@ -8,6 +8,8 @@ path.abbrev(path, dir = here::here())
 }
 \arguments{
 \item{path}{Character vector containing one or more full paths.}
+
+\item{dir}{The directory to replace with \code{~}. Defaults to \code{\link[here:here]{here::here()}}.}
 }
 \value{
 Abbreviated file paths.
@@ -17,5 +19,6 @@ This is an inverse of \code{\link[=path.expand]{path.expand()}}, which replaces 
 project directory with a tilde.
 }
 \examples{
+print(here::here())
 path.abbrev(here::here("test"))
 }

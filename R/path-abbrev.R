@@ -4,6 +4,7 @@
 #' project directory with a tilde.
 #'
 #' @param path Character vector containing one or more full paths.
+#' @param dir The directory to replace with `~`. Defaults to [here::here()].
 #' @return Abbreviated file paths.
 #' @examples
 #' print(here::here())
