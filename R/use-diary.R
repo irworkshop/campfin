@@ -19,8 +19,10 @@
 #' @importFrom utils file.edit
 #' @export
 use_diary <- function(st, type, author, auto = FALSE) {
-  ST <- match.arg(st, campfin::valid_state)
-  State <- campfin::valid_name[match(stringr::str_to_upper(st), campfin::valid_state)]
+  more_abbs <- c(campfin::valid_state, "US")
+  ST <- match.arg(st, more_abbs)
+  more_names <- c(campfin::valid_name, "United States")
+  State <- more_names[match(stringr::str_to_upper(st), more_abbs)]
   State <- stringr::str_to_title(State)
   STATE <- stringr::str_to_upper(State)
   st <- stringr::str_to_lower(ST)
