@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make a File Path from a URL — url2path • campfin</title>
+<title>Abbreviate a file path — path.abbrev • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Make a File Path from a URL — url2path" />
-<meta property="og:description" content="Combine the basename() of a file URL with a directory path." />
+<meta property="og:title" content="Abbreviate a file path — path.abbrev" />
+<meta property="og:description" content="This is an inverse of path.expand(), which replaces the home directory or
+project directory with a tilde." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -131,40 +132,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make a File Path from a URL</h1>
-    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/url2path.R'><code>R/url2path.R</code></a></small>
-    <div class="hidden name"><code>url2path.Rd</code></div>
+    <h1>Abbreviate a file path</h1>
+    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/path-abbrev.R'><code>R/path-abbrev.R</code></a></small>
+    <div class="hidden name"><code>path.abbrev.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Combine the <code><a href='https://rdrr.io/r/base/basename.html'>basename()</a></code> of a file URL with a directory path.</p>
+    <p>This is an inverse of <code><a href='https://rdrr.io/r/base/path.expand.html'>path.expand()</a></code>, which replaces the home directory or
+project directory with a tilde.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>url2path</span>(<span class='no'>url</span>, <span class='no'>dir</span>)</pre>
+    <pre class="usage"><span class='fu'>path.abbrev</span>(<span class='no'>path</span>, <span class='kw'>dir</span> <span class='kw'>=</span> <span class='kw pkg'>here</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/here/man/here.html'>here</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>url</th>
-      <td><p>The URL of a file to download.</p></td>
+      <th>path</th>
+      <td><p>Character vector containing one or more full paths.</p></td>
     </tr>
     <tr>
       <th>dir</th>
-      <td><p>The directory where the file will be downloaded.</p></td>
+      <td><p>The directory to replace with <code>~</code>. Defaults to <code><a href='https://rdrr.io/pkg/here/man/here.html'>here::here()</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The desired file path to a URL file.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Useful in the <code>destfile</code> argument to <code><a href='https://rdrr.io/r/utils/download.file.html'>download.file()</a></code> to save a file with
-the same name as the URL's file name.</p>
+    <p>Abbreviated file paths.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>url2path</span>(<span class='st'>"https://floridalobbyist.gov/reports/llob.txt"</span>, <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>())</div><div class='output co'>#&gt; /tmp/Rtmp9Wj4wz/llob.txt</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw pkg'>here</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/here/man/here.html'>here</a></span>())</div><div class='output co'>#&gt; [1] "/home/travis/build/irworkshop/campfin"</div><div class='input'><span class='fu'>path.abbrev</span>(<span class='kw pkg'>here</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/here/man/here.html'>here</a></span>(<span class='st'>"test"</span>))</div><div class='output co'>#&gt; [1] "~/test"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
