@@ -4,12 +4,14 @@
 \alias{add_prop}
 \title{Add proportions}
 \usage{
-add_prop(.data, n)
+add_prop(.data, n, sum = FALSE)
 }
 \arguments{
 \item{.data}{A data frame with a count column.}
 
 \item{n}{The column name with a count, usually \code{n} from \code{\link[dplyr:count]{dplyr::count()}}.}
+
+\item{sum}{Should \code{\link[=cumsum]{cumsum()}} be called on the new \code{p} column.}
 }
 \value{
 A data frame with the new column \code{p}.
