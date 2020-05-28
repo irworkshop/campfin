@@ -535,6 +535,20 @@ file_size(clean_path)
 file_encoding(clean_path)
 ```
 
+## Upload
+
+Using the duckr R package, we can wrap around the [duck] commnand line tool to
+upload the file to the IRW S3 server.
+
+```{r clean_upload}
+# remotes::install_github("kiernann/duckr")
+s3_dir <- "s3:/publicaccountability/csv/"
+s3_path <- path(s3_dir, basename(clean_path))
+if (require(duckr)) {
+  duckr::duck_upload(clean_path, s3_path)
+}
+```
+
 ## Dictionary
 
 The following table describes the variables in our final exported file:
@@ -585,4 +599,3 @@ write_lines(
   path = here("{st}", "{type}", "{st}_{type}_dict.md"),
 )
 ```
-
