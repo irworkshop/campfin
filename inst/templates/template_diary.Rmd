@@ -197,7 +197,6 @@ mean({stt}$amount <= 0)
   ) +
   labs(
     title = "{State} {Type} Amount Distribution",
-    subtitle = "from 2000 to 2019",
     caption = "Source: {source}",
     x = "Amount",
     y = "Count"
@@ -392,8 +391,8 @@ expected value, we can confidently swap those two.
 
 #### Refine
 
-The [OpenRefine] algorithms can be used to group similar strings and replace the
-less common versions with their most common counterpart. This can greatly 
+The [OpenRefine][or] algorithms can be used to group similar strings and replace
+the less common versions with their most common counterpart. This can greatly
 reduce inconsistency, but with low confidence; we will only keep any refined
 strings that have a valid city/state/zip combination.
 
@@ -537,10 +536,13 @@ file_encoding(clean_path)
 
 ## Upload
 
-Using the duckr R package, we can wrap around the [duck] commnand line tool to
-upload the file to the IRW S3 server.
+Using the [duckr] R package, we can wrap around the [duck] commnand line tool to
+upload the file to the IRW server.
 
-```{r clean_upload}
+[duckr]: https://github.com/kiernann/duckr
+[duck]: https://duck.sh/
+
+```{r clean_upload, eval=FALSE}
 # remotes::install_github("kiernann/duckr")
 s3_dir <- "s3:/publicaccountability/csv/"
 s3_path <- path(s3_dir, basename(clean_path))
