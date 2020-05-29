@@ -293,13 +293,12 @@
 <p>Our <code>valid_city</code> vector contains many city names, but far less than exist in the country, especially when you account for neighborhoods that aren’t <em>really</em> cities, but shouldn’t be changed (some of these are contained in our curated <code>extra_city</code> vector).</p>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="no">valid_city</span>)
 <span class="co">#&gt; [1] 19083</span>
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="no">valid_city</span>, <span class="fl">6</span>)
-<span class="co">#&gt; [1] "ALMYRA"       "REVERE"       "SHARON GROVE" "ISLESFORD"    "RACINE"      </span>
-<span class="co">#&gt; [6] "WEYERS CAVE"</span>
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample</a></span>(<span class="no">extra_city</span>, <span class="fl">6</span>)
-<span class="co">#&gt; [1] "PHILLIPS RANCH"          "SHEATOWN"               </span>
-<span class="co">#&gt; [3] "NORTH ABINGTON TOWNSHIP" "WHITEFISH BAY"          </span>
-<span class="co">#&gt; [5] "AVENTURA"                "GRACETON"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="no">valid_city</span>, <span class="fl">6</span>)
+<span class="co">#&gt; [1] "STUYVESANT" "BRADY LAKE" "SEALY"      "LACEY"      "AMBOY"     </span>
+<span class="co">#&gt; [6] "LOGAN"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="no">extra_city</span>, <span class="fl">6</span>)
+<span class="co">#&gt; [1] "EAST BANGOR"        "WILKINSBURG"        "MOYLAN ROSE VALLEY"</span>
+<span class="co">#&gt; [4] "BELVILLE"           "VALLEY GRANDE"      "BRIGHTON TOWNSHIP"</span>
 <span class="co"># combine both vectors</span>
 <span class="no">many_city</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">valid_city</span>, <span class="no">extra_city</span>)</pre></body></html></div>
 <p>Still, checking against this list is a good way to check for values that need additional attention.</p>
@@ -333,9 +332,9 @@
 <span class="co">#&gt; 3 10    SA         TX    78202 FALSE SAN ANTONIO          9 TRUE</span></pre></body></html></div>
 <p>Here’s what this process would look like when employed on an entire data frame. It’s important to ensure that the number of rows in our campaign finance data is kept consistent throughout the wrangling process.</p>
 <div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">vt</span> <span class="kw">&lt;-</span> <span class="no">vt</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="kw">city_raw</span> <span class="kw">=</span> <span class="no">city</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(<span class="no">zipcodes</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="kw">city_match</span> <span class="kw">=</span> <span class="no">city</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span>(<span class="kw">city_raw</span> <span class="kw">=</span> <span class="no">city</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span>(<span class="no">zipcodes</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span>(<span class="kw">city_match</span> <span class="kw">=</span> <span class="no">city</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
     <span class="kw">match_dist</span> <span class="kw">=</span> <span class="fu"><a href="../reference/str_dist.html">str_dist</a></span>(<span class="no">city_raw</span>, <span class="no">city_match</span>),
     <span class="kw">match_abb</span> <span class="kw">=</span> <span class="fu"><a href="../reference/is_abbrev.html">is_abbrev</a></span>(<span class="no">city_raw</span>, <span class="no">city_match</span>),

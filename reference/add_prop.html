@@ -137,10 +137,10 @@
     </div>
 
     <div class="ref-description">
-    <p>Use <code><a href='https://rdrr.io/r/base/proportions.html'>prop.table()</a></code> to add a proportion column to a <code><a href='https://dplyr.tidyverse.org/reference/tally.html'>dplyr::count()</a></code> tibble.</p>
+    <p>Use <code><a href='https://rdrr.io/r/base/proportions.html'>prop.table()</a></code> to add a proportion column to a <code><a href='https://dplyr.tidyverse.org/reference/count.html'>dplyr::count()</a></code> tibble.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_prop</span>(<span class='no'>.data</span>, <span class='no'>n</span>)</pre>
+    <pre class="usage"><span class='fu'>add_prop</span>(<span class='no'>.data</span>, <span class='no'>n</span>, <span class='kw'>sum</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,7 +151,11 @@
     </tr>
     <tr>
       <th>n</th>
-      <td><p>The column name with a count, usually <code>n</code> from <code><a href='https://dplyr.tidyverse.org/reference/tally.html'>dplyr::count()</a></code>.</p></td>
+      <td><p>The column name with a count, usually <code>n</code> from <code><a href='https://dplyr.tidyverse.org/reference/count.html'>dplyr::count()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>sum</th>
+      <td><p>Should <code><a href='https://rdrr.io/r/base/cumsum.html'>cumsum()</a></code> be called on the new <code>p</code> column.</p></td>
     </tr>
     </table>
 
@@ -163,7 +167,7 @@
     <p><code><a href='https://rdrr.io/r/base/mean.html'>mean(x %in% y)</a></code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>add_prop</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>, <span class='no'>cut</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
+    <pre class="examples"><div class='input'><span class='fu'>add_prop</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>, <span class='no'>cut</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 3
 #&gt;   cut           n      p
 #&gt;   &lt;ord&gt;     &lt;int&gt;  &lt;dbl&gt;
 #&gt; 1 Fair       1610 0.0298
