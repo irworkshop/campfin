@@ -26,10 +26,11 @@ use_diary <- function(st, type, author, auto = FALSE) {
   State <- stringr::str_to_title(State)
   STATE <- stringr::str_to_upper(State)
   st <- stringr::str_to_lower(ST)
-  type_arg <- c("contribs", "expends", "lobby", "contracts")
+  type_arg <- c("contribs", "expends", "lobby", "contracts", "salary")
   stt <- paste0(st, stringr::str_sub(type, end = 1))
   type <- match.arg(type, type_arg)
-  Type <- c("Contracts", "Expenditures", "Lobbyists", "Contracts")[match(type, type_arg)]
+  all_type <- c("Contracts", "Expenditures", "Lobbyists", "Contracts", "Salary")
+  Type <- all_type[match(type, type_arg)]
   temp <- system.file("templates", "template_diary.Rmd", package = "campfin")
   lines <- readr::read_lines(temp)
   new_lines <- lines %>%
