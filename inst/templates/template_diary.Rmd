@@ -320,7 +320,7 @@ Valid two digit state abbreviations can be made using the
 ```{r state_view}
 {stt} %>% 
   filter(state != state_norm) %>% 
-  count(state, sort = TRUE)
+  count(state, state_norm, sort = TRUE)
 ```
 
 ```{r state_progress}
@@ -512,7 +512,7 @@ rename all added variables with the `_clean` suffix.
 ```
 
 ```{r clean_glimpse}
-glimpse(sample_n({stt}, 20))
+glimpse(sample_n({stt}, 50))
 ```
 
 1. There are `r comma(nrow({stt}))` records in the database.
@@ -531,12 +531,13 @@ clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
 clean_path <- path(clean_dir, "{st}_{type}_clean.csv")
 write_csv({stt}, clean_path, na = "")
 file_size(clean_path)
-file_encoding(clean_path)
+file_encoding(clean_path) %>% 
+  mutate(across(path, path.abbrev))
 ```
 
 ## Upload
 
-Using the [duckr] R package, we can wrap around the [duck] commnand line tool to
+Using the [duckr] R package, we can wrap around the [duck] command line tool to
 upload the file to the IRW server.
 
 [duckr]: https://github.com/kiernann/duckr
