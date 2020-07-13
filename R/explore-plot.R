@@ -11,7 +11,6 @@
 #' @param nbar The number of bars to plot. Always shows most common values.
 #' @param palette The color palette passed to [ggplot2::scale_fill_brewer().
 #' @param na.rm logical: Should `NA` values of `var` be removed?
-#' @param ... Additional optional arguments passed to [ggplot2::labs()].
 #' @return A `ggplot` barplot object. Can then be combined with other `ggplot`
 #'   layers with `+` to customize.
 #' @examples
@@ -20,9 +19,7 @@
 #' @importFrom ggplot2 ggplot geom_col scale_fill_brewer scale_y_continuous aes
 #' @importFrom stringr str_to_title str_replace_all
 #' @export
-explore_plot <- function(data, var, flip = FALSE, nbar = 8, palette = "Dark2", na.rm = TRUE, ...) {
-  var_string <- deparse(substitute(var))
-  title_var <- stringr::str_to_title(stringr::str_replace_all(var_string, "_|-|\\.", " "))
+explore_plot <- function(data, var, nbar = 8, palette = "Dark2", na.rm = TRUE) {
   if (na.rm) {
     data <- dplyr::filter(data, !is.na({{ var }}))
   }
@@ -34,14 +31,5 @@ explore_plot <- function(data, var, flip = FALSE, nbar = 8, palette = "Dark2", n
     ggplot2::geom_col(ggplot2::aes(fill = {{ var }})) +
     ggplot2::scale_fill_brewer(palette = palette, guide = FALSE) +
     ggplot2::scale_y_continuous(labels = scales::percent) +
-    ggplot2::labs(
-      x = title_var,
-      y = "Percent",
-      ...
-    )
-  if (flip) {
-    base_plot + ggplot2::coord_flip()
-  } else {
-    base_plot
-  }
+    ggplot2::labs(y = "Percent")
 }

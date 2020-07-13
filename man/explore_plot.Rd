@@ -4,22 +4,12 @@
 \alias{explore_plot}
 \title{Create Basic Barplots}
 \usage{
-explore_plot(
-  data,
-  var,
-  flip = FALSE,
-  nbar = 8,
-  palette = "Dark2",
-  na.rm = TRUE,
-  ...
-)
+explore_plot(data, var, nbar = 8, palette = "Dark2", na.rm = TRUE)
 }
 \arguments{
 \item{data}{The data frame to explore.}
 
 \item{var}{A variable to plot.}
-
-\item{flip}{logical; Whether plot should be flipped horizontally.}
 
 \item{nbar}{The number of bars to plot. Always shows most common values.}
 
@@ -27,7 +17,7 @@ explore_plot(
 
 \item{na.rm}{logical: Should \code{NA} values of \code{var} be removed?}
 
-\item{...}{Additional optional arguments passed to \code{\link[ggplot2:labs]{ggplot2::labs()}}.}
+\item{flip}{logical; Whether plot should be flipped horizontally.}
 }
 \value{
 A \code{ggplot} barplot object. Can then be combined with other \code{ggplot}
