@@ -7,7 +7,6 @@
 #'
 #' @param data The data frame to explore.
 #' @param var A variable to plot.
-#' @param flip logical; Whether plot should be flipped horizontally.
 #' @param nbar The number of bars to plot. Always shows most common values.
 #' @param palette The color palette passed to [ggplot2::scale_fill_brewer().
 #' @param na.rm logical: Should `NA` values of `var` be removed?
@@ -20,10 +19,11 @@
 #' @importFrom stringr str_to_title str_replace_all
 #' @export
 explore_plot <- function(data, var, nbar = 8, palette = "Dark2", na.rm = TRUE) {
+  var_string <- deparse(substitute(var))
   if (na.rm) {
     data <- dplyr::filter(data, !is.na({{ var }}))
   }
-  base_plot <- data %>%
+  data %>%
     dplyr::count({{ var }}, sort = TRUE) %>%
     dplyr::mutate(p = .data$n/sum(.data$n)) %>%
     utils::head(nbar) %>%
@@ -31,5 +31,5 @@ explore_plot <- function(data, var, nbar = 8, palette = "Dark2", na.rm = TRUE) {
     ggplot2::geom_col(ggplot2::aes(fill = {{ var }})) +
     ggplot2::scale_fill_brewer(palette = palette, guide = FALSE) +
     ggplot2::scale_y_continuous(labels = scales::percent) +
-    ggplot2::labs(y = "Percent")
+    ggplot2::labs(y = "Percent", x = var_string)
 }

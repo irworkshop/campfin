@@ -16,8 +16,6 @@ explore_plot(data, var, nbar = 8, palette = "Dark2", na.rm = TRUE)
 \item{palette}{The color palette passed to [ggplot2::scale_fill_brewer().}
 
 \item{na.rm}{logical: Should \code{NA} values of \code{var} be removed?}
-
-\item{flip}{logical; Whether plot should be flipped horizontally.}
 }
 \value{
 A \code{ggplot} barplot object. Can then be combined with other \code{ggplot}
