@@ -28,9 +28,11 @@ use_diary <- function(st, type, author, auto = FALSE) {
   st <- stringr::str_to_lower(ST)
   type_arg <- c("contribs", "expends", "lobby", "contracts", "salary")
   stt <- paste0(st, stringr::str_sub(type, end = 1))
-  type <- match.arg(type, type_arg)
-  all_type <- c("Contracts", "Expenditures", "Lobbyists", "Contracts", "Salary")
-  Type <- all_type[match(type, type_arg)]
+  Type <- if (type %in% type_arg) {
+    c("Contracts", "Expenditures", "Lobbyists", "Contracts", "Salary")
+  } else {
+    stringr::str_to_sentence(type)
+  }
   temp <- system.file("templates", "template_diary.Rmd", package = "campfin")
   lines <- readr::read_lines(temp)
   new_lines <- lines %>%
