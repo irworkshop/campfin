@@ -16,7 +16,7 @@
 #' @return A normalized vector of the same length.
 #' @examples
 #' str_normal("   TestING 123   example_test.String   ")
-#' @importFrom stringr str_to_upper str_replace_all str_trim str_squish
+#' @importFrom stringr str_to_upper str_replace_all str_squish
 #' @family geographic normalization functions
 #' @export
 str_normal <- function(x, case = TRUE, punct = TRUE, quote = TRUE, squish = TRUE) {
@@ -24,9 +24,8 @@ str_normal <- function(x, case = TRUE, punct = TRUE, quote = TRUE, squish = TRUE
     x <- stringr::str_to_upper(x)
   }
   if (punct) {
-    x <- stringr::str_replace_all(x, "\\.", " ")
+    x <- stringr::str_replace_all(x, "[[:punct:]]", " ")
     x <- stringr::str_replace_all(x, "&", "AND")
-    x <- stringr::str_remove_all(x, "[[:punct:]]")
   }
   if (quote) {
     x <- stringr::str_replace_all(x, "\"", "\'")
