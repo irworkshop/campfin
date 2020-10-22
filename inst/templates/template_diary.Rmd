@@ -531,7 +531,7 @@ Now the file can be saved on disk for upload to the Accountability server.
 clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
 clean_path <- path(clean_dir, "{st}_{type}_clean.csv")
 write_csv({stt}, clean_path, na = "")
-file_size(clean_path)
+(clean_size <- file_size(clean_path))
 file_encoding(clean_path) %>% 
   mutate(across(path, path.abbrev))
 ```
@@ -548,13 +548,13 @@ if (!object_exists(s3_path, "publicaccountability")) {
     object = s3_path, 
     bucket = "publicaccountability",
     acl = "public-read",
-    show_progress = TRUE
+    show_progress = TRUE,
+    multipart = TRUE
   )
 }
-```
-
-```{r s3_size}
-as_fs_bytes(object_size(s3_path, "publicaccountability"))
+s3_head <- head_object(s3_path, "publicaccountability")
+(s3_size <- as_fs_bytes(attr(s3_head, "content-length")))
+unname(s3_size == clean_size)
 ```
 
 ## Dictionary
