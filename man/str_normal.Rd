@@ -9,13 +9,13 @@ str_normal(x, case = TRUE, punct = TRUE, quote = TRUE, squish = TRUE)
 \arguments{
 \item{x}{A character string to normalize.}
 
-\item{case}{logical; whether \code{\link[stringr:str_to_upper]{stringr::str_to_upper()}} should be called.}
+\item{case}{logical; whether \code{\link[stringr:case]{stringr::str_to_upper()}} should be called.}
 
-\item{punct}{logical; whether \code{\link[stringr:str_replace_all]{stringr::str_replace_all()}} should be called on punctuation.}
+\item{punct}{logical; whether \code{\link[stringr:str_replace]{stringr::str_replace_all()}} should be called on punctuation.}
 
-\item{quote}{logical; whether \code{\link[stringr:str_replace_all]{stringr::str_replace_all()}} should be called on double quotes.}
+\item{quote}{logical; whether \code{\link[stringr:str_replace]{stringr::str_replace_all()}} should be called on double quotes.}
 
-\item{squish}{logical; whether \code{\link[stringr:str_squish]{stringr::str_squish()}} should be called.}
+\item{squish}{logical; whether \code{\link[stringr:str_trim]{stringr::str_squish()}} should be called.}
 }
 \value{
 A normalized vector of the same length.

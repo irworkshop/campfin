@@ -10,7 +10,7 @@ flag_na(data, ...)
 \item{data}{A data frame to flag.}
 
 \item{...}{Arguments passed to \code{\link[dplyr:select]{dplyr::select()}} (needs to be at least
-\code{\link[dplyr:everything]{dplyr::everything()}}).}
+\code{\link[dplyr:reexports]{dplyr::everything()}}).}
 }
 \value{
 A data frame with a new \code{na_flag} logical variable.

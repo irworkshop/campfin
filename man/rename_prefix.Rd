@@ -20,7 +20,7 @@ detected and placed at the end of the new prefix? \code{TRUE} by default.}
 A data frame with new column names.
 }
 \description{
-When performing a \code{\link[dplyr:left_join]{dplyr::left_join()}}, the \code{suffix} argument allows the user
+When performing a \code{\link[dplyr:mutate-joins]{dplyr::left_join()}}, the \code{suffix} argument allows the user
 to replace the default \code{.x} and \code{.y} that are appended to column names shared
 between the two data frames. This function allows a user to convert those
 suffixes to \emph{prefixes}.

@@ -22,7 +22,7 @@ A \code{ggplot} barplot object. Can then be combined with other \code{ggplot}
 layers with \code{+} to customize.
 }
 \description{
-This function simply wraps around \code{\link[ggplot2:geom_col]{ggplot2::geom_col()}} to take a dataframe
+This function simply wraps around \code{\link[ggplot2:geom_bar]{ggplot2::geom_col()}} to take a dataframe
 and categorical variable to return a custom barplot \code{ggplot} object. The bars
 are arranged in descending order and are limited to the 8 most frequent
 values.

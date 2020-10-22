@@ -7,9 +7,9 @@
 str_dist(a, b, method = "osa", ...)
 }
 \arguments{
-\item{a}{\code{R} object (target); will be converted by \code{\link[base:as.character]{base::as.character()}}.}
+\item{a}{\code{R} object (target); will be converted by \code{\link[base:character]{base::as.character()}}.}
 
-\item{b}{\code{R} object (source); will be converted by \code{\link[base:as.character]{base::as.character()}}.}
+\item{b}{\code{R} object (source); will be converted by \code{\link[base:character]{base::as.character()}}.}
 
 \item{method}{Method for distance calculation. The default is "osa."}
 

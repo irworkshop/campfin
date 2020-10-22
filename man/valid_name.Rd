@@ -14,6 +14,6 @@ valid_name
 The \code{state} column of the \code{usps_state} tibble.
 }
 \details{
-Contains 12 more names than \link[datasets:state.name]{datasets::state.name}.
+Contains 12 more names than \link[datasets:state]{datasets::state.name}.
 }
 \keyword{datasets}

@@ -10,7 +10,7 @@ flag_dupes(data, ..., .check = TRUE, .both = TRUE)
 \item{data}{A data frame to flag.}
 
 \item{...}{Arguments passed to \code{\link[dplyr:select]{dplyr::select()}} (needs to be at least
-\code{\link[dplyr:everything]{dplyr::everything()}}).}
+\code{\link[dplyr:reexports]{dplyr::everything()}}).}
 
 \item{.check}{Whether the resulting column should be summed and
 removed if empty.}

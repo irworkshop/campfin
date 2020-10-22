@@ -24,7 +24,7 @@ The vector \code{x} with full words replaced with their abbreviations.
 }
 \description{
 Create or use a named vector (\code{c("full" = "abb")}) and pass it to
-\code{\link[stringr:str_replace_all]{stringr::str_replace_all()}}. The \code{full} argument is surrounded with \verb{\\\\b} to
+\code{\link[stringr:str_replace]{stringr::str_replace_all()}}. The \code{full} argument is surrounded with \verb{\\\\b} to
 capture only isolated intended full versions. Note that the built-in
 \link{usps_street}, \link{usps_city}, and \link{usps_state} dataframes have the columns
 reversed from what this function needs (to work by default with the

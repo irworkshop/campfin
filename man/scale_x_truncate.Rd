@@ -9,7 +9,7 @@ scale_x_truncate(n = 20, ...)
 \arguments{
 \item{n}{The maximum width of string passed to \code{\link[stringr:str_trunc]{stringr::str_trunc()}}.}
 
-\item{...}{Additional arguments passed to \code{\link[ggplot2:scale_x_discrete]{ggplot2::scale_x_discrete()}}.}
+\item{...}{Additional arguments passed to \code{\link[ggplot2:scale_discrete]{ggplot2::scale_x_discrete()}}.}
 }
 \description{
 Truncate the labels of a plot's discrete x-axis labels so that the text does

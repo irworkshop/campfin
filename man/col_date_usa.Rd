@@ -11,7 +11,7 @@ A \code{POSIXct} vector.
 }
 \description{
 Parse dates with format MM/DD/YYYY. This function simply wraps around
-\code{\link[readr:col_date]{readr::col_date()}} with the \code{format} argument set to \code{"\%m/\%d/\%Y"}. Most US
+\code{\link[readr:parse_datetime]{readr::col_date()}} with the \code{format} argument set to \code{"\%m/\%d/\%Y"}. Most US
 campaign finance datasets use this format.
 }
 \examples{

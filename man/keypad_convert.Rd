@@ -28,7 +28,7 @@ replaced without changing the rest of the string.
 }
 \details{
 When replacing letters, this function relies on the feature of
-\code{\link[stringr:str_replace_all]{stringr::str_replace_all()}} to work with named vectors (\code{c("A" = "2")}).
+\code{\link[stringr:str_replace]{stringr::str_replace_all()}} to work with named vectors (\code{c("A" = "2")}).
 }
 \examples{
 keypad_convert("1-800-CASH-NOW ext123")
