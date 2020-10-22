@@ -6,7 +6,7 @@ output:
   github_document: 
     df_print: tibble
     toc: true
-    toc_dept: 2
+    toc_dept: 3
 editor_options: 
   chunk_output_type: console
 ---
@@ -114,6 +114,8 @@ here::here()
 
 ## Data
 
+
+
 ## Download
 
 ```{r raw_dir}
@@ -134,6 +136,8 @@ download.file()
 
 ## Explore
 
+There are `r scales::comma(nrow({stt}))` rows of `r ncol({stt})` columns.
+
 ```{r glimpse}
 glimpse({stt})
 tail({stt})
@@ -141,9 +145,13 @@ tail({stt})
 
 ### Missing
 
+Columns vary in their degree of missing values.
+
 ```{r na_count}
 col_stats({stt}, count_na)
 ```
+
+We can flag any record missing a key variable needed to identify a transaction.
 
 ```{r na_flag}
 {stt} <- {stt} %>% flag_na(date, last, amount, committee)
@@ -157,6 +165,8 @@ sum({stt}$na_flag)
 ```
 
 ### Duplicates
+
+We can also flag any record completely duplicated across every column.
 
 ```{r dupe_flag}
 {stt} <- flag_dupes({stt}, -id)
@@ -175,7 +185,7 @@ sum({stt}$dupe_flag)
 col_stats({stt}, n_distinct)
 ```
 
-```{r distinct_plots}
+```{r distinct_plots, echo=FALSE}
 explore_plot({stt}, type)
 ```
 
@@ -184,6 +194,12 @@ explore_plot({stt}, type)
 ```{r amount_summary}
 summary({stt}$amount)
 mean({stt}$amount <= 0)
+```
+
+These are the records with the minimum and maximum amounts.
+
+```{r amount_minmax}
+glimpse({stt}[c(which.max({stt}$amount), which.min({stt}$amount)), ])
 ```
 
 ```{r hist_amount, echo=FALSE}
@@ -438,6 +454,9 @@ Then we can join the refined values back to the database.
 
 #### Progress
 
+Our goal for normalization was to increase the proportion of city values known
+to be valid and reduce the total distinct values by correcting misspellings.
+
 ```{r city_progress, echo=FALSE}
 many_city <- c(valid_city, extra_city)
 progress <- progress_table(
@@ -566,29 +585,7 @@ dict_raw <- tibble(
   var = md_code(names({stt})),
   type = md_code(map_chr({stt}, typeof)),
   def = c(
-    "Date contribution was made",
-    "Contribution amount or correction",
-    "Contributor name",
-    "Contributor unique ID",
-    "Contributor street address",
-    "Contributor secondary address",
-    "Contributor city name",
-    "Contributor state abbreviation",
-    "Contributor ZIP+4 code",
-    "Contributor occupation",
-    "Contributor employer name",
-    "Contributor type",
-    "Recipient committee name",
-    "Recipient unique ID",
-    "Contribution method",
-    "Recipient election or office sought",
-    "Flag for missing date, amount, or name",
-    "Flag for completely duplicated record",
-    "Calendar year of contribution date",
-    "Normalized combined street address",
-    "Normalized 5-digit ZIP code",
-    "Normalized 2-digit state abbreviation",
-    "Normalized city name"
+    ""
   )
 )
 ```
