@@ -6,7 +6,7 @@
 #' @importFrom stringr str_extract
 #' @export
 http_filename <- function(x) {
-  cd <- httr::headers(a)[["content-disposition"]]
+  cd <- httr::headers(x)[["content-disposition"]]
   if (is.null(cd)) {
     stop("no content disposition found")
   } else {
