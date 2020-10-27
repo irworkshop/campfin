@@ -100,8 +100,7 @@ The `/data-raw` directory contains the code used to create the objects.
 ### `zipcodes`
 
 The `zipcodes` (plural) data frame is a normalized version of the `zipcode`
-(singular) data frame from the archived [`zipcode`][zip] R package, which itself
-is a version of the [CivicSpace US ZIP Code Database][civic]:
+(singular) data frame from the archived [`zipcode`][zip] R package.
 
 > This database was composed using ZIP code gazetteers from the US Census Bureau
 from 1999 and 2000, augmented with additional ZIP code information The database
@@ -200,7 +199,6 @@ to abide by its terms.
 [zip]: https://en.wikipedia.org/wiki/ZIP_Code 
 [abbs]: https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations
 [zip]: https://cran.r-project.org/src/contrib/Archive/zipcode/
-[civic]: https://boutell.com/zipcodes/
 [pub]: https://pe.usps.com/text/pub28/28apc_002.htm
 [coc]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html
 <!-- refs: end -->

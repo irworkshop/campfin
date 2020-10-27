@@ -30,7 +30,7 @@
 #'   * `check_city_flag`: logical; whether the guessed city matches.
 #'   * `guess_city`: The legal city guessed by the API.
 #'   * `guess_place`: The generic locality guessed by the API.
-#' @seealso \url{http://code.google.com/apis/maps/documentation/geocoding/}
+#' @seealso \url{https://developers.google.com/maps/documentation/geocoding/overview?csw=1}
 #' @importFrom httr GET stop_for_status content
 #' @importFrom stringr str_c str_match
 #' @importFrom dplyr if_else

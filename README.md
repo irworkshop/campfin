@@ -104,7 +104,6 @@ strings used to help wrangle campaign finance data.
   - `valid_name`
   - `valid_state`
   - `valid_zip`
-  - `vt_contribs`
   - `zipcodes`
 
 The `/data-raw` directory contains the code used to create the objects.
@@ -114,8 +113,7 @@ The `/data-raw` directory contains the code used to create the objects.
 The `zipcodes` (plural) data frame is a normalized version of the
 `zipcode` (singular) data frame from the archived
 [`zipcode`](https://cran.r-project.org/src/contrib/Archive/zipcode/) R
-package, which itself is a version of the [CivicSpace US ZIP Code
-Database](https://boutell.com/zipcodes/):
+package.
 
 > This database was composed using ZIP code gazetteers from the US
 > Census Bureau from 1999 and 2000, augmented with additional ZIP code
@@ -138,21 +136,21 @@ places)
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-#>     zip          city state latitude  longitude
-#> 1 13656 La Fargeville    NY 44.19413  -75.95725
-#> 2 62966   Murphysboro    IL 37.77181  -89.33971
-#> 3 81081     Trinchera    CO 37.09625 -104.14826
+#>     zip      city state latitude  longitude
+#> 1 65479 Hartshorn    MO 37.35321  -91.63376
+#> 2 80257    Denver    CO 39.73875 -104.40835
+#> 3 06043    Bolton    CT 41.77126  -72.43669
 class(zipcode)
 #> [1] "data.frame"
 
 # campfin version
 sample_n(zipcodes, 3)
 #> # A tibble: 3 x 3
-#>   city        state zip  
-#>   <chr>       <chr> <chr>
-#> 1 HOWARD CITY MI    49329
-#> 2 WALL LAKE   IA    51466
-#> 3 SEWARD      PA    15954
+#>   city              state zip  
+#>   <chr>             <chr> <chr>
+#> 1 LINCOLN           NE    68508
+#> 2 GARRYOWEN         MT    59031
+#> 3 CAMBRIDGE SPRINGS PA    16403
 class(zipcodes)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
@@ -175,18 +173,18 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
-#>   full  abb  
-#>   <chr> <chr>
-#> 1 RIDGE RDG  
-#> 2 GROVE GRV  
-#> 3 SUMIT SMT
+#>   full    abb  
+#>   <chr>   <chr>
+#> 1 HIGHWAY HWY  
+#> 2 CENTER  CTR  
+#> 3 HOLWS   HOLW
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   full         abb  
-#>   <chr>        <chr>
-#> 1 NEW JERSEY   NJ   
-#> 2 PENNSYLVANIA PA   
-#> 3 MISSISSIPPI  MS
+#>   full      abb  
+#>   <chr>     <chr>
+#> 1 WISCONSIN WI   
+#> 2 NEW YORK  NY   
+#> 3 DELAWARE  DE
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```

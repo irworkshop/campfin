@@ -81,7 +81,7 @@ What are some of the potential problems we can see in this data?
     * Leading zeroes [dropped by Excel][excel] or some other program
 
 [zip4]: https://en.wikipedia.org/wiki/ZIP_Code#ZIP+4 "zip4"
-[excel]: https://support.office.com/en-us/article/display-numbers-as-postal-codes-61b55c9f-6fe3-4e54-96ca-9e85c38a5a1d "excel"
+[excel]: https://support.microsoft.com/en-us/office/display-numbers-as-postal-codes-61b55c9f-6fe3-4e54-96ca-9e85c38a5a1d?ui=en-us&rs=en-us&ad=us "excel"
 
 While this data is obviously much smaller and more full of errors than real 
 campaign finance data, these errors are not uncommon and need to be addressed.
