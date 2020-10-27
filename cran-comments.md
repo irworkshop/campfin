@@ -15,4 +15,4 @@
 
 * The string in the `col_date_usa()` example is not a file path and should be
 just a string, not a file.
-* Package pases all Windows builds via `devtools::check_win_*()`.
+* Package passes all Windows builds via `devtools::check_win_*()`.

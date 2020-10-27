@@ -1,3 +1,5 @@
+# campfin 1.0.1
+
 # campfin 1.0.0
 
 * Improve the handling of internal data and vignette.
