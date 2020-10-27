@@ -13,6 +13,7 @@
 
 ## Resubmission
 
+* Schuyler Erle added as copyright holder in DESCRIPTION.
 * The string in the `col_date_usa()` example is not a file path and should be
 just a string, not a file.
 * Package passes all Windows builds via `devtools::check_win_*()`.
