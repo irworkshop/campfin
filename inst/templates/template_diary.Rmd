@@ -559,21 +559,21 @@ file_encoding(clean_path) %>%
 
 We can use the `aws.s3::put_object()` to upload the text file to the IRW server.
 
-```{r s3_upload, eval=FALSE}
-s3_path <- path("csv", basename(clean_path))
-if (!object_exists(s3_path, "publicaccountability")) {
+```{r aws_upload, eval=FALSE}
+aws_path <- path("csv", basename(clean_path))
+if (!object_exists(aws_path, "publicaccountability")) {
   put_object(
     file = clean_path,
-    object = s3_path, 
+    object = aws_path, 
     bucket = "publicaccountability",
     acl = "public-read",
     show_progress = TRUE,
     multipart = TRUE
   )
 }
-s3_head <- head_object(s3_path, "publicaccountability")
-(s3_size <- as_fs_bytes(attr(s3_head, "content-length")))
-unname(s3_size == clean_size)
+aws_head <- head_object(aws_path, "publicaccountability")
+(aws_size <- as_fs_bytes(attr(aws_head, "content-length")))
+unname(aws_size == clean_size)
 ```
 
 ## Dictionary
