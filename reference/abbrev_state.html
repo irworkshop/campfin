@@ -82,7 +82,7 @@ arguments." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -144,7 +144,7 @@ arguments." />
 arguments.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>abbrev_state</span>(<span class='no'>full</span>)</pre>
+    <pre class="usage"><span class='fu'>abbrev_state</span><span class='op'>(</span><span class='va'>full</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,10 +173,12 @@ arguments.</p>
 <code><a href='str_normal.html'>str_normal</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>abbrev_state</span>(<span class='kw'>full</span> <span class='kw'>=</span> <span class='no'>state.name</span>)</div><div class='output co'>#&gt;  [1] "AL" "AK" "AZ" "AR" "CA" "CO" "CT" "DE" "FL" "GA" "HI" "ID" "IL" "IN" "IA"
+    <pre class="examples"><div class='input'><span class='fu'>abbrev_state</span><span class='op'>(</span>full <span class='op'>=</span> <span class='va'>state.name</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "AL" "AK" "AZ" "AR" "CA" "CO" "CT" "DE" "FL" "GA" "HI" "ID" "IL" "IN" "IA"
 #&gt; [16] "KS" "KY" "LA" "ME" "MD" "MA" "MI" "MN" "MS" "MO" "MT" "NE" "NV" "NH" "NJ"
 #&gt; [31] "NM" "NY" "NC" "ND" "OH" "OK" "OR" "PA" "RI" "SC" "SD" "TN" "TX" "UT" "VT"
-#&gt; [46] "VA" "WA" "WV" "WI" "WY"</div><div class='input'><span class='fu'>abbrev_state</span>(<span class='kw'>full</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"new mexico"</span>, <span class='st'>"france"</span>))</div><div class='output co'>#&gt; [1] "NM"     "FRANCE"</div></pre>
+#&gt; [46] "VA" "WA" "WV" "WI" "WY"</div><div class='input'><span class='fu'>abbrev_state</span><span class='op'>(</span>full <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"new mexico"</span>, <span class='st'>"france"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "NM"     "FRANCE"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -192,7 +194,7 @@ arguments.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

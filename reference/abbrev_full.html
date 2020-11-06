@@ -85,7 +85,7 @@ counterpart expand_abbrev())." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -150,7 +150,7 @@ reversed from what this function needs (to work by default with the
 counterpart <code><a href='expand_abbrev.html'>expand_abbrev()</a></code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>abbrev_full</span>(<span class='no'>x</span>, <span class='kw'>full</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>rep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='va'>x</span>, full <span class='op'>=</span> <span class='cn'>NULL</span>, rep <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,7 +193,10 @@ for each full word in <code>abb</code>.</p></td>
 <code><a href='str_normal.html'>str_normal</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>abbrev_full</span>(<span class='st'>"MOUNT VERNON"</span>, <span class='kw'>full</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"MOUNT"</span> <span class='kw'>=</span> <span class='st'>"MT"</span>))</div><div class='output co'>#&gt; [1] "MT VERNON"</div><div class='input'><span class='fu'>abbrev_full</span>(<span class='st'>"Vermont"</span>, <span class='kw'>full</span> <span class='kw'>=</span> <span class='no'>state.name</span>, <span class='kw'>rep</span> <span class='kw'>=</span> <span class='no'>state.abb</span>)</div><div class='output co'>#&gt; [1] "VT"</div><div class='input'><span class='fu'>abbrev_full</span>(<span class='st'>"Low Iron Level"</span>, <span class='kw'>full</span> <span class='kw'>=</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Iron"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"FE"</span>))</div><div class='output co'>#&gt; [1] "Low FE Level"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='st'>"MOUNT VERNON"</span>, full <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"MOUNT"</span> <span class='op'>=</span> <span class='st'>"MT"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "MT VERNON"</div><div class='input'><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='st'>"Vermont"</span>, full <span class='op'>=</span> <span class='va'>state.name</span>, rep <span class='op'>=</span> <span class='va'>state.abb</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "VT"</div><div class='input'><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='st'>"Low Iron Level"</span>, full <span class='op'>=</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Iron"</span>, x <span class='op'>=</span> <span class='st'>"FE"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Low FE Level"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -209,7 +212,7 @@ for each full word in <code>abb</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

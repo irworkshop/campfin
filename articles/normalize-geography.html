@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -86,7 +86,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="normalize-geography_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="normalize-geography_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="normalize-geography_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Normalize Geographic Variables</h1>
@@ -99,11 +100,12 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">campfin</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">stringr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">readr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">scales</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin">campfin</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></code></pre></div>
 <div id="background" class="section level2">
 <h2 class="hasAnchor">
 <a href="#background" class="anchor"></a>Background</h2>
@@ -114,10 +116,12 @@
 <h2 class="hasAnchor">
 <a href="#messy-data" class="anchor"></a>Messy Data</h2>
 <p>In this vignette, we will clean some extremely messy fake contribution data from a fictitious campaign in Vermont. This data is found in the <code>vt_contribs</code> data frame found in the <code>inst/extdata</code> or <code>data-raw</code> directories.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(
-  <span class="kw">file</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"vt_contribs.csv"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"campfin"</span>)
-)
-<span class="co">#&gt; Parsed with column specification:</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>
+  file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"vt_contribs.csv"</span>, package <span class="op">=</span> <span class="st">"campfin"</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; ── Column specification ────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; cols(</span>
 <span class="co">#&gt;   id = col_character(),</span>
 <span class="co">#&gt;   cand = col_character(),</span>
@@ -142,7 +146,7 @@
 <span class="co">#&gt;  7 07    Chuck W… 07/09/…   -600 Alex  Johns… 11 Liberty A… Bristo… VT    05443 </span>
 <span class="co">#&gt;  8 08    Alice W… 08/09/…      0 Ruth  Smith  2 Burlington… Brulin… vt    05401 </span>
 <span class="co">#&gt;  9 09    Alice W… 09/09/…     69 Joe   Garcia 770   5th-st… Washin… DC    20001…</span>
-<span class="co">#&gt; 10 10    Alice W… 11/09/…    222 Dave  Wilson XXXXXXXXXXXX… SA      Texas 78202</span></pre></body></html></div>
+<span class="co">#&gt; 10 10    Alice W… 11/09/…    222 Dave  Wilson XXXXXXXXXXXX… SA      Texas 78202</span></code></pre></div>
 <p>What are some of the potential problems we can see in this data?</p>
 <ul>
 <li>The <code>date</code> column is not parsed as an R date.</li>
@@ -175,7 +179,7 @@
 <li>Repeated digits used for <code>NA</code>
 </li>
 <li>Unnecessary and inconsistent <a href="https://en.wikipedia.org/wiki/ZIP_Code#ZIP+4" title="zip4">ZIP+4</a> usage</li>
-<li>Leading zeroes <a href="https://support.office.com/en-us/article/display-numbers-as-postal-codes-61b55c9f-6fe3-4e54-96ca-9e85c38a5a1d" title="excel">dropped by Excel</a> or some other program</li>
+<li>Leading zeroes <a href="https://support.microsoft.com/en-us/office/display-numbers-as-postal-codes-61b55c9f-6fe3-4e54-96ca-9e85c38a5a1d?ui=en-us&amp;rs=en-us&amp;ad=us" title="excel">dropped by Excel</a> or some other program</li>
 </ul>
 </li>
 </ul>
@@ -185,16 +189,18 @@
 <h2 class="hasAnchor">
 <a href="#read" class="anchor"></a>Read</h2>
 <p>In most cases, the first step is to download and read the file from a state agency. When reading the data with the popular <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_delim()</a></code> function, the <code>col_date_usa</code> function can be used as a quick shortcut for <code><a href="https://readr.tidyverse.org/reference/parse_datetime.html">readr::col_date(format = "%m/%d/%Y")</a></code>, the format most commonly found in U.S. campaign finance data.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">vt</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(
-  <span class="kw">file</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"vt_contribs.csv"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"campfin"</span>),
-  <span class="kw">trim_ws</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">col_types</span> <span class="kw">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span>(
-    <span class="kw">amount</span> <span class="kw">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span>(),
-    <span class="kw">date</span> <span class="kw">=</span> <span class="fu"><a href="../reference/col_date_usa.html">col_date_usa</a></span>()
-  )
-)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span>
+  file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"vt_contribs.csv"</span>, package <span class="op">=</span> <span class="st">"campfin"</span><span class="op">)</span>,
+  trim_ws <span class="op">=</span> <span class="cn">FALSE</span>,
+  col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>
+    amount <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,
+    date <span class="op">=</span> <span class="fu"><a href="../reference/col_date_usa.html">col_date_usa</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">)</span></code></pre></div>
 <p>We can see how the new <code>date</code> column is an actual date object, allowing for mathematical manipulation.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(<span class="no">vt</span>, <span class="no">date</span>, <span class="kw">next_week</span> <span class="kw">=</span> <span class="no">date</span> + <span class="fl">7</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span><span class="va">vt</span>, <span class="va">date</span>, next_week <span class="op">=</span> <span class="va">date</span> <span class="op">+</span> <span class="fl">7</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 x 2</span>
 <span class="co">#&gt;    date       next_week </span>
 <span class="co">#&gt;    &lt;date&gt;     &lt;date&gt;    </span>
@@ -207,15 +213,17 @@
 <span class="co">#&gt;  7 2019-07-09 2019-07-16</span>
 <span class="co">#&gt;  8 2019-08-09 2019-08-16</span>
 <span class="co">#&gt;  9 2019-09-09 2019-09-16</span>
-<span class="co">#&gt; 10 2019-11-09 2019-11-16</span></pre></body></html></div>
+<span class="co">#&gt; 10 2019-11-09 2019-11-16</span></code></pre></div>
 <p>Next, we should try to normalize our data as much as possible. We can use some simple counting functions and built in vectors to check the cleanliness of our raw data.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="fu"><a href="../reference/prop_in.html">prop_in</a></span>(<span class="no">vt</span>$<span class="no">city</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span>(<span class="no">valid_city</span>)))
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="fu"><a href="../reference/prop_in.html">prop_in</a></span><span class="op">(</span><span class="va">vt</span><span class="op">$</span><span class="va">city</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_lower</a></span><span class="op">(</span><span class="va">valid_city</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "10%"</span>
-<span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="fu"><a href="../reference/prop_in.html">prop_in</a></span>(<span class="no">vt</span>$<span class="no">state</span>, <span class="no">valid_state</span>))
+<span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="fu"><a href="../reference/prop_in.html">prop_in</a></span><span class="op">(</span><span class="va">vt</span><span class="op">$</span><span class="va">state</span>, <span class="va">valid_state</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "40%"</span>
-<span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(<span class="fu"><a href="../reference/prop_in.html">prop_in</a></span>(<span class="no">vt</span>$<span class="no">zip</span>, <span class="no">valid_zip</span>))
-<span class="co">#&gt; [1] "60%"</span></pre></body></html></div>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/col_stats.html">col_stats</a></span>(<span class="no">vt</span>, <span class="no">n_distinct</span>)
+<span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="fu"><a href="../reference/prop_in.html">prop_in</a></span><span class="op">(</span><span class="va">vt</span><span class="op">$</span><span class="va">zip</span>, <span class="va">valid_zip</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] "60%"</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/col_stats.html">col_stats</a></span><span class="op">(</span><span class="va">vt</span>, <span class="va">n_distinct</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 x 4</span>
 <span class="co">#&gt;    col     class      n     p</span>
 <span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;</span>
@@ -229,7 +237,7 @@
 <span class="co">#&gt;  8 city    &lt;chr&gt;      9   0.9</span>
 <span class="co">#&gt;  9 state   &lt;chr&gt;      8   0.8</span>
 <span class="co">#&gt; 10 zip     &lt;chr&gt;      9   0.9</span>
-<span class="fu"><a href="../reference/col_stats.html">col_stats</a></span>(<span class="no">vt</span>, <span class="no">count_na</span>)
+<span class="fu"><a href="../reference/col_stats.html">col_stats</a></span><span class="op">(</span><span class="va">vt</span>, <span class="va">count_na</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 x 4</span>
 <span class="co">#&gt;    col     class      n     p</span>
 <span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt;</span>
@@ -242,35 +250,36 @@
 <span class="co">#&gt;  7 address &lt;chr&gt;      0   0  </span>
 <span class="co">#&gt;  8 city    &lt;chr&gt;      0   0  </span>
 <span class="co">#&gt;  9 state   &lt;chr&gt;      0   0  </span>
-<span class="co">#&gt; 10 zip     &lt;chr&gt;      0   0</span></pre></body></html></div>
+<span class="co">#&gt; 10 zip     &lt;chr&gt;      0   0</span></code></pre></div>
 <p>A typical benchmark is to reach greater than 95% “valid.” That is, we want to normalize our data enough that less than 5% of our data can not be easily confirmed as valid using a fairly comprehensive list of cities, states, and ZIP codes.</p>
 <p>We will first try to reach this threshold by normalizing our data. This process involves reducing inconsistencies through string manipulation. There are separate <code>normal_*()</code> functions for each of the 4 types of geographic variables. Here, we will use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> to create <em>new</em>, normalized versions of our messy columns. This preserves the old data for transparency.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">vt</span> <span class="kw">&lt;-</span> <span class="no">vt</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
-    <span class="kw">address</span> <span class="kw">=</span> <span class="fu"><a href="../reference/normal_address.html">normal_address</a></span>(
-      <span class="kw">address</span> <span class="kw">=</span> <span class="no">address</span>,
-      <span class="kw">abbs</span> <span class="kw">=</span> <span class="no">usps_street</span>,
-      <span class="kw">na</span> <span class="kw">=</span> <span class="no">invalid_city</span>,
-      <span class="kw">na_rep</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-    ),
-    <span class="kw">city</span> <span class="kw">=</span> <span class="fu"><a href="../reference/normal_city.html">normal_city</a></span>(
-      <span class="kw">city</span> <span class="kw">=</span> <span class="no">city</span>,
-      <span class="kw">abbs</span> <span class="kw">=</span> <span class="no">usps_city</span>,
-      <span class="kw">states</span> <span class="kw">=</span> <span class="st">"VT"</span>,
-      <span class="kw">na</span> <span class="kw">=</span> <span class="no">invalid_city</span>,
-      <span class="kw">na_rep</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-    ),
-    <span class="kw">state</span> <span class="kw">=</span> <span class="fu"><a href="../reference/normal_state.html">normal_state</a></span>(
-      <span class="kw">state</span> <span class="kw">=</span> <span class="no">state</span>,
-      <span class="kw">abbreviate</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-      <span class="kw">na_rep</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-      <span class="kw">valid</span> <span class="kw">=</span> <span class="no">valid_state</span>
-    ),
-    <span class="kw">zip</span> <span class="kw">=</span> <span class="fu"><a href="../reference/normal_zip.html">normal_zip</a></span>(
-      <span class="kw">zip</span> <span class="kw">=</span> <span class="no">zip</span>,
-      <span class="kw">na_rep</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-    )
-  )</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vt</span> <span class="op">&lt;-</span> <span class="va">vt</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    address <span class="op">=</span> <span class="fu"><a href="../reference/normal_address.html">normal_address</a></span><span class="op">(</span>
+      address <span class="op">=</span> <span class="va">address</span>,
+      abbs <span class="op">=</span> <span class="va">usps_street</span>,
+      na <span class="op">=</span> <span class="va">invalid_city</span>,
+      na_rep <span class="op">=</span> <span class="cn">TRUE</span>
+    <span class="op">)</span>,
+    city <span class="op">=</span> <span class="fu"><a href="../reference/normal_city.html">normal_city</a></span><span class="op">(</span>
+      city <span class="op">=</span> <span class="va">city</span>,
+      abbs <span class="op">=</span> <span class="va">usps_city</span>,
+      states <span class="op">=</span> <span class="st">"VT"</span>,
+      na <span class="op">=</span> <span class="va">invalid_city</span>,
+      na_rep <span class="op">=</span> <span class="cn">TRUE</span>
+    <span class="op">)</span>,
+    state <span class="op">=</span> <span class="fu"><a href="../reference/normal_state.html">normal_state</a></span><span class="op">(</span>
+      state <span class="op">=</span> <span class="va">state</span>,
+      abbreviate <span class="op">=</span> <span class="cn">TRUE</span>,
+      na_rep <span class="op">=</span> <span class="cn">TRUE</span>,
+      valid <span class="op">=</span> <span class="va">valid_state</span>
+    <span class="op">)</span>,
+    zip <span class="op">=</span> <span class="fu"><a href="../reference/normal_zip.html">normal_zip</a></span><span class="op">(</span>
+      zip <span class="op">=</span> <span class="va">zip</span>,
+      na_rep <span class="op">=</span> <span class="cn">TRUE</span>
+    <span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
 <p>We can see how these functions and our built in data was used to normalize the geographic contributor data and remove anything that didn’t present real information. This format is much more explorable and searchable.</p>
 <pre><code>#&gt; # A tibble: 10 x 4
 #&gt;    address            city          state zip  
@@ -283,7 +292,7 @@
 #&gt;  6 55 THISPLACE AVE   YOUNG AMERICA MN    &lt;NA&gt; 
 #&gt;  7 11 LIBERTY AVE     BRISTOL       VT    05443
 #&gt;  8 2 BURLINGTON SQ    BRULINGTON    VT    05401
-#&gt;  9 770 5 THSTNW       WASHINGTON    DC    20001
+#&gt;  9 770 5 TH ST NW     WASHINGTON    DC    20001
 #&gt; 10 &lt;NA&gt;               SA            TX    78202</code></pre>
 </div>
 <div id="cities" class="section level2">
@@ -291,16 +300,17 @@
 <a href="#cities" class="anchor"></a>Cities</h2>
 <p>However, the problem has not been solved. Most troublesome are the city names. There are so many city names and such great variety (compared to states and ZIP codes), that it can be difficult to normalize and difficult to assess.</p>
 <p>Our <code>valid_city</code> vector contains many city names, but far less than exist in the country, especially when you account for neighborhoods that aren’t <em>really</em> cities, but shouldn’t be changed (some of these are contained in our curated <code>extra_city</code> vector).</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="no">valid_city</span>)
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">valid_city</span><span class="op">)</span>
 <span class="co">#&gt; [1] 19083</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="no">valid_city</span>, <span class="fl">6</span>)
-<span class="co">#&gt; [1] "STUYVESANT" "BRADY LAKE" "SEALY"      "LACEY"      "AMBOY"     </span>
-<span class="co">#&gt; [6] "LOGAN"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="no">extra_city</span>, <span class="fl">6</span>)
-<span class="co">#&gt; [1] "EAST BANGOR"        "WILKINSBURG"        "MOYLAN ROSE VALLEY"</span>
-<span class="co">#&gt; [4] "BELVILLE"           "VALLEY GRANDE"      "BRIGHTON TOWNSHIP"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">valid_city</span>, <span class="fl">6</span><span class="op">)</span>
+<span class="co">#&gt; [1] "MAYBELL"       "PLEASANT LAKE" "CHICAGO RIDGE" "GOODSON"      </span>
+<span class="co">#&gt; [5] "BAINBRIDGE"    "SABANA GRANDE"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">extra_city</span>, <span class="fl">6</span><span class="op">)</span>
+<span class="co">#&gt; [1] "SAINT LOUIS PARK"       "SOUTH LEBANON TOWNSHIP" "VALINDA"               </span>
+<span class="co">#&gt; [4] "BETHLEHEM TOWNSHIP"     "REUNION"                "GRACETON"</span>
 <span class="co"># combine both vectors</span>
-<span class="no">many_city</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">valid_city</span>, <span class="no">extra_city</span>)</pre></body></html></div>
+<span class="va">many_city</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">valid_city</span>, <span class="va">extra_city</span><span class="op">)</span></code></pre></div>
 <p>Still, checking against this list is a good way to check for values that need additional attention.</p>
 <pre><code>#&gt; # A tibble: 3 x 5
 #&gt;   id    city       state zip   valid
@@ -319,29 +329,31 @@
 <p>The <code><a href="../reference/str_dist.html">str_dist()</a></code> and <code><a href="../reference/is_abbrev.html">is_abbrev()</a></code> functions can be used to compared the value we have with the value we expect. By only checking against the corresponding city to that record’s ZIP code, we are making extremely <em>confident</em> changes (compared to the incredibly useful clustering algorithms like those provided by the <code>refinr</code> package).</p>
 <p>First, we can use <code><a href="../reference/str_dist.html">str_dist()</a></code>, which calls the <code><a href="https://rdrr.io/pkg/stringdist/man/stringdist.html">stringdist::stringdist()</a></code> function to check the <em>distance</em> between the two strings; that is, the number of changes we’d need to make to our normalized value to get our expected matched value. If that distance is small (usually 1 or 2), we can confidently use the matched value!</p>
 <p>But the string distance does not catch colloquial city abbreviations. NYC, BOS, LA, CHI, ABQ, BRNX, DFW, OKC. Many residents of a city get so used to writing their city’s name they use abbreviations and assume them to be universally understood. The <code><a href="../reference/is_abbrev.html">is_abbrev()</a></code> function can be used to check to one string might be an abbreviation for another using 3 common abbreviation characteristics: (1) is the abbreviation at least 2 characters shorter than the full name, (2) is the first letter of both strings the same, and (3) do the letters of the abbreviation appear in the same order as the full name. Every abbreviation generated by the <code><a href="https://rdrr.io/r/base/abbreviate.html">base::abbreviate()</a></code> function would satisfy these characteristics.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r">(<span class="no">bad</span> <span class="kw">&lt;-</span> <span class="no">bad</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
-    <span class="kw">match_dist</span> <span class="kw">=</span> <span class="fu"><a href="../reference/str_dist.html">str_dist</a></span>(<span class="no">city_raw</span>, <span class="no">city_match</span>),
-    <span class="kw">match_abb</span> <span class="kw">=</span> <span class="fu"><a href="../reference/is_abbrev.html">is_abbrev</a></span>(<span class="no">city_raw</span>, <span class="no">city_match</span>)
-  ))
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">bad</span> <span class="op">&lt;-</span> <span class="va">bad</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    match_dist <span class="op">=</span> <span class="fu"><a href="../reference/str_dist.html">str_dist</a></span><span class="op">(</span><span class="va">city_raw</span>, <span class="va">city_match</span><span class="op">)</span>,
+    match_abb <span class="op">=</span> <span class="fu"><a href="../reference/is_abbrev.html">is_abbrev</a></span><span class="op">(</span><span class="va">city_raw</span>, <span class="va">city_match</span><span class="op">)</span>
+  <span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 x 8</span>
 <span class="co">#&gt;   id    city_raw   state zip   valid city_match  match_dist match_abb</span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt; &lt;chr&gt;            &lt;dbl&gt; &lt;lgl&gt;    </span>
 <span class="co">#&gt; 1 03    MIDLEBURY  VT    05753 FALSE MIDDLEBURY           1 FALSE    </span>
 <span class="co">#&gt; 2 08    BRULINGTON VT    05401 FALSE BURLINGTON           1 FALSE    </span>
-<span class="co">#&gt; 3 10    SA         TX    78202 FALSE SAN ANTONIO          9 TRUE</span></pre></body></html></div>
+<span class="co">#&gt; 3 10    SA         TX    78202 FALSE SAN ANTONIO          9 TRUE</span></code></pre></div>
 <p>Here’s what this process would look like when employed on an entire data frame. It’s important to ensure that the number of rows in our campaign finance data is kept consistent throughout the wrangling process.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">vt</span> <span class="kw">&lt;-</span> <span class="no">vt</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span>(<span class="kw">city_raw</span> <span class="kw">=</span> <span class="no">city</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span>(<span class="no">zipcodes</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span>(<span class="kw">city_match</span> <span class="kw">=</span> <span class="no">city</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
-    <span class="kw">match_dist</span> <span class="kw">=</span> <span class="fu"><a href="../reference/str_dist.html">str_dist</a></span>(<span class="no">city_raw</span>, <span class="no">city_match</span>),
-    <span class="kw">match_abb</span> <span class="kw">=</span> <span class="fu"><a href="../reference/is_abbrev.html">is_abbrev</a></span>(<span class="no">city_raw</span>, <span class="no">city_match</span>),
-    <span class="kw">city</span> <span class="kw">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span>(<span class="no">match_abb</span> <span class="kw">|</span> <span class="no">match_dist</span> <span class="kw">==</span> <span class="fl">1</span>, <span class="no">city_match</span>, <span class="no">city_raw</span>)
-  ) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(-<span class="no">city_raw</span>, -<span class="no">city_match</span>, -<span class="no">match_dist</span>, -<span class="no">match_abb</span>)
-<span class="co">#&gt; Joining, by = c("state", "zip")</span></pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vt</span> <span class="op">&lt;-</span> <span class="va">vt</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>city_raw <span class="op">=</span> <span class="va">city</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">zipcodes</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>city_match <span class="op">=</span> <span class="va">city</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    match_dist <span class="op">=</span> <span class="fu"><a href="../reference/str_dist.html">str_dist</a></span><span class="op">(</span><span class="va">city_raw</span>, <span class="va">city_match</span><span class="op">)</span>,
+    match_abb <span class="op">=</span> <span class="fu"><a href="../reference/is_abbrev.html">is_abbrev</a></span><span class="op">(</span><span class="va">city_raw</span>, <span class="va">city_match</span><span class="op">)</span>,
+    city <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">match_abb</span> <span class="op">|</span> <span class="va">match_dist</span> <span class="op">==</span> <span class="fl">1</span>, <span class="va">city_match</span>, <span class="va">city_raw</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">city_raw</span>, <span class="op">-</span><span class="va">city_match</span>, <span class="op">-</span><span class="va">match_dist</span>, <span class="op">-</span><span class="va">match_abb</span><span class="op">)</span>
+<span class="co">#&gt; Joining, by = c("state", "zip")</span></code></pre></div>
 <p>Now every <code>city</code>, <code>state</code>, and <code>zip</code> value is contained in our list of valid values.</p>
 <pre><code>#&gt; # A tibble: 8 x 5
 #&gt;   id    state zip   city         all_valid
@@ -354,8 +366,9 @@
 #&gt; 6 08    VT    05401 BURLINGTON   TRUE     
 #&gt; 7 09    DC    20001 WASHINGTON   TRUE     
 #&gt; 8 10    TX    78202 SAN ANTONIO  TRUE</code></pre>
-<p>Once our data is as normal as we can confidently make it, we can begin to explore. First, we’ll explore the data for missing values with <code>flag_na</code>, which takes a <a href="https://github.com/r-lib/tidyselect" title="tidyselect">tidyselct</a> number of key columns to check (or something like <code><a href="https://dplyr.tidyverse.org/reference/reexports.html">dplyr::everything()</a></code>).</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r">(<span class="no">vt</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/flag_na.html">flag_na</a></span>(<span class="no">vt</span>, <span class="no">last</span>))
+<p>Once our data is as normal as we can confidently make it, we can begin to explore. First, we’ll explore the data for missing values with <code>flag_na</code>, which takes a <a href="https://github.com/r-lib/tidyselect" title="tidyselect">tidyselct</a> number of key columns to check (or something like <code><a href="https://tidyselect.r-lib.org/reference/everything.html">dplyr::everything()</a></code>).</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">vt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/flag_na.html">flag_na</a></span><span class="op">(</span><span class="va">vt</span>, <span class="va">last</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 x 11</span>
 <span class="co">#&gt;    id    cand   date       amount first last   address state zip   city  na_flag</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;date&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;  </span>
@@ -368,9 +381,10 @@
 <span class="co">#&gt;  7 07    Chuck… 2019-07-09   -600 Alex  Johns… 11 LIB… VT    05443 BRIS… FALSE  </span>
 <span class="co">#&gt;  8 08    Alice… 2019-08-09      0 Ruth  Smith  2 BURL… VT    05401 BURL… FALSE  </span>
 <span class="co">#&gt;  9 09    Alice… 2019-09-09     69 Joe   Garcia 770 5 … DC    20001 WASH… FALSE  </span>
-<span class="co">#&gt; 10 10    Alice… 2019-11-09    222 Dave  Wilson &lt;NA&gt;    TX    78202 SAN … FALSE</span></pre></body></html></div>
+<span class="co">#&gt; 10 10    Alice… 2019-11-09    222 Dave  Wilson &lt;NA&gt;    TX    78202 SAN … FALSE</span></code></pre></div>
 <p>Next, we’ll want to check for duplicate rows using <code>flag_dupes</code>, which takes the same kind of arguments. Here, we can ignore the supposedly unique <code>id</code> variable. It’s possible for a person to make the same contribution on the same date, but we should flag them nonetheless.</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r">(<span class="no">vt</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/flag_dupes.html">flag_dupes</a></span>(<span class="no">vt</span>, -<span class="no">id</span>))
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">vt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/flag_dupes.html">flag_dupes</a></span><span class="op">(</span><span class="va">vt</span>, <span class="op">-</span><span class="va">id</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Warning in flag_dupes(vt, -id): no duplicate rows, column not created</span>
 <span class="co">#&gt; # A tibble: 10 x 11</span>
 <span class="co">#&gt;    id    cand   date       amount first last   address state zip   city  na_flag</span>
@@ -384,7 +398,7 @@
 <span class="co">#&gt;  7 07    Chuck… 2019-07-09   -600 Alex  Johns… 11 LIB… VT    05443 BRIS… FALSE  </span>
 <span class="co">#&gt;  8 08    Alice… 2019-08-09      0 Ruth  Smith  2 BURL… VT    05401 BURL… FALSE  </span>
 <span class="co">#&gt;  9 09    Alice… 2019-09-09     69 Joe   Garcia 770 5 … DC    20001 WASH… FALSE  </span>
-<span class="co">#&gt; 10 10    Alice… 2019-11-09    222 Dave  Wilson &lt;NA&gt;    TX    78202 SAN … FALSE</span></pre></body></html></div>
+<span class="co">#&gt; 10 10    Alice… 2019-11-09    222 Dave  Wilson &lt;NA&gt;    TX    78202 SAN … FALSE</span></code></pre></div>
 </div>
   </div>
 
@@ -403,7 +417,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

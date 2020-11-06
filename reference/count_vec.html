@@ -81,7 +81,7 @@ number of values in a single vector." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -142,7 +142,7 @@ number of values in a single vector." />
 number of values in a single vector.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>count_vec</span>(<span class='no'>x</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>count_vec</span><span class='op'>(</span><span class='va'>x</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,33 +178,35 @@ number of values in a single vector.</p>
 <code><a href='which_out.html'>which_out</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>count_vec</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>rivers</span>)</div><div class='output co'>#&gt; # A tibble: 114 x 2
+    <pre class="examples"><div class='input'><span class='fu'>count_vec</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>rivers</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 114 x 2</span><span>
 #&gt;    value     n
-#&gt;    &lt;dbl&gt; &lt;int&gt;
-#&gt;  1   350     4
-#&gt;  2   360     4
-#&gt;  3   250     3
-#&gt;  4   280     3
-#&gt;  5   300     3
-#&gt;  6   600     3
-#&gt;  7   210     2
-#&gt;  8   230     2
-#&gt;  9   260     2
-#&gt; 10   310     2
-#&gt; # … with 104 more rows</div><div class='input'><span class='fu'>count_vec</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>state.name</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; # A tibble: 50 x 2
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>   350     4
+#&gt; </span><span style='color: #555555;'> 2</span><span>   360     4
+#&gt; </span><span style='color: #555555;'> 3</span><span>   250     3
+#&gt; </span><span style='color: #555555;'> 4</span><span>   280     3
+#&gt; </span><span style='color: #555555;'> 5</span><span>   300     3
+#&gt; </span><span style='color: #555555;'> 6</span><span>   600     3
+#&gt; </span><span style='color: #555555;'> 7</span><span>   210     2
+#&gt; </span><span style='color: #555555;'> 8</span><span>   230     2
+#&gt; </span><span style='color: #555555;'> 9</span><span>   260     2
+#&gt; </span><span style='color: #555555;'>10</span><span>   310     2
+#&gt; </span><span style='color: #555555;'># … with 104 more rows</span><span></div><div class='input'><span class='fu'>count_vec</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>state.name</span>, size <span class='op'>=</span> <span class='fl'>1000</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 50 x 2</span><span>
 #&gt;    value              n
-#&gt;    &lt;chr&gt;          &lt;int&gt;
-#&gt;  1 North Carolina    30
-#&gt;  2 Connecticut       28
-#&gt;  3 Hawaii            27
-#&gt;  4 Montana           27
-#&gt;  5 Idaho             26
-#&gt;  6 Minnesota         26
-#&gt;  7 Tennessee         26
-#&gt;  8 California        24
-#&gt;  9 Florida           24
-#&gt; 10 West Virginia     24
-#&gt; # … with 40 more rows</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> North Carolina    30
+#&gt; </span><span style='color: #555555;'> 2</span><span> Connecticut       28
+#&gt; </span><span style='color: #555555;'> 3</span><span> Hawaii            27
+#&gt; </span><span style='color: #555555;'> 4</span><span> Montana           27
+#&gt; </span><span style='color: #555555;'> 5</span><span> Idaho             26
+#&gt; </span><span style='color: #555555;'> 6</span><span> Minnesota         26
+#&gt; </span><span style='color: #555555;'> 7</span><span> Tennessee         26
+#&gt; </span><span style='color: #555555;'> 8</span><span> California        24
+#&gt; </span><span style='color: #555555;'> 9</span><span> Florida           24
+#&gt; </span><span style='color: #555555;'>10</span><span> West Virginia     24
+#&gt; </span><span style='color: #555555;'># … with 40 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -220,7 +222,7 @@ number of values in a single vector.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

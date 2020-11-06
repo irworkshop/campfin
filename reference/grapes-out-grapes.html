@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -137,10 +137,10 @@
     </div>
 
     <div class="ref-description">
-    <p><code>%out%</code> is an inverted version of the infix <code>%in%</code> operator.</p>
+    <p><code>%out%</code> is an inverted version of the infix <code><a href='https://rdrr.io/r/base/match.html'>%in%</a></code> operator.</p>
     </div>
 
-    <pre class="usage"><span class='no'>x</span> <span class='kw'>%out%</span> <span class='no'>table</span></pre>
+    <pre class="usage"><span class='va'>x</span> <span class='op'>%out%</span> <span class='va'>table</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,7 +164,8 @@
 <code>"%out%" &lt;- function(x, table) match(x, table, nomatch = 0) == 0</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>, <span class='st'>"3"</span>) <span class='kw'>%out%</span> <span class='no'>LETTERS</span></div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"A"</span>, <span class='st'>"B"</span>, <span class='st'>"3"</span><span class='op'>)</span> <span class='op'>%out%</span> <span class='va'>LETTERS</span>
+</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -180,7 +181,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

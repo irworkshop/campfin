@@ -86,7 +86,7 @@ a vector can be removed (possibly using invalid_city) as well as single
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -152,7 +152,7 @@ a vector can be removed (possibly using <a href='invalid_city.html'>invalid_city
 (repeating) character strings ("XXXXXX").</p>
     </div>
 
-    <pre class="usage"><span class='fu'>normal_city</span>(<span class='no'>city</span>, <span class='kw'>abbs</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>states</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>), <span class='kw'>na_rep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>normal_city</span><span class='op'>(</span><span class='va'>city</span>, abbs <span class='op'>=</span> <span class='cn'>NULL</span>, states <span class='op'>=</span> <span class='cn'>NULL</span>, na <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>"NA"</span><span class='op'>)</span>, na_rep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -202,13 +202,14 @@ strings with <code>NA</code>.</p></td>
 <code><a href='str_normal.html'>str_normal</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>normal_city</span>(
-  <span class='kw'>city</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Stowe, VT"</span>, <span class='st'>"UNKNOWN CITY"</span>, <span class='st'>"Burlington"</span>, <span class='st'>"ST JOHNSBURY"</span>, <span class='st'>"XXX"</span>),
-  <span class='kw'>abbs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ST"</span> <span class='kw'>=</span> <span class='st'>"SAINT"</span>),
-  <span class='kw'>states</span> <span class='kw'>=</span> <span class='st'>"VT"</span>,
-  <span class='kw'>na</span> <span class='kw'>=</span> <span class='no'>invalid_city</span>,
-  <span class='kw'>na_rep</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</div><div class='output co'>#&gt; [1] "STOWE"           NA                "BURLINGTON"      "SAINT JOHNSBURY"
+    <pre class="examples"><div class='input'><span class='fu'>normal_city</span><span class='op'>(</span>
+  city <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Stowe, VT"</span>, <span class='st'>"UNKNOWN CITY"</span>, <span class='st'>"Burlington"</span>, <span class='st'>"ST JOHNSBURY"</span>, <span class='st'>"XXX"</span><span class='op'>)</span>,
+  abbs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ST"</span> <span class='op'>=</span> <span class='st'>"SAINT"</span><span class='op'>)</span>,
+  states <span class='op'>=</span> <span class='st'>"VT"</span>,
+  na <span class='op'>=</span> <span class='va'>invalid_city</span>,
+  na_rep <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "STOWE"           NA                "BURLINGTON"      "SAINT JOHNSBURY"
 #&gt; [5] NA               </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -225,7 +226,7 @@ strings with <code>NA</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

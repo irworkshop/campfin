@@ -81,7 +81,7 @@ variable with TRUE values for any record duplicated more than once." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -142,7 +142,7 @@ variable with TRUE values for any record duplicated more than once." />
 variable with <code>TRUE</code> values for any record duplicated more than once.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>flag_dupes</span>(<span class='no'>data</span>, <span class='no'>...</span>, <span class='kw'>.check</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.both</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>flag_dupes</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>...</span>, .check <span class='op'>=</span> <span class='cn'>TRUE</span>, .both <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,7 +154,7 @@ variable with <code>TRUE</code> values for any record duplicated more than once.
     <tr>
       <th>...</th>
       <td><p>Arguments passed to <code><a href='https://dplyr.tidyverse.org/reference/select.html'>dplyr::select()</a></code> (needs to be at least
-<code><a href='https://dplyr.tidyverse.org/reference/reexports.html'>dplyr::everything()</a></code>).</p></td>
+<code><a href='https://tidyselect.r-lib.org/reference/everything.html'>dplyr::everything()</a></code>).</p></td>
     </tr>
     <tr>
       <th>.check</th>
@@ -172,7 +172,8 @@ removed if empty.</p></td>
     <p>A data frame with a new <code>dupe_flag</code> logical variable.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>flag_dupes</span>(<span class='no'>iris</span>, <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>everything</a></span>())</div><div class='output co'>#&gt;     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species dupe_flag
+    <pre class="examples"><div class='input'><span class='fu'>flag_dupes</span><span class='op'>(</span><span class='va'>iris</span>, <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species dupe_flag
 #&gt; 1            5.1         3.5          1.4         0.2     setosa     FALSE
 #&gt; 2            4.9         3.0          1.4         0.2     setosa     FALSE
 #&gt; 3            4.7         3.2          1.3         0.2     setosa     FALSE
@@ -322,7 +323,8 @@ removed if empty.</p></td>
 #&gt; 147          6.3         2.5          5.0         1.9  virginica     FALSE
 #&gt; 148          6.5         3.0          5.2         2.0  virginica     FALSE
 #&gt; 149          6.2         3.4          5.4         2.3  virginica     FALSE
-#&gt; 150          5.9         3.0          5.1         1.8  virginica     FALSE</div><div class='input'><span class='fu'>flag_dupes</span>(<span class='no'>iris</span>, <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>everything</a></span>(), <span class='kw'>.both</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species dupe_flag
+#&gt; 150          5.9         3.0          5.1         1.8  virginica     FALSE</div><div class='input'><span class='fu'>flag_dupes</span><span class='op'>(</span><span class='va'>iris</span>, <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, .both <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species dupe_flag
 #&gt; 1            5.1         3.5          1.4         0.2     setosa     FALSE
 #&gt; 2            4.9         3.0          1.4         0.2     setosa     FALSE
 #&gt; 3            4.7         3.2          1.3         0.2     setosa     FALSE
@@ -488,7 +490,7 @@ removed if empty.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
