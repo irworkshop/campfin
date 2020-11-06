@@ -2,7 +2,8 @@ library(testthat)
 library(campfin)
 
 test_that("checking city without guessing returns a logical vector", {
-  skip_if_not(nchar(Sys.getenv("GEOCODE_KEY")) > 0)
+  skip_on_cran()
+  skip_if_not(nzchar(Sys.getenv("GEOCODE_KEY")))
   check1 <- check_city("WYOMISSING", "PA")
   check2 <- check_city("Tokyo", "VT")
   expect_type(check1, "logical")
@@ -11,7 +12,8 @@ test_that("checking city without guessing returns a logical vector", {
 })
 
 test_that("checking city returns data frame when guessing", {
-  skip_if_not(nchar(Sys.getenv("GEOCODE_KEY")) > 0)
+  skip_on_cran()
+  skip_if_not(nzchar(Sys.getenv("GEOCODE_KEY")))
   check3 <- check_city("Waggaman", "LA", guess = TRUE)
   expect_s3_class(check3, "tbl")
   expect_equal(ncol(check3), 6)
@@ -19,13 +21,15 @@ test_that("checking city returns data frame when guessing", {
 })
 
 test_that("fetching city returns an entire address string", {
-  skip_if_not(nchar(Sys.getenv("GEOCODE_KEY")) > 0)
+  skip_on_cran()
+  skip_if_not(nzchar(Sys.getenv("GEOCODE_KEY")))
   fetch <- fetch_city("4529 Wisconsin Ave NW, Tenelytown, DC 20016")
   expect_type(fetch, "character")
 })
 
 test_that("fetching addresses returns warnings and errors", {
-  skip_if_not(nchar(Sys.getenv("GEOCODE_KEY")) > 0)
+  skip_on_cran()
+  skip_if_not(nzchar(Sys.getenv("GEOCODE_KEY")))
   expect_error(fetch_city())
   expect_error(fetch_city(""))
   expect_error(fetch_city(NA))
@@ -35,7 +39,8 @@ test_that("fetching addresses returns warnings and errors", {
 })
 
 test_that("checking cities returns warnings and errors", {
-  skip_if_not(nchar(Sys.getenv("GEOCODE_KEY")) > 0)
+  skip_on_cran()
+  skip_if_not(nzchar(Sys.getenv("GEOCODE_KEY")))
   expect_error(check_city())
   expect_error(check_city(""))
   expect_error(check_city(NA))
