@@ -13,21 +13,21 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-"
 )
-options(width = 99)
+if (!interactive()) {
+  options(width = 99)
+}
 ```
 
 # campfin <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-[![Lifecycle: experimental][life_badge]][life_link]
+[![Lifecycle: maturing][life_badge]][life_link]
 [![CRAN status][cran_badge]][cran_link]
-[![Travis build status][trav_badge]][trav_link]
 [![Codecov test coverage][cov_badge]][cov_link]
+[![R build status][gh_badge]][gh_link]
 <!-- badges: end -->
 
-## Overview
-
-The `campfin` package was created to facilitate the work being done on the 
+The campfin package was created to facilitate the work being done on the 
 [The Accountability Project][tap], a tool created by 
 [The Investigative Reporting Workshop][irw] in Washington, DC. The
 Accountability Project curates, cleans, and indexes public data to give
@@ -40,9 +40,15 @@ the tools included are useful in general database exploration and normalization.
 
 ## Installation
 
-The package is not yet on [CRAN][cran] and must be installed from GitHub.
+You can install the released version of campfin from [CRAN][cran] with:
 
-```{r install, eval=FALSE, warning=FALSE, message=FALSE}
+```{r install_cran, eval=FALSE}
+install.packages("campfin")
+```
+
+The development version can be installed from [GitHub][gh] with:
+
+```{r install_github, eval=FALSE}
 # install.packages("remotes")
 remotes::install_github("irworkshop/campfin")
 ```
@@ -52,9 +58,8 @@ remotes::install_github("irworkshop/campfin")
 The package was originally built to normalize geographic data using the
 `normal_*()` functions, which take the messy self-reported geographic data of a
 contributor, vendor, candidate, or committee and return [normalized text][txt]
-that is more searchable. They are largely wrappers around the 
-[`stringr`][stringr] package, and can call other sub-functions to streamline
-normalization.
+that is more searchable. They are largely wrappers around the [stringr] package,
+and can call other sub-functions to streamline normalization.
 
 * `normal_address()` takes a _street_ address and reduces inconsistencies.
 * `normal_zip()` takes [ZIP Codes][zip] and aims to return a valid 5-digit code.
@@ -90,17 +95,16 @@ library(tidyverse)
 The campfin package contains a number of built in data frames and strings used
 to help wrangle campaign finance data.
 
-```{r data, results='asis', echo=FALSE}
-objects <- data(package = "campfin")$results[, "Item"]
-cat(str_c("* ", "`", objects, "`"), sep = "\n")
+```{r data, echo=FALSE}
+data(package = "campfin")$results[, "Item"]
 ```
 
 The `/data-raw` directory contains the code used to create the objects.
 
-### `zipcodes`
+### zipcodes
 
-The `zipcodes` (plural) data frame is a normalized version of the `zipcode`
-(singular) data frame from the archived [`zipcode`][zip] R package.
+The `zipcodes` (plural) table is a new version of the `zipcode` (singular) table
+from the archived [zipcode] R package.
 
 > This database was composed using ZIP code gazetteers from the US Census Bureau
 from 1999 and 2000, augmented with additional ZIP code information The database
@@ -114,18 +118,15 @@ positives, that is, ZIP codes that do not exist or are no longer in use but are
 included due to erroneous data sources.
 
 The included `valid_city` and `valid_zip` vectors are sorted, unique columns
-from the `zipcodes` data frame (although `valid_city` is being updated to
-include more common neighborhoods and census-designated places)
+from the `zipcodes` data frame.
 
 ```{r geo_df, collapse=TRUE, warning=FALSE, message=FALSE, error=FALSE}
 # zipcode version
 data("zipcode")
 sample_n(zipcode, 3)
-class(zipcode)
 
 # campfin version
 sample_n(zipcodes, 3)
-class(zipcodes)
 ```
 
 ### `usps_*` and `valid_*`
@@ -146,59 +147,31 @@ sample_n(usps_state, 3)
 setdiff(valid_state, state.abb)
 ```
 
-### Other
-
-The `invalid_city` vector contains, appropriately, common invalid city names,
-which can be passed to `normal_city()`.
-
-The `rx_zip` and `rx_state` character strings are useful regular expressions for
-extracting geographic data from a single string address, data which can then be
-passed to `normal_zip()` and `normal_state()`.
-
-```{r print_rx, collapse=TRUE}
-print(rx_zip)
-print(rx_state)
-```
-
-```{r rx_address, collapse=TRUE}
-white_house <- "1600 Pennsylvania Ave NW, Washington, DC 20500-0003"
-str_extract(white_house, pattern = rx_zip)
-str_extract(white_house, pattern = rx_state)
-```
-
-The `rx_phone` character string is another useful regular expression to match
-US telephone numbers in a wide variety of common formats.
-
-```{r rx_telephone}
-str_trunc(rx_phone, width = 80, side = "center")
-str_detect(c("1-800-555-1234", "(800) 555-1234", "8005551234 x567"), rx_phone)
-```
-
 *****
 
-Please note that the `campfin` project is released with a 
-[Contributor Code of Conduct][coc]. By contributing to this project, you agree
-to abide by its terms.
+The campfin project is released with a [Contributor Code of Conduct][coc]. By
+contributing, you agree to abide by its terms.
 
 <!-- refs: start -->
 [life_badge]: https://img.shields.io/badge/lifecycle-maturing-blue.svg
 [life_link]: https://www.tidyverse.org/lifecycle/#maturing
 [cran_badge]: https://www.r-pkg.org/badges/version/campfin
 [cran_link]: https://CRAN.R-project.org/package=campfin
-[trav_badge]: https://travis-ci.org/irworkshop/campfin.svg?branch=master
-[trav_link]: https://travis-ci.org/irworkshop/campfin
 [cov_badge]: https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg
 [cov_link]: https://codecov.io/gh/irworkshop/campfin?branch=master
+[gh_badge]: https://github.com/irworkshop/campfin/workflows/R-CMD-check/badge.svg
+[gh_link]: https://github.com/irworkshop/campfin/actions
 [tap]: https://www.publicaccountability.org/
 [irw]: https://investigativereportingworkshop.org/
 [fin]: https://en.wikipedia.org/wiki/Campaign_finance
-[cran]: https://cran.r-project.org/
+[cran]: https://cran.r-project.org/package=campfin
+[gh]: https://github.com/irworkshop/campfin
 [tidyverse]: https://www.tidyverse.org/
 [txt]: https://en.wikipedia.org/wiki/Text_normalization
 [stringr]: https://github.com/tidyverse/stringr
 [zip]: https://en.wikipedia.org/wiki/ZIP_Code 
 [abbs]: https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations
-[zip]: https://cran.r-project.org/src/contrib/Archive/zipcode/
+[zipcode]: https://cran.r-project.org/src/contrib/Archive/zipcode/
 [pub]: https://pe.usps.com/text/pub28/28apc_002.htm
 [coc]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html
 <!-- refs: end -->

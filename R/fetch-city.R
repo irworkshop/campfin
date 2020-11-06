@@ -42,7 +42,7 @@ fetch_city <- function(address = NULL, key = NULL) {
   } else if(r_content$status != "OK") {
     warning(glue::glue("Error from API: {r_content$statuse}, see Google Maps Documentation for details"), call. = FALSE)
     return(NA_character_)
-  } else {e
+  } else {
     str_to_upper(r_content$results[[1]]$formatted_address)
   }
 }
