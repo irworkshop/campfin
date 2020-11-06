@@ -1,4 +1,6 @@
-# campfin 1.0.1
+# campfin 1.0.2
+
+* Tests and examples run more confidently.
 
 # campfin 1.0.0
 
