@@ -13,7 +13,7 @@
 #'   will include all the fields from street address, city, state/province,
 #'   zipcode/postal code to country/regions. `NA_character_` is returned for
 #'   all errored API calls.
-#' @seealso \url{http://code.google.com/apis/maps/documentation/geocoding/}
+#' @seealso \url{https://developers.google.com/maps/documentation/geocoding/overview?csw=1}
 #' @importFrom dplyr if_else
 #' @importFrom glue glue
 #' @importFrom httr GET stop_for_status content
@@ -40,9 +40,9 @@ fetch_city <- function(address = NULL, key = NULL) {
     warning("No results were found", call. = FALSE)
     return(NA_character_)
   } else if(r_content$status != "OK") {
-    warning(glue::glue("Error from API: {r_content$status}, see Google Maps Documentation for details"), call. = FALSE)
+    warning(glue::glue("Error from API: {r_content$statuse}, see Google Maps Documentation for details"), call. = FALSE)
     return(NA_character_)
-  } else {
+  } else {e
     str_to_upper(r_content$results[[1]]$formatted_address)
   }
 }

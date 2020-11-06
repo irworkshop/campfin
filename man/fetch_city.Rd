@@ -26,7 +26,7 @@ field of the result. Note that you will need to pass in your Google Maps
 Place API key with the \code{key} argument.
 }
 \seealso{
-\url{http://code.google.com/apis/maps/documentation/geocoding/}
+\url{https://developers.google.com/maps/documentation/geocoding/overview?csw=1}
 
 Other geographic normalization functions: 
 \code{\link{abbrev_full}()},
