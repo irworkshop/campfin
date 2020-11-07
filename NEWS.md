@@ -1,3 +1,10 @@
+# campfin 1.0.3
+
+* `file_encoding()` now fails on Solaris and tests are skipped.
+    * The use of the command line `file` tool via `system2()` returns results
+    on Solaris OS that are not the same as on a Unix-alike or Windows system
+    and thus the results are unreliable for consistent replication.
+
 # campfin 1.0.2
 
 * Tests and examples run more confidently.
