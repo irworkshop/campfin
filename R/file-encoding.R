@@ -11,7 +11,13 @@
 #' file_encoding(system.file("extdata", "vt_contribs.csv", package = "campfin"))
 #' @export
 file_encoding <- function(path) {
-  enc <- system2("file", args = paste("-i", path), stdout = TRUE)
+  if (Sys.info()['sysname'] == "SunOS") {
+    stop("file encoding via the command line on Solaris is unreliable")
+  }
+  enc <- tryCatch(
+    expr = system2("file", args = paste("-i", path), stdout = TRUE),
+    error = function(e) return(NULL)
+  )
   if (any(stringr::str_detect(enc, "\\(No such file or directory\\)"))) {
     stop("no such file or directory")
   } else {
