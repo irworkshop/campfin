@@ -10,7 +10,7 @@
   * [windows-x86_64-devel](https://builder.r-hub.io/status/campfin_1.0.2.tar.gz-34604028283e49e19c24f990284406ab)
   * [ubuntu-gcc-release](https://builder.r-hub.io/status/campfin_1.0.2.tar.gz-c4767d2f041d4487bbf91ce561aefd40)
   * [fedora-clang-devel](https://builder.r-hub.io/status/campfin_1.0.2.tar.gz-e8861979d5134cd6bbb935f811805ef8)
-  * [solaris-x86-patched](https://builder.r-hub.io/status/campfin_1.0.2.tar.gz-a8be7190484f40608f75218e478cfdda)
+  * **[solaris-x86-patched](https://builder.r-hub.io/status/campfin_1.0.2.tar.gz-a8be7190484f40608f75218e478cfdda)**
 * win-builder: 
   * [windows-x86_64-devel](https://win-builder.r-project.org/4qDy2Slvc9QR)
 
