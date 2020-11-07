@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.3</span>
       </span>
     </div>
 
@@ -134,9 +134,22 @@
       <small>Source: <a href='https://github.com/irworkshop/campfin/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="campfin-103" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.3">
+<a href="#campfin-103" class="anchor"></a>campfin 1.0.3<small> Unreleased </small>
+</h1>
+<ul>
+<li>
+<code><a href="../reference/file_encoding.html">file_encoding()</a></code> now fails on Solaris and tests are skipped.
+<ul>
+<li>The use of the command line <code>file</code> tool via <code><a href="https://rdrr.io/r/base/system2.html">system2()</a></code> returns results on Solaris OS that are not the same as on a Unix-alike or Windows system and thus the results are unreliable for consistent replication.</li>
+</ul>
+</li>
+</ul>
+</div>
     <div id="campfin-102" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.2">
-<a href="#campfin-102" class="anchor"></a>campfin 1.0.2<small> Unreleased </small>
+<a href="#campfin-102" class="anchor"></a>campfin 1.0.2<small> 2020-11-06 </small>
 </h1>
 <ul>
 <li>Tests and examples run more confidently.</li>
