@@ -61,7 +61,7 @@ use_diary <- function(st, type, author, auto = FALSE) {
   if (fs::file_exists(path)) {
     stop(basename(path), " already exists")
   } else {
-    readr::write_lines(new_lines, path = path)
+    readr::write_lines(new_lines, file = path)
     message(path, " was created")
     if (requireNamespace("usethis", quietly = TRUE) & interactive()) {
       usethis::edit_file(path)
