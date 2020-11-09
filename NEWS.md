@@ -1,3 +1,5 @@
+# campfin (development version)
+
 # campfin 1.0.3
 
 * `file_encoding()` now fails on Solaris and tests are skipped.
