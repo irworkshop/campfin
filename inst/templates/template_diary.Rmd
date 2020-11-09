@@ -76,21 +76,20 @@ campaign finance data.
 
 ```{r load_packages, message=FALSE, warning=FALSE, error=FALSE}
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load_gh("irworkshop/campfin")
 pacman::p_load(
   tidyverse, # data manipulation
   lubridate, # datetime strings
   gluedown, # printing markdown
-  magrittr, # pipe operators
   janitor, # clean data frames
-  aws.s3, # upload to aws s3
-  refinr, # cluster and merge
+  campfin, # custom irw tools
+  aws.s3, # aws cloud storage
+  refinr, # cluster & merge
   scales, # format strings
   knitr, # knit documents
-  vroom, # read files fast
-  rvest, # html scraping
-  glue, # combine strings
-  here, # relative paths
+  vroom, # fast reading
+  rvest, # scrape html
+  glue, # code strings
+  here, # project paths
   httr, # http requests
   fs # local storage 
 )
@@ -106,7 +105,7 @@ paths relative to _your_ machine.
 
 ```{r where_here}
 # where does this document knit?
-here::here()
+here::dr_here(show_reason = FALSE)
 ```
 
 [tap]: https://github.com/irworkshop/accountability_datacleaning
