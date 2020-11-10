@@ -7,8 +7,6 @@
 #' @importFrom fs as_fs_path
 #' @importFrom tibble tibble
 #' @importFrom stringr str_detect str_extract
-#' @examples
-#' file_encoding(system.file("extdata", "vt_contribs.csv", package = "campfin"))
 #' @export
 file_encoding <- function(path) {
   if (Sys.info()['sysname'] == "SunOS") {

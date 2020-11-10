@@ -15,6 +15,3 @@ A tibble of file encoding.
 \description{
 Call the \code{file} command line tool with option \code{-i}.
 }
-\examples{
-file_encoding(system.file("extdata", "vt_contribs.csv", package = "campfin"))
-}
