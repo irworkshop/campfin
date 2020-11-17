@@ -4,7 +4,7 @@
 \alias{path.abbrev}
 \title{Abbreviate a file path}
 \usage{
-path.abbrev(path, dir = here::here())
+path.abbrev(path, dir = fs::path_wd())
 }
 \arguments{
 \item{path}{Character vector containing one or more full paths.}
@@ -19,6 +19,6 @@ This is an inverse of \code{\link[=path.expand]{path.expand()}}, which replaces 
 project directory with a tilde.
 }
 \examples{
-print(here::here())
+print(here::here("test"))
 path.abbrev(here::here("test"))
 }

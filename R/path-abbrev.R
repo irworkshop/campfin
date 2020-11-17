@@ -7,11 +7,11 @@
 #' @param dir The directory to replace with `~`. Defaults to [here::here()].
 #' @return Abbreviated file paths.
 #' @examples
-#' print(here::here())
+#' print(here::here("test"))
 #' path.abbrev(here::here("test"))
 #' @importFrom stringr str_replace
-#' @importFrom here here
+#' @importFrom fs path_wd as_fs_path
 #' @export
-path.abbrev <- function(path, dir = here::here()) {
-  stringr::str_replace(path, dir, "~")
+path.abbrev <- function(path, dir = fs::path_wd()) {
+  fs::as_fs_path(stringr::str_replace(path, dir, "~"))
 }
