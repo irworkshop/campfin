@@ -21,15 +21,15 @@
 #' @family geographic normalization functions
 #' @export
 normal_zip <- function(zip, na = c("", "NA"), na_rep = FALSE) {
+  zip <- zip %>%
+    stringr::str_remove_all("\\D") %>%
+    dplyr::na_if("") %>%
+    stringr::str_pad(width = 5, side = "left", pad = "0") %>%
+    stringr::str_sub(start = 1, end = 5)
   if (na_rep) {
     zip <- na_rep(zip)
   }
   if (!is.null(na)) {
     zip <- na_in(zip, na)
   }
-  zip %>%
-    stringr::str_remove_all("\\D") %>%
-    dplyr::na_if("") %>%
-    stringr::str_pad(width = 5, side = "left", pad = "0") %>%
-    stringr::str_sub(start = 1, end = 5)
 }
