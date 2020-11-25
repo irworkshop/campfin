@@ -1,6 +1,6 @@
 # campfin (development version)
 
-# campfin 1.0.3
+# campfin 1.0.4
 
 * `file_encoding()` now fails on Solaris and tests are skipped.
     * The use of the command line `file` tool via `system2()` returns results

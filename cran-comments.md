@@ -20,6 +20,7 @@
 
 ## Resubmission
 
+* Remove `file_encoding()` example for OS unreliability.
 * Add `skip_on_os("solaris")` to `file_encoding()` tests due to unreliability.
 * Add `tryCatch()` to `file_encoding()` and fail on Solaris systems.
 
