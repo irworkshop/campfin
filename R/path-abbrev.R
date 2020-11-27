@@ -4,11 +4,11 @@
 #' project directory with a tilde.
 #'
 #' @param path Character vector containing one or more full paths.
-#' @param dir The directory to replace with `~`. Defaults to [here::here()].
+#' @param dir The directory to replace with `~`. Defaults to [fs::path_wd()].
 #' @return Abbreviated file paths.
 #' @examples
-#' print(here::here("test"))
-#' path.abbrev(here::here("test"))
+#' print(fs::path_wd("test"))
+#' path.abbrev(fs::path_wd("test"))
 #' @importFrom stringr str_replace
 #' @importFrom fs path_wd as_fs_path
 #' @export
