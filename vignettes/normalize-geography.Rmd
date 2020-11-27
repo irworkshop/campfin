@@ -2,7 +2,7 @@
 title: "Normalize Geographic Variables"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{normalize}
+  %\VignetteIndexEntry{Normalize Geographic Variables}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
