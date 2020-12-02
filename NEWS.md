@@ -1,5 +1,14 @@
 # campfin (development version)
 
+* `normal_address()` now only puts spaces between letters and numbers if the
+string either _starts_ with letters or _ends_ with numbers:
+
+```r
+normal_address("12east 2nd street, 3rd floor", abbs = usps_street)
+#> "12 E 2ND ST 3 RD FL" # old output
+#> "12 E 2ND ST 3RD FL" # fixed output
+```
+
 # campfin 1.0.4
 
 * `file_encoding()` now fails on Solaris and tests are skipped.
