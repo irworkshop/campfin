@@ -138,6 +138,15 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#campfin-development-version" class="anchor"></a>campfin (development version)<small> Unreleased </small>
 </h1>
+<ul>
+<li>
+<code><a href="../reference/normal_address.html">normal_address()</a></code> now only puts spaces between letters and numbers if the string either <em>starts</em> with letters or <em>ends</em> with numbers:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="fu"><a href="../reference/normal_address.html">normal_address</a></span><span class="op">(</span><span class="st">"12east 2nd street, 3rd floor"</span>, abbs <span class="op">=</span> <span class="va">usps_street</span><span class="op">)</span>
+<span class="co">#&gt; "12 E 2ND ST 3 RD FL" # old output</span>
+<span class="co">#&gt; "12 E 2ND ST 3RD FL" # fixed output</span></code></pre></div>
 </div>
     <div id="campfin-104" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.4">
