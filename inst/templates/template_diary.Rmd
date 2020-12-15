@@ -1,7 +1,7 @@
 ---
 title: "{State} {Type}"
 author: "{Author}"
-date: "`r Sys.time()`"
+date: "`r date()`"
 output:
   github_document: 
     df_print: tibble
@@ -28,7 +28,7 @@ opts_chunk$set(
   dpi = 300
 )
 if (!interactive()) {
-  options(width = 99)
+  options(width = 120)
   set.seed(5)
 }
 ```
@@ -70,12 +70,10 @@ The following packages are needed to collect, manipulate, visualize, analyze,
 and communicate these results. The `pacman` package will facilitate their
 installation and attachment.
 
-The IRW's `campfin` package will also have to be installed from GitHub. This
-package contains functions custom made to help facilitate the processing of
-campaign finance data.
-
 ```{r load_packages, message=FALSE, warning=FALSE, error=FALSE}
-if (!require("pacman")) install.packages("pacman")
+if (!require("pacman")) {
+  install.packages("pacman")
+}
 pacman::p_load(
   tidyverse, # data manipulation
   lubridate, # datetime strings
@@ -105,7 +103,7 @@ paths relative to _your_ machine.
 
 ```{r where_here}
 # where does this document knit?
-here::dr_here(show_reason = FALSE)
+here::i_am("{type}/docs/{st}_{type}_diary.Rmd")
 ```
 
 [tap]: https://github.com/irworkshop/accountability_datacleaning
@@ -118,24 +116,37 @@ here::dr_here(show_reason = FALSE)
 ## Download
 
 ```{r raw_dir}
+raw_url <- "https://example.com/source_file.csv"
 raw_dir <- dir_create(here("{st}", "{type}", "data", "raw"))
+raw_path <- path(raw_dir, basename(raw_url))
 ```
 
 ```{r raw_download}
-download.file()
+if (!file_exists(raw_path)) {
+  download.file(raw_url, raw_path)
+}
 ```
 
 ## Read
 
 ```{r raw_read}
 {stt} <- read_delim(
-  file = dir_ls(raw_dir)
+  file = raw_path,
+  delim = ",",
+  escape_backslash = FALSE,
+  escape_double = FALSE,
+  col_types = cols(
+    .default = col_character(),
+    date = col_date_usa(),
+    amount = col_double()
+  )
 )
 ```
 
 ## Explore
 
-There are `r scales::comma(nrow({stt}))` rows of `r ncol({stt})` columns.
+There are `r comma(nrow({stt}))` rows of `r ncol({stt})` columns. Each column
+represents a single {Type}...
 
 ```{r glimpse}
 glimpse({stt})
@@ -153,14 +164,15 @@ col_stats({stt}, count_na)
 We can flag any record missing a key variable needed to identify a transaction.
 
 ```{r na_flag}
-{stt} <- {stt} %>% flag_na(date, last, amount, committee)
+key_vars <- c("date", "last", "amount", "committee")
+{stt} <- flag_na({stt}, all_of(key_vars))
 sum({stt}$na_flag)
 ```
 
 ```{r na_view}
 {stt} %>% 
   filter(na_flag) %>% 
-  select(date, last, amount, committee)
+  select(all_of(key_vars))
 ```
 
 ### Duplicates
@@ -175,7 +187,7 @@ sum({stt}$dupe_flag)
 ```{r dupe_view}
 {stt} %>% 
   filter(dupe_flag) %>% 
-  select(date, last, amount, committee)
+  select(all_of(key_vars))
 ```
 
 ### Categorical
@@ -359,7 +371,8 @@ removing punctuation, but _expanding_ USPS abbreviations. We can also remove
 `invalid_city` values.
 
 ```{r city_norm}
-{stt} <- {stt} %>% 
+norm_city <- {stt} %>% 
+  distinct(city, state_clean, zip_clean) %>% 
   mutate(
     city_norm = normal_city(
       city = city, 
@@ -379,7 +392,7 @@ If the normalized value is either an abbreviation for or very similar to the
 expected value, we can confidently swap those two.
 
 ```{r city_swap}
-{stt} <- {stt} %>% 
+norm_city <- norm_city %>% 
   rename(city_raw = city) %>% 
   left_join(
     y = zipcodes,
@@ -403,6 +416,18 @@ expected value, we can confidently swap those two.
     -match_dist,
     -match_abb
   )
+```
+
+```{r city_rejoin}
+{stt} <- left_join(
+  x = {stt},
+  y = norm_city,
+  by = c(
+    "city_raw", 
+    "state_clean", 
+    "zip_clean"
+  )
+)
 ```
 
 #### Refine
