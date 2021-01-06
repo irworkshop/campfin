@@ -174,7 +174,7 @@ file is automatically written to that directory.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>use_diary</span><span class='op'>(</span><span class='st'>"VT"</span>, <span class='st'>"contribs"</span>, <span class='st'>"Kiernan Nicholls"</span>, <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;   [1] "---"                                                                             
-#&gt;   [2] "title: \"Vermont Contracts\""                                                    
+#&gt;   [2] "title: \"Vermont Contributions\""                                                
 #&gt;   [3] "author: \"Kiernan Nicholls\""                                                    
 #&gt;   [4] "date: \"`r date()`\""                                                            
 #&gt;   [5] "output:"                                                                         
@@ -320,8 +320,8 @@ file is automatically written to that directory.</p></td>
 #&gt; [145] ""                                                                                
 #&gt; [146] "## Explore"                                                                      
 #&gt; [147] ""                                                                                
-#&gt; [148] "There are `r comma(nrow(vtc))` rows of `r ncol(vtc)` columns. Each column"       
-#&gt; [149] "represents a single Contracts..."                                                
+#&gt; [148] "There are `r comma(nrow(vtc))` rows of `r ncol(vtc)` columns. Each record"       
+#&gt; [149] "represents a single Contributions..."                                            
 #&gt; [150] ""                                                                                
 #&gt; [151] "```{r glimpse}"                                                                  
 #&gt; [152] "glimpse(vtc)"                                                                    
@@ -399,7 +399,7 @@ file is automatically written to that directory.</p></td>
 #&gt; [224] "    trans = \"log10\""                                                           
 #&gt; [225] "  ) +"                                                                           
 #&gt; [226] "  labs("                                                                         
-#&gt; [227] "    title = \"Vermont Contracts Amount Distribution\","                          
+#&gt; [227] "    title = \"Vermont Contributions Amount Distribution\","                      
 #&gt; [228] "    caption = \"Source: {source}\","                                             
 #&gt; [229] "    x = \"Amount\","                                                             
 #&gt; [230] "    y = \"Count\""                                                               
@@ -432,7 +432,7 @@ file is automatically written to that directory.</p></td>
 #&gt; [257] "  scale_x_continuous(breaks = seq(2000, 2020, by = 2)) +"                        
 #&gt; [258] "  theme(legend.position = \"bottom\") +"                                         
 #&gt; [259] "  labs("                                                                         
-#&gt; [260] "    title = \"Vermont Contracts by Year\","                                      
+#&gt; [260] "    title = \"Vermont Contributions by Year\","                                  
 #&gt; [261] "    caption = \"Source: {source}\","                                             
 #&gt; [262] "    fill = \"Election Year\","                                                   
 #&gt; [263] "    x = \"Year Made\","                                                          
@@ -547,7 +547,7 @@ file is automatically written to that directory.</p></td>
 #&gt; [372] ""                                                                                
 #&gt; [373] "```{r city_norm}"                                                                
 #&gt; [374] "norm_city &lt;- vtc %&gt;% "                                                           
-#&gt; [375] "  distinct(city, state_clean, zip_clean) %&gt;% "                                   
+#&gt; [375] "  distinct(city, state_norm, zip_norm) %&gt;% "                                     
 #&gt; [376] "  mutate("                                                                       
 #&gt; [377] "    city_norm = normal_city("                                                    
 #&gt; [378] "      city = city, "                                                             
@@ -599,8 +599,8 @@ file is automatically written to that directory.</p></td>
 #&gt; [424] "  y = norm_city,"                                                                
 #&gt; [425] "  by = c("                                                                       
 #&gt; [426] "    \"city_raw\", "                                                              
-#&gt; [427] "    \"state_clean\", "                                                           
-#&gt; [428] "    \"zip_clean\""                                                               
+#&gt; [427] "    \"state_norm\", "                                                            
+#&gt; [428] "    \"zip_norm\""                                                                
 #&gt; [429] "  )"                                                                             
 #&gt; [430] ")"                                                                               
 #&gt; [431] "```"                                                                             
@@ -796,7 +796,7 @@ file is automatically written to that directory.</p></td>
 #&gt; [621] "  col.names = c(\"Column\", \"Type\", \"Definition\")"                           
 #&gt; [622] "))"                                                                              
 #&gt; [623] "```"                                                                             </div><div class='input'><span class='fu'>use_diary</span><span class='op'>(</span><span class='st'>"VT"</span>, <span class='st'>"contribs"</span>, <span class='st'>"Kiernan Nicholls"</span>, <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpBLYYA5/vt_contribs_diary.Rmd was created</span></div></pre>
+</div><div class='output co'>#&gt; <span class='message'>/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp8JcvHn/vt_contribs_diary.Rmd was created</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
