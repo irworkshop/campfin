@@ -32,7 +32,7 @@ use_diary <- function(st, type, author, auto = FALSE) {
   if (is.na(type_match)) {
     Type <- stringr::str_to_sentence(type)
   } else {
-    Type <- c("Contracts", "Expenditures", "Lobbyists", "Contracts", "Salary")
+    Type <- c("Contributions", "Expenditures", "Lobbyists", "Contracts", "Salary")
     Type <- Type[type_match]
   }
   temp <- system.file("templates", "template_diary.Rmd", package = "campfin")

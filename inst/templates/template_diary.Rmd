@@ -145,7 +145,7 @@ if (!file_exists(raw_path)) {
 
 ## Explore
 
-There are `r comma(nrow({stt}))` rows of `r ncol({stt})` columns. Each column
+There are `r comma(nrow({stt}))` rows of `r ncol({stt})` columns. Each record
 represents a single {Type}...
 
 ```{r glimpse}
@@ -372,7 +372,7 @@ removing punctuation, but _expanding_ USPS abbreviations. We can also remove
 
 ```{r city_norm}
 norm_city <- {stt} %>% 
-  distinct(city, state_clean, zip_clean) %>% 
+  distinct(city, state_norm, zip_norm) %>% 
   mutate(
     city_norm = normal_city(
       city = city, 
@@ -424,8 +424,8 @@ norm_city <- norm_city %>%
   y = norm_city,
   by = c(
     "city_raw", 
-    "state_clean", 
-    "zip_clean"
+    "state_norm", 
+    "zip_norm"
   )
 )
 ```
