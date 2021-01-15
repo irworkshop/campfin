@@ -194,9 +194,12 @@
   trim_ws <span class="op">=</span> <span class="cn">FALSE</span>,
   col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols</a></span><span class="op">(</span>
     amount <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_number.html">col_number</a></span><span class="op">(</span><span class="op">)</span>,
-    date <span class="op">=</span> <span class="fu"><a href="../reference/col_date_usa.html">col_date_usa</a></span><span class="op">(</span><span class="op">)</span>
+    date <span class="op">=</span> <span class="fu"><a href="../reference/col_date_mdy.html">col_date_usa</a></span><span class="op">(</span><span class="op">)</span>
   <span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+<span class="op">)</span>
+<span class="co">#&gt; Warning: 'col_date_usa' is deprecated.</span>
+<span class="co">#&gt; Use 'col_date_mdy' instead.</span>
+<span class="co">#&gt; See help("Deprecated")</span></code></pre></div>
 <p>We can see how the new <code>date</code> column is an actual date object, allowing for mathematical manipulation.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span><span class="va">vt</span>, <span class="va">date</span>, next_week <span class="op">=</span> <span class="va">date</span> <span class="op">+</span> <span class="fl">7</span><span class="op">)</span>
@@ -303,11 +306,11 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">valid_city</span><span class="op">)</span>
 <span class="co">#&gt; [1] 19083</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">valid_city</span>, <span class="fl">6</span><span class="op">)</span>
-<span class="co">#&gt; [1] "MILLRY"          "VANNDALE"        "CITRUS HEIGHTS"  "MOUNT BLANCHARD"</span>
-<span class="co">#&gt; [5] "LYNNDYL"         "LAVONIA"</span>
+<span class="co">#&gt; [1] "ORWIGSBURG" "ADDYSTON"   "LOYAL"      "MADRID"     "HUGO"      </span>
+<span class="co">#&gt; [6] "HARTSEL"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">extra_city</span>, <span class="fl">6</span><span class="op">)</span>
-<span class="co">#&gt; [1] "BROWN DEER"        "HAMILTON SQUARE"   "STAFFORD TOWNSHIP"</span>
-<span class="co">#&gt; [4] "EDGEWATER PARK"    "GORMAN AVENUE"     "BROOKLYN PARK"</span>
+<span class="co">#&gt; [1] "ALOHA"               "SOUTH MIAMI"         "MURRAY HILL"        </span>
+<span class="co">#&gt; [4] "VIA VERONA LANE"     "MANCHESTER TOWNSHIP" "SOUTH HILLS"</span>
 <span class="co"># combine both vectors</span>
 <span class="va">many_city</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">valid_city</span>, <span class="va">extra_city</span><span class="op">)</span></code></pre></div>
 <p>Still, checking against this list is a good way to check for values that need additional attention.</p>
