@@ -4,7 +4,7 @@
 \alias{flush_memory}
 \title{Flush Garbage Memory}
 \usage{
-flush_memory(n = 10)
+flush_memory(n = 1)
 }
 \arguments{
 \item{n}{The number of times to run \code{\link[=gc]{gc()}}.}
