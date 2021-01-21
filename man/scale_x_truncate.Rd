@@ -2,14 +2,21 @@
 % Please edit documentation in R/scale-truncate.R
 \name{scale_x_truncate}
 \alias{scale_x_truncate}
-\title{Truncate x-axis labels}
+\alias{scale_x_wrap}
+\title{Truncate and wrap x-axis labels}
 \usage{
 scale_x_truncate(n = 20, ...)
+
+scale_x_wrap(width = 20, ...)
 }
 \arguments{
-\item{n}{The maximum width of string passed to \code{\link[stringr:str_trunc]{stringr::str_trunc()}}.}
+\item{n}{The maximum width of string. Passed to \code{\link[stringr:str_trunc]{stringr::str_trunc()}}.}
 
 \item{...}{Additional arguments passed to \code{\link[ggplot2:scale_discrete]{ggplot2::scale_x_discrete()}}.}
+
+\item{width}{Positive integer giving target line width in characters. A width
+less than or equal to 1 will put each word on its own line. Passed to
+\code{\link[stringr:str_wrap]{stringr::str_wrap()}}.}
 }
 \description{
 Truncate the labels of a plot's discrete x-axis labels so that the text does
