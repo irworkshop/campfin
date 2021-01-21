@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Truncate x-axis labels — scale_x_truncate • campfin</title>
+<title>Truncate and wrap x-axis labels — scale_x_truncate • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,7 @@
 
 
 
-<meta property="og:title" content="Truncate x-axis labels — scale_x_truncate" />
+<meta property="og:title" content="Truncate and wrap x-axis labels — scale_x_truncate" />
 <meta property="og:description" content="Truncate the labels of a plot's discrete x-axis labels so that the text does
 not overflow and collide with other bars." />
 <meta property="og:image" content="/logo.png" />
@@ -132,7 +132,7 @@ not overflow and collide with other bars." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Truncate x-axis labels</h1>
+    <h1>Truncate and wrap x-axis labels</h1>
     <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/scale-truncate.R'><code>R/scale-truncate.R</code></a></small>
     <div class="hidden name"><code>scale_x_truncate.Rd</code></div>
     </div>
@@ -142,18 +142,26 @@ not overflow and collide with other bars." />
 not overflow and collide with other bars.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>scale_x_truncate</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>scale_x_truncate</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>scale_x_wrap</span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>20</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>The maximum width of string passed to <code><a href='https://stringr.tidyverse.org/reference/str_trunc.html'>stringr::str_trunc()</a></code>.</p></td>
+      <td><p>The maximum width of string. Passed to <code><a href='https://stringr.tidyverse.org/reference/str_trunc.html'>stringr::str_trunc()</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>Additional arguments passed to <code><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>ggplot2::scale_x_discrete()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>Positive integer giving target line width in characters. A width
+less than or equal to 1 will put each word on its own line. Passed to
+<code><a href='https://stringr.tidyverse.org/reference/str_wrap.html'>stringr::str_wrap()</a></code>.</p></td>
     </tr>
     </table>
 
