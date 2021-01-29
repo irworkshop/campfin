@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read column names — read_names • campfin</title>
+<title>Guess the delimiter of a text file — guess_delim • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Read column names — read_names" />
-<meta property="og:description" content="Read the first line of a delimited file as vector." />
+<meta property="og:title" content="Guess the delimiter of a text file — guess_delim" />
+<meta property="og:description" content="Taken from code used in vroom::vroom() with automatic reading." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -131,37 +131,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read column names</h1>
-    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/read-names.R'><code>R/read-names.R</code></a></small>
-    <div class="hidden name"><code>read_names.Rd</code></div>
+    <h1>Guess the delimiter of a text file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/guess-delims.R'><code>R/guess-delims.R</code></a></small>
+    <div class="hidden name"><code>guess_delim.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Read the first line of a delimited file as vector.</p>
+    <p>Taken from code used in <code>vroom::vroom()</code> with automatic reading.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_names</span><span class='op'>(</span><span class='va'>file</span>, delim <span class='op'>=</span> <span class='st'>","</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>guess_delim</span><span class='op'>(</span><span class='va'>path</span>, delims <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>","</span>, <span class='st'>"\t"</span>, <span class='st'>" "</span>, <span class='st'>"|"</span>, <span class='st'>":"</span>, <span class='st'>";"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>Path to text file.</p></td>
+      <th>path</th>
+      <td><p>The path of a delimited file to read.</p></td>
     </tr>
     <tr>
-      <th>delim</th>
-      <td><p>Character separating column names.</p></td>
+      <th>delims</th>
+      <td><p>The single characters to guess from.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://github.com/r-lib/vroom/blob/7b7e775fd6d4261532116bcc881879f9439f29df/R/vroom.R'>https://github.com/r-lib/vroom/blob/7b7e775fd6d4261532116bcc881879f9439f29df/R/vroom.R</a></p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Character vector of column names.</p>
+    <p>The single character guessed as a delimiter.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>read_names</span><span class='op'>(</span><span class='st'>"x\n11/09/2016"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "x"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>guess_delim</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata"</span>, <span class='st'>"vt_contribs.csv"</span>, package <span class='op'>=</span> <span class='st'>"campfin"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] ","</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
