@@ -18,5 +18,5 @@ Tibble of line locations.
 Show non-ASCII lines of file
 }
 \examples{
-non_ascii("README.md")
+non_ascii(system.file("README.md", package = "campfin"))
 }

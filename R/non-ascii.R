@@ -3,7 +3,7 @@
 #' @param path The path to a text file to check.
 #' @param highlight A function used to add ANSI escapes to highlight bytes.
 #' @examples
-#' non_ascii("README.md")
+#' non_ascii(system.file("README.md", package = "campfin"))
 #' @return Tibble of line locations.
 #' @importFrom stringr str_locate_all str_sub
 #' @export
