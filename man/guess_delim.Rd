@@ -10,7 +10,7 @@
 guess_delim(path, delims = c(",", "\\t", " ", "|", ":", ";"))
 }
 \arguments{
-\item{path}{The path of a delimted file to read.}
+\item{path}{The path of a delimited file to read.}
 
 \item{delims}{The single characters to guess from.}
 }
