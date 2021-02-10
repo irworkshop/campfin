@@ -5,12 +5,9 @@
 \alias{col_date_usa}
 \title{Parse USA date columns in readr functions}
 \usage{
-col_date_mdy(time = NULL)
+col_date_mdy()
 
 col_date_usa()
-}
-\arguments{
-\item{time}{An optional character vector specifying the time format.}
 }
 \value{
 A \code{POSIXct} vector.

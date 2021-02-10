@@ -1,5 +1,6 @@
 # campfin (development version)
 
+* Deprecate `col_date_usa()` in favor of `col_date_mdy()`.
 * `normal_address()` now only puts spaces between letters and numbers if the
 string either _starts_ with letters or _ends_ with numbers:
 
