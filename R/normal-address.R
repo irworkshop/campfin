@@ -26,7 +26,7 @@ normal_address <- function(address, abbs = NULL, na = c("", "NA"), na_rep = FALS
   address2 <- address %>%
     str_normal() %>%
     stringr::str_replace_all("^P\\sO", "PO") %>%
-    stringr::str_replace_all("(?<=^|\\s)C\\sO(?=\\s|$)", "C/O")
+    stringr::str_replace_all("(?<=^|\\s)C\\sO(?=\\s|$)", "C/O") %>%
     stringr::str_replace_all("^([:digit:]+)([:alpha:]+)", "\\1 \\2") %>%
     stringr::str_replace_all("([:alpha:]+)([:digit:]+)$", "\\1 \\2")
   if (!is.null(abbs)) {
