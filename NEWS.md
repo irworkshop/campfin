@@ -2,7 +2,8 @@
 
 * Deprecate `col_date_usa()` in favor of `col_date_mdy()`.
 * `normal_address()` now only puts spaces between letters and numbers if the
-string either _starts_ with letters or _ends_ with numbers:
+  string either _starts_ with letters or _ends_ with numbers:
+* `normal_address()` now keeps the forward slash in `C/O`.
 
 ```r
 normal_address("12east 2nd street, 3rd floor", abbs = usps_street)
