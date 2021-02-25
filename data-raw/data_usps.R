@@ -121,8 +121,8 @@ usps_city <- usps_street %>%
   ) %>%
   # add those not included
   add_row(
-    abb  = c("FT",   "HTS",     "MT",    "MTN",      "PRT",  "ST",    "TWP"),
-    full = c("FORT", "HEIGHTS", "MOUNT", "MOUNTAIN", "PORT", "SAINT", "TOWNSHIP")
+    abb  = c("FT",   "HTS",     "MT",    "MTN",      "PRT",  "TWP"),
+    full = c("FORT", "HEIGHTS", "MOUNT", "MOUNTAIN", "PORT", "TOWNSHIP")
   ) %>%
   # add directional abbs
   bind_rows(usps_dirs) %>%
