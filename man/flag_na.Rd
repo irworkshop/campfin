@@ -21,5 +21,5 @@ variable with \code{TRUE} values for any record missing \emph{any} value in the
 selected columns.
 }
 \examples{
-flag_na(dplyr::starwars, gender)
+flag_na(dplyr::starwars, hair_color)
 }
