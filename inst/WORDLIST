@@ -9,6 +9,7 @@ Geocode
 Geocoding
 Lifecycle
 OKC
+Tibble
 URL's
 XXXXXX
 YYYY
@@ -17,7 +18,6 @@ coercible
 contribs
 csv
 errored
-explorable
 federalgovernmentzipcodes
 fs
 geocoder
@@ -30,7 +30,7 @@ searchability
 siloed
 stringr
 tibble
-tidyselct
+tidyselect
 usps
 zipcode
 zipcodes
