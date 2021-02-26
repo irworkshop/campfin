@@ -10,29 +10,25 @@
 #'   removed if empty.
 #' @param .both Whether to flag both duplicates or just subsequent.
 #' @return A data frame with a new `dupe_flag` logical variable.
-#' @importFrom dplyr select mutate everything
+#' @importFrom dplyr select
 #' @examples
 #' flag_dupes(iris, dplyr::everything())
 #' flag_dupes(iris, dplyr::everything(), .both = FALSE)
 #' @export
 flag_dupes <- function(data, ..., .check = TRUE, .both = TRUE) {
   sub_data <- dplyr::select(data, ...)
-  if (.both) {
-    d1 <- duplicated(sub_data, fromLast = FALSE)
-    flush_memory(1)
+  dupe <- duplicated(sub_data, fromLast = FALSE)
+  if (.both && any(dupe)) {
     d2 <- duplicated(sub_data, fromLast = TRUE)
-    flush_memory(1)
-    dupe_vec <- d1 | d2
-    rm(d1, d2)
-    flush_memory(1)
-  } else {
-    dupe_vec <- duplicated(sub_data)
-    flush_memory(1)
+    dupe <- dupe | d2
+    rm(d2)
   }
-  if (.check & sum(dupe_vec) == 0) {
+  rm(sub_data)
+  flush_memory(1)
+  if (.check & !any(dupe)) {
     warning("no duplicate rows, column not created")
-    return(data)
   } else {
-    dplyr::mutate(data, dupe_flag = dupe_vec)
+    data$dupe_flag <- dupe
   }
+  data
 }
