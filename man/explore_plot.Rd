@@ -28,5 +28,5 @@ are arranged in descending order and are limited to the 8 most frequent
 values.
 }
 \examples{
-explore_plot(ggplot2::diamonds, cut)
+explore_plot(iris, Species)
 }
