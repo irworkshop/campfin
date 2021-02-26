@@ -4,6 +4,9 @@
 * `normal_address()` now only puts spaces between letters and numbers if the
   string either _starts_ with letters or _ends_ with numbers:
 * `normal_address()` now keeps the forward slash in `C/O`.
+* Rename `which_in()` to `what_in()` to avoid confusion with `which()`.
+* Remove `http_filename()`.
+* Remove `count_vec()` in favor of new `dplyr::count()` method for characters.
 
 ```r
 normal_address("12east 2nd street, 3rd floor", abbs = usps_street)
