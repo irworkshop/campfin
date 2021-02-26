@@ -7,6 +7,8 @@ Authors@R:
              family = "Nicholls",
              role = c("aut", "cre", "cph"),
              email = "kiernann@protonmail.com"),
+      person(given = "Investigative Reporting Workshop",
+             role = "cph"),
       person(given = "Schuyler",
              family = "Erle",
              role = "cph",
@@ -17,7 +19,8 @@ Description: Explore and normalize American campaign finance
     into a central, standard database that is more easily searched:
     <https://publicaccountability.org/>.
 License: CC BY 4.0
-URL: https://github.com/irworkshop/campfin
+URL: https://github.com/irworkshop/campfin,
+  https://irworkshop.github.io/campfin/
 BugReports: https://github.com/irworkshop/campfin/issues
 Depends: 
     R (>= 3.2)
