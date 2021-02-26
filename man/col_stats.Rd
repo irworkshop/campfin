@@ -2,9 +2,12 @@
 % Please edit documentation in R/col-stats.R
 \name{col_stats}
 \alias{col_stats}
+\alias{glimpse_fun}
 \title{Apply a statistic function to all column vectors}
 \usage{
 col_stats(data, fun, print = TRUE)
+
+glimpse_fun(data, fun, print = TRUE)
 }
 \arguments{
 \item{data}{A data frame to glimpse.}

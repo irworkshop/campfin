@@ -38,3 +38,18 @@ col_stats <- function(data, fun, print = TRUE) {
     return(summary)
   }
 }
+
+#' @rdname col_stats
+#' @export
+glimpse_fun <- function(data, fun, print = TRUE) {
+  .Deprecated("col_stats")
+  summary <- data %>%
+    purrr::map_dbl({{ fun }}) %>%
+    tibble::enframe(name = "col", value = "n") %>%
+    dplyr::mutate(p = .data$n / nrow(data)) %>%
+    dplyr::mutate(type = format(purrr::map(data, rlang::as_label))) %>%
+    dplyr::select(.data$col, .data$type, .data$n, .data$p)
+  if (print) {
+    print(summary, n = length(data))
+  }
+}
