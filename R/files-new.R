@@ -12,7 +12,6 @@
 #'   date equal to today.
 #' @importFrom fs dir_ls file_info
 #' @importFrom lubridate today floor_date
-#' @importFrom magrittr use_series equals
 #' @importFrom rlang .data is_empty
 #' @examples
 #' tmp <- tempdir()
@@ -42,7 +41,6 @@ all_files_new <- function(path, glob = NULL, ...) {
 #' @param path The path to a file to check.
 #' @return logical; Whether the file has a modification date equal to today.
 #' @importFrom lubridate today floor_date
-#' @importFrom magrittr use_series equals
 #' @examples
 #' tmp <- tempfile()
 #' this_file_new(tmp)
