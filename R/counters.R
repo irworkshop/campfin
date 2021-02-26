@@ -251,25 +251,6 @@ na_rep <- function(x, n = 0) {
   return(x)
 }
 
-#' Count values of a vector
-#'
-#' A version of [dplyr::count()] which uses [tibble::enframe()] to count the
-#' number of values in a single vector.
-#'
-#' @param x A vector to check.
-#' @param sort logical; if TRUE will sort output in descending order of `n`
-#' @return A tibble, with counts of each `value` in `n`.
-#' @family counting wrappers
-#' @examples
-#' count_vec(x = rivers)
-#' count_vec(x = sample(x = state.name, size = 1000, replace = TRUE))
-#' @importFrom dplyr count
-#' @importFrom tibble enframe
-#' @export
-count_vec <- function(x, sort = TRUE) {
-  dplyr::count(x = tibble::enframe(x = x), .data$value, sort = sort)
-}
-
 #' Proportion missing
 #'
 #' Find the proportion of values of `x` that are distinct.

@@ -92,19 +92,6 @@ test_that("na_rep can ignore strings of only one character", {
   expect_equal(a, x)
 })
 
-test_that("count_vec returns a dplyr::count() on a vector", {
-  x <- sample(
-    x = c("VT", "DC", "MA"),
-    size = 100,
-    replace = TRUE,
-    prob = c(0.75, 0.50, 0.25)
-  )
-  a <- count_vec(x)
-  expect_s3_class(a, "tbl")
-  expect_length(a, 2)
-  expect_equal(nrow(a), n_distinct(x))
-})
-
 test_that("comparisong counters can ignore case", {
   expect_equal(prop_in(letters, LETTERS, ignore.case = TRUE), 1)
   expect_equal(prop_out(letters, LETTERS, ignore.case = TRUE), 0)

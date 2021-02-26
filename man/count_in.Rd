@@ -33,7 +33,6 @@ Other counting wrappers:
 \code{\link{count_diff}()},
 \code{\link{count_na}()},
 \code{\link{count_out}()},
-\code{\link{count_vec}()},
 \code{\link{na_in}()},
 \code{\link{na_out}()},
 \code{\link{na_rep}()},
