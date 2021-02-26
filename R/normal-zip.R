@@ -9,7 +9,7 @@
 #' @param zip A vector of US ZIP codes.
 #' @param na A vector of values to pass to [na_in()].
 #' @param na_rep logical; If `TRUE`, [na_rep()] will be called. Please note that
-#'   22222, 44444, and 55555 are rare but valid ZIP codes that will be removed.
+#'   22222, 44444, and 55555 valid ZIP codes that will not be removed.
 #' @return A _character_ vector of normalized 5-digit ZIP codes.
 #' @examples
 #' normal_zip(
@@ -26,10 +26,13 @@ normal_zip <- function(zip, na = c("", "NA"), na_rep = FALSE) {
     dplyr::na_if("") %>%
     stringr::str_pad(width = 5, side = "left", pad = "0") %>%
     stringr::str_sub(start = 1, end = 5)
+  good_rep <- c("22222", "44444", "55555")
   if (na_rep) {
-    zip <- na_rep(zip)
+    zip.rm <- which(zip %out% good_rep)
+    zip[zip.rm] <- na_rep(zip[zip.rm])
   }
   if (!is.null(na)) {
     zip <- na_in(zip, na)
   }
+  return(zip)
 }

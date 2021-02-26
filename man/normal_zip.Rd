@@ -12,7 +12,7 @@ normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
 \item{na}{A vector of values to pass to \code{\link[=na_in]{na_in()}}.}
 
 \item{na_rep}{logical; If \code{TRUE}, \code{\link[=na_rep]{na_rep()}} will be called. Please note that
-22222, 44444, and 55555 are rare but valid ZIP codes that will be removed.}
+22222, 44444, and 55555 valid ZIP codes that will not be removed.}
 }
 \value{
 A \emph{character} vector of normalized 5-digit ZIP codes.

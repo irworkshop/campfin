@@ -7,6 +7,8 @@
 * Rename `which_in()` to `what_in()` to avoid confusion with `which()`.
 * Remove `http_filename()`.
 * Remove `count_vec()` in favor of new `dplyr::count()` method for characters.
+* Valid ZIP codes 22222, 44444, 55555 are not removed with
+  `normal_zip(na.na_rep = TRUE)`.
 
 ```r
 normal_address("12east 2nd street, 3rd floor", abbs = usps_street)
