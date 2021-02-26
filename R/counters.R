@@ -278,10 +278,10 @@ prop_distinct <- function(x) {
 #' @return The elements of `x` that are `%in%` y.
 #' @family counting wrappers
 #' @examples
-#' which_in(c("VT", "DC", NA), state.abb)
+#' what_in(c("VT", "DC", NA), state.abb)
 #' @importFrom stats na.omit
 #' @export
-which_in <- function(x, y, ignore.case = FALSE) {
+what_in <- function(x, y, ignore.case = FALSE) {
   if (ignore.case) {
     x <- stringr::str_to_lower(x)
     y <- stringr::str_to_lower(y)
@@ -302,10 +302,10 @@ which_in <- function(x, y, ignore.case = FALSE) {
 #' @return The elements of `x` that are `%out%` y.
 #' @family counting wrappers
 #' @examples
-#' which_out(c("VT", "DC", NA), state.abb)
+#' what_out(c("VT", "DC", NA), state.abb)
 #' @importFrom stats na.omit
 #' @export
-which_out <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
+what_out <- function(x, y, na.rm = TRUE, ignore.case = FALSE) {
   if (ignore.case) {
     x <- stringr::str_to_lower(x)
     y <- stringr::str_to_lower(y)
