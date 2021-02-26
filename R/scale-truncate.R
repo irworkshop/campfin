@@ -11,7 +11,7 @@
 #' @importFrom ggplot2 scale_x_discrete
 #' @importFrom stringr str_trunc str_wrap
 #' @export
-scale_x_truncate <- function(n = 20, ...) {
+scale_x_truncate <- function(n = 15, ...) {
    ggplot2::scale_x_discrete(
      label = function(x) {
        stringr::str_trunc(x, n)
@@ -21,7 +21,7 @@ scale_x_truncate <- function(n = 20, ...) {
 
 #' @rdname scale_x_truncate
 #' @export
-scale_x_wrap <- function(width = 20, ...) {
+scale_x_wrap <- function(width = 15, ...) {
   ggplot2::scale_x_discrete(
     label = function(x) {
       stringr::str_wrap(x, width)

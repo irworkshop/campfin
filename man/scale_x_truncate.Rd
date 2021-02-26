@@ -5,9 +5,9 @@
 \alias{scale_x_wrap}
 \title{Truncate and wrap x-axis labels}
 \usage{
-scale_x_truncate(n = 20, ...)
+scale_x_truncate(n = 15, ...)
 
-scale_x_wrap(width = 20, ...)
+scale_x_wrap(width = 15, ...)
 }
 \arguments{
 \item{n}{The maximum width of string. Passed to \code{\link[stringr:str_trunc]{stringr::str_trunc()}}.}
