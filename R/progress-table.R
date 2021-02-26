@@ -25,12 +25,7 @@ progress_table <- function(..., compare) {
     n_diff = double()
   )
   extra <- list(...)
-  dot_names <- function(...) {
-    varnames <- lapply(substitute(list(...))[-1], deparse)
-    varnames <- stringr::str_remove(varnames, "(.*)\\$")
-    return(varnames)
-  }
-  names(extra) <- dot_names(...)
+  names(extra) <- lapply(substitute(list(...))[-1], deparse)
   if (!is_empty(extra)) {
     for (i in seq_along(extra)) {
       table <- table %>% tibble::add_row(
