@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.4.9100</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.5.9000</span>
       </span>
     </div>
 
@@ -144,6 +144,9 @@
 <code><a href="../reference/normal_address.html">normal_address()</a></code> now only puts spaces between letters and numbers if the string either <em>starts</em> with letters or <em>ends</em> with numbers:</li>
 <li>
 <code><a href="../reference/normal_address.html">normal_address()</a></code> now keeps the forward slash in <code>C/O</code>.</li>
+<li>Rename <code>which_in()</code> to <code><a href="../reference/what_in.html">what_in()</a></code> to avoid confusion with <code><a href="https://rdrr.io/r/base/which.html">which()</a></code>.</li>
+<li>Remove <code>http_filename()</code>.</li>
+<li>Remove <code>count_vec()</code> in favor of new <code><a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a></code> method for characters.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -201,7 +204,7 @@
 <li>
 <code><a href="../reference/flag_dupes.html">flag_dupes()</a></code> now also calls <code><a href="https://rdrr.io/r/base/duplicated.html">duplicated(fromLast = TRUE)</a></code> to capture all.</li>
 <li>Separate address <code>[:digit:]</code> from <code>[:alpha:]</code> with space.</li>
-<li>Create <code><a href="../reference/prop_distinct.html">prop_distinct()</a></code>, <code><a href="../reference/which_in.html">which_in()</a></code> and <code><a href="../reference/which_out.html">which_out()</a></code>.</li>
+<li>Create <code><a href="../reference/prop_distinct.html">prop_distinct()</a></code>, <code>which_in()</code> and <code>which_out()</code>.</li>
 <li>Comment out examples for fetching and checking cities.</li>
 <li>Use ‘fs’ bytes and paths.</li>
 <li>Create <code><a href="../reference/use_diary.html">use_diary()</a></code> with template diary.</li>
@@ -225,7 +228,7 @@
 </h1>
 <ul>
 <li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-<li>Deprecated <code><a href="../reference/glimpse_fun.html">glimpse_fun()</a></code> for more simple <code><a href="../reference/col_stats.html">col_stats()</a></code>.</li>
+<li>Deprecated <code><a href="../reference/col_stats.html">glimpse_fun()</a></code> for more simple <code><a href="../reference/col_stats.html">col_stats()</a></code>.</li>
 </ul>
 </div>
   </div>

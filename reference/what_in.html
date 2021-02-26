@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a progress table — progress_table • campfin</title>
+<title>Which in — what_in • campfin</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="Create a progress table — progress_table" />
-<meta property="og:description" content="Create a tibble with rows for each stage of normalization and columns for the
-various statistics most useful in assessing the progress of each stage." />
+<meta property="og:title" content="Which in — what_in" />
+<meta property="og:description" content="Return the values of x that are %in% of the vector y." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -132,44 +131,60 @@ various statistics most useful in assessing the progress of each stage." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a progress table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/progress-table.R'><code>R/progress-table.R</code></a></small>
-    <div class="hidden name"><code>progress_table.Rd</code></div>
+    <h1>Which in</h1>
+    <small class="dont-index">Source: <a href='https://github.com/irworkshop/campfin/blob/master/R/counters.R'><code>R/counters.R</code></a></small>
+    <div class="hidden name"><code>what_in.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a tibble with rows for each stage of normalization and columns for the
-various statistics most useful in assessing the progress of each stage.</p>
+    <p>Return the values of <code>x</code> that are <code><a href='https://rdrr.io/r/base/match.html'>%in%</a></code> of the vector <code>y</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>progress_table</span><span class='op'>(</span><span class='va'>...</span>, <span class='va'>compare</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>what_in</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Any number of vectors to check.</p></td>
+      <th>x</th>
+      <td><p>A vector to check.</p></td>
     </tr>
     <tr>
-      <th>compare</th>
-      <td><p>A vector to compare each of <code>...</code> against. Useful
-with <a href='valid_zip.html'>valid_zip</a>, <a href='valid_state.html'>valid_state</a> (<a href='valid_name.html'>valid_name</a>), or
-<a href='valid_city.html'>valid_city</a>.</p></td>
+      <th>y</th>
+      <td><p>A vector to compare against.</p></td>
+    </tr>
+    <tr>
+      <th>ignore.case</th>
+      <td><p>logical; if <code>FALSE</code>, the pattern matching is case
+sensitive and if <code>TRUE</code>, case is ignored during matching.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A table with a row for each vector in <code>...</code>.</p>
+    <p>The elements of <code>x</code> that are <code><a href='https://rdrr.io/r/base/match.html'>%in%</a></code> y.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>x[which(x %in% y)]</code></p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other counting wrappers: 
+<code><a href='count_diff.html'>count_diff</a>()</code>,
+<code><a href='count_in.html'>count_in</a>()</code>,
+<code><a href='count_na.html'>count_na</a>()</code>,
+<code><a href='count_out.html'>count_out</a>()</code>,
+<code><a href='na_in.html'>na_in</a>()</code>,
+<code><a href='na_out.html'>na_out</a>()</code>,
+<code><a href='na_rep.html'>na_rep</a>()</code>,
+<code><a href='prop_distinct.html'>prop_distinct</a>()</code>,
+<code><a href='prop_in.html'>prop_in</a>()</code>,
+<code><a href='prop_na.html'>prop_na</a>()</code>,
+<code><a href='prop_out.html'>prop_out</a>()</code>,
+<code><a href='what_out.html'>what_out</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>progress_table</span><span class='op'>(</span><span class='va'>state.name</span>, <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>toupper</a></span><span class='op'>(</span><span class='va'>state.name</span><span class='op'>)</span>, compare <span class='op'>=</span> <span class='va'>valid_name</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 6</span><span>
-#&gt;   stage               prop_in n_distinct prop_na n_out n_diff
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> state.name                0         50       0    50     50
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> toupper(state.name)       1         50       0     0      0</div></span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>what_in</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"VT"</span>, <span class='st'>"DC"</span>, <span class='cn'>NA</span><span class='op'>)</span>, <span class='va'>state.abb</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "VT"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
