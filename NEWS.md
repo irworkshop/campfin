@@ -1,4 +1,4 @@
-# campfin (development version)
+# campfin 1.0.6
 
 * Deprecate `col_date_usa()` in favor of `col_date_mdy()`.
 * `normal_address()` now only puts spaces between letters and numbers if the
@@ -10,7 +10,7 @@
 * Valid ZIP codes 22222, 44444, 55555 are not removed with
   `normal_zip(na.na_rep = TRUE)`.
 
-```r
+``` r
 normal_address("12east 2nd street, 3rd floor", abbs = usps_street)
 #> "12 E 2ND ST 3 RD FL" # old output
 #> "12 E 2ND ST 3RD FL" # fixed output
