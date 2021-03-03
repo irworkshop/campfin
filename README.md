@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/campfin)](https://CRAN.R-project.org/package=campfin)
 [![Codecov test
@@ -55,38 +55,33 @@ is more searchable. They are largely wrappers around the
 [stringr](https://github.com/tidyverse/stringr) package, and can call
 other sub-functions to streamline normalization.
 
-  - `normal_address()` takes a *street* address and reduces
+-   `normal_address()` takes a *street* address and reduces
     inconsistencies.
-  - `normal_zip()` takes [ZIP
+-   `normal_zip()` takes [ZIP
     Codes](https://en.wikipedia.org/wiki/ZIP_Code) and aims to return a
     valid 5-digit code.
-  - `normal_state()` takes US states and returns a [2 digit
+-   `normal_state()` takes US states and returns a [2 digit
     abbreviation](https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations).
-  - `normal_city()` takes cities and reduces inconsistencies.
-  - `normal_phone()` consistently formats US telephone numbers.
+-   `normal_city()` takes cities and reduces inconsistencies.
+-   `normal_phone()` consistently formats US telephone numbers.
 
 Please see the vignette on normalization for an example of how these
 functions are used to fix a wide variety of string inconsistencies and
 make campaign finance data more consistent. In general, these functions
 fix the following inconsistencies:
 
-  - Capitalize with `str_to_upper()`
-  - Replace hyphens and underscores with `str_replace()`
-  - Remove remaining punctuation with `str_remove()`
-  - Remove either numbers or letters (depending on data) with
+-   Capitalize with `str_to_upper()`
+-   Replace hyphens and underscores with `str_replace()`
+-   Remove remaining punctuation with `str_remove()`
+-   Remove either numbers or letters (depending on data) with
     `str_remove()`
-  - Remove excess white space with `str_trim()` and `str_squish()`
-  - Abbreviate addresses with `abbrev_full()` (and `str_replace_all()`)
-  - Remove invalid values with `na_out()` (and `str_which()`)
+-   Remove excess white space with `str_trim()` and `str_squish()`
+-   Abbreviate addresses with `abbrev_full()` (and `str_replace_all()`)
+-   Remove invalid values with `na_out()` (and `str_which()`)
 
 ## Data
 
 ``` r
-if (!require(zipcode, quietly = TRUE)) {
-  zip_url <- "https://cran.r-project.org/src/contrib/Archive/zipcode/zipcode_1.0.tar.gz"
-  install.packages(zip_url, repos = NULL, type = "source")
-}
-library(zipcode)
 library(campfin)
 library(tidyverse)
 ```
@@ -123,22 +118,21 @@ The included `valid_city` and `valid_zip` vectors are sorted, unique
 columns from the `zipcodes` data frame.
 
 ``` r
-# zipcode version
-data("zipcode")
-sample_n(zipcode, 3)
-#>     zip        city state latitude longitude
-#> 1 15697   Youngwood    PA 40.23813 -79.58172
-#> 2 25090 Glen Ferris    WV 38.14906 -81.21276
-#> 3 22969    Schuyler    VA 37.79234 -78.69417
-
-# campfin version
-sample_n(zipcodes, 3)
-#> # A tibble: 3 x 3
-#>   city      state zip  
-#>   <chr>     <chr> <chr>
-#> 1 ALHAMBRA  CA    91801
-#> 2 LONG LAKE NY    12847
-#> 3 AUGUSTA   MT    59410
+sample_frac(zipcodes)
+#> # A tibble: 44,336 x 3
+#>    city           state zip  
+#>    <chr>          <chr> <chr>
+#>  1 KANSAS CITY    MO    64155
+#>  2 HOLT           FL    32564
+#>  3 WOODBRIDGE     VA    22194
+#>  4 MERRITT ISLAND FL    32954
+#>  5 WOODSIDE       NY    11377
+#>  6 CLAY           KY    42404
+#>  7 ACRA           NY    12405
+#>  8 COLUMBUS       OH    43271
+#>  9 STATE COLLEGE  PA    16801
+#> 10 COAMO          PR    00640
+#> # … with 44,326 more rows
 ```
 
 ### `usps_*` and `valid_*`
@@ -161,26 +155,25 @@ sample_n(usps_street, 3)
 #> # A tibble: 3 x 2
 #>   full  abb  
 #>   <chr> <chr>
-#> 1 VIEW  VW   
-#> 2 HWAY  HWY  
-#> 3 UNION UN
+#> 1 GTWAY GTWY 
+#> 2 NORTH N    
+#> 3 LIGHT LGT
 sample_n(usps_state, 3)
 #> # A tibble: 3 x 2
-#>   full                 abb  
-#>   <chr>                <chr>
-#> 1 NEBRASKA             NE   
-#> 2 ARMED FORCES PACIFIC AP   
-#> 3 VERMONT              VT
+#>   full     abb  
+#>   <chr>    <chr>
+#> 1 OREGON   OR   
+#> 2 MISSOURI MO   
+#> 3 WYOMING  WY
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```
 
------
+------------------------------------------------------------------------
 
 The campfin project is released with a [Contributor Code of
 Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).
 By contributing, you agree to abide by its terms.
 
 <!-- refs: start -->
-
 <!-- refs: end -->

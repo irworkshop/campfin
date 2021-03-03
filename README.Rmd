@@ -83,11 +83,6 @@ inconsistencies:
 ## Data
 
 ```{r library, message=FALSE, warning=FALSE}
-if (!require(zipcode, quietly = TRUE)) {
-  zip_url <- "https://cran.r-project.org/src/contrib/Archive/zipcode/zipcode_1.0.tar.gz"
-  install.packages(zip_url, repos = NULL, type = "source")
-}
-library(zipcode)
 library(campfin)
 library(tidyverse)
 ```
@@ -121,12 +116,7 @@ The included `valid_city` and `valid_zip` vectors are sorted, unique columns
 from the `zipcodes` data frame.
 
 ```{r geo_df, collapse=TRUE, warning=FALSE, message=FALSE, error=FALSE}
-# zipcode version
-data("zipcode")
-sample_n(zipcode, 3)
-
-# campfin version
-sample_n(zipcodes, 3)
+sample_frac(zipcodes)
 ```
 
 ### `usps_*` and `valid_*`
@@ -154,7 +144,7 @@ contributing, you agree to abide by its terms.
 
 <!-- refs: start -->
 [life_badge]: https://img.shields.io/badge/lifecycle-maturing-blue.svg
-[life_link]: https://www.tidyverse.org/lifecycle/#maturing
+[life_link]: https://lifecycle.r-lib.org/articles/stages.html
 [cran_badge]: https://www.r-pkg.org/badges/version/campfin
 [cran_link]: https://CRAN.R-project.org/package=campfin
 [cov_badge]: https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg
