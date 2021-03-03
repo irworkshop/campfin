@@ -1,5 +1,6 @@
 #' Guess the delimiter of a text file
 #'
+#' @description
 #' Taken from code used in [vroom::vroom()][1] with automatic reading.
 #'
 #' [1]: https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248

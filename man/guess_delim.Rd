@@ -19,10 +19,7 @@ newline character).}
 The single character guessed as a delimiter.
 }
 \description{
-Taken from code used in \link[=1]{vroom::vroom()} with automatic reading.
-}
-\details{
-
+Taken from code used in \href{https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248}{vroom::vroom()} with automatic reading.
 }
 \examples{
 guess_delim(system.file("extdata", "vt_contribs.csv", package = "campfin"))
