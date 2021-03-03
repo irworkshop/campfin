@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.6</span>
       </span>
     </div>
 
@@ -148,12 +148,7 @@
 <h2 class="hasAnchor">
 <a href="#data" class="anchor"></a>Data</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">zipcode</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">zip_url</span> <span class="op">&lt;-</span> <span class="st">"https://cran.r-project.org/src/contrib/Archive/zipcode/zipcode_1.0.tar.gz"</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">zip_url</span>, repos <span class="op">=</span> <span class="cn">NULL</span>, type <span class="op">=</span> <span class="st">"source"</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">zipcode</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin">campfin</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin">campfin</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></code></pre></div>
 <p>The campfin package contains a number of built in data frames and strings used to help wrangle campaign finance data.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#&gt;  [1] "dark2"        "extra_city"   "invalid_city" "rx_phone"     "rx_state"     "rx_url"      </span></span>
@@ -169,22 +164,21 @@
 </blockquote>
 <p>The included <code>valid_city</code> and <code>valid_zip</code> vectors are sorted, unique columns from the <code>zipcodes</code> data frame.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># zipcode version</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"zipcode"</span><span class="op">)</span>
-<span class="fu">sample_n</span><span class="op">(</span><span class="va">zipcode</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt;     zip        city state latitude longitude</span>
-<span class="co">#&gt; 1 15697   Youngwood    PA 40.23813 -79.58172</span>
-<span class="co">#&gt; 2 25090 Glen Ferris    WV 38.14906 -81.21276</span>
-<span class="co">#&gt; 3 22969    Schuyler    VA 37.79234 -78.69417</span>
-
-<span class="co"># campfin version</span>
-<span class="fu">sample_n</span><span class="op">(</span><span class="va">zipcodes</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 3</span>
-<span class="co">#&gt;   city      state zip  </span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 ALHAMBRA  CA    91801</span>
-<span class="co">#&gt; 2 LONG LAKE NY    12847</span>
-<span class="co">#&gt; 3 AUGUSTA   MT    59410</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">sample_frac</span><span class="op">(</span><span class="va">zipcodes</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 44,336 x 3</span>
+<span class="co">#&gt;    city           state zip  </span>
+<span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt;  1 KANSAS CITY    MO    64155</span>
+<span class="co">#&gt;  2 HOLT           FL    32564</span>
+<span class="co">#&gt;  3 WOODBRIDGE     VA    22194</span>
+<span class="co">#&gt;  4 MERRITT ISLAND FL    32954</span>
+<span class="co">#&gt;  5 WOODSIDE       NY    11377</span>
+<span class="co">#&gt;  6 CLAY           KY    42404</span>
+<span class="co">#&gt;  7 ACRA           NY    12405</span>
+<span class="co">#&gt;  8 COLUMBUS       OH    43271</span>
+<span class="co">#&gt;  9 STATE COLLEGE  PA    16801</span>
+<span class="co">#&gt; 10 COAMO          PR    00640</span>
+<span class="co">#&gt; # … with 44,326 more rows</span></code></pre></div>
 </div>
 <div id="usps_-and-valid_" class="section level3">
 <h3 class="hasAnchor">
@@ -197,16 +191,16 @@
 <span class="co">#&gt; # A tibble: 3 x 2</span>
 <span class="co">#&gt;   full  abb  </span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 VIEW  VW   </span>
-<span class="co">#&gt; 2 HWAY  HWY  </span>
-<span class="co">#&gt; 3 UNION UN</span>
+<span class="co">#&gt; 1 GTWAY GTWY </span>
+<span class="co">#&gt; 2 NORTH N    </span>
+<span class="co">#&gt; 3 LIGHT LGT</span>
 <span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_state</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 x 2</span>
-<span class="co">#&gt;   full                 abb  </span>
-<span class="co">#&gt;   &lt;chr&gt;                &lt;chr&gt;</span>
-<span class="co">#&gt; 1 NEBRASKA             NE   </span>
-<span class="co">#&gt; 2 ARMED FORCES PACIFIC AP   </span>
-<span class="co">#&gt; 3 VERMONT              VT</span>
+<span class="co">#&gt;   full     abb  </span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;</span>
+<span class="co">#&gt; 1 OREGON   OR   </span>
+<span class="co">#&gt; 2 MISSOURI MO   </span>
+<span class="co">#&gt; 3 WYOMING  WY</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">valid_state</span>, <span class="va">state.abb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"</span></code></pre></div>
 <hr>
@@ -248,6 +242,7 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Kiernan Nicholls <br><small class="roles"> Author, maintainer, copyright holder </small>  </li>
+<li>Yanqi Xu <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -255,7 +250,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 <li><a href="https://CRAN.R-project.org/package=campfin"><img src="https://www.r-pkg.org/badges/version/campfin" alt="CRAN status"></a></li>
 <li><a href="https://codecov.io/gh/irworkshop/campfin?branch=master"><img src="https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://github.com/irworkshop/campfin/actions"><img src="https://github.com/irworkshop/campfin/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
@@ -266,7 +261,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kiernan Nicholls.</p>
+  <p>Developed by Kiernan Nicholls, Yanqi Xu.</p>
 </div>
 
 <div class="pkgdown">

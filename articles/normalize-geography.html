@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.6</span>
       </span>
     </div>
 
@@ -102,7 +102,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin">campfin</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"campfin"</span><span class="op">)</span>
-<span class="co">#&gt; [1] '1.0.5.9000'</span></code></pre></div>
+<span class="co">#&gt; [1] '1.0.6'</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
@@ -396,12 +396,11 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">valid_city</span><span class="op">)</span>
 <span class="co">#&gt; [1] 19083</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">valid_city</span>, <span class="fl">6</span><span class="op">)</span>
-<span class="co">#&gt; [1] "HUGER"        "TAYLORS"      "LOS GATOS"    "PEABODY"      "CHILI"       </span>
-<span class="co">#&gt; [6] "LABADIEVILLE"</span>
+<span class="co">#&gt; [1] "DREW"         "RUMELY"       "BRYANTSVILLE" "KING SALMON"  "DOSS"        </span>
+<span class="co">#&gt; [6] "CRESSONA"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">extra_city</span>, <span class="fl">6</span><span class="op">)</span>
-<span class="co">#&gt; [1] "LARKSVILLE"              "BROOKLYN HEIGHTS"       </span>
-<span class="co">#&gt; [3] "SWAINTON"                "WEBSTER GROVES"         </span>
-<span class="co">#&gt; [5] "ASKAM"                   "NORTH ABINGTON TOWNSHIP"</span>
+<span class="co">#&gt; [1] "FAYETTE COUNTY"      "BEAR CREEK TOWNSHIP" "NORTH BRADDOCK"     </span>
+<span class="co">#&gt; [4] "NICHOLS HILLS"       "SOUTH BETHANY"       "HODGDON"</span>
 <span class="co"># combine both vectors</span>
 <span class="va">many_city</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">valid_city</span>, <span class="va">extra_city</span><span class="op">)</span></code></pre></div>
 <p>Still, checking against this list is a good way to check for values that need additional attention.</p>
@@ -805,7 +804,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kiernan Nicholls.</p>
+  <p>Developed by Kiernan Nicholls, Yanqi Xu.</p>
 </div>
 
 <div class="pkgdown">
