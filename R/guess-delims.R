@@ -1,18 +1,29 @@
 #' Guess the delimiter of a text file
 #'
-#' Taken from code used in [vroom::vroom()] with automatic reading.
+#' Taken from code used in [vroom::vroom()][1] with automatic reading.
 #'
-#' @param path The path of a delimited file to read.
+#' [1]: https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248
+#'
+#' @param file Either a path to a file or character string (with at least one
+#'   newline character).
 #' @param delims The single characters to guess from.
 #' @examples
 #' guess_delim(system.file("extdata", "vt_contribs.csv", package = "campfin"))
-#' @source <https://github.com/r-lib/vroom/blob/7b7e775fd6d4261532116bcc881879f9439f29df/R/vroom.R>
+#' guess_delim("
+#' a|b|c
+#' 1|2|3
+#' ")
+#' @source <https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248>
 #' @return The single character guessed as a delimiter.
 #' @export
-guess_delim <- function(path, delims = c(",", "\t", " ", "|", ":", ";")) {
-  lines <- readLines(path, n = 2L)
-  if (length(lines) == 0) {
-    return("")
+guess_delim <- function(file, delims = c(",", "\t", " ", "|", ":", ";")) {
+  if (grepl("\n", file)) {
+    lines <- file
+  } else {
+    lines <- readLines(file, n = 2L)
+    if (length(lines) == 0) {
+      return("")
+    }
   }
 
   # blank text within quotes

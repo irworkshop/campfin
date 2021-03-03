@@ -4,13 +4,14 @@
 \alias{guess_delim}
 \title{Guess the delimiter of a text file}
 \source{
-\url{https://github.com/r-lib/vroom/blob/7b7e775fd6d4261532116bcc881879f9439f29df/R/vroom.R}
+\url{https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248}
 }
 \usage{
-guess_delim(path, delims = c(",", "\\t", " ", "|", ":", ";"))
+guess_delim(file, delims = c(",", "\\t", " ", "|", ":", ";"))
 }
 \arguments{
-\item{path}{The path of a delimited file to read.}
+\item{file}{Either a path to a file or character string (with at least one
+newline character).}
 
 \item{delims}{The single characters to guess from.}
 }
@@ -18,8 +19,15 @@ guess_delim(path, delims = c(",", "\\t", " ", "|", ":", ";"))
 The single character guessed as a delimiter.
 }
 \description{
-Taken from code used in \code{\link[vroom:vroom]{vroom::vroom()}} with automatic reading.
+Taken from code used in \link[=1]{vroom::vroom()} with automatic reading.
+}
+\details{
+
 }
 \examples{
 guess_delim(system.file("extdata", "vt_contribs.csv", package = "campfin"))
+guess_delim("
+a|b|c
+1|2|3
+")
 }
