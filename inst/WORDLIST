@@ -32,5 +32,6 @@ stringr
 tibble
 tidyselect
 usps
+vroom
 zipcode
 zipcodes
