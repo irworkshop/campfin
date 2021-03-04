@@ -1,7 +1,7 @@
 Type: Package
 Package: campfin
 Title: Wrangle Campaign Finance Data
-Version: 1.0.6
+Version: 1.0.6.9000
 Authors@R: 
     c(person(given = "Kiernan",
              family = "Nicholls",

@@ -1,3 +1,5 @@
+# campfin (development version)
+
 # campfin 1.0.6
 
 * Deprecate `col_date_usa()` in favor of `col_date_mdy()`.
