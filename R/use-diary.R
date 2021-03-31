@@ -26,13 +26,14 @@ use_diary <- function(st, type, author, auto = FALSE) {
   State <- stringr::str_to_title(State)
   STATE <- stringr::str_to_upper(State)
   st <- stringr::str_to_lower(ST)
-  type_arg <- c("contribs", "expends", "lobby", "contracts", "salary")
+  type_arg <- c("contribs", "expends", "lobby", "contracts", "salary", "voters")
   stt <- paste0(st, stringr::str_sub(type, end = 1))
   type_match <- match(type, type_arg)
   if (is.na(type_match)) {
     Type <- stringr::str_to_sentence(type)
   } else {
-    Type <- c("Contributions", "Expenditures", "Lobbyists", "Contracts", "Salary")
+    Type <- c("Contributions", "Expenditures", "Lobbyists",
+              "Contracts", "Salary", "Voters")
     Type <- Type[type_match]
   }
   temp <- system.file("templates", "template_diary.Rmd", package = "campfin")
