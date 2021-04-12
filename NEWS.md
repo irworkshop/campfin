@@ -1,4 +1,7 @@
-# campfin (development version)
+# campfin 1.0.7
+
+* Fix testing issue with `non_ascii()` checking.
+* Tweak the default template diary for `use_diary()`.
 
 # campfin 1.0.6
 

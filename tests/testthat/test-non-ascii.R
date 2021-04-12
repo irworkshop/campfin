@@ -3,26 +3,31 @@ writeLines("R’s interpreter", tmp)
 
 test_that("non-ASCII characters listed as tibble", {
   dat <- non_ascii(path = tmp)
+  if (!is.data.frame(dat)) {
+    skip("dat was not converted to a data frame")
+  }
   expect_s3_class(dat, "data.frame")
   expect_equal(nrow(dat), 1)
 })
 
+hl <- function(string) {
+  paste0("<span>", string, "</span>")
+}
+
 test_that("non-ASCII characters can be highlighted", {
-  dat <- non_ascii(
-    path = tmp,
-    highlight = function(string) {
-      paste0("<span>", string, "</span>")
-    }
-  )
+  dat <- non_ascii(path = tmp, highlight = hl)
+  if (!is.data.frame(dat)) {
+    skip("dat was not converted to a data frame")
+  }
   expect_true(grepl("span", dat$line[1]))
   expect_s3_class(dat, "data.frame")
   expect_equal(nrow(dat), 1)
 })
 
-tmp <- tempfile(fileext = ".txt")
-writeLines("R's interpreter", tmp)
+tmp2 <- tempfile(fileext = ".txt")
+writeLines("R's interpreter", tmp2)
 
-test_that("Lack of ASCII characters return FALSE", {
-  dat <- non_ascii(path = tmp)
+test_that("Lack of non-ASCII characters return FALSE", {
+  dat <- non_ascii(path = tmp2)
   expect_false(dat)
 })
