@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.7.9000</span>
       </span>
     </div>
 
@@ -102,7 +102,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin">campfin</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"campfin"</span><span class="op">)</span>
-<span class="co">#&gt; [1] '1.0.6.9000'</span></code></pre></div>
+<span class="co">#&gt; [1] '1.0.7.9000'</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
@@ -379,7 +379,7 @@
 #&gt;  1 4 SHEFFIELD SQ RD SHEFFIELD     VT    05866
 #&gt;  2 &lt;NA&gt;              &lt;NA&gt;          &lt;NA&gt;  &lt;NA&gt; 
 #&gt;  3 PO BOX 567        MIDLEBURY     VT    05753
-#&gt;  4 SUGARHOUSE SQ     EAST CORINTH  VT    05076
+#&gt;  4 SUGARHOUSE SQ     EAST CORINTH  VT    5076 
 #&gt;  5 4 SHEFFIELD SQ RD SHEFFIELD     VT    05866
 #&gt;  6 55 THISPLACE AVE  YOUNG AMERICA MN    55555
 #&gt;  7 11 LIBERTY AVE    BRISTOL       VT    &lt;NA&gt; 
@@ -396,11 +396,11 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">valid_city</span><span class="op">)</span>
 <span class="co">#&gt; [1] 19083</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">valid_city</span>, <span class="fl">6</span><span class="op">)</span>
-<span class="co">#&gt; [1] "SAINT ONGE"    "HIGBEE"        "TRACY CITY"    "VILLAGE MILLS"</span>
-<span class="co">#&gt; [5] "GUION"         "MENLO PARK"</span>
+<span class="co">#&gt; [1] "KENTS STORE" "MONTVALE"    "VALDEZ"      "MAEYSTOWN"   "CEE VEE"    </span>
+<span class="co">#&gt; [6] "SALT ROCK"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">extra_city</span>, <span class="fl">6</span><span class="op">)</span>
-<span class="co">#&gt; [1] "NUANGOLA"         "LAKE WYLIE"       "EAST PALO ALTO"   "UPPER CHICHESTER"</span>
-<span class="co">#&gt; [5] "NUTTER FORT"      "WIND LAKE"</span>
+<span class="co">#&gt; [1] "LAKE KIOWA"       "PARCHMENT"        "VALLEY TOWNSHIP"  "DAKOTA DUNES"    </span>
+<span class="co">#&gt; [5] "SPRING LAKE PARK" "BOW MAR"</span>
 <span class="co"># combine both vectors</span>
 <span class="va">many_city</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">valid_city</span>, <span class="va">extra_city</span><span class="op">)</span></code></pre></div>
 <p>Still, checking against this list is a good way to check for values that need additional attention.</p>
@@ -549,41 +549,34 @@
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td align="left">04</td>
-<td align="left">VT</td>
-<td align="left">05076</td>
-<td align="left">EAST CORINTH</td>
-<td align="left">TRUE</td>
-</tr>
-<tr class="even">
 <td align="left">05</td>
 <td align="left">VT</td>
 <td align="left">05866</td>
 <td align="left">SHEFFIELD</td>
 <td align="left">TRUE</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">06</td>
 <td align="left">MN</td>
 <td align="left">55555</td>
 <td align="left">YOUNG AMERICA</td>
 <td align="left">TRUE</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">08</td>
 <td align="left">VT</td>
 <td align="left">05401</td>
 <td align="left">BURLINGTON</td>
 <td align="left">TRUE</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">09</td>
 <td align="left">DC</td>
 <td align="left">20001</td>
 <td align="left">WASHINGTON</td>
 <td align="left">TRUE</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">10</td>
 <td align="left">TX</td>
 <td align="left">78202</td>
@@ -601,7 +594,7 @@
 <span class="co">#&gt;  1 01    Bob Mi… 2019-02-09     10 Lisa M… 4 SHEFFI… VT    05866 SHEFFI… FALSE  </span>
 <span class="co">#&gt;  2 02    Bob Mi… 2009-03-09     20 Deb Br… &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;    FALSE  </span>
 <span class="co">#&gt;  3 03    Chuck … 2019-04-09     25 &lt;NA&gt;    PO BOX 5… VT    05753 MIDDLE… TRUE   </span>
-<span class="co">#&gt;  4 04    Chuck … 2019-05-09    100 Josh J… SUGARHOU… VT    05076 EAST C… FALSE  </span>
+<span class="co">#&gt;  4 04    Chuck … 2019-05-09    100 Josh J… SUGARHOU… VT    5076  &lt;NA&gt;    FALSE  </span>
 <span class="co">#&gt;  5 05    Bob Mi… 2019-02-09     10 Lisa M… 4 SHEFFI… VT    05866 SHEFFI… FALSE  </span>
 <span class="co">#&gt;  6 06    Chuck … 2019-06-09   1000 Bob Ta… 55 THISP… MN    55555 YOUNG … FALSE  </span>
 <span class="co">#&gt;  7 07    Chuck … 2019-07-09   -600 Alex J… 11 LIBER… VT    &lt;NA&gt;  &lt;NA&gt;    FALSE  </span>
@@ -617,7 +610,7 @@
 <span class="co">#&gt;  1 01    Bob Mi… 2019-02-09     10 Lisa M… 4 SHEFFI… VT    05866 SHEFFI… FALSE  </span>
 <span class="co">#&gt;  2 02    Bob Mi… 2009-03-09     20 Deb Br… &lt;NA&gt;      &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;    FALSE  </span>
 <span class="co">#&gt;  3 03    Chuck … 2019-04-09     25 &lt;NA&gt;    PO BOX 5… VT    05753 MIDDLE… TRUE   </span>
-<span class="co">#&gt;  4 04    Chuck … 2019-05-09    100 Josh J… SUGARHOU… VT    05076 EAST C… FALSE  </span>
+<span class="co">#&gt;  4 04    Chuck … 2019-05-09    100 Josh J… SUGARHOU… VT    5076  &lt;NA&gt;    FALSE  </span>
 <span class="co">#&gt;  5 05    Bob Mi… 2019-02-09     10 Lisa M… 4 SHEFFI… VT    05866 SHEFFI… FALSE  </span>
 <span class="co">#&gt;  6 06    Chuck … 2019-06-09   1000 Bob Ta… 55 THISP… MN    55555 YOUNG … FALSE  </span>
 <span class="co">#&gt;  7 07    Chuck … 2019-07-09   -600 Alex J… 11 LIBER… VT    &lt;NA&gt;  &lt;NA&gt;    FALSE  </span>
@@ -705,8 +698,8 @@
 <td align="left">Josh Jones</td>
 <td align="left">SUGARHOUSE SQ</td>
 <td align="left">VT</td>
-<td align="left">05076</td>
-<td align="left">EAST CORINTH</td>
+<td align="left">5076</td>
+<td align="left">NA</td>
 <td align="left">FALSE</td>
 <td align="left">FALSE</td>
 </tr>

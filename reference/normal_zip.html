@@ -48,10 +48,9 @@
 
 <meta property="og:title" content="Normalize ZIP codes — normal_zip" />
 <meta property="og:description" content="Return consistent version US ZIP codes using stringr::str_*() functions.
-Non-number characters are removed, strings are padded with zeroes on the left
-(leading zeroes for New England ZIP codes are often removed by Microsoft
-Excel and other programs), and ZIP+4 suffixes are removed. Invalid ZIP codes
-from a vector can be removed as well as single (repeating) character strings." />
+Non-number characters are removed, strings are padded with zeroes on the
+left, and ZIP+4 suffixes are removed. Invalid ZIP codes from a vector can be
+removed as well as single (repeating) character strings." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -84,7 +83,7 @@ from a vector can be removed as well as single (repeating) character strings." /
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.6.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.7.9000</span>
       </span>
     </div>
 
@@ -142,13 +141,12 @@ from a vector can be removed as well as single (repeating) character strings." /
 
     <div class="ref-description">
     <p>Return consistent version US ZIP codes using <code>stringr::str_*()</code> functions.
-Non-number characters are removed, strings are padded with zeroes on the left
-(leading zeroes for New England ZIP codes are often removed by Microsoft
-Excel and other programs), and ZIP+4 suffixes are removed. Invalid ZIP codes
-from a vector can be removed as well as single (repeating) character strings.</p>
+Non-number characters are removed, strings are padded with zeroes on the
+left, and ZIP+4 suffixes are removed. Invalid ZIP codes from a vector can be
+removed as well as single (repeating) character strings.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>normal_zip</span><span class='op'>(</span><span class='va'>zip</span>, na <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>"NA"</span><span class='op'>)</span>, na_rep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>normal_zip</span><span class='op'>(</span><span class='va'>zip</span>, na <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>"NA"</span><span class='op'>)</span>, na_rep <span class='op'>=</span> <span class='cn'>FALSE</span>, pad <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,7 +162,14 @@ from a vector can be removed as well as single (repeating) character strings.</p
     <tr>
       <th>na_rep</th>
       <td><p>logical; If <code>TRUE</code>, <code><a href='na_rep.html'>na_rep()</a></code> will be called. Please note that
-22222, 44444, and 55555 valid ZIP codes that will not be removed.</p></td>
+22222, 44444, and 55555 valid ZIP codes that will <em>not</em> be removed.</p></td>
+    </tr>
+    <tr>
+      <th>pad</th>
+      <td><p>logical; Should ZIP codes less than five digits be padded with a
+leading zero? Leading zeros (as are found in New England ZIP codes) are
+often dropped by programs like Microsoft Excel when parsed as numeric
+values.</p></td>
     </tr>
     </table>
 
@@ -189,7 +194,8 @@ from a vector can be removed as well as single (repeating) character strings.</p
     <pre class="examples"><div class='input'><span class='fu'>normal_zip</span><span class='op'>(</span>
   zip <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"05672-5563"</span>, <span class='st'>"N/A"</span>, <span class='st'>"05401"</span>, <span class='st'>"5819"</span>, <span class='st'>"00000"</span><span class='op'>)</span>,
   na <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>"NA"</span><span class='op'>)</span>,
-  na_rep <span class='op'>=</span> <span class='cn'>TRUE</span>
+  na_rep <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  pad <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "05672" NA      "05401" "05819" NA     </div></pre>
   </div>
