@@ -1,3 +1,5 @@
+# campfin (development version)
+
 # campfin 1.0.7
 
 * Fix testing issue with `non_ascii()` checking.
