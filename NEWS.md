@@ -1,5 +1,8 @@
 # campfin (development version)
 
+* Add `pad` argument to `normal_zip()` (default `FALSE`) to control the use of
+  `str_pad()` on ZIP codes without a leading zero.
+
 # campfin 1.0.7
 
 * Fix testing issue with `non_ascii()` checking.

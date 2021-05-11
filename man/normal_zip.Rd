@@ -4,7 +4,7 @@
 \alias{normal_zip}
 \title{Normalize ZIP codes}
 \usage{
-normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
+normal_zip(zip, na = c("", "NA"), na_rep = FALSE, pad = FALSE)
 }
 \arguments{
 \item{zip}{A vector of US ZIP codes.}
@@ -12,23 +12,28 @@ normal_zip(zip, na = c("", "NA"), na_rep = FALSE)
 \item{na}{A vector of values to pass to \code{\link[=na_in]{na_in()}}.}
 
 \item{na_rep}{logical; If \code{TRUE}, \code{\link[=na_rep]{na_rep()}} will be called. Please note that
-22222, 44444, and 55555 valid ZIP codes that will not be removed.}
+22222, 44444, and 55555 valid ZIP codes that will \emph{not} be removed.}
+
+\item{pad}{logical; Should ZIP codes less than five digits be padded with a
+leading zero? Leading zeros (as are found in New England ZIP codes) are
+often dropped by programs like Microsoft Excel when parsed as numeric
+values.}
 }
 \value{
 A \emph{character} vector of normalized 5-digit ZIP codes.
 }
 \description{
 Return consistent version US ZIP codes using \verb{stringr::str_*()} functions.
-Non-number characters are removed, strings are padded with zeroes on the left
-(leading zeroes for New England ZIP codes are often removed by Microsoft
-Excel and other programs), and ZIP+4 suffixes are removed. Invalid ZIP codes
-from a vector can be removed as well as single (repeating) character strings.
+Non-number characters are removed, strings are padded with zeroes on the
+left, and ZIP+4 suffixes are removed. Invalid ZIP codes from a vector can be
+removed as well as single (repeating) character strings.
 }
 \examples{
 normal_zip(
   zip = c("05672-5563", "N/A", "05401", "5819", "00000"),
   na = c("", "NA"),
-  na_rep = TRUE
+  na_rep = TRUE,
+  pad = TRUE
 )
 }
 \seealso{
