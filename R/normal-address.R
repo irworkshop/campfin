@@ -24,6 +24,7 @@
 #' @export
 normal_address <- function(address, abbs = NULL, na = c("", "NA"), na_rep = FALSE) {
   address2 <- address %>%
+    stringr::str_remove_all("(?<=(^|\\.|\\s)\\w)\\.") %>%
     str_normal() %>%
     stringr::str_replace_all("^P\\sO", "PO") %>%
     stringr::str_replace_all("(?<=^|\\s)C\\sO(?=\\s|$)", "C/O") %>%
