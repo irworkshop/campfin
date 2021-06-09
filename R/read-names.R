@@ -6,9 +6,9 @@
 #' @param delim Character separating column names.
 #' @return Character vector of column names.
 #' @examples
-#' read_names("x\n11/09/2016")
+#' read_names("date,lgl\n11/09/2016,TRUE")
 #' @importFrom readr read_delim cols
 #' @export
-read_names <- function(file, delim = ",") {
+read_names <- function(file, delim = guess_delim(file)) {
   names(readr::read_delim(file, delim, n_max = 0, col_types = readr::cols(.default = "c")))
 }

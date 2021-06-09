@@ -7,9 +7,12 @@
 #'
 #' @param file Either a path to a file or character string (with at least one
 #'   newline character).
-#' @param delims The single characters to guess from.
+#' @param delims The vector of single characters to guess from. Defaults to:
+#' comma, tab, pipe, or semicolon.
+#' @param string Should the file be treated as a string regardless of newline.
 #' @examples
 #' guess_delim(system.file("extdata", "vt_contribs.csv", package = "campfin"))
+#' guess_delim("ID;FirstName;MI;LastName;JobTitle", string = TRUE)
 #' guess_delim("
 #' a|b|c
 #' 1|2|3
@@ -17,8 +20,8 @@
 #' @source <https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248>
 #' @return The single character guessed as a delimiter.
 #' @export
-guess_delim <- function(file, delims = c(",", "\t", " ", "|", ":", ";")) {
-  if (grepl("\n", file)) {
+guess_delim <- function(file, delims = c(",", "\t", "|", ";"), string = FALSE) {
+  if (isTRUE(string) | grepl("\n", file)) {
     lines <- file
   } else {
     lines <- readLines(file, n = 2L)

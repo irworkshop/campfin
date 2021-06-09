@@ -1,5 +1,8 @@
 # campfin (development version)
 
+* Add `string` argument to `guess_delim()` to read the input as a single line
+  of a file regardless of `\n` presence.
+* Have the `delim` argument of `read_names()` default to `guess_delim()`.
 * Add `pad` argument to `normal_zip()` (default `FALSE`) to control the use of
   `str_pad()` on ZIP codes without a leading zero.
 

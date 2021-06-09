@@ -7,13 +7,16 @@
 \url{https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248}
 }
 \usage{
-guess_delim(file, delims = c(",", "\\t", " ", "|", ":", ";"))
+guess_delim(file, delims = c(",", "\\t", "|", ";"), string = FALSE)
 }
 \arguments{
 \item{file}{Either a path to a file or character string (with at least one
 newline character).}
 
-\item{delims}{The single characters to guess from.}
+\item{delims}{The vector of single characters to guess from. Defaults to:
+comma, tab, pipe, or semicolon.}
+
+\item{string}{Should the file be treated as a string regardless of newline.}
 }
 \value{
 The single character guessed as a delimiter.
@@ -23,6 +26,7 @@ Taken from code used in \href{https://github.com/r-lib/vroom/blob/master/R/vroom
 }
 \examples{
 guess_delim(system.file("extdata", "vt_contribs.csv", package = "campfin"))
+guess_delim("ID;FirstName;MI;LastName;JobTitle", string = TRUE)
 guess_delim("
 a|b|c
 1|2|3

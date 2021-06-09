@@ -4,7 +4,7 @@
 \alias{read_names}
 \title{Read column names}
 \usage{
-read_names(file, delim = ",")
+read_names(file, delim = guess_delim(file))
 }
 \arguments{
 \item{file}{Path to text file.}
@@ -18,5 +18,5 @@ Character vector of column names.
 Read the first line of a delimited file as vector.
 }
 \examples{
-read_names("x\n11/09/2016")
+read_names("date,lgl\n11/09/2016,TRUE")
 }
