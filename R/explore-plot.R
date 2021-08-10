@@ -33,7 +33,7 @@ explore_plot <- function(data, var, nbar = 8, palette = "Dark2", na.rm = TRUE) {
     )
   ) +
     ggplot2::geom_col(mapping = ggplot2::aes(fill = {{ var }})) +
-    ggplot2::scale_fill_brewer(palette = palette, guide = FALSE) +
+    ggplot2::scale_fill_brewer(palette = palette, guide = "none") +
     ggplot2::scale_y_continuous(labels = scales::percent) +
     ggplot2::labs(y = "Percent", x = var_string)
 }
