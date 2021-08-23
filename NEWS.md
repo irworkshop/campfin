@@ -5,6 +5,17 @@
 * Have the `delim` argument of `read_names()` default to `guess_delim()`.
 * Add `pad` argument to `normal_zip()` (default `FALSE`) to control the use of
   `str_pad()` on ZIP codes without a leading zero.
+* The `end` argument has been added to `abbrev_full` to target only `full`
+  values at the _end_ of a string. Defaults to `FALSE`.
+* `normal_address()` uses `end = TRUE` in `abbrev_full` to target only the
+  street type.
+  
+```
+abbrev_full("123 MOUNTAIN ROAD", full = usps_street, end = FALSE)
+#> "123 MTN RD"
+normal_address("123 MOUNTAIN ROAD", abb = usps_street)
+#> "123 MOUNTAIN RD"
+```
 
 # campfin 1.0.7
 

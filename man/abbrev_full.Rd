@@ -4,7 +4,7 @@
 \alias{abbrev_full}
 \title{Abbreviate full strings}
 \usage{
-abbrev_full(x, full = NULL, rep = NULL)
+abbrev_full(x, full = NULL, rep = NULL, end = FALSE)
 }
 \arguments{
 \item{x}{A vector containing full words.}
@@ -18,6 +18,11 @@ argument.}
 
 \item{rep}{If \code{full} is an unnamed vector, a vector of abbreviations strings
 for each full word in \code{abb}.}
+
+\item{end}{logical; if \code{TRUE}, then the \code{$} regular expression will be used
+to only replace words at the \emph{end} of a string (such as "ROAD" in a street
+address). If \code{FALSE} (default), then the \verb{\\b} regular expression will
+target \emph{all} instances of \code{full} to be replaced with \code{rep}.}
 }
 \value{
 The vector \code{x} with full words replaced with their abbreviations.
@@ -32,8 +37,9 @@ counterpart \code{\link[=expand_abbrev]{expand_abbrev()}}).
 }
 \examples{
 abbrev_full("MOUNT VERNON", full = c("MOUNT" = "MT"))
+abbrev_full("123 MOUNTAIN ROAD", full = usps_street)
+abbrev_full("123 MOUNTAIN ROAD", full = usps_street, end = TRUE)
 abbrev_full("Vermont", full = state.name, rep = state.abb)
-abbrev_full("Low Iron Level", full = tibble::tibble(y = "Iron", x = "FE"))
 }
 \seealso{
 Other geographic normalization functions: 

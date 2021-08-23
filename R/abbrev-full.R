@@ -16,16 +16,21 @@
 #'   argument.
 #' @param rep If `full` is an unnamed vector, a vector of abbreviations strings
 #'   for each full word in `abb`.
+#' @param end logical; if `TRUE`, then the `$` regular expression will be used
+#'   to only replace words at the _end_ of a string (such as "ROAD" in a street
+#'   address). If `FALSE` (default), then the `\b` regular expression will
+#'   target _all_ instances of `full` to be replaced with `rep`.
 #' @return The vector `x` with full words replaced with their abbreviations.
 #' @examples
 #' abbrev_full("MOUNT VERNON", full = c("MOUNT" = "MT"))
+#' abbrev_full("123 MOUNTAIN ROAD", full = usps_street)
+#' abbrev_full("123 MOUNTAIN ROAD", full = usps_street, end = TRUE)
 #' abbrev_full("Vermont", full = state.name, rep = state.abb)
-#' abbrev_full("Low Iron Level", full = tibble::tibble(y = "Iron", x = "FE"))
 #' @importFrom stringr str_replace_all
 #' @importFrom tibble deframe
 #' @family geographic normalization functions
 #' @export
-abbrev_full <- function(x, full = NULL, rep = NULL) {
+abbrev_full <- function(x, full = NULL, rep = NULL, end = FALSE) {
   if (is.data.frame(full)) {
     full <- tibble::deframe(full)
   } else {
@@ -42,7 +47,7 @@ abbrev_full <- function(x, full = NULL, rep = NULL) {
       }
     }
   }
-  names(full) <- sprintf("\\b%s\\b", names(full))
+  names(full) <- sprintf("\\b%s%s", names(full), ifelse(end, "$", "\\b"))
   stringr::str_replace_all(string = x, pattern = full)
 }
 
