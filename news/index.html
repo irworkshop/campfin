@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.7.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8</span>
       </span>
     </div>
 
@@ -134,15 +134,22 @@
       <small>Source: <a href='https://github.com/irworkshop/campfin/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="campfin-development-version" class="section level1">
-<h1 class="page-header" data-toc-text="development version">
-<a href="#campfin-development-version" class="anchor"></a>campfin (development version)<small> Unreleased </small>
+    <div id="campfin-108" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.8">
+<a href="#campfin-108" class="anchor"></a>campfin 1.0.8<small> Unreleased </small>
 </h1>
 <ul>
 <li>Add <code>string</code> argument to <code><a href="../reference/guess_delim.html">guess_delim()</a></code> to read the input as a single line of a file regardless of <code>\n</code> presence.</li>
 <li>Have the <code>delim</code> argument of <code><a href="../reference/read_names.html">read_names()</a></code> default to <code><a href="../reference/guess_delim.html">guess_delim()</a></code>.</li>
 <li>Add <code>pad</code> argument to <code><a href="../reference/normal_zip.html">normal_zip()</a></code> (default <code>FALSE</code>) to control the use of <code><a href="https://stringr.tidyverse.org/reference/str_pad.html">str_pad()</a></code> on ZIP codes without a leading zero.</li>
+<li>The <code>end</code> argument has been added to <code>abbrev_full</code> to target only <code>full</code> values at the <em>end</em> of a string. Defaults to <code>FALSE</code>.</li>
+<li>
+<code><a href="../reference/normal_address.html">normal_address()</a></code> uses <code>end = TRUE</code> in <code>abbrev_full</code> to target only the street type.</li>
 </ul>
+<pre><code><a href="../reference/abbrev_full.html">abbrev_full("123 MOUNTAIN ROAD", full = usps_street, end = FALSE)
+#&gt; "123 MTN RD"
+normal_address("123 MOUNTAIN ROAD", abb = usps_street)
+#&gt; "123 MOUNTAIN RD"</a></code></pre>
 </div>
     <div id="campfin-107" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.7">
@@ -168,7 +175,7 @@
 <li>Remove <code>count_vec()</code> in favor of new <code><a href="https://dplyr.tidyverse.org/reference/count.html">dplyr::count()</a></code> method for characters.</li>
 <li>Valid ZIP codes 22222, 44444, 55555 are not removed with <code><a href="../reference/normal_zip.html">normal_zip(na.na_rep = TRUE)</a></code>.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="../reference/normal_address.html">normal_address</a></span><span class="op">(</span><span class="st">"12east 2nd street, 3rd floor"</span>, abbs <span class="op">=</span> <span class="va">usps_street</span><span class="op">)</span>
 <span class="co">#&gt; "12 E 2ND ST 3 RD FL" # old output</span>

@@ -85,7 +85,7 @@ counterpart expand_abbrev())." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.7.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8</span>
       </span>
     </div>
 
@@ -150,7 +150,7 @@ reversed from what this function needs (to work by default with the
 counterpart <code><a href='expand_abbrev.html'>expand_abbrev()</a></code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='va'>x</span>, full <span class='op'>=</span> <span class='cn'>NULL</span>, rep <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='va'>x</span>, full <span class='op'>=</span> <span class='cn'>NULL</span>, rep <span class='op'>=</span> <span class='cn'>NULL</span>, end <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,6 +173,13 @@ argument.</p></td>
       <td><p>If <code>full</code> is an unnamed vector, a vector of abbreviations strings
 for each full word in <code>abb</code>.</p></td>
     </tr>
+    <tr>
+      <th>end</th>
+      <td><p>logical; if <code>TRUE</code>, then the <code><a href='https://rdrr.io/r/base/Extract.html'>$</a></code> regular expression will be used
+to only replace words at the <em>end</em> of a string (such as "ROAD" in a street
+address). If <code>FALSE</code> (default), then the <code>\b</code> regular expression will
+target <em>all</em> instances of <code>full</code> to be replaced with <code>rep</code>.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -194,9 +201,10 @@ for each full word in <code>abb</code>.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='st'>"MOUNT VERNON"</span>, full <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"MOUNT"</span> <span class='op'>=</span> <span class='st'>"MT"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "MT VERNON"</div><div class='input'><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='st'>"Vermont"</span>, full <span class='op'>=</span> <span class='va'>state.name</span>, rep <span class='op'>=</span> <span class='va'>state.abb</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "VT"</div><div class='input'><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='st'>"Low Iron Level"</span>, full <span class='op'>=</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Iron"</span>, x <span class='op'>=</span> <span class='st'>"FE"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Low FE Level"</div></pre>
+</div><div class='output co'>#&gt; [1] "MT VERNON"</div><div class='input'><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='st'>"123 MOUNTAIN ROAD"</span>, full <span class='op'>=</span> <span class='va'>usps_street</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "123 MTN RD"</div><div class='input'><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='st'>"123 MOUNTAIN ROAD"</span>, full <span class='op'>=</span> <span class='va'>usps_street</span>, end <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "123 MOUNTAIN RD"</div><div class='input'><span class='fu'>abbrev_full</span><span class='op'>(</span><span class='st'>"Vermont"</span>, full <span class='op'>=</span> <span class='va'>state.name</span>, rep <span class='op'>=</span> <span class='va'>state.abb</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "VT"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
