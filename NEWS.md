@@ -1,3 +1,5 @@
+# campfin (development version)
+
 # campfin 1.0.8
 
 * Add `string` argument to `guess_delim()` to read the input as a single line
