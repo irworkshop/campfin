@@ -423,7 +423,7 @@ norm_city <- norm_city %>%
   x = {stt},
   y = norm_city,
   by = c(
-    "city_raw", 
+    "city" = "city_raw", 
     "state_norm", 
     "zip_norm"
   )
@@ -484,19 +484,21 @@ to be valid and reduce the total distinct values by correcting misspellings.
 ```{r city_progress, echo=FALSE}
 many_city <- c(valid_city, extra_city)
 progress <- progress_table(
-  str_to_upper({stt}$city_raw),
+  str_to_upper({stt}$city),
   {stt}$city_norm,
   {stt}$city_swap,
   {stt}$city_refine,
   compare = many_city
 ) %>% mutate(stage = as_factor(stage))
-kable(progress, digits = 3)
+progress %>% 
+    mutate(across(1, md_code)) %>% 
+    kable(digits = 3)
 ```
 
 You can see how the percentage of valid values increased with each stage.
 
 ```{r bar_progress, echo=FALSE}
-raw_in <- percent(prop_in({stt}$city_raw, valid_city))
+raw_in <- percent(prop_in({stt}$city, valid_city))
 progress %>% 
   ggplot(aes(x = stage, y = prop_in)) +
   geom_hline(yintercept = 0.99) +
