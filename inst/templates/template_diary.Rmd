@@ -541,8 +541,6 @@ progress %>%
   )
 ```
 
-## Conclude
-
 Before exporting, we can remove the intermediary normalization columns and
 rename all added variables with the `_clean` suffix.
 
@@ -554,12 +552,15 @@ rename all added variables with the `_clean` suffix.
     city_clean = city_refine
   ) %>% 
   rename_all(~str_replace(., "_norm", "_clean")) %>% 
-  rename_all(~str_remove(., "_raw"))
+  rename_all(~str_remove(., "_raw")) %>% 
+  relocate(address_clean, city_clean, state_clean, .before = zip_clean)
 ```
 
 ```{r clean_glimpse}
 glimpse(sample_n({stt}, 50))
 ```
+
+## Conclude
 
 1. There are `r comma(nrow({stt}))` records in the database.
 1. There are `r comma(sum({stt}$dupe_flag))` duplicate records in the database.

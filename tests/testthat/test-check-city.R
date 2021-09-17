@@ -5,7 +5,7 @@ test_that("checking city without guessing returns a logical vector", {
   skip_on_cran()
   skip_if_not(nzchar(Sys.getenv("GEOCODE_KEY")))
   check1 <- check_city("WYOMISSING", "PA")
-  check2 <- check_city("Tokyo", "VT")
+  check2 <- expect_warning(check_city("Tokyo", "VT"))
   expect_type(check1, "logical")
   expect_true(check1)
   expect_false(check2)
