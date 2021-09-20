@@ -9,6 +9,7 @@
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/campfin)](https://CRAN.R-project.org/package=campfin)
+![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/campfin)
 [![Codecov test
 coverage](https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg)](https://codecov.io/gh/irworkshop/campfin?branch=master)
 [![R build
@@ -67,17 +68,7 @@ other sub-functions to streamline normalization.
 
 Please see the vignette on normalization for an example of how these
 functions are used to fix a wide variety of string inconsistencies and
-make campaign finance data more consistent. In general, these functions
-fix the following inconsistencies:
-
--   Capitalize with `str_to_upper()`
--   Replace hyphens and underscores with `str_replace()`
--   Remove remaining punctuation with `str_remove()`
--   Remove either numbers or letters (depending on data) with
-    `str_remove()`
--   Remove excess white space with `str_trim()` and `str_squish()`
--   Abbreviate addresses with `abbrev_full()` (and `str_replace_all()`)
--   Remove invalid values with `na_out()` (and `str_which()`)
+make campaign finance data more consistent.
 
 ## Data
 
@@ -88,10 +79,6 @@ library(tidyverse)
 
 The campfin package contains a number of built in data frames and
 strings used to help wrangle campaign finance data.
-
-    #>  [1] "dark2"        "extra_city"   "invalid_city" "rx_phone"     "rx_state"     "rx_url"      
-    #>  [7] "rx_zip"       "usps_city"    "usps_state"   "usps_street"  "valid_abb"    "valid_city"  
-    #> [13] "valid_name"   "valid_state"  "valid_zip"    "zipcodes"
 
 The `/data-raw` directory contains the code used to create the objects.
 
@@ -119,19 +106,19 @@ columns from the `zipcodes` data frame.
 
 ``` r
 sample_frac(zipcodes)
-#> # A tibble: 44,336 x 3
-#>    city           state zip  
-#>    <chr>          <chr> <chr>
-#>  1 KANSAS CITY    MO    64155
-#>  2 HOLT           FL    32564
-#>  3 WOODBRIDGE     VA    22194
-#>  4 MERRITT ISLAND FL    32954
-#>  5 WOODSIDE       NY    11377
-#>  6 CLAY           KY    42404
-#>  7 ACRA           NY    12405
-#>  8 COLUMBUS       OH    43271
-#>  9 STATE COLLEGE  PA    16801
-#> 10 COAMO          PR    00640
+#> # A tibble: 44,336 × 3
+#>    city            state zip  
+#>    <chr>           <chr> <chr>
+#>  1 SALTER PATH     NC    28575
+#>  2 PARK FOREST     IL    60466
+#>  3 LOUISVILLE      KY    40250
+#>  4 HOYTVILLE       OH    43529
+#>  5 CALIFORNIA CITY CA    93504
+#>  6 SPEEDWELL       TN    37870
+#>  7 YORKVILLE       TN    38389
+#>  8 SMITHFIELD      VA    23431
+#>  9 PENSACOLA       FL    32581
+#> 10 DES MOINES      NM    88418
 #> # … with 44,326 more rows
 ```
 
@@ -152,19 +139,19 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 
 ``` r
 sample_n(usps_street, 3)
-#> # A tibble: 3 x 2
-#>   full  abb  
-#>   <chr> <chr>
-#> 1 GTWAY GTWY 
-#> 2 NORTH N    
-#> 3 LIGHT LGT
+#> # A tibble: 3 × 2
+#>   full    abb  
+#>   <chr>   <chr>
+#> 1 ANNEX   ANX  
+#> 2 STRAVEN STRA 
+#> 3 PORT    PRT
 sample_n(usps_state, 3)
-#> # A tibble: 3 x 2
-#>   full     abb  
-#>   <chr>    <chr>
-#> 1 OREGON   OR   
-#> 2 MISSOURI MO   
-#> 3 WYOMING  WY
+#> # A tibble: 3 × 2
+#>   full           abb  
+#>   <chr>          <chr>
+#> 1 TENNESSEE      TN   
+#> 2 DELAWARE       DE   
+#> 3 NORTH CAROLINA NC
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```
