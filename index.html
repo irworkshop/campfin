@@ -128,21 +128,7 @@
 <li>
 <code><a href="reference/normal_phone.html">normal_phone()</a></code> consistently formats US telephone numbers.</li>
 </ul>
-<p>Please see the vignette on normalization for an example of how these functions are used to fix a wide variety of string inconsistencies and make campaign finance data more consistent. In general, these functions fix the following inconsistencies:</p>
-<ul>
-<li>Capitalize with <code>str_to_upper()</code>
-</li>
-<li>Replace hyphens and underscores with <code>str_replace()</code>
-</li>
-<li>Remove remaining punctuation with <code>str_remove()</code>
-</li>
-<li>Remove either numbers or letters (depending on data) with <code>str_remove()</code>
-</li>
-<li>Remove excess white space with <code>str_trim()</code> and <code>str_squish()</code>
-</li>
-<li>Abbreviate addresses with <code><a href="reference/abbrev_full.html">abbrev_full()</a></code> (and <code>str_replace_all()</code>)</li>
-<li>Remove invalid values with <code><a href="reference/na_out.html">na_out()</a></code> (and <code>str_which()</code>)</li>
-</ul>
+<p>Please see the vignette on normalization for an example of how these functions are used to fix a wide variety of string inconsistencies and make campaign finance data more consistent.</p>
 </div>
 <div id="data" class="section level2">
 <h2 class="hasAnchor">
@@ -151,9 +137,6 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin">campfin</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></code></pre></div>
 <p>The campfin package contains a number of built in data frames and strings used to help wrangle campaign finance data.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#&gt;  [1] "dark2"        "extra_city"   "invalid_city" "rx_phone"     "rx_state"     "rx_url"      </span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt;  [7] "rx_zip"       "usps_city"    "usps_state"   "usps_street"  "valid_abb"    "valid_city"  </span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; [13] "valid_name"   "valid_state"  "valid_zip"    "zipcodes"</span></span></code></pre></div>
 <p>The <code>/data-raw</code> directory contains the code used to create the objects.</p>
 <div id="zipcodes" class="section level3">
 <h3 class="hasAnchor">
@@ -163,21 +146,21 @@
 <p>This database was composed using ZIP code gazetteers from the US Census Bureau from 1999 and 2000, augmented with additional ZIP code information The database is believed to contain over 98% of the ZIP Codes in current use in the United States. The remaining ZIP Codes absent from this database are entirely PO Box or Firm ZIP codes added in the last five years, which are no longer published by the Census Bureau, but in any event serve a very small minority of the population (probably on the order of .1% or less). Although every attempt has been made to filter them out, this data set may contain up to .5% false positives, that is, ZIP codes that do not exist or are no longer in use but are included due to erroneous data sources.</p>
 </blockquote>
 <p>The included <code>valid_city</code> and <code>valid_zip</code> vectors are sorted, unique columns from the <code>zipcodes</code> data frame.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">sample_frac</span><span class="op">(</span><span class="va">zipcodes</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 44,336 x 3</span>
-<span class="co">#&gt;    city           state zip  </span>
-<span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt;  1 KANSAS CITY    MO    64155</span>
-<span class="co">#&gt;  2 HOLT           FL    32564</span>
-<span class="co">#&gt;  3 WOODBRIDGE     VA    22194</span>
-<span class="co">#&gt;  4 MERRITT ISLAND FL    32954</span>
-<span class="co">#&gt;  5 WOODSIDE       NY    11377</span>
-<span class="co">#&gt;  6 CLAY           KY    42404</span>
-<span class="co">#&gt;  7 ACRA           NY    12405</span>
-<span class="co">#&gt;  8 COLUMBUS       OH    43271</span>
-<span class="co">#&gt;  9 STATE COLLEGE  PA    16801</span>
-<span class="co">#&gt; 10 COAMO          PR    00640</span>
+<span class="co">#&gt; # A tibble: 44,336 × 3</span>
+<span class="co">#&gt;    city            state zip  </span>
+<span class="co">#&gt;    &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt;  1 SALTER PATH     NC    28575</span>
+<span class="co">#&gt;  2 PARK FOREST     IL    60466</span>
+<span class="co">#&gt;  3 LOUISVILLE      KY    40250</span>
+<span class="co">#&gt;  4 HOYTVILLE       OH    43529</span>
+<span class="co">#&gt;  5 CALIFORNIA CITY CA    93504</span>
+<span class="co">#&gt;  6 SPEEDWELL       TN    37870</span>
+<span class="co">#&gt;  7 YORKVILLE       TN    38389</span>
+<span class="co">#&gt;  8 SMITHFIELD      VA    23431</span>
+<span class="co">#&gt;  9 PENSACOLA       FL    32581</span>
+<span class="co">#&gt; 10 DES MOINES      NM    88418</span>
 <span class="co">#&gt; # … with 44,326 more rows</span></code></pre></div>
 </div>
 <div id="usps_-and-valid_" class="section level3">
@@ -186,21 +169,21 @@
 </h3>
 <p>The <code>usps_*</code> data frames were scraped from the official United States Postal Service (USPS) <a href="https://pe.usps.com/text/pub28/28apc_002.htm">Postal Addressing Standards</a>. These data frames are designed to work with the abbreviation functionality of <code><a href="reference/normal_address.html">normal_address()</a></code> and <code><a href="reference/normal_city.html">normal_city()</a></code> to replace common abbreviations with their full equivalent.</p>
 <p><code>usps_city</code> is a curated subset of <code>usps_state</code>, whose full version appear at least once in the <code>valid_city</code> vector from <code>zipcodes</code>. The <code>valid_state</code> and <code>valid_name</code> vectors contain the columns from <code>usps_state</code> and include territories not found in R’s build in <code>state.abb</code> and <code>state.name</code> vectors.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_street</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 2</span>
-<span class="co">#&gt;   full  abb  </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 GTWAY GTWY </span>
-<span class="co">#&gt; 2 NORTH N    </span>
-<span class="co">#&gt; 3 LIGHT LGT</span>
+<span class="co">#&gt; # A tibble: 3 × 2</span>
+<span class="co">#&gt;   full    abb  </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;</span>
+<span class="co">#&gt; 1 ANNEX   ANX  </span>
+<span class="co">#&gt; 2 STRAVEN STRA </span>
+<span class="co">#&gt; 3 PORT    PRT</span>
 <span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_state</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 2</span>
-<span class="co">#&gt;   full     abb  </span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;</span>
-<span class="co">#&gt; 1 OREGON   OR   </span>
-<span class="co">#&gt; 2 MISSOURI MO   </span>
-<span class="co">#&gt; 3 WYOMING  WY</span>
+<span class="co">#&gt; # A tibble: 3 × 2</span>
+<span class="co">#&gt;   full           abb  </span>
+<span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;</span>
+<span class="co">#&gt; 1 TENNESSEE      TN   </span>
+<span class="co">#&gt; 2 DELAWARE       DE   </span>
+<span class="co">#&gt; 3 NORTH CAROLINA NC</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">valid_state</span>, <span class="va">state.abb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"</span></code></pre></div>
 <hr>
