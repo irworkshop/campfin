@@ -18,7 +18,7 @@
 #' @return A vector of normalized street addresses.
 #' @examples
 #' normal_address("P.O. 123, C/O John Smith", abbs = usps_street)
-#' normal_address("12east 2nd street, suite209", abbs = usps_street)
+#' normal_address("12east 2nd street, #209", abbs = usps_street)
 #' @importFrom stringr str_to_upper str_replace_all str_trim str_squish str_replace
 #' @family geographic normalization functions
 #' @export
