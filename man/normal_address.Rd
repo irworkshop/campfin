@@ -4,7 +4,13 @@
 \alias{normal_address}
 \title{Normalize street addresses}
 \usage{
-normal_address(address, abbs = NULL, na = c("", "NA"), na_rep = FALSE)
+normal_address(
+  address,
+  abbs = NULL,
+  na = c("", "NA"),
+  na_rep = FALSE,
+  abb_end = TRUE
+)
 }
 \arguments{
 \item{address}{A vector of street addresses (ideally without city, state, or
@@ -18,6 +24,9 @@ structure needed.}
 
 \item{na_rep}{logical; If \code{TRUE}, replace all single digit (repeating)
 strings with \code{NA}.}
+
+\item{abb_end}{logical; Should only the last word the string be abbreviated
+with the \code{abbs} argument? Passed to the \code{end} argument of \code{\link[=str_normal]{str_normal()}}.}
 }
 \value{
 A vector of normalized street addresses.
@@ -32,7 +41,7 @@ Invalid addresses from a vector can be removed (possibly using
 }
 \examples{
 normal_address("P.O. 123, C/O John Smith", abbs = usps_street)
-normal_address("12east 2nd street, suite209", abbs = usps_street)
+normal_address("12east 2nd street, #209", abbs = usps_street)
 }
 \seealso{
 Other geographic normalization functions: 
