@@ -35,7 +35,7 @@ normal_address <- function(address, abbs = NULL, na = c("", "NA"),
     stringr::str_replace_all("^([:digit:]+)([:alpha:]+)", "\\1 \\2") %>%
     stringr::str_replace_all("([:alpha:]+)([:digit:]+)$", "\\1 \\2")
   if (!is.null(abbs)) {
-    address <- abbrev_full(x = address, full = abbs, abb_end = TRUE)
+    address <- abbrev_full(x = address, full = abbs, end = abb_end)
   }
   if (na_rep) {
     address <- na_rep(address)
