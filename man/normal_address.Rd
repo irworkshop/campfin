@@ -40,8 +40,8 @@ Invalid addresses from a vector can be removed (possibly using
 \link{invalid_city}) as well as single (repeating) character strings ("XXXXXX").
 }
 \examples{
-normal_address("P.O. 123, C/O John Smith", abbs = usps_street)
-normal_address("12east 2nd street, #209", abbs = usps_street)
+normal_address("P.O. #123, C/O John Smith", abbs = usps_street)
+normal_address("12east 2nd street, #209", abbs = usps_street, abb_end = FALSE)
 }
 \seealso{
 Other geographic normalization functions: 

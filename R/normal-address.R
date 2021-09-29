@@ -19,8 +19,8 @@
 #'   with the `abbs` argument? Passed to the `end` argument of [str_normal()].
 #' @return A vector of normalized street addresses.
 #' @examples
-#' normal_address("P.O. 123, C/O John Smith", abbs = usps_street)
-#' normal_address("12east 2nd street, #209", abbs = usps_street)
+#' normal_address("P.O. #123, C/O John Smith", abbs = usps_street)
+#' normal_address("12east 2nd street, #209", abbs = usps_street, abb_end = FALSE)
 #' @importFrom stringr str_to_upper str_replace_all str_trim str_squish
 #'    str_replace
 #' @family geographic normalization functions
@@ -32,7 +32,13 @@ normal_address <- function(address, abbs = NULL, na = c("", "NA"),
     str_normal() %>%
     stringr::str_replace_all("^P\\sO", "PO") %>%
     stringr::str_replace_all("(?<=^|\\s)C\\sO(?=\\s|$)", "C/O") %>%
-    stringr::str_replace_all("^([:digit:]+)([:alpha:]+)", "\\1 \\2") %>%
+    stringr::str_replace_all(
+      pattern = stringr::regex(
+        pattern = "^([:digit:]+)([[:alpha:]-[(st)(nd)(rd)(th)]]+)",
+        ignore_case = TRUE
+      ),
+      replacement = "\\1 \\2"
+    ) %>%
     stringr::str_replace_all("([:alpha:]+)([:digit:]+)$", "\\1 \\2")
   if (!is.null(abbs)) {
     address <- abbrev_full(x = address, full = abbs, end = abb_end)
