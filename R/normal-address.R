@@ -13,6 +13,7 @@
 #'   passed to [expand_abbrev()]. See `?expand_abbrev` for the type of object
 #'   structure needed.
 #' @param na A character vector of values to make `NA` (like [invalid_city]).
+#' @param punct A character value with which to replace all punctuation.
 #' @param na_rep logical; If `TRUE`, replace all single digit (repeating)
 #'   strings with `NA`.
 #' @param abb_end logical; Should only the last word the string be abbreviated
@@ -25,21 +26,11 @@
 #'    str_replace
 #' @family geographic normalization functions
 #' @export
-normal_address <- function(address, abbs = NULL, na = c("", "NA"),
+normal_address <- function(address, abbs = NULL, na = c("", "NA"), punct = "",
                            na_rep = FALSE, abb_end = TRUE) {
   address <- address %>%
     stringr::str_remove_all("(?<=(^|\\.|\\s)\\w)\\.") %>%
-    str_normal() %>%
-    stringr::str_replace_all("^P\\sO", "PO") %>%
-    stringr::str_replace_all("(?<=^|\\s)C\\sO(?=\\s|$)", "C/O") %>%
-    stringr::str_replace_all(
-      pattern = stringr::regex(
-        pattern = "^([:digit:]+)([[:alpha:]-[(st)(nd)(rd)(th)]]+)",
-        ignore_case = TRUE
-      ),
-      replacement = "\\1 \\2"
-    ) %>%
-    stringr::str_replace_all("([:alpha:]+)([:digit:]+)$", "\\1 \\2")
+    str_normal(punct = punct)
   if (!is.null(abbs)) {
     address <- abbrev_full(x = address, full = abbs, end = abb_end)
   }

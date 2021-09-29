@@ -2,6 +2,8 @@
 
 * The `end` argument of `str_normal()` can now be controlled with `abb_end` in
   `normal_address()` (default `TRUE`).
+* Simplify `normal_address()` by leaving number/letter mixes alone.
+* Change the `punct` argument of `str_normal()` to take a replacement string.
 
 # campfin 1.0.8
 

@@ -8,6 +8,7 @@ normal_address(
   address,
   abbs = NULL,
   na = c("", "NA"),
+  punct = "",
   na_rep = FALSE,
   abb_end = TRUE
 )
@@ -21,6 +22,8 @@ passed to \code{\link[=expand_abbrev]{expand_abbrev()}}. See \code{?expand_abbre
 structure needed.}
 
 \item{na}{A character vector of values to make \code{NA} (like \link{invalid_city}).}
+
+\item{punct}{A character value with which to replace all punctuation.}
 
 \item{na_rep}{logical; If \code{TRUE}, replace all single digit (repeating)
 strings with \code{NA}.}
