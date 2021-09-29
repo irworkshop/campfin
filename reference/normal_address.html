@@ -85,7 +85,7 @@ invalid_city) as well as single (repeating) character strings (&quot;XXXXXX&quot
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8.9100</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8.9200</span>
       </span>
     </div>
 
@@ -154,6 +154,7 @@ Invalid addresses from a vector can be removed (possibly using
   <span class='va'>address</span>,
   abbs <span class='op'>=</span> <span class='cn'>NULL</span>,
   na <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>"NA"</span><span class='op'>)</span>,
+  punct <span class='op'>=</span> <span class='st'>""</span>,
   na_rep <span class='op'>=</span> <span class='cn'>FALSE</span>,
   abb_end <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
@@ -175,6 +176,10 @@ structure needed.</p></td>
     <tr>
       <th>na</th>
       <td><p>A character vector of values to make <code>NA</code> (like <a href='invalid_city.html'>invalid_city</a>).</p></td>
+    </tr>
+    <tr>
+      <th>punct</th>
+      <td><p>A character value with which to replace all punctuation.</p></td>
     </tr>
     <tr>
       <th>na_rep</th>
@@ -208,7 +213,7 @@ with the <code>abbs</code> argument? Passed to the <code>end</code> argument of 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>normal_address</span><span class='op'>(</span><span class='st'>"P.O. #123, C/O John Smith"</span>, abbs <span class='op'>=</span> <span class='va'>usps_street</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "PO #123 C/O JOHN SMITH"</div><div class='input'><span class='fu'>normal_address</span><span class='op'>(</span><span class='st'>"12east 2nd street, #209"</span>, abbs <span class='op'>=</span> <span class='va'>usps_street</span>, abb_end <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "12 E 2ND ST #209"</div></pre>
+</div><div class='output co'>#&gt; [1] "12EAST 2ND ST #209"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
