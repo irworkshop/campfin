@@ -93,6 +93,10 @@ pacman::p_load(
 )
 ```
 
+```{r package-options, echo=FALSE}
+options(options(knitr.kable.NA = ""))
+```
+
 This document should be run as part of the `R_campfin` project, which lives as a
 sub-directory of the more general, language-agnostic
 [`irworkshop/accountability_datacleaning`][tap] GitHub repository.
@@ -118,7 +122,7 @@ here::i_am("{st}/{type}/docs/{st}_{type}_diary.Rmd")
 ```{r raw-dir}
 raw_url <- "https://example.com/source_file.csv"
 raw_dir <- dir_create(here("{st}", "{type}", "data", "raw"))
-raw_path <- path(raw_dir, basename(raw_url))
+raw_csv <- path(raw_dir, basename(raw_url))
 ```
 
 ```{r raw-download}
@@ -482,7 +486,7 @@ Then we can join the refined values back to the database.
 
 ```{r city-join}
 {stt} <- {stt} %>% 
-  left_join(good_refine) %>% 
+  left_join(good_refine, by = names(.)) %>% 
   mutate(city_refine = coalesce(city_refine, city_swap))
 ```
 
@@ -585,8 +589,8 @@ Now the file can be saved on disk for upload to the Accountability server.
 
 ```{r clean-dir}
 clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
-clean_path <- path(clean_dir, "{st}_{type}_clean.csv")
-write_csv({stt}, clean_path, na = "")
+clean_csv <- path(clean_dir, "{st}_{type}_clean.csv")
+write_csv({stt}, clean_csv, na = "")
 (clean_size <- file_size(clean_path))
 ```
 
@@ -595,18 +599,18 @@ write_csv({stt}, clean_path, na = "")
 We can use the `aws.s3::put_object()` to upload the text file to the IRW server.
 
 ```{r aws-upload, eval=FALSE}
-aws_path <- path("csv", basename(clean_path))
-if (!object_exists(aws_path, "publicaccountability")) {
+aws_csv <- path("csv", basename(clean_csv))
+if (!object_exists(aws_csv, "publicaccountability")) {
   put_object(
-    file = clean_path,
-    object = aws_path, 
+    file = clean_csv,
+    object = aws_csv, 
     bucket = "publicaccountability",
     acl = "public-read",
     show_progress = TRUE,
     multipart = TRUE
   )
 }
-aws_head <- head_object(aws_path, "publicaccountability")
+aws_head <- head_object(aws_csv, "publicaccountability")
 (aws_size <- as_fs_bytes(attr(aws_head, "content-length")))
 unname(aws_size == clean_size)
 ```
