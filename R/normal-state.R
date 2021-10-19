@@ -27,19 +27,19 @@
 #' @family geographic normalization functions
 #' @export
 normal_state <- function(state, abbreviate = TRUE, na = c("", "NA"), na_rep = FALSE, valid = NULL) {
-  state2 <- state %>%
+  state <- state %>%
     stringr::str_to_upper() %>%
     stringr::str_remove_all("[^A-z\\s]") %>%
     stringr::str_trim()
   if (abbreviate) {
-    state2 <- abbrev_state(state2)
+    state <- abbrev_state(state)
   }
   if (na_rep) {
-    state2[str_which(state2, "^(.)\\1+$")] <- NA
+    state[state != "AA"] <- na_rep(state[state != "AA"])
   }
-  state2[which(state2 %in% stringr::str_to_upper(na))] <- NA
+  state[which(state %in% stringr::str_to_upper(na))] <- NA
   if (!is.null(valid)) {
-    state2[!(state2 %in% valid)] <- NA
+    state[!(state %in% valid)] <- NA
   }
-  return(state2)
+  return(state)
 }
