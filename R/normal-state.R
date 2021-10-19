@@ -35,9 +35,12 @@ normal_state <- function(state, abbreviate = TRUE, na = c("", "NA"), na_rep = FA
     state <- abbrev_state(state)
   }
   if (na_rep) {
-    state[state != "AA"] <- na_rep(state[state != "AA"])
+    is_aa <- state != "AA" & !is.na(state)
+    state[is_aa] <- na_rep(state[is_aa])
   }
-  state[which(state %in% stringr::str_to_upper(na))] <- NA
+  if (length(na) > 0 & is.character(na)) {
+    state[which(state %in% stringr::str_to_upper(na))] <- NA
+  }
   if (!is.null(valid)) {
     state[!(state %in% valid)] <- NA
   }
