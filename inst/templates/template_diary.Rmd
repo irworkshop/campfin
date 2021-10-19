@@ -93,15 +93,21 @@ pacman::p_load(
 )
 ```
 
+This diary was run using `campfin` version `r packageVersion("campfin")`.
+
+```{r campfin-version}
+packageVersion("campfin")
+```
+
 ```{r package-options, echo=FALSE}
 options(options(knitr.kable.NA = ""))
 ```
 
-This document should be run as part of the `R_campfin` project, which lives as a
+This document should be run as part of the `R_tap` project, which lives as a
 sub-directory of the more general, language-agnostic
 [`irworkshop/accountability_datacleaning`][tap] GitHub repository.
 
-The `R_campfin` project uses the [RStudio projects][rproj] feature and should be
+The `R_tap` project uses the [RStudio projects][rproj] feature and should be
 run as such. The project also uses the dynamic `here::here()` tool for file
 paths relative to _your_ machine.
 
@@ -126,8 +132,8 @@ raw_csv <- path(raw_dir, basename(raw_url))
 ```
 
 ```{r raw-download}
-if (!file_exists(raw_path)) {
-  download.file(raw_url, raw_path)
+if (!file_exists(raw_csv)) {
+  download.file(raw_url, raw_csv)
 }
 ```
 
@@ -135,13 +141,13 @@ if (!file_exists(raw_path)) {
 
 ```{r raw-read}
 {stt} <- read_delim(
-  file = raw_path,
+  file = raw_csv,
   delim = ",",
   escape_backslash = FALSE,
   escape_double = FALSE,
   col_types = cols(
     .default = col_character(),
-    date = col_date_usa(),
+    date = col_date_mdy(),
     amount = col_double()
   )
 )
@@ -195,7 +201,8 @@ sum({stt}$dupe_flag)
 ```{r dupe-view}
 {stt} %>% 
   filter(dupe_flag) %>% 
-  select(all_of(key_vars))
+  select(all_of(key_vars)) %>% 
+  arrange(date)
 ```
 
 ### Categorical
@@ -204,13 +211,14 @@ sum({stt}$dupe_flag)
 col_stats({stt}, n_distinct)
 ```
 
-```{r distinct-plots, echo=FALSE}
+```{r distinct-plots, echo=FALSE, fig.height=3}
 explore_plot({stt}, type)
 ```
 
 ### Amounts
 
 ```{r amount-round}
+# fix floating point precision
 {stt}$amount <- round({stt}$amount, digits = 2)
 ```
 
@@ -224,6 +232,8 @@ These are the records with the minimum and maximum amounts.
 ```{r amount-minmax}
 glimpse({stt}[c(which.max({stt}$amount), which.min({stt}$amount)), ])
 ```
+
+The distribution of amount values are typically log-normal.
 
 ```{r hist-amount, echo=FALSE}
 {stt} %>%
@@ -257,6 +267,8 @@ sum({stt}$year < 2000)
 max({stt}$date)
 sum({stt}$date > today())
 ```
+
+It's common to see an increase in the number of contributins in elections years.
 
 ```{r bar-year, echo=FALSE}
 {stt} %>% 
@@ -573,7 +585,7 @@ rename all added variables with the `_clean` suffix.
 ## Conclude
 
 ```{r clean-glimpse}
-glimpse(sample_n({stt}, 50))
+glimpse(sample_n({stt}, 1000))
 ```
 
 1. There are `r comma(nrow({stt}))` records in the database.
@@ -585,11 +597,18 @@ glimpse(sample_n({stt}, 50))
 
 ## Export
 
-Now the file can be saved on disk for upload to the Accountability server.
+Now the file can be saved on disk for upload to the Accountability server. We
+will name the object using a date range of the records included.
+
+```{r clean-timestamp}
+min_dt <- str_remove_all(min({stt}$date), "-")
+max_dt <- str_remove_all(max({stt}$date), "-")
+csv_ts <- paste(min_dt, max_dt, sep = "-")
+```
 
 ```{r clean-dir}
 clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
-clean_csv <- path(clean_dir, "{st}_{type}_clean.csv")
+clean_csv <- path(clean_dir, "{st}_{type}_{csv_ts}.csv")
 write_csv({stt}, clean_csv, na = "")
 (clean_size <- file_size(clean_path))
 ```
@@ -599,11 +618,11 @@ write_csv({stt}, clean_csv, na = "")
 We can use the `aws.s3::put_object()` to upload the text file to the IRW server.
 
 ```{r aws-upload, eval=FALSE}
-aws_csv <- path("csv", basename(clean_csv))
+aws_key <- path("csv", basename(clean_csv))
 if (!object_exists(aws_csv, "publicaccountability")) {
   put_object(
     file = clean_csv,
-    object = aws_csv, 
+    object = aws_key, 
     bucket = "publicaccountability",
     acl = "public-read",
     show_progress = TRUE,
