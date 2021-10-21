@@ -609,7 +609,12 @@ csv_ts <- paste(min_dt, max_dt, sep = "-")
 ```{r clean-dir}
 clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
 clean_csv <- path(clean_dir, "{st}_{type}_{csv_ts}.csv")
+clean_rds <- path_ext_set(clean_csv, "rds")
+```
+
+```{r clean-write}
 write_csv({stt}, clean_csv, na = "")
+write_rds({stt}, clean_rds, compress = "xz")
 (clean_size <- file_size(clean_path))
 ```
 
