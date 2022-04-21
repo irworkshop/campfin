@@ -30,6 +30,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -42,23 +44,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.8.9201</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.8.9201</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,7 +71,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/irworkshop/campfin/">
+  <a href="https://github.com/irworkshop/campfin/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -92,37 +88,35 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="campfin-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#campfin-" class="anchor"></a>campfin <img src="reference/figures/logo.png" align="right" width="120">
+<div class="section level1">
+<div class="page-header"><h1 id="campfin-">campfin <img src="reference/figures/logo.png" align="right" width="120"><a class="anchor" aria-label="anchor" href="#campfin-"></a>
 </h1></div>
 <!-- badges: start -->
 
-<p>The campfin package was created to facilitate the work being done on the <a href="https://www.publicaccountability.org/">The Accountability Project</a>, a tool created by <a href="https://investigativereportingworkshop.org/">The Investigative Reporting Workshop</a> in Washington,</p>
-<p>DC. The Accountability Project curates, cleans, and indexes public data to give journalists, researchers and others a simple way to search across otherwise siloed records.</p>
+<p>The campfin package was created to facilitate the work being done on the <a href="https://www.publicaccountability.org/" class="external-link">The Accountability Project</a>, a tool created by <a href="https://investigativereportingworkshop.org/" class="external-link">The Investigative Reporting Workshop</a> in Washington, DC. The Accountability Project curates, cleans, and indexes public data to give journalists, researchers and others a simple way to search across otherwise siloed records.</p>
 <p>The data focuses on people, organizations and locations. This package was created specifically to help with state-level campaign finance data, although the tools included are useful in general database exploration and normalization.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of campfin from <a href="https://cran.r-project.org/package=campfin">CRAN</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of campfin from <a href="https://cran.r-project.org/package=campfin" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"campfin"</span><span class="op">)</span></code></pre></div>
-<p>The development version can be installed from <a href="https://github.com/irworkshop/campfin">GitHub</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"campfin"</span><span class="op">)</span></code></pre></div>
+<p>The development version can be installed from <a href="https://github.com/irworkshop/campfin" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"irworkshop/campfin"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"irworkshop/campfin"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="normalize" class="section level2">
-<h2 class="hasAnchor">
-<a href="#normalize" class="anchor"></a>Normalize</h2>
-<p>The package was originally built to normalize geographic data using the <code>normal_*()</code> functions, which take the messy self-reported geographic data of a contributor, vendor, candidate, or committee and return <a href="https://en.wikipedia.org/wiki/Text_normalization">normalized text</a> that is more searchable. They are largely wrappers around the <a href="https://github.com/tidyverse/stringr">stringr</a> package, and can call other sub-functions to streamline normalization.</p>
+<div class="section level2">
+<h2 id="normalize">Normalize<a class="anchor" aria-label="anchor" href="#normalize"></a>
+</h2>
+<p>The package was originally built to normalize geographic data using the <code>normal_*()</code> functions, which take the messy self-reported geographic data of a contributor, vendor, candidate, or committee and return <a href="https://en.wikipedia.org/wiki/Text_normalization" class="external-link">normalized text</a> that is more searchable. They are largely wrappers around the <a href="https://github.com/tidyverse/stringr" class="external-link">stringr</a> package, and can call other sub-functions to streamline normalization.</p>
 <ul>
 <li>
 <code><a href="reference/normal_address.html">normal_address()</a></code> takes a <em>street</em> address and reduces inconsistencies.</li>
 <li>
-<code><a href="reference/normal_zip.html">normal_zip()</a></code> takes <a href="https://en.wikipedia.org/wiki/ZIP_Code">ZIP Codes</a> and aims to return a valid 5-digit code.</li>
+<code><a href="reference/normal_zip.html">normal_zip()</a></code> takes <a href="https://en.wikipedia.org/wiki/ZIP_Code" class="external-link">ZIP Codes</a> and aims to return a valid 5-digit code.</li>
 <li>
-<code><a href="reference/normal_state.html">normal_state()</a></code> takes US states and returns a <a href="https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations">2 digit abbreviation</a>.</li>
+<code><a href="reference/normal_state.html">normal_state()</a></code> takes US states and returns a <a href="https://en.wikipedia.org/wiki/List_of_U.S._state_abbreviations" class="external-link">2 digit abbreviation</a>.</li>
 <li>
 <code><a href="reference/normal_city.html">normal_city()</a></code> takes cities and reduces inconsistencies.</li>
 <li>
@@ -130,18 +124,18 @@
 </ul>
 <p>Please see the vignette on normalization for an example of how these functions are used to fix a wide variety of string inconsistencies and make campaign finance data more consistent.</p>
 </div>
-<div id="data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data" class="anchor"></a>Data</h2>
+<div class="section level2">
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin">campfin</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin" class="external-link">campfin</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <p>The campfin package contains a number of built in data frames and strings used to help wrangle campaign finance data.</p>
 <p>The <code>/data-raw</code> directory contains the code used to create the objects.</p>
-<div id="zipcodes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#zipcodes" class="anchor"></a>zipcodes</h3>
-<p>The <code>zipcodes</code> (plural) table is a new version of the <code>zipcode</code> (singular) table from the archived <a href="https://cran.r-project.org/src/contrib/Archive/zipcode/">zipcode</a> R package.</p>
+<div class="section level3">
+<h3 id="zipcodes">zipcodes<a class="anchor" aria-label="anchor" href="#zipcodes"></a>
+</h3>
+<p>The <code>zipcodes</code> (plural) table is a new version of the <code>zipcode</code> (singular) table from the archived <a href="https://cran.r-project.org/src/contrib/Archive/zipcode/" class="external-link">zipcode</a> R package.</p>
 <blockquote>
 <p>This database was composed using ZIP code gazetteers from the US Census Bureau from 1999 and 2000, augmented with additional ZIP code information The database is believed to contain over 98% of the ZIP Codes in current use in the United States. The remaining ZIP Codes absent from this database are entirely PO Box or Firm ZIP codes added in the last five years, which are no longer published by the Census Bureau, but in any event serve a very small minority of the population (probably on the order of .1% or less). Although every attempt has been made to filter them out, this data set may contain up to .5% false positives, that is, ZIP codes that do not exist or are no longer in use but are included due to erroneous data sources.</p>
 </blockquote>
@@ -163,11 +157,12 @@
 <span class="co">#&gt; 10 DES MOINES      NM    88418</span>
 <span class="co">#&gt; # … with 44,326 more rows</span></code></pre></div>
 </div>
-<div id="usps_-and-valid_" class="section level3">
-<h3 class="hasAnchor">
-<a href="#usps_-and-valid_" class="anchor"></a><code>usps_*</code> and <code>valid_*</code>
+<div class="section level3">
+<h3 id="usps_-and-valid_">
+<code>usps_*</code> and <code>valid_*</code>
+<a class="anchor" aria-label="anchor" href="#usps_-and-valid_"></a>
 </h3>
-<p>The <code>usps_*</code> data frames were scraped from the official United States Postal Service (USPS) <a href="https://pe.usps.com/text/pub28/28apc_002.htm">Postal Addressing Standards</a>. These data frames are designed to work with the abbreviation functionality of <code><a href="reference/normal_address.html">normal_address()</a></code> and <code><a href="reference/normal_city.html">normal_city()</a></code> to replace common abbreviations with their full equivalent.</p>
+<p>The <code>usps_*</code> data frames were scraped from the official United States Postal Service (USPS) <a href="https://pe.usps.com/text/pub28/28apc_002.htm" class="external-link">Postal Addressing Standards</a>. These data frames are designed to work with the abbreviation functionality of <code><a href="reference/normal_address.html">normal_address()</a></code> and <code><a href="reference/normal_city.html">normal_city()</a></code> to replace common abbreviations with their full equivalent.</p>
 <p><code>usps_city</code> is a curated subset of <code>usps_state</code>, whose full version appear at least once in the <code>valid_city</code> vector from <code>zipcodes</code>. The <code>valid_state</code> and <code>valid_name</code> vectors contain the columns from <code>usps_state</code> and include territories not found in R’s build in <code>state.abb</code> and <code>state.name</code> vectors.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_street</span>, <span class="fl">3</span><span class="op">)</span>
@@ -184,10 +179,10 @@
 <span class="co">#&gt; 1 TENNESSEE      TN   </span>
 <span class="co">#&gt; 2 DELAWARE       DE   </span>
 <span class="co">#&gt; 3 NORTH CAROLINA NC</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">valid_state</span>, <span class="va">state.abb</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="va">valid_state</span>, <span class="va">state.abb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"</span></code></pre></div>
 <hr>
-<p>The campfin project is released with a <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html">Contributor Code of Conduct</a>. By contributing, you agree to abide by its terms.</p>
+<p>The campfin project is released with a <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html" class="external-link">Contributor Code of Conduct</a>. By contributing, you agree to abide by its terms.</p>
 <!-- refs: start -->
 <!-- refs: end -->
 </div>
@@ -197,58 +192,68 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=campfin">https://​cloud.r-project.org/​package=campfin</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/irworkshop/campfin/">https://​github.com/​irworkshop/​campfin/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/irworkshop/campfin/issues">https://​github.com/​irworkshop/​campfin/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=campfin" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/irworkshop/campfin/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/irworkshop/campfin/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a></small></li>
+<li><small><a href="https://creativecommons.org/licenses/by/4.0" class="external-link">CC BY 4.0</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Kiernan Nicholls <br><small class="roles"> Author, maintainer, copyright holder </small>  </li>
-<li>Yanqi Xu <br><small class="roles"> Author </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html#citation">Citing campfin</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://CRAN.R-project.org/package=campfin"><img src="https://www.r-pkg.org/badges/version/campfin" alt="CRAN status"></a></li>
-<li><a href="https://codecov.io/gh/irworkshop/campfin?branch=master"><img src="https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/irworkshop/campfin/actions"><img src="https://github.com/irworkshop/campfin/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li>Kiernan Nicholls <br><small class="roles"> Author, maintainer, copyright holder </small>  </li>
+<li>Yanqi Xu <br><small class="roles"> Author </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://CRAN.R-project.org/package=campfin" class="external-link"><img src="https://www.r-pkg.org/badges/version/campfin" alt="CRAN status"></a></li>
+<li><a href="https://codecov.io/gh/irworkshop/campfin?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/irworkshop/campfin/actions" class="external-link"><img src="https://github.com/irworkshop/campfin/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Kiernan Nicholls, Yanqi Xu.</p>
+  <p></p>
+<p>Developed by Kiernan Nicholls, Yanqi Xu.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -256,6 +261,8 @@
 
   
 
+
+  
 
   </body>
 </html>
