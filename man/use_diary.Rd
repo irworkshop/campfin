@@ -7,9 +7,10 @@
 use_diary(st, type, author, auto = FALSE)
 }
 \arguments{
-\item{st}{The USPS state abbreviation.}
+\item{st}{The USPS state abbreviation. State data only, no federal agencies.}
 
-\item{type}{The type of data, one of "contribs", "expends", or "lobby".}
+\item{type}{The type of data, one of "contribs", "expends", "lobby",
+"contracts", "salary", or "voters".}
 
 \item{author}{The author name of the new diary.}
 

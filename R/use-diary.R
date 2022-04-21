@@ -3,8 +3,9 @@
 #' Take the arguments supplied and put them into the appropriate places in a
 #' new template diary. Write the new template diary in the supplied directory.
 #'
-#' @param st The USPS state abbreviation.
-#' @param type The type of data, one of "contribs", "expends", or "lobby".
+#' @param st The USPS state abbreviation. State data only, no federal agencies.
+#' @param type The type of data, one of "contribs", "expends", "lobby",
+#'   "contracts", "salary", or "voters".
 #' @param author The author name of the new diary.
 #' @param auto If `TRUE`, file is created in the correct working directory.
 #'   If `FALSE`, a plain character string is returned. If a directory name, the
@@ -51,7 +52,7 @@ use_diary <- function(st, type, author, auto = FALSE) {
     if (!auto) {
       return(new_lines)
     } else {
-      dir <- paste(getwd(), st, type, "docs", sep = "/")
+      dir <- paste(getwd(), "state", st, type, "docs", sep = "/")
       fs::dir_create(dir)
     }
   } else {
