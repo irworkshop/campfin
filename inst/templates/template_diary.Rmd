@@ -34,7 +34,7 @@ if (!interactive()) {
 ```
 
 ```{r create-docs-dir, eval=FALSE, echo=FALSE, include=FALSE}
-doc_dir <- fs::dir_create(here::here("{st}", "{type}", "docs"))
+doc_dir <- fs::dir_create(here::here("state", "{st}", "{type}", "docs"))
 ```
 
 ## Project
@@ -127,7 +127,7 @@ here::i_am("{st}/{type}/docs/{st}_{type}_diary.Rmd")
 
 ```{r raw-dir}
 raw_url <- "https://example.com/source_file.csv"
-raw_dir <- dir_create(here("{st}", "{type}", "data", "raw"))
+raw_dir <- dir_create(here("state", "{st}", "{type}", "data", "raw"))
 raw_csv <- path(raw_dir, basename(raw_url))
 ```
 
@@ -607,7 +607,7 @@ csv_ts <- paste(min_dt, max_dt, sep = "-")
 ```
 
 ```{r clean-dir}
-clean_dir <- dir_create(here("{st}", "{type}", "data", "clean"))
+clean_dir <- dir_create(here("state", "{st}", "{type}", "data", "clean"))
 clean_csv <- path(clean_dir, glue("{st}_{type}_{csv_ts}.csv"))
 clean_rds <- path_ext_set(clean_csv, "rds")
 basename(clean_csv)
@@ -638,26 +638,4 @@ if (!object_exists(aws_key, "publicaccountability")) {
 aws_head <- head_object(aws_key, "publicaccountability")
 (aws_size <- as_fs_bytes(attr(aws_head, "content-length")))
 unname(aws_size == clean_size)
-```
-
-## Dictionary
-
-The following table describes the variables in our final exported file:
-
-```{r dict-make, echo=FALSE}
-dict_raw <- tibble(
-  var = md_code(names({stt})),
-  type = md_code(map_chr({stt}, typeof)),
-  def = c(
-    ""
-  )
-)
-```
-
-```{r dict-md, echo=FALSE}
-(dict_md <- kable(
-  x = dict_raw,
-  format = "markdown",
-  col.names = c("Column", "Type", "Definition")
-))
 ```
