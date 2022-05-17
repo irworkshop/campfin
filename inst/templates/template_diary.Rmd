@@ -113,7 +113,7 @@ paths relative to _your_ machine.
 
 ```{r where-here}
 # where does this document knit?
-here::i_am("{st}/{type}/docs/{st}_{type}_diary.Rmd")
+here::i_am("state/{st}/{type}/docs/{st}_{type}_diary.Rmd")
 ```
 
 [tap]: https://github.com/irworkshop/accountability_datacleaning
