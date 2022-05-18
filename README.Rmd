@@ -137,7 +137,7 @@ contributing, you agree to abide by its terms.
 [cran_link]: https://CRAN.R-project.org/package=campfin
 [dl_badge]: https://cranlogs.r-pkg.org/badges/grand-total/campfin
 [cov_badge]: https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg
-[cov_link]: https://codecov.io/gh/irworkshop/campfin?branch=master
+[cov_link]: https://app.codecov.io/gh/irworkshop/campfin?branch=master
 [gh_badge]: https://github.com/irworkshop/campfin/workflows/R-CMD-check/badge.svg
 [gh_link]: https://github.com/irworkshop/campfin/actions
 [tap]: https://www.publicaccountability.org/

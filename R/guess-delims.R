@@ -3,7 +3,7 @@
 #' @description
 #' Taken from code used in [vroom::vroom()][1] with automatic reading.
 #'
-#' [1]: https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248
+#' [1]: https://github.com/tidyverse/vroom/blob/85143f7a417376eaf0e2037ca9575f637e4346c2/R/vroom.R#L288
 #'
 #' @param file Either a path to a file or character string (with at least one
 #'   newline character).
@@ -17,7 +17,7 @@
 #' a|b|c
 #' 1|2|3
 #' ")
-#' @source <https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248>
+#' @source <https://github.com/tidyverse/vroom/blob/85143f7a417376eaf0e2037ca9575f637e4346c2/R/vroom.R#L288>
 #' @return The single character guessed as a delimiter.
 #' @export
 guess_delim <- function(file, delims = c(",", "\t", "|", ";"), string = FALSE) {

@@ -11,7 +11,7 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lif
 status](https://www.r-pkg.org/badges/version/campfin)](https://CRAN.R-project.org/package=campfin)
 ![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/campfin)
 [![Codecov test
-coverage](https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg)](https://codecov.io/gh/irworkshop/campfin?branch=master)
+coverage](https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg)](https://app.codecov.io/gh/irworkshop/campfin?branch=master)
 [![R build
 status](https://github.com/irworkshop/campfin/workflows/R-CMD-check/badge.svg)](https://github.com/irworkshop/campfin/actions)
 <!-- badges: end -->
@@ -107,18 +107,18 @@ columns from the `zipcodes` data frame.
 ``` r
 sample_frac(zipcodes)
 #> # A tibble: 44,336 × 3
-#>    city            state zip  
-#>    <chr>           <chr> <chr>
-#>  1 SALTER PATH     NC    28575
-#>  2 PARK FOREST     IL    60466
-#>  3 LOUISVILLE      KY    40250
-#>  4 HOYTVILLE       OH    43529
-#>  5 CALIFORNIA CITY CA    93504
-#>  6 SPEEDWELL       TN    37870
-#>  7 YORKVILLE       TN    38389
-#>  8 SMITHFIELD      VA    23431
-#>  9 PENSACOLA       FL    32581
-#> 10 DES MOINES      NM    88418
+#>    city       state zip  
+#>    <chr>      <chr> <chr>
+#>  1 SAN JUAN   PR    00914
+#>  2 BRANCHDALE PA    17923
+#>  3 ATHENS     IL    62613
+#>  4 ALBANY     GA    31706
+#>  5 HULL       IA    51239
+#>  6 CHICAGO    IL    60640
+#>  7 WASHINGTON DC    20380
+#>  8 LA HONDA   CA    94020
+#>  9 POMONA     CA    91767
+#> 10 OSHKOSH    NE    69190
 #> # … with 44,326 more rows
 ```
 
@@ -140,18 +140,18 @@ appear at least once in the `valid_city` vector from `zipcodes`. The
 ``` r
 sample_n(usps_street, 3)
 #> # A tibble: 3 × 2
-#>   full    abb  
-#>   <chr>   <chr>
-#> 1 ANNEX   ANX  
-#> 2 STRAVEN STRA 
-#> 3 PORT    PRT
+#>   full   abb  
+#>   <chr>  <chr>
+#> 1 PLAIN  PLN  
+#> 2 COVE   CV   
+#> 3 ARCADE ARC
 sample_n(usps_state, 3)
 #> # A tibble: 3 × 2
-#>   full           abb  
-#>   <chr>          <chr>
-#> 1 TENNESSEE      TN   
-#> 2 DELAWARE       DE   
-#> 3 NORTH CAROLINA NC
+#>   full      abb  
+#>   <chr>     <chr>
+#> 1 UTAH      UT   
+#> 2 ALABAMA   AL   
+#> 3 WISCONSIN WI
 setdiff(valid_state, state.abb)
 #>  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"
 ```

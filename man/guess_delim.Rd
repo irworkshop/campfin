@@ -4,7 +4,7 @@
 \alias{guess_delim}
 \title{Guess the delimiter of a text file}
 \source{
-\url{https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248}
+\url{https://github.com/tidyverse/vroom/blob/85143f7a417376eaf0e2037ca9575f637e4346c2/R/vroom.R#L288}
 }
 \usage{
 guess_delim(file, delims = c(",", "\\t", "|", ";"), string = FALSE)
@@ -22,7 +22,7 @@ comma, tab, pipe, or semicolon.}
 The single character guessed as a delimiter.
 }
 \description{
-Taken from code used in \href{https://github.com/r-lib/vroom/blob/master/R/vroom.R#L248}{vroom::vroom()} with automatic reading.
+Taken from code used in \href{https://github.com/tidyverse/vroom/blob/85143f7a417376eaf0e2037ca9575f637e4346c2/R/vroom.R#L288}{vroom::vroom()} with automatic reading.
 }
 \examples{
 guess_delim(system.file("extdata", "vt_contribs.csv", package = "campfin"))
