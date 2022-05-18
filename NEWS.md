@@ -1,5 +1,6 @@
-# campfin (development version)
+# campfin 1.0.9
 
+* Update template diary to match changes to TAP GitHub repository.
 * Do not remove "AA" when using `normal_state(c("AA", "XX"), na_rep = TRUE)`.
 * The `end` argument of `str_normal()` can now be controlled with `abb_end` in
   `normal_address()` (default `TRUE`).
