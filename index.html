@@ -140,18 +140,18 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">sample_frac</span><span class="op">(</span><span class="va">zipcodes</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 44,336 × 3</span>
-<span class="co">#&gt;    city            state zip  </span>
-<span class="co">#&gt;    &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt;  1 SALTER PATH     NC    28575</span>
-<span class="co">#&gt;  2 PARK FOREST     IL    60466</span>
-<span class="co">#&gt;  3 LOUISVILLE      KY    40250</span>
-<span class="co">#&gt;  4 HOYTVILLE       OH    43529</span>
-<span class="co">#&gt;  5 CALIFORNIA CITY CA    93504</span>
-<span class="co">#&gt;  6 SPEEDWELL       TN    37870</span>
-<span class="co">#&gt;  7 YORKVILLE       TN    38389</span>
-<span class="co">#&gt;  8 SMITHFIELD      VA    23431</span>
-<span class="co">#&gt;  9 PENSACOLA       FL    32581</span>
-<span class="co">#&gt; 10 DES MOINES      NM    88418</span>
+<span class="co">#&gt;    city       state zip  </span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt;  1 SAN JUAN   PR    00914</span>
+<span class="co">#&gt;  2 BRANCHDALE PA    17923</span>
+<span class="co">#&gt;  3 ATHENS     IL    62613</span>
+<span class="co">#&gt;  4 ALBANY     GA    31706</span>
+<span class="co">#&gt;  5 HULL       IA    51239</span>
+<span class="co">#&gt;  6 CHICAGO    IL    60640</span>
+<span class="co">#&gt;  7 WASHINGTON DC    20380</span>
+<span class="co">#&gt;  8 LA HONDA   CA    94020</span>
+<span class="co">#&gt;  9 POMONA     CA    91767</span>
+<span class="co">#&gt; 10 OSHKOSH    NE    69190</span>
 <span class="co">#&gt; # … with 44,326 more rows</span></code></pre></div>
 </div>
 <div class="section level3">
@@ -164,18 +164,18 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_street</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 × 2</span>
-<span class="co">#&gt;   full    abb  </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;</span>
-<span class="co">#&gt; 1 ANNEX   ANX  </span>
-<span class="co">#&gt; 2 STRAVEN STRA </span>
-<span class="co">#&gt; 3 PORT    PRT</span>
+<span class="co">#&gt;   full   abb  </span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;</span>
+<span class="co">#&gt; 1 PLAIN  PLN  </span>
+<span class="co">#&gt; 2 COVE   CV   </span>
+<span class="co">#&gt; 3 ARCADE ARC</span>
 <span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_state</span>, <span class="fl">3</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 × 2</span>
-<span class="co">#&gt;   full           abb  </span>
-<span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;</span>
-<span class="co">#&gt; 1 TENNESSEE      TN   </span>
-<span class="co">#&gt; 2 DELAWARE       DE   </span>
-<span class="co">#&gt; 3 NORTH CAROLINA NC</span>
+<span class="co">#&gt;   full      abb  </span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;</span>
+<span class="co">#&gt; 1 UTAH      UT   </span>
+<span class="co">#&gt; 2 ALABAMA   AL   </span>
+<span class="co">#&gt; 3 WISCONSIN WI</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="va">valid_state</span>, <span class="va">state.abb</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"</span></code></pre></div>
 <hr>
@@ -233,7 +233,7 @@
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 <li><a href="https://CRAN.R-project.org/package=campfin" class="external-link"><img src="https://www.r-pkg.org/badges/version/campfin" alt="CRAN status"></a></li>
-<li><a href="https://codecov.io/gh/irworkshop/campfin?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://app.codecov.io/gh/irworkshop/campfin?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/irworkshop/campfin/master.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://github.com/irworkshop/campfin/actions" class="external-link"><img src="https://github.com/irworkshop/campfin/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
