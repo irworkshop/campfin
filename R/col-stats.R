@@ -17,10 +17,10 @@
 #' @importFrom rlang as_label .data
 #' @export
 col_stats <- function(data, fun, print = TRUE) {
-  if (class(fun) != "function") {
+  if (!inherits(fun, "function")) {
     stop("The fun argument must be a function.")
   }
-  if ("data.frame" %out% class(data)) {
+  if (!inherits(data, "data.frame")) {
     stop("The data argument must be a data frame or similar.")
   }
   stats <- unlist(purrr::map(data, fun))

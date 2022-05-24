@@ -20,4 +20,5 @@
 
 ## Comments
 
-Updated re-directed URLs with status 301.
+* Updated re-directed URLs with status 301.
+* Remove `if()` conditions comparing `class()` to string, used `inherits()`.
