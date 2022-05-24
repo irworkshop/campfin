@@ -78,13 +78,14 @@ pacman::p_load(
   tidyverse, # data manipulation
   lubridate, # datetime strings
   gluedown, # printing markdown
+  jsonlite, # read json files
   janitor, # clean data frames
   campfin, # custom irw tools
   aws.s3, # aws cloud storage
+  readxl, # read excel files
   refinr, # cluster & merge
   scales, # format strings
   knitr, # knit documents
-  vroom, # fast reading
   rvest, # scrape html
   glue, # code strings
   here, # project paths
