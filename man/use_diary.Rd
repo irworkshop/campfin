@@ -4,7 +4,13 @@
 \alias{use_diary}
 \title{Create a new template data diary}
 \usage{
-use_diary(st, type, author, auto = FALSE)
+use_diary(
+  st,
+  type,
+  author,
+  path = "state/{st}/{type}/docs/{st}_{type}_diary.Rmd",
+  auto = FALSE
+)
 }
 \arguments{
 \item{st}{The USPS state abbreviation. State data only, no federal agencies.}
@@ -14,9 +20,14 @@ use_diary(st, type, author, auto = FALSE)
 
 \item{author}{The author name of the new diary.}
 
-\item{auto}{If \code{TRUE}, file is created in the correct working directory.
-If \code{FALSE}, a plain character string is returned. If a directory name, the
-file is automatically written to that directory.}
+\item{path}{The file path, relative to your working directory, where the
+diary file will be created. If you use \code{NA}, then the lines of the diary
+will be returned as a character vector. If you specify a character string
+file path that contains directories that do not exist then they will be
+created. By default, the path creates the diary in a directory that is
+expected by the \href{https://github.com/irworkshop/accountability_datacleaning}{Accountability Project GitHub repository}.}
+
+\item{auto}{Must be set to \code{TRUE} for the diary to be created and opened.}
 }
 \value{
 The file path of new diary, invisibly.
@@ -26,6 +37,6 @@ Take the arguments supplied and put them into the appropriate places in a
 new template diary. Write the new template diary in the supplied directory.
 }
 \examples{
-use_diary("VT", "contribs", "Kiernan Nicholls", FALSE)
-use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
+use_diary("VT", "contribs", "Kiernan Nicholls", NA, auto = FALSE)
+use_diary("DC", "expends", "Kiernan Nicholls", tempfile(), auto = FALSE)
 }

@@ -7,19 +7,26 @@
 #' @param type The type of data, one of "contribs", "expends", "lobby",
 #'   "contracts", "salary", or "voters".
 #' @param author The author name of the new diary.
-#' @param auto If `TRUE`, file is created in the correct working directory.
-#'   If `FALSE`, a plain character string is returned. If a directory name, the
-#'   file is automatically written to that directory.
+#' @param path The file path, relative to your working directory, where the
+#'   diary file will be created. If you use `NA`, then the lines of the diary
+#'   will be returned as a character vector. If you specify a character string
+#'   file path that contains directories that do not exist then they will be
+#'   created. By default, the path creates the diary in a directory that is
+#'   expected by the [Accountability Project GitHub repository](https://github.com/irworkshop/accountability_datacleaning).
+#' @param auto Must be set to `TRUE` for the diary to be created and opened.
 #' @return The file path of new diary, invisibly.
 #' @examples
-#' use_diary("VT", "contribs", "Kiernan Nicholls", FALSE)
-#' use_diary("VT", "contribs", "Kiernan Nicholls", tempdir())
+#' use_diary("VT", "contribs", "Kiernan Nicholls", NA, auto = FALSE)
+#' use_diary("DC", "expends", "Kiernan Nicholls", tempfile(), auto = FALSE)
 #' @importFrom stringr str_to_upper str_to_lower str_sub str_replace_all str_to_title
 #' @importFrom readr read_lines write_lines
-#' @importFrom fs path
+#' @importFrom fs path file_exists dir_create
+#' @importFrom glue glue
 #' @importFrom utils file.edit
 #' @export
-use_diary <- function(st, type, author, auto = FALSE) {
+use_diary <- function(st, type, author,
+                      path = "state/{st}/{type}/docs/{st}_{type}_diary.Rmd",
+                      auto = FALSE) {
   more_abbs <- c(campfin::valid_state, "US")
   ST <- match.arg(st, more_abbs)
   more_names <- c(campfin::valid_name, "United States")
@@ -48,26 +55,23 @@ use_diary <- function(st, type, author, auto = FALSE) {
     stringr::str_replace_all("\\{ST\\}", ST) %>%
     stringr::str_replace_all("\\{stt\\}", stt) %>%
     stringr::str_replace_all("\\{Author\\}", author)
-  if (is.logical(auto)) {
-    if (!auto) {
-      return(new_lines)
+
+  if (is.na(path) || isFALSE(auto)) {
+    return(new_lines)
+  } else {
+    path <- glue(path)
+    dir <- paste(getwd(), dirname(path), sep = "/")
+    fs::dir_create(dir)
+    path <- fs::path(dir, basename(path))
+    if (fs::file_exists(path)) {
+      stop(path, " already exists")
     } else {
-      dir <- paste(getwd(), "state", st, type, "docs", sep = "/")
-      fs::dir_create(dir)
+      readr::write_lines(new_lines, file = path)
+      message(path, " was created")
+      if (requireNamespace("usethis", quietly = TRUE) & interactive()) {
+        usethis::edit_file(path)
+      }
     }
-  } else {
-    dir <- auto
+    invisible(path)
   }
-  file <- paste(st, type, "diary.Rmd", sep = "_")
-  path <- fs::path(dir, file)
-  if (fs::file_exists(path)) {
-    stop(basename(path), " already exists")
-  } else {
-    readr::write_lines(new_lines, file = path)
-    message(path, " was created")
-    if (requireNamespace("usethis", quietly = TRUE) & interactive()) {
-      usethis::edit_file(path)
-    }
-  }
-  invisible(path)
 }
