@@ -1,3 +1,7 @@
+# campfin (development version)
+
+* Make `use_diary()` more flexible with custom file name argument.
+
 # campfin 1.0.9
 
 * Update template diary to match changes to TAP GitHub repository.
