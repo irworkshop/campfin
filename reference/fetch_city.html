@@ -22,7 +22,7 @@ Place API key with the key argument."><meta property="og:image" content="/logo.p
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -73,19 +73,24 @@ Place API key with the <code>key</code> argument.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">fetch_city</span><span class="op">(</span>address <span class="op">=</span> <span class="cn">NULL</span>, key <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">fetch_city</span><span class="op">(</span>address <span class="op">=</span> <span class="cn">NULL</span>, key <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>address</dt>
 <dd><p>A vector of street addresses. Sent to the API as one string.</p></dd>
+
+
 <dt>key</dt>
 <dd><p>A character containing your alphanumeric Google Maps API key.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A character vector of formatted address endpoints from Google. This
+    
+
+<p>A character vector of formatted address endpoints from Google. This
 will include all the fields from street address, city, state/province,
 zipcode/postal code to country/regions. <code>NA_character_</code> is returned for
 all errored API calls.</p>
@@ -118,7 +123,7 @@ all errored API calls.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -21,7 +21,7 @@ respectively.'><meta property="og:image" content="/logo.png"><!-- mathjax --><sc
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -71,13 +71,15 @@ respectively.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">expand_abbrev</span><span class="op">(</span><span class="va">x</span>, abb <span class="op">=</span> <span class="cn">NULL</span>, rep <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">expand_abbrev</span><span class="op">(</span><span class="va">x</span>, abb <span class="op">=</span> <span class="cn">NULL</span>, rep <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector containing abbreviations.</p></dd>
+
+
 <dt>abb</dt>
 <dd><p>One of three objects: (1) A dataframe with abbreviations in the
 <em>first</em> column and corresponding replacement strings in the <em>second</em>
@@ -85,13 +87,18 @@ column; (2) a <em>named</em> vector, with abbreviations as names for their
 respective replacements (e.g., <code>c("abb" = "rep")</code>); or (3) an unnamed
 vector of abbreviations with an unnamed vector of replacements in the <code>rep</code>
 argument.</p></dd>
+
+
 <dt>rep</dt>
 <dd><p>If <code>abb</code> is an unnamed vector, a vector of replacement strings for
 each abbreviation in <code>abb</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The vector <code>x</code> with abbreviation replaced with their full version.</p>
+    
+
+<p>The vector <code>x</code> with abbreviation replaced with their full version.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -110,11 +117,11 @@ each abbreviation in <code>abb</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">expand_abbrev</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"MT VERNON"</span>, abb <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MT"</span> <span class="op">=</span> <span class="st">"MOUNT"</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">expand_abbrev</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"MT VERNON"</span>, abb <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MT"</span> <span class="op">=</span> <span class="st">"MOUNT"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "MOUNT VERNON"</span>
-<span class="r-in"><span class="fu">expand_abbrev</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"VT"</span>, abb <span class="op">=</span> <span class="va">state.abb</span>, rep <span class="op">=</span> <span class="va">state.name</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">expand_abbrev</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"VT"</span>, abb <span class="op">=</span> <span class="va">state.abb</span>, rep <span class="op">=</span> <span class="va">state.name</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Vermont"</span>
-<span class="r-in"><span class="fu">expand_abbrev</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Low FE Level"</span>, abb <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"FE"</span>, y <span class="op">=</span> <span class="st">"Iron"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">expand_abbrev</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Low FE Level"</span>, abb <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"FE"</span>, y <span class="op">=</span> <span class="st">"Iron"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Low Iron Level"</span>
 </code></pre></div>
     </div>
@@ -130,7 +137,7 @@ each abbreviation in <code>abb</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

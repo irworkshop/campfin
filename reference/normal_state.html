@@ -20,7 +20,7 @@ called with usps_state."><meta property="og:image" content="/logo.png"><!-- math
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -69,34 +69,45 @@ called with <a href="usps_state.html">usps_state</a>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">normal_state</span><span class="op">(</span>
-  <span class="va">state</span>,
-  abbreviate <span class="op">=</span> <span class="cn">TRUE</span>,
-  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>,
-  na_rep <span class="op">=</span> <span class="cn">FALSE</span>,
-  valid <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">normal_state</span><span class="op">(</span></span>
+<span>  <span class="va">state</span>,</span>
+<span>  abbreviate <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>,</span>
+<span>  na_rep <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  valid <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>state</dt>
 <dd><p>A vector of US state names or abbreviations.</p></dd>
+
+
 <dt>abbreviate</dt>
 <dd><p>If TRUE (default), replace state names with the 2-digit
 abbreviation using the built-in <code>state.abb</code> and <code>state.name</code> vectors.</p></dd>
+
+
 <dt>na</dt>
 <dd><p>A vector of values to make <code>NA</code>.</p></dd>
+
+
 <dt>na_rep</dt>
 <dd><p>logical; If <code>TRUE</code>, make all single digit repeating strings
 <code>NA</code> (removes valid "AA" code for "American Armed Forces").</p></dd>
+
+
 <dt>valid</dt>
 <dd><p>A vector of valid abbreviations to compare to and remove those
 not shared.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A vector of normalized 2-digit state abbreviations.</p>
+    
+
+<p>A vector of normalized 2-digit state abbreviations.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -115,13 +126,13 @@ not shared.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">normal_state</span><span class="op">(</span></span>
-<span class="r-in">  state <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"VT"</span>, <span class="st">"N/A"</span>, <span class="st">"Vermont"</span>, <span class="st">"XX"</span>, <span class="st">"ZA"</span><span class="op">)</span>,</span>
-<span class="r-in">  abbreviate <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>,</span>
-<span class="r-in">  na_rep <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  valid <span class="op">=</span> <span class="cn">NULL</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">normal_state</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  state <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"VT"</span>, <span class="st">"N/A"</span>, <span class="st">"Vermont"</span>, <span class="st">"XX"</span>, <span class="st">"ZA"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  abbreviate <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  na_rep <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  valid <span class="op">=</span> <span class="cn">NULL</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "VT" NA   "VT" NA   "ZA"</span>
 </code></pre></div>
     </div>
@@ -137,7 +148,7 @@ not shared.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

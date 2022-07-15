@@ -18,7 +18,7 @@ not overflow and collide with other bars."><meta property="og:image" content="/l
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -65,21 +65,26 @@ not overflow and collide with other bars.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">scale_x_truncate</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">15</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">scale_x_wrap</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">15</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">scale_x_truncate</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">15</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scale_x_wrap</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">15</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>n</dt>
 <dd><p>The maximum width of string. Passed to <code><a href="https://stringr.tidyverse.org/reference/str_trunc.html" class="external-link">stringr::str_trunc()</a></code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments passed to <code><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" class="external-link">ggplot2::scale_x_discrete()</a></code>.</p></dd>
+
+
 <dt>width</dt>
 <dd><p>Positive integer giving target line width in characters. A width
 less than or equal to 1 will put each word on its own line. Passed to
 <code><a href="https://stringr.tidyverse.org/reference/str_wrap.html" class="external-link">stringr::str_wrap()</a></code>.</p></dd>
+
 </dl></div>
 
   </div>
@@ -94,7 +99,7 @@ less than or equal to 1 will put each word on its own line. Passed to
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -18,7 +18,7 @@ project directory with a tilde."><meta property="og:image" content="/logo.png"><
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -65,26 +65,31 @@ project directory with a tilde.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">path.abbrev</span><span class="op">(</span><span class="va">path</span>, dir <span class="op">=</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path_wd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">path.abbrev</span><span class="op">(</span><span class="va">path</span>, dir <span class="op">=</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path_wd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>path</dt>
 <dd><p>Character vector containing one or more full paths.</p></dd>
+
+
 <dt>dir</dt>
 <dd><p>The directory to replace with <code>~</code>. Defaults to <code><a href="https://fs.r-lib.org/reference/path.html" class="external-link">fs::path_wd()</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Abbreviated file paths.</p>
+    
+
+<p>Abbreviated file paths.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path_wd</a></span><span class="op">(</span><span class="st">"test"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpA3xpqh/file6c7350908e2/reference/test</span>
-<span class="r-in"><span class="fu">path.abbrev</span><span class="op">(</span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path_wd</a></span><span class="op">(</span><span class="st">"test"</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path_wd</a></span><span class="op">(</span><span class="st">"test"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpD9evG7/file131051436466/reference/test</span>
+<span class="r-in"><span><span class="fu">path.abbrev</span><span class="op">(</span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/path.html" class="external-link">path_wd</a></span><span class="op">(</span><span class="st">"test"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ~/test</span>
 </code></pre></div>
     </div>
@@ -100,7 +105,7 @@ project directory with a tilde.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

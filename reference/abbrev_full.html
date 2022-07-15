@@ -22,7 +22,7 @@ counterpart expand_abbrev()).'><meta property="og:image" content="/logo.png"><!-
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -73,13 +73,15 @@ counterpart <code><a href="expand_abbrev.html">expand_abbrev()</a></code>).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">abbrev_full</span><span class="op">(</span><span class="va">x</span>, full <span class="op">=</span> <span class="cn">NULL</span>, rep <span class="op">=</span> <span class="cn">NULL</span>, end <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">abbrev_full</span><span class="op">(</span><span class="va">x</span>, full <span class="op">=</span> <span class="cn">NULL</span>, rep <span class="op">=</span> <span class="cn">NULL</span>, end <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector containing full words.</p></dd>
+
+
 <dt>full</dt>
 <dd><p>One of three objects: (1) A dataframe with full strings in the
 <em>first</em> column and corresponding abbreviations in the <em>second</em>
@@ -87,18 +89,25 @@ column; (2) a <em>named</em> vector, with full strings as names for their
 respective abbreviations (e.g., <code>c("full" = "abb")</code>); or (3) an unnamed
 vector of full words with an unnamed vector of abbreviations in the <code>rep</code>
 argument.</p></dd>
+
+
 <dt>rep</dt>
 <dd><p>If <code>full</code> is an unnamed vector, a vector of abbreviations strings
 for each full word in <code>abb</code>.</p></dd>
+
+
 <dt>end</dt>
 <dd><p>logical; if <code>TRUE</code>, then the <code>$</code> regular expression will be used
 to only replace words at the <em>end</em> of a string (such as "ROAD" in a street
 address). If <code>FALSE</code> (default), then the <code>\b</code> regular expression will
 target <em>all</em> instances of <code>full</code> to be replaced with <code>rep</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The vector <code>x</code> with full words replaced with their abbreviations.</p>
+    
+
+<p>The vector <code>x</code> with full words replaced with their abbreviations.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -117,13 +126,13 @@ target <em>all</em> instances of <code>full</code> to be replaced with <code>rep
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">abbrev_full</span><span class="op">(</span><span class="st">"MOUNT VERNON"</span>, full <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MOUNT"</span> <span class="op">=</span> <span class="st">"MT"</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">abbrev_full</span><span class="op">(</span><span class="st">"MOUNT VERNON"</span>, full <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MOUNT"</span> <span class="op">=</span> <span class="st">"MT"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "MT VERNON"</span>
-<span class="r-in"><span class="fu">abbrev_full</span><span class="op">(</span><span class="st">"123 MOUNTAIN ROAD"</span>, full <span class="op">=</span> <span class="va">usps_street</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">abbrev_full</span><span class="op">(</span><span class="st">"123 MOUNTAIN ROAD"</span>, full <span class="op">=</span> <span class="va">usps_street</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "123 MTN RD"</span>
-<span class="r-in"><span class="fu">abbrev_full</span><span class="op">(</span><span class="st">"123 MOUNTAIN ROAD"</span>, full <span class="op">=</span> <span class="va">usps_street</span>, end <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">abbrev_full</span><span class="op">(</span><span class="st">"123 MOUNTAIN ROAD"</span>, full <span class="op">=</span> <span class="va">usps_street</span>, end <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "123 MOUNTAIN RD"</span>
-<span class="r-in"><span class="fu">abbrev_full</span><span class="op">(</span><span class="st">"Vermont"</span>, full <span class="op">=</span> <span class="va">state.name</span>, rep <span class="op">=</span> <span class="va">state.abb</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">abbrev_full</span><span class="op">(</span><span class="st">"Vermont"</span>, full <span class="op">=</span> <span class="va">state.name</span>, rep <span class="op">=</span> <span class="va">state.abb</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "VT"</span>
 </code></pre></div>
     </div>
@@ -139,7 +148,7 @@ target <em>all</em> instances of <code>full</code> to be replaced with <code>rep
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

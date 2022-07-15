@@ -20,7 +20,7 @@ values."><meta property="og:image" content="/logo.png"><!-- mathjax --><script s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -69,30 +69,44 @@ values.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">explore_plot</span><span class="op">(</span><span class="va">data</span>, <span class="va">var</span>, nbar <span class="op">=</span> <span class="fl">8</span>, palette <span class="op">=</span> <span class="st">"Dark2"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">explore_plot</span><span class="op">(</span><span class="va">data</span>, <span class="va">var</span>, nbar <span class="op">=</span> <span class="fl">8</span>, palette <span class="op">=</span> <span class="st">"Dark2"</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>The data frame to explore.</p></dd>
+
+
 <dt>var</dt>
 <dd><p>A variable to plot.</p></dd>
+
+
 <dt>nbar</dt>
 <dd><p>The number of bars to plot. Always shows most common values.</p></dd>
+
+
 <dt>palette</dt>
 <dd><p>The color palette passed to [ggplot2::scale_fill_brewer().</p></dd>
+
+
 <dt>na.rm</dt>
 <dd><p>logical: Should <code>NA</code> values of <code>var</code> be removed?</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>ggplot</code> barplot object. Can then be combined with other <code>ggplot</code>layers with <code>+</code> to customize.</p>
+    
+
+<p>A <code>ggplot</code> barplot object. Can then be combined with other <code>ggplot</code></p>
+
+
+<p>layers with <code>+</code> to customize.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">explore_plot</span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">explore_plot</span><span class="op">(</span><span class="va">iris</span>, <span class="va">Species</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="explore_plot-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -108,7 +122,7 @@ values.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -20,7 +20,7 @@ full."><meta property="og:image" content="/logo.png"><!-- mathjax --><script src
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -69,33 +69,40 @@ first letter of <code>full</code>, (2) <em>all</em> letters of <code>abb</code> 
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">is_abbrev</span><span class="op">(</span><span class="va">abb</span>, <span class="va">full</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">is_abbrev</span><span class="op">(</span><span class="va">abb</span>, <span class="va">full</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>abb</dt>
 <dd><p>A suspected abbreviation</p></dd>
+
+
 <dt>full</dt>
 <dd><p>A long form string to test against</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>logical; whether <code>abb</code> is potential abbreviation of <code>full</code></p>
+    
+
+<p>logical; whether <code>abb</code> is potential abbreviation of <code>full</code></p>
+
+
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">is_abbrev</span><span class="op">(</span>abb <span class="op">=</span> <span class="st">"BRX"</span>, full <span class="op">=</span> <span class="st">"BRONX"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">is_abbrev</span><span class="op">(</span>abb <span class="op">=</span> <span class="st">"BRX"</span>, full <span class="op">=</span> <span class="st">"BRONX"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"><span class="fu">is_abbrev</span><span class="op">(</span>abb <span class="op">=</span> <span class="va">state.abb</span>, full <span class="op">=</span> <span class="va">state.name</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">is_abbrev</span><span class="op">(</span>abb <span class="op">=</span> <span class="va">state.abb</span>, full <span class="op">=</span> <span class="va">state.name</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [46] TRUE TRUE TRUE TRUE TRUE</span>
-<span class="r-in"><span class="fu">is_abbrev</span><span class="op">(</span>abb <span class="op">=</span> <span class="st">"NOLA"</span>, full <span class="op">=</span> <span class="st">"New Orleans"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">is_abbrev</span><span class="op">(</span>abb <span class="op">=</span> <span class="st">"NOLA"</span>, full <span class="op">=</span> <span class="st">"New Orleans"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"><span class="fu">is_abbrev</span><span class="op">(</span>abb <span class="op">=</span> <span class="st">"FE"</span>, full <span class="op">=</span> <span class="st">"Iron"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">is_abbrev</span><span class="op">(</span>abb <span class="op">=</span> <span class="st">"FE"</span>, full <span class="op">=</span> <span class="st">"Iron"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
 </code></pre></div>
     </div>
@@ -111,7 +118,7 @@ first letter of <code>full</code>, (2) <em>all</em> letters of <code>abb</code> 
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

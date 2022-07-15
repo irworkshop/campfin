@@ -25,7 +25,7 @@ key argument."><meta property="og:image" content="/logo.png"><!-- mathjax --><sc
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -79,31 +79,44 @@ Note that you will need to pass in your Google Maps Place API key to the
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">check_city</span><span class="op">(</span>city <span class="op">=</span> <span class="cn">NULL</span>, state <span class="op">=</span> <span class="cn">NULL</span>, zip <span class="op">=</span> <span class="cn">NULL</span>, key <span class="op">=</span> <span class="cn">NULL</span>, guess <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">check_city</span><span class="op">(</span>city <span class="op">=</span> <span class="cn">NULL</span>, state <span class="op">=</span> <span class="cn">NULL</span>, zip <span class="op">=</span> <span class="cn">NULL</span>, key <span class="op">=</span> <span class="cn">NULL</span>, guess <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>city</dt>
 <dd><p>A string of city name to be submitted to the Geocode API.</p></dd>
+
+
 <dt>state</dt>
 <dd><p>Optional. The state associated with the <code>city</code>.</p></dd>
+
+
 <dt>zip</dt>
 <dd><p>Optional. Supply a string of ZIP code to increase precision.</p></dd>
+
+
 <dt>key</dt>
 <dd><p>A character string to be passed into <code>key</code>. Save your key as
 "GEOCODE_KEY" using <code><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv()</a></code> or by editing your <code>.Renviron</code> file.</p></dd>
+
+
 <dt>guess</dt>
 <dd><p>logical; Should the function return a single row tibble
 containing the original data sent and the multiple components returned by
 the Geocode API.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A logical value by default. If the city returned by the API
+    
+
+<p>A logical value by default. If the city returned by the API
 comes back the same as the city input, the function will evaluate to
-<code>TRUE</code>, in all other circumstances (including API errors) <code>FALSE</code> is returned.
-If the the <code>guess</code> argument is set to <code>TRUE</code>, a tibble with 1 row and six
+<code>TRUE</code>, in all other circumstances (including API errors) <code>FALSE</code> is returned.</p>
+
+
+<p>If the the <code>guess</code> argument is set to <code>TRUE</code>, a tibble with 1 row and six
 columns is returned:</p><ul><li><p><code>original_city</code>: The <code>city</code> value sent to the API.</p></li>
 <li><p><code>original_state</code>: The <code>state</code> value sent to the API.</p></li>
 <li><p><code>original_zip</code>: The <code>zip</code> value sent to the API.</p></li>
@@ -139,7 +152,7 @@ columns is returned:</p><ul><li><p><code>original_city</code>: The <code>city</c
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

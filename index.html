@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -99,11 +99,11 @@
 </h2>
 <p>You can install the released version of campfin from <a href="https://cran.r-project.org/package=campfin" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"campfin"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"campfin"</span><span class="op">)</span></span></code></pre></div>
 <p>The development version can be installed from <a href="https://github.com/irworkshop/campfin" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"irworkshop/campfin"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"irworkshop/campfin"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="normalize">Normalize<a class="anchor" aria-label="anchor" href="#normalize"></a>
@@ -127,8 +127,8 @@
 <h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin" class="external-link">campfin</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/irworkshop/campfin" class="external-link">campfin</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <p>The campfin package contains a number of built in data frames and strings used to help wrangle campaign finance data.</p>
 <p>The <code>/data-raw</code> directory contains the code used to create the objects.</p>
 <div class="section level3">
@@ -138,21 +138,21 @@
 <blockquote><p>This database was composed using ZIP code gazetteers from the US Census Bureau from 1999 and 2000, augmented with additional ZIP code information The database is believed to contain over 98% of the ZIP Codes in current use in the United States. The remaining ZIP Codes absent from this database are entirely PO Box or Firm ZIP codes added in the last five years, which are no longer published by the Census Bureau, but in any event serve a very small minority of the population (probably on the order of .1% or less). Although every attempt has been made to filter them out, this data set may contain up to .5% false positives, that is, ZIP codes that do not exist or are no longer in use but are included due to erroneous data sources.</p></blockquote>
 <p>The included <code>valid_city</code> and <code>valid_zip</code> vectors are sorted, unique columns from the <code>zipcodes</code> data frame.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">sample_frac</span><span class="op">(</span><span class="va">zipcodes</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 44,336 × 3</span>
-<span class="co">#&gt;    city       state zip  </span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt;  1 SAN JUAN   PR    00914</span>
-<span class="co">#&gt;  2 BRANCHDALE PA    17923</span>
-<span class="co">#&gt;  3 ATHENS     IL    62613</span>
-<span class="co">#&gt;  4 ALBANY     GA    31706</span>
-<span class="co">#&gt;  5 HULL       IA    51239</span>
-<span class="co">#&gt;  6 CHICAGO    IL    60640</span>
-<span class="co">#&gt;  7 WASHINGTON DC    20380</span>
-<span class="co">#&gt;  8 LA HONDA   CA    94020</span>
-<span class="co">#&gt;  9 POMONA     CA    91767</span>
-<span class="co">#&gt; 10 OSHKOSH    NE    69190</span>
-<span class="co">#&gt; # … with 44,326 more rows</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">sample_frac</span><span class="op">(</span><span class="va">zipcodes</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 44,336 × 3</span></span>
+<span><span class="co">#&gt;    city       state zip  </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt;  1 SAN JUAN   PR    00914</span></span>
+<span><span class="co">#&gt;  2 BRANCHDALE PA    17923</span></span>
+<span><span class="co">#&gt;  3 ATHENS     IL    62613</span></span>
+<span><span class="co">#&gt;  4 ALBANY     GA    31706</span></span>
+<span><span class="co">#&gt;  5 HULL       IA    51239</span></span>
+<span><span class="co">#&gt;  6 CHICAGO    IL    60640</span></span>
+<span><span class="co">#&gt;  7 WASHINGTON DC    20380</span></span>
+<span><span class="co">#&gt;  8 LA HONDA   CA    94020</span></span>
+<span><span class="co">#&gt;  9 POMONA     CA    91767</span></span>
+<span><span class="co">#&gt; 10 OSHKOSH    NE    69190</span></span>
+<span><span class="co">#&gt; # … with 44,326 more rows</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="usps_-and-valid_">
@@ -162,22 +162,22 @@
 <p>The <code>usps_*</code> data frames were scraped from the official United States Postal Service (USPS) <a href="https://pe.usps.com/text/pub28/28apc_002.htm" class="external-link">Postal Addressing Standards</a>. These data frames are designed to work with the abbreviation functionality of <code><a href="reference/normal_address.html">normal_address()</a></code> and <code><a href="reference/normal_city.html">normal_city()</a></code> to replace common abbreviations with their full equivalent.</p>
 <p><code>usps_city</code> is a curated subset of <code>usps_state</code>, whose full version appear at least once in the <code>valid_city</code> vector from <code>zipcodes</code>. The <code>valid_state</code> and <code>valid_name</code> vectors contain the columns from <code>usps_state</code> and include territories not found in R’s build in <code>state.abb</code> and <code>state.name</code> vectors.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_street</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 × 2</span>
-<span class="co">#&gt;   full   abb  </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;</span>
-<span class="co">#&gt; 1 PLAIN  PLN  </span>
-<span class="co">#&gt; 2 COVE   CV   </span>
-<span class="co">#&gt; 3 ARCADE ARC</span>
-<span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_state</span>, <span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 × 2</span>
-<span class="co">#&gt;   full      abb  </span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;</span>
-<span class="co">#&gt; 1 UTAH      UT   </span>
-<span class="co">#&gt; 2 ALABAMA   AL   </span>
-<span class="co">#&gt; 3 WISCONSIN WI</span>
-<span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="va">valid_state</span>, <span class="va">state.abb</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_street</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span><span class="co">#&gt;   full   abb  </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 PLAIN  PLN  </span></span>
+<span><span class="co">#&gt; 2 COVE   CV   </span></span>
+<span><span class="co">#&gt; 3 ARCADE ARC</span></span>
+<span><span class="fu">sample_n</span><span class="op">(</span><span class="va">usps_state</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span><span class="co">#&gt;   full      abb  </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 UTAH      UT   </span></span>
+<span><span class="co">#&gt; 2 ALABAMA   AL   </span></span>
+<span><span class="co">#&gt; 3 WISCONSIN WI</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="va">valid_state</span>, <span class="va">state.abb</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"</span></span></code></pre></div>
 <hr>
 <p>The campfin project is released with a <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html" class="external-link">Contributor Code of Conduct</a>. By contributing, you agree to abide by its terms.</p>
 <!-- refs: start --><!-- refs: end -->
@@ -209,6 +209,7 @@
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+<li><a href="SUPPORT.html">Getting help</a></li>
 </ul>
 </div>
 
@@ -249,7 +250,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

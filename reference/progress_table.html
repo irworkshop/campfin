@@ -18,7 +18,7 @@ various statistics most useful in assessing the progress of each stage."><meta p
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -65,26 +65,31 @@ various statistics most useful in assessing the progress of each stage.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">progress_table</span><span class="op">(</span><span class="va">...</span>, <span class="va">compare</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">progress_table</span><span class="op">(</span><span class="va">...</span>, <span class="va">compare</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>...</dt>
 <dd><p>Any number of vectors to check.</p></dd>
+
+
 <dt>compare</dt>
 <dd><p>A vector to compare each of <code>...</code> against. Useful
 with <a href="valid_zip.html">valid_zip</a>, <a href="valid_state.html">valid_state</a> (<a href="valid_name.html">valid_name</a>), or
 <a href="valid_city.html">valid_city</a>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A table with a row for each vector in <code>...</code>.</p>
+    
+
+<p>A table with a row for each vector in <code>...</code>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">progress_table</span><span class="op">(</span><span class="va">state.name</span>, <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">toupper</a></span><span class="op">(</span><span class="va">state.name</span><span class="op">)</span>, compare <span class="op">=</span> <span class="va">valid_name</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">progress_table</span><span class="op">(</span><span class="va">state.name</span>, <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">toupper</a></span><span class="op">(</span><span class="va">state.name</span><span class="op">)</span>, compare <span class="op">=</span> <span class="va">valid_name</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   stage               prop_in n_distinct prop_na n_out n_diff</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -104,7 +109,7 @@ with <a href="valid_zip.html">valid_zip</a>, <a href="valid_state.html">valid_st
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -63,24 +63,33 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">what_out</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, ignore.case <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">what_out</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, ignore.case <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector to check.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>A vector to compare against.</p></dd>
+
+
 <dt>na.rm</dt>
 <dd><p>logical; Should <code>NA</code> be ignored?</p></dd>
+
+
 <dt>ignore.case</dt>
 <dd><p>logical; if <code>FALSE</code>, the pattern matching is case
 sensitive and if <code>TRUE</code>, case is ignored during matching.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The elements of <code>x</code> that are <code>%out%</code> y.</p>
+    
+
+<p>The elements of <code>x</code> that are <code>%out%</code> y.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -105,7 +114,7 @@ sensitive and if <code>TRUE</code>, case is ignored during matching.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">what_out</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"VT"</span>, <span class="st">"DC"</span>, <span class="cn">NA</span><span class="op">)</span>, <span class="va">state.abb</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">what_out</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"VT"</span>, <span class="st">"DC"</span>, <span class="cn">NA</span><span class="op">)</span>, <span class="va">state.abb</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DC"</span>
 </code></pre></div>
     </div>
@@ -121,7 +130,7 @@ sensitive and if <code>TRUE</code>, case is ignored during matching.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -19,7 +19,7 @@ and not that word inside another word (e.g., "sting" and "testing").'><meta prop
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -67,24 +67,27 @@ and not that word <em>inside</em> another word (e.g., "sting" and "testing").</p
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">rx_break</span><span class="op">(</span><span class="va">pattern</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rx_break</span><span class="op">(</span><span class="va">pattern</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>pattern</dt>
 <dd><p>A regex pattern (a word) to wrap in <code>\\b</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The a glue vector of <code>pattern</code> wrapped in <code>\\b</code>.</p>
+    
+
+<p>The a glue vector of <code>pattern</code> wrapped in <code>\\b</code>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">rx_break</span><span class="op">(</span><span class="st">"test"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">rx_break</span><span class="op">(</span><span class="st">"test"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> \btest\b</span>
-<span class="r-in"><span class="fu">rx_break</span><span class="op">(</span><span class="va">state.abb</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">rx_break</span><span class="op">(</span><span class="va">state.abb</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> \bAL\b</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> \bAK\b</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> \bAZ\b</span>
@@ -104,7 +107,7 @@ and not that word <em>inside</em> another word (e.g., "sting" and "testing").</p
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

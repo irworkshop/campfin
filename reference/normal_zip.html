@@ -20,7 +20,7 @@ removed as well as single (repeating) character strings."><meta property="og:ima
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -69,27 +69,36 @@ removed as well as single (repeating) character strings.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">normal_zip</span><span class="op">(</span><span class="va">zip</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>, na_rep <span class="op">=</span> <span class="cn">FALSE</span>, pad <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">normal_zip</span><span class="op">(</span><span class="va">zip</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>, na_rep <span class="op">=</span> <span class="cn">FALSE</span>, pad <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>zip</dt>
 <dd><p>A vector of US ZIP codes.</p></dd>
+
+
 <dt>na</dt>
 <dd><p>A vector of values to pass to <code><a href="na_in.html">na_in()</a></code>.</p></dd>
+
+
 <dt>na_rep</dt>
 <dd><p>logical; If <code>TRUE</code>, <code><a href="na_rep.html">na_rep()</a></code> will be called. Please note that
 22222, 44444, and 55555 valid ZIP codes that will <em>not</em> be removed.</p></dd>
+
+
 <dt>pad</dt>
 <dd><p>logical; Should ZIP codes less than five digits be padded with a
 leading zero? Leading zeros (as are found in New England ZIP codes) are
 often dropped by programs like Microsoft Excel when parsed as numeric
 values.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <em>character</em> vector of normalized 5-digit ZIP codes.</p>
+    
+
+<p>A <em>character</em> vector of normalized 5-digit ZIP codes.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -108,12 +117,12 @@ values.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">normal_zip</span><span class="op">(</span></span>
-<span class="r-in">  zip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"05672-5563"</span>, <span class="st">"N/A"</span>, <span class="st">"05401"</span>, <span class="st">"5819"</span>, <span class="st">"00000"</span><span class="op">)</span>,</span>
-<span class="r-in">  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>,</span>
-<span class="r-in">  na_rep <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">  pad <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">normal_zip</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  zip <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"05672-5563"</span>, <span class="st">"N/A"</span>, <span class="st">"05401"</span>, <span class="st">"5819"</span>, <span class="st">"00000"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  na_rep <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>  pad <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "05672" NA      "05401" "05819" NA     </span>
 </code></pre></div>
     </div>
@@ -129,7 +138,7 @@ values.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

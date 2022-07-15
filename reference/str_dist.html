@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -63,28 +63,37 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">str_dist</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, method <span class="op">=</span> <span class="st">"osa"</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">str_dist</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, method <span class="op">=</span> <span class="st">"osa"</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>a</dt>
 <dd><p><code>R</code> object (target); will be converted by <code><a href="https://rdrr.io/r/base/character.html" class="external-link">base::as.character()</a></code>.</p></dd>
+
+
 <dt>b</dt>
 <dd><p><code>R</code> object (source); will be converted by <code><a href="https://rdrr.io/r/base/character.html" class="external-link">base::as.character()</a></code>.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>Method for distance calculation. The default is "osa."</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments passed to <code><a href="https://rdrr.io/pkg/stringdist/man/stringdist.html" class="external-link">stringdist::stringdist()</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The distance between string <code>a</code> and string <code>b</code>.</p>
+    
+
+<p>The distance between string <code>a</code> and string <code>b</code>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">str_dist</span><span class="op">(</span>a <span class="op">=</span> <span class="st">"BRULINGTN"</span>, b <span class="op">=</span> <span class="st">"BURLINGTON"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">str_dist</span><span class="op">(</span>a <span class="op">=</span> <span class="st">"BRULINGTN"</span>, b <span class="op">=</span> <span class="st">"BURLINGTON"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
 </code></pre></div>
     </div>
@@ -100,7 +109,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

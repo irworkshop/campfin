@@ -19,7 +19,7 @@ percentage of that value."><meta property="og:image" content="/logo.png"><!-- ma
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -67,28 +67,35 @@ to every column of a data frame and return the results along with a
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">col_stats</span><span class="op">(</span><span class="va">data</span>, <span class="va">fun</span>, print <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="fu">glimpse_fun</span><span class="op">(</span><span class="va">data</span>, <span class="va">fun</span>, print <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">col_stats</span><span class="op">(</span><span class="va">data</span>, <span class="va">fun</span>, print <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">glimpse_fun</span><span class="op">(</span><span class="va">data</span>, <span class="va">fun</span>, print <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A data frame to glimpse.</p></dd>
+
+
 <dt>fun</dt>
 <dd><p>A function to map to each column.</p></dd>
+
+
 <dt>print</dt>
 <dd><p>logical; Should all columns be printed as rows?</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tibble with a row for every column with the count and proportion.</p>
+    
+
+<p>A tibble with a row for every column with the count and proportion.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">col_stats</span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/storms.html" class="external-link">storms</a></span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">col_stats</span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/storms.html" class="external-link">storms</a></span>, <span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html" class="external-link">n_distinct</a></span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    col                          class     n        p</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -105,7 +112,7 @@ to every column of a data frame and return the results along with a
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> pressure                     &lt;int&gt;   124 0.010<span style="text-decoration: underline;">5</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> tropicalstorm_force_diameter &lt;int&gt;   118 0.009<span style="text-decoration: underline;">95</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> hurricane_force_diameter     &lt;int&gt;    38 0.003<span style="text-decoration: underline;">20</span> </span>
-<span class="r-in"><span class="fu">col_stats</span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/storms.html" class="external-link">storms</a></span>, <span class="fu">campfin</span><span class="fu">::</span><span class="va"><a href="count_na.html">count_na</a></span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">col_stats</span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/storms.html" class="external-link">storms</a></span>, <span class="fu">campfin</span><span class="fu">::</span><span class="va"><a href="count_na.html">count_na</a></span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    col                          class     n     p</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -136,7 +143,7 @@ to every column of a data frame and return the results along with a
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -23,7 +23,7 @@ a vector can be removed (possibly using invalid_city) as well as single
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -75,30 +75,41 @@ a vector can be removed (possibly using <a href="invalid_city.html">invalid_city
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">normal_city</span><span class="op">(</span><span class="va">city</span>, abbs <span class="op">=</span> <span class="cn">NULL</span>, states <span class="op">=</span> <span class="cn">NULL</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>, na_rep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">normal_city</span><span class="op">(</span><span class="va">city</span>, abbs <span class="op">=</span> <span class="cn">NULL</span>, states <span class="op">=</span> <span class="cn">NULL</span>, na <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="st">"NA"</span><span class="op">)</span>, na_rep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>city</dt>
 <dd><p>A vector of city names.</p></dd>
+
+
 <dt>abbs</dt>
 <dd><p>A named vector or data frame of abbreviations passed to
 <a href="expand_abbrev.html">expand_abbrev</a>; see <a href="expand_abbrev.html">expand_abbrev</a> for format of <code>abb</code> argument or use
 the <a href="usps_city.html">usps_city</a> tibble.</p></dd>
+
+
 <dt>states</dt>
 <dd><p>A vector of state abbreviations ("VT") to remove from the
 <em>end</em> (and only end) of city names ("STOWE VT").</p></dd>
+
+
 <dt>na</dt>
 <dd><p>A vector of values to make <code>NA</code> (useful with the <a href="invalid_city.html">invalid_city</a>
 vector).</p></dd>
+
+
 <dt>na_rep</dt>
 <dd><p>logical; If <code>TRUE</code>, replace all single digit (repeating)
 strings with <code>NA</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A vector of normalized city names.</p>
+    
+
+<p>A vector of normalized city names.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -117,13 +128,13 @@ strings with <code>NA</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">normal_city</span><span class="op">(</span></span>
-<span class="r-in">  city <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Stowe, VT"</span>, <span class="st">"UNKNOWN CITY"</span>, <span class="st">"Burlington"</span>, <span class="st">"ST JOHNSBURY"</span>, <span class="st">"XXX"</span><span class="op">)</span>,</span>
-<span class="r-in">  abbs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ST"</span> <span class="op">=</span> <span class="st">"SAINT"</span><span class="op">)</span>,</span>
-<span class="r-in">  states <span class="op">=</span> <span class="st">"VT"</span>,</span>
-<span class="r-in">  na <span class="op">=</span> <span class="va">invalid_city</span>,</span>
-<span class="r-in">  na_rep <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">normal_city</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  city <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Stowe, VT"</span>, <span class="st">"UNKNOWN CITY"</span>, <span class="st">"Burlington"</span>, <span class="st">"ST JOHNSBURY"</span>, <span class="st">"XXX"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  abbs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ST"</span> <span class="op">=</span> <span class="st">"SAINT"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  states <span class="op">=</span> <span class="st">"VT"</span>,</span></span>
+<span class="r-in"><span>  na <span class="op">=</span> <span class="va">invalid_city</span>,</span></span>
+<span class="r-in"><span>  na_rep <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "STOWE"           NA                "BURLINGTON"      "SAINT JOHNSBURY"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [5] NA               </span>
 </code></pre></div>
@@ -140,7 +151,7 @@ strings with <code>NA</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

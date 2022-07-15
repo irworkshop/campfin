@@ -22,7 +22,7 @@ replaced without changing the rest of the string."><meta property="og:image" con
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -73,20 +73,25 @@ replaced without changing the rest of the string.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">keypad_convert</span><span class="op">(</span><span class="va">x</span>, ext <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">keypad_convert</span><span class="op">(</span><span class="va">x</span>, ext <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A vector of characters or letters.</p></dd>
+
+
 <dt>ext</dt>
 <dd><p>logical; Should extension text be converted to numbers. Defaults to
 <code>FALSE</code> and matches x, ext, and extension followed by a space or number.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>If a character vector is supplied, a vector of each elements numeric
+    
+
+<p>If a character vector is supplied, a vector of each elements numeric
 counterpart is returned. If a numeric vector (or a completely coercible
 character vector) is supplied, then a <strong>list</strong> is returned, each element of
 which contacts a vector of letters for each number.</p>
@@ -99,11 +104,11 @@ which contacts a vector of letters for each number.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">keypad_convert</span><span class="op">(</span><span class="st">"1-800-CASH-NOW ext123"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">keypad_convert</span><span class="op">(</span><span class="st">"1-800-CASH-NOW ext123"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1-800-2274-669 ext123"</span>
-<span class="r-in"><span class="fu">keypad_convert</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"123"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">keypad_convert</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"123"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "222" "123"</span>
-<span class="r-in"><span class="fu">keypad_convert</span><span class="op">(</span><span class="va">letters</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">keypad_convert</span><span class="op">(</span><span class="va">letters</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "2" "2" "2" "3" "3" "3" "4" "4" "4" "5" "5" "5" "6" "6" "6" "7" "7" "7" "7"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [20] "8" "8" "8" "9" "9" "9" "9"</span>
 </code></pre></div>
@@ -120,7 +125,7 @@ which contacts a vector of letters for each number.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

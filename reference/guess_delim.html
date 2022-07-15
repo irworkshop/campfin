@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -63,7 +63,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">guess_delim</span><span class="op">(</span><span class="va">file</span>, delims <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">","</span>, <span class="st">"\t"</span>, <span class="st">"|"</span>, <span class="st">";"</span><span class="op">)</span>, string <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">guess_delim</span><span class="op">(</span><span class="va">file</span>, delims <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">","</span>, <span class="st">"\t"</span>, <span class="st">"|"</span>, <span class="st">";"</span><span class="op">)</span>, string <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -75,27 +75,34 @@
     <dl><dt>file</dt>
 <dd><p>Either a path to a file or character string (with at least one
 newline character).</p></dd>
+
+
 <dt>delims</dt>
 <dd><p>The vector of single characters to guess from. Defaults to:
 comma, tab, pipe, or semicolon.</p></dd>
+
+
 <dt>string</dt>
 <dd><p>Should the file be treated as a string regardless of newline.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The single character guessed as a delimiter.</p>
+    
+
+<p>The single character guessed as a delimiter.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">guess_delim</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"vt_contribs.csv"</span>, package <span class="op">=</span> <span class="st">"campfin"</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">guess_delim</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"vt_contribs.csv"</span>, package <span class="op">=</span> <span class="st">"campfin"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] ","</span>
-<span class="r-in"><span class="fu">guess_delim</span><span class="op">(</span><span class="st">"ID;FirstName;MI;LastName;JobTitle"</span>, string <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">guess_delim</span><span class="op">(</span><span class="st">"ID;FirstName;MI;LastName;JobTitle"</span>, string <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] ";"</span>
-<span class="r-in"><span class="fu">guess_delim</span><span class="op">(</span><span class="st">"</span>
-<span class="r-in">a|b|c</span>
-<span class="r-in">1|2|3</span>
-<span class="r-in">"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">guess_delim</span><span class="op">(</span><span class="st">"</span></span></span>
+<span class="r-in"><span><span class="st">a|b|c</span></span></span>
+<span class="r-in"><span><span class="st">1|2|3</span></span></span>
+<span class="r-in"><span><span class="st">"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "|"</span>
 </code></pre></div>
     </div>
@@ -111,7 +118,7 @@ comma, tab, pipe, or semicolon.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

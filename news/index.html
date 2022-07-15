@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.9.9000</span>
       </span>
     </div>
 
@@ -58,7 +58,10 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.0.9" id="campfin-109">campfin 1.0.9<a class="anchor" aria-label="anchor" href="#campfin-109"></a></h2>
+<h2 class="page-header" data-toc-text="development version" id="campfin-development-version">campfin (development version)<a class="anchor" aria-label="anchor" href="#campfin-development-version"></a></h2>
+<ul><li>Make <code><a href="../reference/use_diary.html">use_diary()</a></code> more flexible with custom file name argument.</li></ul></div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.9" id="campfin-109">campfin 1.0.9<small>2022-05-24</small><a class="anchor" aria-label="anchor" href="#campfin-109"></a></h2>
 <ul><li>Update template diary to match changes to TAP GitHub repository.</li>
 <li>Do not remove “AA” when using <code>normal_state(c("AA", "XX"), na_rep = TRUE)</code>.</li>
 <li>The <code>end</code> argument of <code><a href="../reference/str_normal.html">str_normal()</a></code> can now be controlled with <code>abb_end</code> in <code><a href="../reference/normal_address.html">normal_address()</a></code> (default <code>TRUE</code>).</li>
@@ -73,10 +76,10 @@
 <li>The <code>end</code> argument has been added to <code>abbrev_full</code> to target only <code>full</code> values at the <em>end</em> of a string. Defaults to <code>FALSE</code>.</li>
 <li>
 <code><a href="../reference/normal_address.html">normal_address()</a></code> uses <code>end = TRUE</code> in <code>abbrev_full</code> to target only the street type.</li>
-</ul><pre><code><span class="fu"><a href="../reference/abbrev_full.html">abbrev_full</a></span><span class="op">(</span><span class="st">"123 MOUNTAIN ROAD"</span>, full <span class="op">=</span> <span class="va">usps_street</span>, end <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; "123 MTN RD"</span>
-<span class="fu"><a href="../reference/normal_address.html">normal_address</a></span><span class="op">(</span><span class="st">"123 MOUNTAIN ROAD"</span>, abb <span class="op">=</span> <span class="va">usps_street</span><span class="op">)</span>
-<span class="co">#&gt; "123 MOUNTAIN RD"</span></code></pre>
+</ul><pre><code><span><span class="fu"><a href="../reference/abbrev_full.html">abbrev_full</a></span><span class="op">(</span><span class="st">"123 MOUNTAIN ROAD"</span>, full <span class="op">=</span> <span class="va">usps_street</span>, end <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; "123 MTN RD"</span></span>
+<span><span class="fu"><a href="../reference/normal_address.html">normal_address</a></span><span class="op">(</span><span class="st">"123 MOUNTAIN ROAD"</span>, abb <span class="op">=</span> <span class="va">usps_street</span><span class="op">)</span></span>
+<span><span class="co">#&gt; "123 MOUNTAIN RD"</span></span></code></pre>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.7" id="campfin-107">campfin 1.0.7<small>2021-04-12</small><a class="anchor" aria-label="anchor" href="#campfin-107"></a></h2>
@@ -95,10 +98,10 @@
 <li>Remove <code>count_vec()</code> in favor of new <code><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">dplyr::count()</a></code> method for characters.</li>
 <li>Valid ZIP codes 22222, 44444, 55555 are not removed with <code>normal_zip(na.na_rep = TRUE)</code>.</li>
 </ul><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu"><a href="../reference/normal_address.html">normal_address</a></span><span class="op">(</span><span class="st">"12east 2nd street, 3rd floor"</span>, abbs <span class="op">=</span> <span class="va">usps_street</span><span class="op">)</span>
-<span class="co">#&gt; "12 E 2ND ST 3 RD FL" # old output</span>
-<span class="co">#&gt; "12 E 2ND ST 3RD FL" # fixed output</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/normal_address.html">normal_address</a></span><span class="op">(</span><span class="st">"12east 2nd street, 3rd floor"</span>, abbs <span class="op">=</span> <span class="va">usps_street</span><span class="op">)</span></span>
+<span><span class="co">#&gt; "12 E 2ND ST 3 RD FL" # old output</span></span>
+<span><span class="co">#&gt; "12 E 2ND ST 3RD FL" # fixed output</span></span></code></pre></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.4" id="campfin-104">campfin 1.0.4<small>2020-11-27</small><a class="anchor" aria-label="anchor" href="#campfin-104"></a></h2>
@@ -157,7 +160,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
