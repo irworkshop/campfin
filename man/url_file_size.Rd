@@ -16,6 +16,3 @@ The size of a file to be downloaded.
 Call \code{\link[httr:HEAD]{httr::HEAD()}} and return the number of bytes in the file to be
 downloaded.
 }
-\examples{
-url_file_size("https://cran.r-project.org/bin/macosx/old/R-2.0.1.dmg")
-}
