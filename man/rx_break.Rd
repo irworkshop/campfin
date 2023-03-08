@@ -14,7 +14,7 @@ The a glue vector of \code{pattern} wrapped in \verb{\\\\b}.
 }
 \description{
 Wrap a word in word boundary (\verb{\\\\b}) characters. Useful when combined with
-\code{\link[stringr:str_subset]{stringr::str_which()}} and \code{\link[stringr:str_detect]{stringr::str_detect()}} to match only entire words
+\code{\link[stringr:str_which]{stringr::str_which()}} and \code{\link[stringr:str_detect]{stringr::str_detect()}} to match only entire words
 and not that word \emph{inside} another word (e.g., "sting" and "testing").
 }
 \examples{

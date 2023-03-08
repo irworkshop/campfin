@@ -17,5 +17,6 @@ add_prop <- function(.data, n, sum = FALSE) {
   } else {
     prop.table(.data$n)
   }
-  dplyr::mutate(.data, p)
+  .data$p <- p
+  return(.data)
 }
