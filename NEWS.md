@@ -1,6 +1,7 @@
-# campfin (development version)
+# campfin 1.0.10
 
 * Make `use_diary()` more flexible with custom file name argument.
+* Remove the flawed character vector method for the `dplyr::count()` function.
 
 # campfin 1.0.9
 
