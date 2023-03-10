@@ -1,5 +1,7 @@
 # campfin (development version)
 
+* Add "PLACE" and "PL" to the `usps_street` data frame.
+
 # campfin 1.0.10
 
 * Make `use_diary()` more flexible with custom file name argument.
