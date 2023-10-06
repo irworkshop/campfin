@@ -20,4 +20,5 @@
 
 ## Comments
 
-* Removed the flawed character vector method for the `dplyr::count()` function.
+* Fixed the package documentation page.
+* Skipping `non_ascii()` tests on Mac and Windows.

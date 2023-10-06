@@ -14,6 +14,9 @@
 #' diaries to document the data wrangling process; the open source campfin
 #' functions help download, import, explore, and wrangle public database.
 #'
-#' @docType package
-#' @name campfin
+#' @keywords internal
+"_PACKAGE"
+
+## usethis namespace: start
+## usethis namespace: end
 NULL
