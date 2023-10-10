@@ -340,7 +340,7 @@ and addresses might bring up search results alongside one of our other sets of
 public data: campaign expenditures, registered voters, nonprofit organizations,
 stimulus spending, government contracts, lobbyist registrations, etc.
 
-[1bil]: https://investigativereportingworkshop.org/2021/02/17/1-billion-records-and-counting-the-accountability-project-reaches-new-milestone/
+[1bil]: https://archive.investigativereportingworkshop.org/2021/02/17/1-billion-records-and-counting-the-accountability-project-reaches-new-milestone/
 
 ```{r echo=FALSE}
 kable(vt)

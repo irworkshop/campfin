@@ -17,7 +17,7 @@
 #' @source Daniel Coven's federalgovernmentzipcodes.us web site and the
 #'   CivicSpace US ZIP Code Database written by Schuyler Erle
 #'   <schuyler@@geocoder.us>, 5 August 2004. Original CSV files available from
-#'   \url{http://federalgovernmentzipcodes.us/free-zipcode-database-Primary.csv}
+#'   \url{https://web.archive.org/web/20221005220101/http://federalgovernmentzipcodes.us/free-zipcode-database-Primary.csv}
 "zipcodes"
 
 #' @title USPS Street Abbreviations
