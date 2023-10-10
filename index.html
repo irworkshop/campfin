@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">campfin</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.10.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.11</span>
       </span>
     </div>
 
@@ -92,6 +92,7 @@
 <div class="page-header"><h1 id="campfin-">campfin <img src="reference/figures/logo.png" align="right" width="120"><a class="anchor" aria-label="anchor" href="#campfin-"></a>
 </h1></div>
 <!-- badges: start -->
+
 <p>The campfin package was created to facilitate the work being done on the <a href="https://www.publicaccountability.org/" class="external-link">The Accountability Project</a>, a tool created by <a href="https://investigativereportingworkshop.org/" class="external-link">The Investigative Reporting Workshop</a> in Washington, DC. The Accountability Project curates, cleans, and indexes public data to give journalists, researchers and others a simple way to search across otherwise siloed records.</p>
 <p>The data focuses on people, organizations and locations. This package was created specifically to help with state-level campaign finance data, although the tools included are useful in general database exploration and normalization.</p>
 <div class="section level2">
@@ -103,7 +104,7 @@
 <p>The development version can be installed from <a href="https://github.com/irworkshop/campfin" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"irworkshop/campfin"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"irworkshop/campfin"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="normalize">Normalize<a class="anchor" aria-label="anchor" href="#normalize"></a>
@@ -135,7 +136,9 @@
 <h3 id="zipcodes">zipcodes<a class="anchor" aria-label="anchor" href="#zipcodes"></a>
 </h3>
 <p>The <code>zipcodes</code> (plural) table is a new version of the <code>zipcode</code> (singular) table from the archived <a href="https://cran.r-project.org/src/contrib/Archive/zipcode/" class="external-link">zipcode</a> R package.</p>
-<blockquote><p>This database was composed using ZIP code gazetteers from the US Census Bureau from 1999 and 2000, augmented with additional ZIP code information The database is believed to contain over 98% of the ZIP Codes in current use in the United States. The remaining ZIP Codes absent from this database are entirely PO Box or Firm ZIP codes added in the last five years, which are no longer published by the Census Bureau, but in any event serve a very small minority of the population (probably on the order of .1% or less). Although every attempt has been made to filter them out, this data set may contain up to .5% false positives, that is, ZIP codes that do not exist or are no longer in use but are included due to erroneous data sources.</p></blockquote>
+<blockquote>
+<p>This database was composed using ZIP code gazetteers from the US Census Bureau from 1999 and 2000, augmented with additional ZIP code information The database is believed to contain over 98% of the ZIP Codes in current use in the United States. The remaining ZIP Codes absent from this database are entirely PO Box or Firm ZIP codes added in the last five years, which are no longer published by the Census Bureau, but in any event serve a very small minority of the population (probably on the order of .1% or less). Although every attempt has been made to filter them out, this data set may contain up to .5% false positives, that is, ZIP codes that do not exist or are no longer in use but are included due to erroneous data sources.</p>
+</blockquote>
 <p>The included <code>valid_city</code> and <code>valid_zip</code> vectors are sorted, unique columns from the <code>zipcodes</code> data frame.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">sample_frac</span><span class="op">(</span><span class="va">zipcodes</span><span class="op">)</span></span>
@@ -180,7 +183,8 @@
 <span><span class="co">#&gt;  [1] "AS" "AA" "AE" "AP" "DC" "FM" "GU" "MH" "MP" "PW" "PR" "VI"</span></span></code></pre></div>
 <hr>
 <p>The campfin project is released with a <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html" class="external-link">Contributor Code of Conduct</a>. By contributing, you agree to abide by its terms.</p>
-<!-- refs: start --><!-- refs: end -->
+<!-- refs: start -->
+<!-- refs: end -->
 </div>
 </div>
 </div>
